@@ -1,15 +1,16 @@
 # phlosion.com
 
-Phlosion is Adam Wentworth's independent software product company for owned tools, demos, and product experiments.
+Phlosion is Adam Wentworth's independent software company brand for owned apps, AI systems, tools, games, demos, and product experiments.
 
-The site is designed to showcase working product surfaces: interactive demos, release pages, changelogs, documentation, and the technical systems behind each project.
+The site is designed to claim a clear company home for the product portfolio and showcase working product surfaces: interactive demos, release pages, changelogs, documentation, and the technical systems behind each project.
 
 ## Purpose
 
 - Public-facing home for owned projects and product experiments
+- Clear ownership framing for Phlosion-built software products
 - Interactive demos, landing pages, changelogs, and release stories
 - A company-level container for projects that may later become products
-- Optional future monetization
+- Future monetization paths such as subscriptions, hosted services, support, downloads, or productized tooling
 
 ## Portfolio Tracks
 

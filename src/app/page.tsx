@@ -1,37 +1,53 @@
-import { ArrowUpRight, Boxes, Code2, Layers3, MonitorCog, PackageCheck, Radio, Rocket, Sparkles } from 'lucide-react';
+import {
+  ArrowUpRight,
+  BadgeCheck,
+  Boxes,
+  Building2,
+  CircleDollarSign,
+  Code2,
+  FileText,
+  Layers3,
+  MonitorCog,
+  PackageCheck,
+  Radio,
+  Rocket,
+  Sparkles,
+} from 'lucide-react';
 import { ProductShowcase } from '@/components/ProductShowcase';
-import { operatingPrinciples, projects } from '@/lib/projects';
+import { companyPrinciples, operatingPrinciples, projects } from '@/lib/projects';
 
 const navItems = [
+  { href: '#products', label: 'Products' },
   { href: '#demos', label: 'Demos' },
-  { href: '#projects', label: 'Portfolio' },
-  { href: '#process', label: 'Process' },
+  { href: '#company', label: 'Company' },
   { href: '#contact', label: 'Contact' },
 ];
 
 const labSignals = [
-  { label: 'Product tracks', value: '04', icon: Boxes },
-  { label: 'Domains', value: 'AI / Web / Tools / Games', icon: Layers3 },
-  { label: 'Surfaces', value: 'Demos / docs / releases', icon: Radio },
+  { label: 'Owned products', value: '04', icon: Boxes },
+  { label: 'Software domains', value: 'Apps / AI / Tools / Games', icon: Layers3 },
+  { label: 'Business surfaces', value: 'Services / releases / support', icon: Radio },
 ];
 
 const companySignals = [
   {
-    label: 'Owned product tracks',
-    detail: 'Each project gets a clearer audience, release path, and product promise under the Phlosion brand.',
+    label: 'Apps & Services',
+    detail: 'Web/mobile products, hosted workflows, subscriptions, and community coordination software.',
     icon: Rocket,
   },
   {
-    label: 'Release surfaces',
-    detail: 'Repos can grow into demos, downloads, docs, changelogs, screenshots, and launch notes.',
+    label: 'Tools & Releases',
+    detail: 'Desktop applications, downloads, docs, changelogs, packaging, and support-ready release systems.',
     icon: PackageCheck,
   },
   {
-    label: 'Technical range',
-    detail: 'The portfolio spans AI assistants, service-backed web systems, desktop tooling, and games.',
+    label: 'AI & Games',
+    detail: 'Local assistants, automation workflows, game prototypes, runtime systems, and product experiments.',
     icon: MonitorCog,
   },
 ];
+
+const principleIcons = [BadgeCheck, CircleDollarSign, FileText, Building2];
 
 export default function Home() {
   return (
@@ -86,11 +102,11 @@ export default function Home() {
         </header>
 
         <div className="hero-content">
-          <p className="eyebrow">Software product lab</p>
+          <p className="eyebrow">Independent software company</p>
           <h1 id="hero-title">Phlosion</h1>
           <p className="hero-lede">
-            Phlosion builds product-minded software across AI assistants, coordination systems, desktop tooling, and
-            games, with visible demos and release paths for each track.
+            Phlosion is a software company brand for owned apps, AI systems, tools, and games. It exists to build, show,
+            release, and eventually commercialize the software products created under one roof.
           </p>
           <div className="hero-actions" aria-label="Primary actions">
             <a className="button button-primary" href="#demos">
@@ -119,15 +135,58 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="products" className="section-wrap product-lines-section" aria-labelledby="products-title">
+        <div className="section-heading">
+          <p className="eyebrow">Products</p>
+          <h2 id="products-title">A company home for owned software.</h2>
+          <p>
+            Each Phlosion product line has a defined audience, owned software surface, and business path. Repos still
+            matter, but the company site presents the products themselves.
+          </p>
+        </div>
+        <div className="product-line-grid">
+          {projects.map((project) => {
+            const Icon = project.icon;
+            return (
+              <article key={project.name} className={`product-line product-line-${project.accent}`}>
+                <div className="product-line-top">
+                  <span className="project-icon">
+                    <Icon size={22} aria-hidden="true" />
+                  </span>
+                  <span className="project-status">{project.status}</span>
+                </div>
+                <p className="project-track">{project.productLine}</p>
+                <h3>{project.name}</h3>
+                <p>{project.summary}</p>
+                <dl className="line-facts">
+                  <div>
+                    <dt>Phlosion owns</dt>
+                    <dd>{project.ownedSurface}</dd>
+                  </div>
+                  <div>
+                    <dt>Commercial path</dt>
+                    <dd>{project.commercialPath}</dd>
+                  </div>
+                </dl>
+                <a href="#demos">
+                  View product surface
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
       <ProductShowcase />
 
       <section id="projects" className="section-wrap project-section" aria-labelledby="projects-title">
         <div className="section-heading">
-          <p className="eyebrow">Portfolio</p>
-          <h2 id="projects-title">Owned software tracks.</h2>
+          <p className="eyebrow">Technical Registry</p>
+          <h2 id="projects-title">The product lines are backed by real systems.</h2>
           <p>
-            The portfolio spans web systems, local AI, desktop tooling, and games. Each project is treated as a product
-            surface with a user, a workflow, and a path toward stronger demos or releases.
+            Phlosion products can be shown as demos, but they also need the practical engineering beneath them:
+            services, clients, tests, packaging, docs, and operational workflows.
           </p>
         </div>
         <div className="portfolio-panel" aria-label="Company portfolio positioning">
@@ -182,10 +241,31 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="company" className="section-wrap identity-section" aria-labelledby="company-title">
+        <div className="identity-panel company-panel">
+          <div>
+            <p className="eyebrow">Company Model</p>
+            <h2 id="company-title">Built to own, ship, and operate products.</h2>
+          </div>
+          <div className="identity-grid company-grid">
+            {companyPrinciples.map((principle, index) => {
+              const Icon = principleIcons[index] ?? BadgeCheck;
+              return (
+                <article key={principle.label}>
+                  <Icon size={20} aria-hidden="true" />
+                  <h3>{principle.label}</h3>
+                  <p>{principle.detail}</p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       <section id="process" className="section-wrap process-section" aria-labelledby="process-title">
         <div className="section-heading">
-          <p className="eyebrow">Process</p>
-          <h2 id="process-title">Built like the project might have users.</h2>
+          <p className="eyebrow">Operating Model</p>
+          <h2 id="process-title">Products should be able to become businesses.</h2>
         </div>
         <div className="process-grid">
           {operatingPrinciples.map((principle, index) => (
@@ -223,10 +303,10 @@ export default function Home() {
       <section id="contact" className="section-wrap contact-section" aria-labelledby="contact-title">
         <div>
           <p className="eyebrow">Next</p>
-          <h2 id="contact-title">Build the next product surface.</h2>
+          <h2 id="contact-title">Build and operate the next product line.</h2>
           <p>
-            Phlosion is organized around useful software: working demos, stronger release pages, technical writeups, and
-            product tracks that can keep becoming more real.
+            Phlosion is organized around software ownership: working demos, stronger release pages, technical writeups,
+            product operations, and revenue paths for tools that become real services.
           </p>
         </div>
         <div className="contact-actions">

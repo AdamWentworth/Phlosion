@@ -53,7 +53,9 @@ a {
 }
 
 #demos,
+#products,
 #projects,
+#company,
 #process,
 #capabilities,
 #contact {
@@ -431,6 +433,91 @@ h3 {
   font-size: 18px;
 }
 
+.product-line-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.product-line {
+  display: flex;
+  min-height: 520px;
+  flex-direction: column;
+  border: 1px solid rgba(244, 234, 209, 0.1);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(216, 93, 51, 0.12), rgba(18, 20, 24, 0.96) 42%), rgba(18, 20, 24, 0.96);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.product-line-green {
+  background: linear-gradient(135deg, rgba(56, 161, 105, 0.12), rgba(18, 20, 24, 0.96) 42%), rgba(18, 20, 24, 0.96);
+  border-color: rgba(56, 161, 105, 0.2);
+}
+
+.product-line-blue {
+  background: linear-gradient(135deg, rgba(92, 170, 255, 0.12), rgba(18, 20, 24, 0.96) 42%), rgba(18, 20, 24, 0.96);
+  border-color: rgba(92, 170, 255, 0.22);
+}
+
+.product-line-cream {
+  background: linear-gradient(135deg, rgba(244, 234, 209, 0.11), rgba(18, 20, 24, 0.96) 42%), rgba(18, 20, 24, 0.96);
+  border-color: rgba(244, 234, 209, 0.2);
+}
+
+.product-line-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.product-line p {
+  color: var(--text-secondary);
+}
+
+.line-facts,
+.stage-facts {
+  display: grid;
+  gap: 10px;
+  margin: 10px 0 22px;
+}
+
+.line-facts div,
+.stage-facts div {
+  border-top: 1px solid rgba(244, 234, 209, 0.1);
+  padding-top: 12px;
+}
+
+.line-facts dt,
+.stage-facts dt {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.line-facts dd,
+.stage-facts dd {
+  margin: 5px 0 0;
+  color: var(--highlight);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.product-line a {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  color: var(--accent);
+  font-weight: 900;
+  text-decoration: none;
+}
+
 .showcase-shell {
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
@@ -542,6 +629,10 @@ h3 {
 .stage-copy p {
   color: var(--text-secondary);
   font-size: 18px;
+}
+
+.stage-facts {
+  width: 100%;
 }
 
 .demo-steps {
@@ -1082,10 +1173,18 @@ h3 {
   padding: 28px;
 }
 
+.company-panel {
+  grid-template-columns: 0.72fr 1.28fr;
+}
+
 .identity-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+}
+
+.company-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .identity-grid article {
@@ -1169,9 +1268,14 @@ h3 {
   }
 
   .portfolio-panel,
+  .product-line-grid,
   .project-grid,
   .identity-grid {
     grid-template-columns: 1fr;
+  }
+
+  .product-line {
+    min-height: auto;
   }
 
   .showcase-tabs {
@@ -1185,7 +1289,9 @@ h3 {
 
 @media (max-width: 640px) {
   #demos,
+  #products,
   #projects,
+  #company,
   #process,
   #capabilities,
   #contact {

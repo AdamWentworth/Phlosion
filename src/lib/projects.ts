@@ -6,6 +6,9 @@ export type Project = {
   track: string;
   audience: string;
   companyRole: string;
+  productLine: string;
+  ownedSurface: string;
+  commercialPath: string;
   summary: string;
   details: string;
   tags: string[];
@@ -27,10 +30,13 @@ export const projects: Project[] = [
     status: 'Active build',
     track: 'Full-stack coordination system',
     audience: 'Pokemon GO players and local communities',
-    companyRole: 'Flagship web/mobile product system',
-    summary: 'A full-stack Pokemon GO coordination platform with web/mobile clients and service-oriented backend work.',
+    companyRole: 'Flagship service-app product line',
+    productLine: 'Apps & subscription services',
+    ownedSurface: 'Web/mobile clients, event workflows, location search, update delivery, and service infrastructure.',
+    commercialPath: 'Subscription features for coordination, alerts, hosted communities, and power-user tools.',
+    summary: 'A full-stack coordination platform with web/mobile clients and service-oriented backend work.',
     details:
-      'Phlosion treats Nexus as a product system: live updates, geospatial search, event flow, durable storage, deployment wiring, and user-facing interaction design.',
+      'Nexus is valuable because of the service layer Phlosion builds: accounts, events, geospatial search, live updates, durable storage, deployment wiring, and user-facing interaction design.',
     tags: ['React', 'Go', 'Kafka', 'PostGIS', 'Docker'],
     href: 'https://github.com/AdamWentworth/Go',
     icon: Globe2,
@@ -49,6 +55,10 @@ export const projects: Project[] = [
     track: 'Local AI assistant platform',
     audience: 'Personal automation and host-run AI workflows',
     companyRole: 'AI systems and integration lab',
+    productLine: 'AI systems',
+    ownedSurface:
+      'Assistant clients, tool routing, local model workflows, memory, voice loops, and host orchestration.',
+    commercialPath: 'Private assistant workflows, local-first tooling, and future managed automation products.',
     summary: 'A private host-run assistant around local models, voice workflows, memory, tools, and integrations.',
     details:
       'Jarvin is the AI systems lab: practical model-adjacent software, local-first infrastructure, safe tool execution, and clients that connect back to a trusted machine.',
@@ -70,6 +80,9 @@ export const projects: Project[] = [
     track: 'Cross-platform desktop tooling',
     audience: 'Pokemon Colosseum and XD modding communities',
     companyRole: 'Preservation-grade desktop product line',
+    productLine: 'Desktop tools',
+    ownedSurface: 'Avalonia UI, parser/codec systems, safe workspace flows, tests, packaging scripts, and releases.',
+    commercialPath: 'Open-source releases today, with future support, documentation, downloads, or adjacent tooling.',
     summary: 'A Windows-first, cross-platform .NET/Avalonia remake of legacy Pokemon Colosseum and XD modding tools.',
     details:
       'Cipher turns a preservation project into release-grade software: shared desktop code, safe ISO workspace flows, parser and codec coverage, packaging scripts, and Windows/Linux release targets.',
@@ -91,6 +104,9 @@ export const projects: Project[] = [
     track: 'Systems-heavy game prototype',
     audience: 'Strategy game experiments and engine work',
     companyRole: 'Games and runtime architecture track',
+    productLine: 'Games & runtime R&D',
+    ownedSurface: 'Game loop architecture, combat simulation, scripting, rendering experiments, tests, and tooling.',
+    commercialPath: 'Prototype-to-product exploration for original games, tooling, reusable systems, or demos.',
     summary: 'An engine-first C++ auto-battler prototype with rendering paths, Lua gameplay, tooling, and tests.',
     details:
       'Autochess is the systems and games track: runtime architecture, rendering experiments, scripting, packaged content, smoke tests, and iteration on play feel.',
@@ -113,4 +129,27 @@ export const operatingPrinciples = [
   'Demos should expose real behavior: state, feedback, data, tooling, or runtime systems.',
   'Infrastructure, testing, packaging, and documentation are treated as product features.',
   'Client polish and backend architecture should make the same promise from different angles.',
+];
+
+export const companyPrinciples = [
+  {
+    label: 'Own The Software Layer',
+    detail:
+      'Phlosion is the home for the app code, service workflows, UI systems, docs, releases, and product direction behind each project.',
+  },
+  {
+    label: 'Build Revenue Paths',
+    detail:
+      'Some tracks may stay open-source or experimental, while others can become subscriptions, hosted services, support tools, or downloadable products.',
+  },
+  {
+    label: 'Show Real Behavior',
+    detail:
+      'The site should keep moving toward demos, screenshots, changelogs, downloads, and concrete proof of what each product does.',
+  },
+  {
+    label: 'Respect The Context',
+    detail:
+      'When products serve existing communities or fan interests, Phlosion presents and commercializes the software services it creates.',
+  },
 ];

@@ -125,6 +125,16 @@ export function ProductShowcase() {
               {activeProject.demo.label}
             </h3>
             <p>{activeProject.demo.summary}</p>
+            <dl className="stage-facts" aria-label={`${activeProject.name} company context`}>
+              <div>
+                <dt>Owned surface</dt>
+                <dd>{activeProject.ownedSurface}</dd>
+              </div>
+              <div>
+                <dt>Commercial path</dt>
+                <dd>{activeProject.commercialPath}</dd>
+              </div>
+            </dl>
             <ul className="demo-steps">
               {activeProject.demo.steps.map((step) => (
                 <li key={step}>

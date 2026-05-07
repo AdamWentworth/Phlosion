@@ -25,8 +25,8 @@ export const metadata: Metadata = {
       'A product studio for ambitious software experiments across AI assistants, full-stack systems, and games.',
   },
   icons: {
-    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
-    shortcut: '/favicon.svg',
+    icon: [{ url: '/phlosion-mark.png', type: 'image/png' }],
+    shortcut: '/phlosion-mark.png',
   },
 };
 

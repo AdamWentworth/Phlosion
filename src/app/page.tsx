@@ -108,7 +108,9 @@ export default function Home() {
         <div className="hero-content">
           <img className="hero-brand-mark" src="/phlosion-mark.png" alt="" aria-hidden="true" />
           <p className="eyebrow">Independent software company</p>
-          <h1 id="hero-title">Phlosion</h1>
+          <h1 id="hero-title" className="hero-wordmark-title">
+            <img className="hero-title-wordmark" src="/phlosion-wordmark.png" alt="Phlosion" />
+          </h1>
           <p className="hero-lede">
             Phlosion is a software company brand for owned apps, AI systems, tools, and games. It exists to build, show,
             release, and eventually commercialize the software products created under one roof.

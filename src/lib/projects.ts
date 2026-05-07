@@ -12,6 +12,13 @@ export type Project = {
   href: string;
   icon: LucideIcon;
   accent: 'orange' | 'green' | 'blue' | 'cream';
+  demo: {
+    kind: 'nexus' | 'jarvin' | 'cipher' | 'autochess';
+    label: string;
+    metric: string;
+    summary: string;
+    steps: string[];
+  };
 };
 
 export const projects: Project[] = [
@@ -28,6 +35,13 @@ export const projects: Project[] = [
     href: 'https://github.com/AdamWentworth/Go',
     icon: Globe2,
     accent: 'orange',
+    demo: {
+      kind: 'nexus',
+      label: 'Raid coordination surface',
+      metric: 'Event sync',
+      summary: 'A live operations view for local events, nearby players, location search, and update delivery.',
+      steps: ['Find nearby activity', 'Publish event state', 'Sync mobile clients'],
+    },
   },
   {
     name: 'Jarvin',
@@ -42,6 +56,13 @@ export const projects: Project[] = [
     href: 'https://github.com/AdamWentworth/Jarvin',
     icon: Bot,
     accent: 'green',
+    demo: {
+      kind: 'jarvin',
+      label: 'Host-run assistant loop',
+      metric: 'Local-first AI',
+      summary: 'A private assistant surface for voice capture, local model work, tool execution, and memory updates.',
+      steps: ['Capture request', 'Route tool safely', 'Store useful context'],
+    },
   },
   {
     name: 'Cipher Snagem Editor',
@@ -56,6 +77,13 @@ export const projects: Project[] = [
     href: 'https://github.com/AdamWentworth/CipherSnagemEditor',
     icon: Archive,
     accent: 'cream',
+    demo: {
+      kind: 'cipher',
+      label: 'Desktop editor workflow',
+      metric: 'Release builds',
+      summary: 'A desktop tooling flow for opening game workspaces, editing structured data, and packaging releases.',
+      steps: ['Open clean ISO', 'Edit supported tables', 'Rebuild release artifact'],
+    },
   },
   {
     name: 'Pokemon Autochess',
@@ -70,12 +98,19 @@ export const projects: Project[] = [
     href: 'https://github.com/AdamWentworth/PokemonAutochess',
     icon: Gamepad2,
     accent: 'blue',
+    demo: {
+      kind: 'autochess',
+      label: 'Runtime combat sandbox',
+      metric: 'Engine systems',
+      summary: 'A systems prototype for board state, scripted gameplay, rendering paths, and packaged tests.',
+      steps: ['Place units', 'Resolve combat', 'Record playtest signal'],
+    },
   },
 ];
 
 export const operatingPrinciples = [
-  'Projects should have a product shape, not just a repo shape.',
-  'AI belongs in the workflow when the system can still be evaluated, owned, and improved.',
-  'Infrastructure, testing, and documentation count as product work.',
-  'Client-facing polish and backend architecture should reinforce each other.',
+  'Every product track needs a clear user, workflow, and release surface.',
+  'Demos should expose real behavior: state, feedback, data, tooling, or runtime systems.',
+  'Infrastructure, testing, packaging, and documentation are treated as product features.',
+  'Client polish and backend architecture should make the same promise from different angles.',
 ];

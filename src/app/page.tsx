@@ -1,30 +1,18 @@
-import {
-  ArrowUpRight,
-  Boxes,
-  CheckCircle2,
-  Code2,
-  Layers3,
-  MonitorCog,
-  PackageCheck,
-  Radio,
-  Rocket,
-  ShieldCheck,
-  Sparkles,
-  Terminal,
-} from 'lucide-react';
+import { ArrowUpRight, Boxes, Code2, Layers3, MonitorCog, PackageCheck, Radio, Rocket, Sparkles } from 'lucide-react';
+import { ProductShowcase } from '@/components/ProductShowcase';
 import { operatingPrinciples, projects } from '@/lib/projects';
 
 const navItems = [
+  { href: '#demos', label: 'Demos' },
   { href: '#projects', label: 'Portfolio' },
   { href: '#process', label: 'Process' },
-  { href: '#identity', label: 'Identity' },
   { href: '#contact', label: 'Contact' },
 ];
 
 const labSignals = [
-  { label: 'Owned tracks', value: '04', icon: Boxes },
+  { label: 'Product tracks', value: '04', icon: Boxes },
   { label: 'Domains', value: 'AI / Web / Tools / Games', icon: Layers3 },
-  { label: 'Release mode', value: 'Open-source + product-led', icon: Radio },
+  { label: 'Surfaces', value: 'Demos / docs / releases', icon: Radio },
 ];
 
 const companySignals = [
@@ -91,8 +79,8 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <a className="header-link" href="https://adamwentworth.ca" target="_blank" rel="noreferrer">
-            Founder profile
+          <a className="header-link" href="https://github.com/AdamWentworth" target="_blank" rel="noreferrer">
+            Source
             <ArrowUpRight size={16} aria-hidden="true" />
           </a>
         </header>
@@ -101,22 +89,17 @@ export default function Home() {
           <p className="eyebrow">Software product lab</p>
           <h1 id="hero-title">Phlosion</h1>
           <p className="hero-lede">
-            An independent software product company shaping ambitious experiments into useful tools, product lines,
-            demos, and production-ready systems.
+            Phlosion builds product-minded software across AI assistants, coordination systems, desktop tooling, and
+            games, with visible demos and release paths for each track.
           </p>
           <div className="hero-actions" aria-label="Primary actions">
-            <a className="button button-primary" href="#projects">
-              Explore projects
+            <a className="button button-primary" href="#demos">
+              View demos
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
-            <a
-              className="button button-secondary"
-              href="https://github.com/AdamWentworth"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Code2 size={18} aria-hidden="true" />
-              GitHub
+            <a className="button button-secondary" href="#projects">
+              Explore portfolio
+              <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </div>
           <dl className="signal-row" aria-label="Phlosion lab signals">
@@ -136,13 +119,15 @@ export default function Home() {
         </div>
       </section>
 
+      <ProductShowcase />
+
       <section id="projects" className="section-wrap project-section" aria-labelledby="projects-title">
         <div className="section-heading">
           <p className="eyebrow">Portfolio</p>
-          <h2 id="projects-title">Owned products with room to grow.</h2>
+          <h2 id="projects-title">Owned software tracks.</h2>
           <p>
-            AdamWentworth.ca can stay focused on hiring signal. Phlosion is where owned projects get company-level
-            framing, deeper pages, demos, changelogs, releases, and product stories.
+            The portfolio spans web systems, local AI, desktop tooling, and games. Each project is treated as a product
+            surface with a user, a workflow, and a path toward stronger demos or releases.
           </p>
         </div>
         <div className="portfolio-panel" aria-label="Company portfolio positioning">
@@ -212,24 +197,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="identity" className="section-wrap identity-section" aria-labelledby="identity-title">
+      <section id="capabilities" className="section-wrap identity-section" aria-labelledby="capabilities-title">
         <div className="identity-panel">
           <div>
-            <p className="eyebrow">Site roles</p>
-            <h2 id="identity-title">Two homes with different jobs.</h2>
+            <p className="eyebrow">Capabilities</p>
+            <h2 id="capabilities-title">Software built with visible behavior.</h2>
           </div>
           <div className="identity-grid">
             <article>
-              <CheckCircle2 size={20} aria-hidden="true" />
-              <h3>Phlosion.com</h3>
-              <p>Brand, product pages, demos, changelogs, launch notes, and the owned project ecosystem.</p>
+              <MonitorCog size={20} aria-hidden="true" />
+              <h3>Interactive Surfaces</h3>
+              <p>
+                Dashboards, desktop editors, assistant clients, game loops, and workflows that can be shown directly.
+              </p>
             </article>
             <article>
-              <ShieldCheck size={20} aria-hidden="true" />
-              <h3>AdamWentworth.ca</h3>
-              <p>
-                Recruiter-friendly resume signal, work history, education, contact details, and concise case studies.
-              </p>
+              <PackageCheck size={20} aria-hidden="true" />
+              <h3>Release Systems</h3>
+              <p>Builds, tests, docs, packaging, downloads, and changelogs that make projects easier to trust.</p>
             </article>
           </div>
         </div>
@@ -238,20 +223,25 @@ export default function Home() {
       <section id="contact" className="section-wrap contact-section" aria-labelledby="contact-title">
         <div>
           <p className="eyebrow">Next</p>
-          <h2 id="contact-title">Make the lab real, one release at a time.</h2>
+          <h2 id="contact-title">Build the next product surface.</h2>
           <p>
-            The first version is a clean brand shell. From here, each project can earn a page with screenshots, demos,
-            architecture notes, release history, and a sharper product promise.
+            Phlosion is organized around useful software: working demos, stronger release pages, technical writeups, and
+            product tracks that can keep becoming more real.
           </p>
         </div>
         <div className="contact-actions">
           <a className="button button-primary" href="mailto:adamjohnwentworth@gmail.com">
             <Sparkles size={18} aria-hidden="true" />
-            Start a conversation
+            Contact Phlosion
           </a>
-          <a className="button button-secondary" href="https://adamwentworth.ca" target="_blank" rel="noreferrer">
-            <Terminal size={18} aria-hidden="true" />
-            AdamWentworth.ca
+          <a
+            className="button button-secondary"
+            href="https://github.com/AdamWentworth"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Code2 size={18} aria-hidden="true" />
+            GitHub
           </a>
         </div>
       </section>

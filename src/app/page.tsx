@@ -14,6 +14,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { ProductShowcase } from '@/components/ProductShowcase';
+import { TechBadgeList } from '@/components/TechBadge';
 import { companyPrinciples, engineeringPractices, operatingPrinciples, projects } from '@/lib/projects';
 
 const navItems = [
@@ -55,41 +56,6 @@ export default function Home() {
   return (
     <main>
       <section className="hero-shell" aria-labelledby="hero-title">
-        <div className="hero-scene" aria-hidden="true">
-          <div className="scene-grid" />
-          <div className="scene-panel scene-panel-primary">
-            <div className="scene-bar">
-              <span />
-              <span />
-              <span />
-            </div>
-            <div className="scene-terminal">
-              <p>owned product lines</p>
-              <strong>Apps, AI systems, tools, and games.</strong>
-              <div className="scene-product-list">
-                <span>
-                  <b>Nexus</b>
-                  <small>active service</small>
-                </span>
-                <span>
-                  <b>Jarvin</b>
-                  <small>research system</small>
-                </span>
-                <span>
-                  <b>Cipher</b>
-                  <small>desktop release</small>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="scene-panel scene-panel-secondary">
-            <span>company surface</span>
-            <strong>
-              demos {'->'} releases {'->'} support
-            </strong>
-          </div>
-        </div>
-
         <header className="site-header">
           <a className="brand-lockup" href="/" aria-label="Phlosion home">
             <span className="brand-mark" aria-hidden="true">
@@ -150,10 +116,10 @@ export default function Home() {
       <section id="products" className="section-wrap product-lines-section" aria-labelledby="products-title">
         <div className="section-heading">
           <p className="eyebrow">Products</p>
-          <h2 id="products-title">A company home for owned software.</h2>
+          <h2 id="products-title">Owned software products, with the engineering visible.</h2>
           <p>
-            Each Phlosion product line has a defined audience, owned software surface, and business path. Repos still
-            matter, but the company site presents the products themselves.
+            Each product line gets more room here than it does on a resume: who it serves, what Phlosion owns, what the
+            repo proves, and how the work could become a real release or service.
           </p>
         </div>
         <div className="product-line-grid">
@@ -170,6 +136,7 @@ export default function Home() {
                 <p className="project-track">{project.productLine}</p>
                 <h3>{project.name}</h3>
                 <p>{project.summary}</p>
+                <p className="product-line-detail">{project.details}</p>
                 <dl className="line-facts">
                   <div>
                     <dt>Phlosion owns</dt>
@@ -180,6 +147,19 @@ export default function Home() {
                     <dd>{project.commercialPath}</dd>
                   </div>
                 </dl>
+                <dl className="product-proof-list" aria-label={`${project.name} product detail`}>
+                  {project.proof.slice(0, 2).map((proof) => (
+                    <div key={proof.label}>
+                      <dt>{proof.label}</dt>
+                      <dd>{proof.text}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <TechBadgeList
+                  labels={project.tags.slice(0, 8)}
+                  ariaLabel={`${project.name} core technology stack`}
+                  className="tech-badge-list-compact"
+                />
                 <a href="#demos">
                   View product surface
                   <ArrowUpRight size={16} aria-hidden="true" />
@@ -282,11 +262,40 @@ export default function Home() {
                     <dd>{project.companyRole}</dd>
                   </div>
                 </dl>
-                <ul className="tag-list" aria-label={`${project.name} technology tags`}>
-                  {project.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
+                <dl
+                  className="project-evidence-grid project-evidence-preview"
+                  aria-label={`${project.name} highlights`}
+                >
+                  {project.proof.slice(0, 2).map((proof) => (
+                    <div key={proof.label}>
+                      <dt>{proof.label}</dt>
+                      <dd>{proof.text}</dd>
+                    </div>
                   ))}
-                </ul>
+                </dl>
+                <TechBadgeList labels={project.tags} ariaLabel={`${project.name} technology stack`} />
+                <details className="repository-details">
+                  <summary>Repository details</summary>
+                  <dl className="project-evidence-grid" aria-label={`${project.name} deeper engineering evidence`}>
+                    {project.proof.slice(2).map((proof) => (
+                      <div key={proof.label}>
+                        <dt>{proof.label}</dt>
+                        <dd>{proof.text}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <div className="repository-signals">
+                    <h4>Repo signals</h4>
+                    <ul>
+                      {project.repositorySignals.map((signal) => (
+                        <li key={signal.label}>
+                          <strong>{signal.label}</strong>
+                          <span>{signal.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
                 <a href={project.href} target="_blank" rel="noreferrer">
                   View repository
                   <ArrowUpRight size={16} aria-hidden="true" />

@@ -12,6 +12,14 @@ export type Project = {
   engineeringProof: string[];
   summary: string;
   details: string;
+  proof: {
+    label: string;
+    text: string;
+  }[];
+  repositorySignals: {
+    label: string;
+    text: string;
+  }[];
   tags: string[];
   href: string;
   icon: LucideIcon;
@@ -36,14 +44,63 @@ export const projects: Project[] = [
     ownedSurface: 'Web/mobile clients, event workflows, location search, update delivery, and service infrastructure.',
     commercialPath: 'Subscription features for coordination, alerts, hosted communities, and power-user tools.',
     engineeringProof: [
-      'Service-oriented backend with event, user, location, and storage boundaries.',
-      'Kafka-backed update flow for live event synchronization.',
-      'Geospatial persistence and deployment wiring for product-scale workflows.',
+      'Service-oriented backend split across auth, Pokemon API, location, receiver, storage, search, users, and events.',
+      'Kafka-backed update flow with Go producers/consumers, MySQL persistence, and SSE readers.',
+      'Geospatial persistence, Docker/NGINX service wiring, backups, and frontend package sharing.',
     ],
-    summary: 'A full-stack coordination platform with web/mobile clients and service-oriented backend work.',
+    summary:
+      'A full-stack Pokemon GO coordination platform with React web/mobile clients, Go and Express services, Kafka event sync, geospatial search, and persistent storage.',
     details:
-      'Nexus is valuable because of the service layer Phlosion builds: accounts, events, geospatial search, live updates, durable storage, deployment wiring, and user-facing interaction design.',
-    tags: ['React', 'Go', 'Kafka', 'PostGIS', 'Docker'],
+      'Nexus is the flagship service-app track: the value is in the accounts, live event workflows, location intelligence, durable storage, deployment wiring, and user-facing coordination tools around the shared player interest.',
+    proof: [
+      {
+        label: 'Service map',
+        text: 'The monorepo separates authentication, Pokemon data, location, receiver/storage, search, users, events, NGINX, tests, and frontend workspaces.',
+      },
+      {
+        label: 'Live data flow',
+        text: 'Frontend batches flow through authenticated Go receivers into Kafka, storage consumers, MySQL persistence, and SSE-driven readers.',
+      },
+      {
+        label: 'Location intelligence',
+        text: 'PostGIS-backed location services and search readers support nearby-player and nearby-activity workflows instead of simple static lists.',
+      },
+      {
+        label: 'Delivery surface',
+        text: 'Docker, NGINX, service docs, backups, Vitest coverage, and shared frontend packages make the system closer to a hosted product.',
+      },
+    ],
+    repositorySignals: [
+      {
+        label: 'Pokemon API',
+        text: 'Current API is Go net/http plus chi over SQLite with response caching, gzip/ETag support, health checks, readiness checks, and internal cache endpoints.',
+      },
+      {
+        label: 'Go services',
+        text: 'Location, receiver, search, users, and events services use Fiber, Kafka, GORM/MySQL, PostGIS, JWT, Prometheus, and structured logging.',
+      },
+      {
+        label: 'Client state',
+        text: 'The React client workspaces include live update flows, IndexedDB state, shared packages, and web/mobile-facing product surfaces.',
+      },
+    ],
+    tags: [
+      'React',
+      'TypeScript',
+      'Go',
+      'net/http',
+      'chi',
+      'Fiber',
+      'Kafka',
+      'MySQL',
+      'Postgres/PostGIS',
+      'Node',
+      'Express',
+      'MongoDB',
+      'Docker',
+      'NGINX',
+      'Vitest',
+    ],
     href: 'https://github.com/AdamWentworth/Go',
     icon: Globe2,
     accent: 'orange',
@@ -66,14 +123,47 @@ export const projects: Project[] = [
       'Assistant clients, tool routing, local model workflows, memory, voice loops, and host orchestration.',
     commercialPath: 'Private assistant workflows, local-first tooling, and future managed automation products.',
     engineeringProof: [
-      'Host-run architecture for local models, tools, and trusted machine access.',
-      'Tauri and API clients shaped around voice, memory, and automation loops.',
-      'Tool execution boundaries designed around evaluation and user control.',
+      'FastAPI host architecture owns model runtimes, ASR/TTS, SQLite state, integrations, and tool execution.',
+      'Shared React, Tauri desktop, and Tauri Android clients connect to the trusted host over local network or WireGuard.',
+      'Planner and tool boundaries handle weather, reminders, calendar, workspace, research, and daily brief workflows.',
     ],
-    summary: 'A private host-run assistant around local models, voice workflows, memory, tools, and integrations.',
+    summary:
+      'A private host-run assistant platform around local models, voice workflows, memory, safe tools, integrations, planning, and shared desktop/mobile clients.',
     details:
-      'Jarvin is the AI systems lab: practical model-adjacent software, local-first infrastructure, safe tool execution, and clients that connect back to a trusted machine.',
-    tags: ['FastAPI', 'Tauri', 'SQLite', 'llama.cpp', 'Voice'],
+      'Jarvin is the AI systems lab: not a custom foundation model, but the product software around local models that makes voice, memory, tools, integrations, and proactive assistant behavior feel useful.',
+    proof: [
+      {
+        label: 'Local host',
+        text: 'A FastAPI service started from the trusted machine owns ASR, local LLM routing, TTS, persistence, integrations, and frontend serving.',
+      },
+      {
+        label: 'Voice loop',
+        text: 'Remote phone voice captures microphone audio, uploads it for host transcription, routes the turn through chat/tools, and plays reply audio on the client.',
+      },
+      {
+        label: 'Client surfaces',
+        text: 'A shared React shell powers the browser app, Tauri desktop app, and Tauri Android shell without splitting product UI into separate codebases.',
+      },
+      {
+        label: 'Tool domains',
+        text: 'Deterministic planners and tools handle weather, reminders, routines, workspace/repo tasks, web research, calendar actions, and daily briefs.',
+      },
+    ],
+    repositorySignals: [
+      {
+        label: 'Assistant boundary',
+        text: 'Natural-language flexibility is routed through constrained planners so side effects can stay inspectable, confirmable, and host-controlled.',
+      },
+      {
+        label: 'Persistence',
+        text: 'SQLite stores conversation, profile, reminder, and routine state on the host, keeping clients thin and replaceable.',
+      },
+      {
+        label: 'Local model layer',
+        text: 'llama.cpp and optional Ollama backends sit behind a runtime router, with Whisper ASR and local TTS completing the voice path.',
+      },
+    ],
+    tags: ['Python', 'FastAPI', 'React', 'Tauri', 'SQLite', 'llama.cpp', 'Ollama', 'Whisper ASR'],
     href: 'https://github.com/AdamWentworth/Jarvin',
     icon: Bot,
     accent: 'green',
@@ -95,14 +185,47 @@ export const projects: Project[] = [
     ownedSurface: 'Avalonia UI, parser/codec systems, safe workspace flows, tests, packaging scripts, and releases.',
     commercialPath: 'Open-source releases today, with future support, documentation, downloads, or adjacent tooling.',
     engineeringProof: [
-      'Cross-platform Avalonia desktop UI over shared editor workflows.',
-      'Parser, codec, archive, and workspace systems covered by targeted tests.',
-      'Release packaging scripts for Windows and Linux distribution paths.',
+      'Shared .NET/Avalonia desktop codebase with separate Colosseum Tool and GoD Tool release targets.',
+      'Parser, codec, archive, parity, and workspace behavior backed by targeted automated tests.',
+      'Windows portable, Debian package, Linux portable, release docs, and packaging scripts are treated as product work.',
     ],
-    summary: 'A Windows-first, cross-platform .NET/Avalonia remake of legacy Pokemon Colosseum and XD modding tools.',
+    summary:
+      'A Windows-first, cross-platform .NET/Avalonia remake of legacy Pokemon Colosseum and XD modding tools with safe workspace flows and release packaging.',
     details:
-      'Cipher turns a preservation project into release-grade software: shared desktop code, safe ISO workspace flows, parser and codec coverage, packaging scripts, and Windows/Linux release targets.',
-    tags: ['.NET 10', 'Avalonia', 'C#', 'GameCube ISO', 'Binary formats', 'Windows/Linux'],
+      'Cipher turns preservation into release-grade tooling: a modern desktop UI over studied legacy behavior, safe ISO workspace boundaries, parser/codec coverage, documentation, and downloadable release artifacts.',
+    proof: [
+      {
+        label: 'Release targets',
+        text: 'One shared codebase ships separate Colosseum Tool and Pokemon XD: Gale of Darkness tool targets for the two legacy workflows.',
+      },
+      {
+        label: 'Parity focus',
+        text: 'The project studies original Swift/macOS tools, storyboards, parsers, binary formats, and behavior to preserve familiar editor workflows.',
+      },
+      {
+        label: 'Data safety',
+        text: 'The repo excludes game files and centers safe ISO workspace flows, generated artifacts, local fixtures, and clear legal/data hygiene boundaries.',
+      },
+      {
+        label: 'Distribution',
+        text: 'Release packaging covers Windows portable zips, Ubuntu/Debian packages, Linux portable archives, and repeatable GitHub release workflow notes.',
+      },
+    ],
+    repositorySignals: [
+      {
+        label: '.NET desktop stack',
+        text: 'The app targets net10.0 with Avalonia UI, Fluent styling, CommunityToolkit.Mvvm, nullable C#, and shared editor libraries.',
+      },
+      {
+        label: 'Verification',
+        text: 'Tests cover codec, archive, schema, parity, texture, script, patching, UI contracts, and smoke/probe workflows.',
+      },
+      {
+        label: 'Project scope',
+        text: 'The README explicitly frames this as the stable legacy-editor parity line, not a general-purpose authoring suite.',
+      },
+    ],
+    tags: ['.NET 10', 'AvaloniaUI', 'C#', 'GameCube ISO', 'Binary formats', 'Windows/Linux', 'Release packaging'],
     href: 'https://github.com/AdamWentworth/CipherSnagemEditor',
     icon: Archive,
     accent: 'cream',
@@ -124,14 +247,47 @@ export const projects: Project[] = [
     ownedSurface: 'Game loop architecture, combat simulation, scripting, rendering experiments, tests, and tooling.',
     commercialPath: 'Prototype-to-product exploration for original games, tooling, reusable systems, or demos.',
     engineeringProof: [
-      'C++ runtime architecture with scripting and gameplay iteration loops.',
-      'Rendering experiments across SDL2 and Direct3D 12 paths.',
-      'Packaged content, smoke tests, and tooling for repeatable playtest feedback.',
+      'C++20 engine split across core, platform, rendering, runtime, game systems, VFX, tooling, and tests.',
+      'OpenGL and Direct3D 12 renderer work shares gameplay presentation while preserving backend-specific smoke coverage.',
+      'Lua gameplay scripts, JSON data, content packing, VFX preview tools, installers, and invariant tests support iteration.',
     ],
-    summary: 'An engine-first C++ auto-battler prototype with rendering paths, Lua gameplay, tooling, and tests.',
+    summary:
+      'An engine-first C++20 auto-battler prototype with SDL2 platform work, OpenGL and Direct3D 12 rendering, Lua gameplay, VFX tooling, content pipelines, and tests.',
     details:
-      'Autochess is the systems and games track: runtime architecture, rendering experiments, scripting, packaged content, smoke tests, and iteration on play feel.',
-    tags: ['C++20', 'SDL2', 'Direct3D 12', 'Lua', 'CMake'],
+      'Autochess is the games and runtime systems track: the current game is one client of a reusable engine, with board state, combat simulation, renderer parity, scripting, data cooking, tooling, and release exploration.',
+    proof: [
+      {
+        label: 'Engine layers',
+        text: 'CMake targets separate engine core, platform, rendering, runtime, VFX support, game objects, executable, tools, tests, and aggregate builds.',
+      },
+      {
+        label: 'Rendering',
+        text: 'The project maintains OpenGL and Direct3D 12 backend work with shared presentation rules, shader/resource caches, model loading, and smoke paths.',
+      },
+      {
+        label: 'Gameplay runtime',
+        text: 'GameRuntime and GameSession wire placement, combat, rounds, shop, movement, bench/cards, unit interaction, UI, battle feed, and health bars.',
+      },
+      {
+        label: 'Tooling',
+        text: 'VFX previewers, JSON config validation, content cooking, packaged bundles, release scripts, installer support, and headless tests support repeatable iteration.',
+      },
+    ],
+    repositorySignals: [
+      {
+        label: 'C++ stack',
+        text: 'The vcpkg manifest includes SDL2, SDL2_ttf, glad, GLM, Lua, sol2, nlohmann-json, fastgltf, and stb.',
+      },
+      {
+        label: 'Game scripting',
+        text: 'Lua scripts drive combat timing, shop roll logic, UI/debug events, state flow, phase transitions, and tuning overrides.',
+      },
+      {
+        label: 'Test posture',
+        text: 'The repo includes headless smoke tests, invariants, optional GL smoke draw, optional runtime smoke, CI build/test/data validation, and debug state snapshots.',
+      },
+    ],
+    tags: ['C++20', 'SDL2', 'OpenGL', 'Direct3D 12', 'Lua', 'sol2', 'CMake', 'JSON', 'vcpkg'],
     href: 'https://github.com/AdamWentworth/PokemonAutochess',
     icon: Gamepad2,
     accent: 'blue',

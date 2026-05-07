@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { TechBadgeList } from '@/components/TechBadge';
 import { projects } from '@/lib/projects';
 
 function DemoVisual({ kind }: { kind: (typeof projects)[number]['demo']['kind'] }) {
@@ -143,6 +144,19 @@ export function ProductShowcase() {
                 </li>
               ))}
             </ul>
+            <dl className="stage-proof-grid" aria-label={`${activeProject.name} implementation details`}>
+              {activeProject.proof.slice(0, 3).map((proof) => (
+                <div key={proof.label}>
+                  <dt>{proof.label}</dt>
+                  <dd>{proof.text}</dd>
+                </div>
+              ))}
+            </dl>
+            <TechBadgeList
+              labels={activeProject.tags.slice(0, 8)}
+              ariaLabel={`${activeProject.name} technology stack`}
+              className="tech-badge-list-stage"
+            />
             <a href={activeProject.href} target="_blank" rel="noreferrer">
               Open repository
               <ArrowUpRight size={16} aria-hidden="true" />

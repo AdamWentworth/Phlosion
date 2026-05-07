@@ -2,11 +2,11 @@
 
 :root {
   color-scheme: light;
-  --bg: #f8ead2;
-  --bg-soft: #fffaf0;
-  --surface: #fffaf0;
-  --surface-strong: #f3dfb9;
-  --surface-raised: rgba(255, 252, 246, 0.9);
+  --bg: #fbf0df;
+  --bg-soft: #fffdf8;
+  --surface: #fffdf8;
+  --surface-strong: #f6e7c9;
+  --surface-raised: rgba(255, 253, 249, 0.92);
   --line: rgba(0, 43, 79, 0.14);
   --line-strong: rgba(0, 43, 79, 0.22);
   --brand-navy: #002b4f;
@@ -38,9 +38,9 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at 12% 0%, rgba(255, 180, 31, 0.14), transparent 26rem),
-    radial-gradient(circle at 84% 8%, rgba(255, 90, 0, 0.09), transparent 30rem),
-    linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 54%, #f4e2be 100%);
+    radial-gradient(circle at 12% 0%, rgba(255, 180, 31, 0.1), transparent 26rem),
+    radial-gradient(circle at 84% 8%, rgba(255, 90, 0, 0.07), transparent 30rem),
+    linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 58%, #f7e9cc 100%);
   color: var(--text-primary);
   font-family:
     Inter,
@@ -80,9 +80,9 @@ a {
   overflow: hidden;
   border-bottom: 1px solid var(--line);
   background:
-    radial-gradient(circle at 16% 26%, rgba(255, 180, 31, 0.16), transparent 24%),
-    radial-gradient(circle at 76% 18%, rgba(255, 90, 0, 0.1), transparent 30%),
-    linear-gradient(90deg, rgba(255, 250, 240, 0.96) 0%, rgba(253, 243, 223, 0.78) 52%, rgba(248, 234, 207, 0.86) 100%),
+    radial-gradient(circle at 16% 26%, rgba(255, 180, 31, 0.12), transparent 24%),
+    radial-gradient(circle at 76% 18%, rgba(255, 90, 0, 0.08), transparent 30%),
+    linear-gradient(90deg, rgba(255, 253, 248, 0.97) 0%, rgba(255, 247, 233, 0.82) 52%, rgba(251, 240, 223, 0.88) 100%),
     linear-gradient(180deg, rgba(0, 67, 111, 0.06), rgba(255, 255, 255, 0));
 }
 
@@ -124,14 +124,6 @@ a {
   width: 330px;
   padding: 20px;
   border-color: rgba(92, 170, 255, 0.2);
-}
-
-.scene-panel-tertiary {
-  top: 392px;
-  right: max(150px, 14vw);
-  width: 260px;
-  padding: 18px;
-  border-color: rgba(56, 161, 105, 0.22);
 }
 
 .scene-panel span {
@@ -189,29 +181,35 @@ a {
   line-height: 1.04;
 }
 
-.scene-lines {
+.scene-product-list {
   display: grid;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.scene-product-list span {
+  display: flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
-  margin-top: 34px;
+  border: 1px solid rgba(0, 43, 79, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 253, 249, 0.58);
+  padding: 8px 10px;
 }
 
-.scene-lines span {
-  display: block;
-  height: 11px;
-  border-radius: 999px;
-  background: rgba(0, 43, 79, 0.1);
+.scene-product-list b {
+  color: var(--highlight);
+  font-size: 14px;
+  line-height: 1;
 }
 
-.scene-lines span:nth-child(1) {
-  width: 78%;
-}
-
-.scene-lines span:nth-child(2) {
-  width: 54%;
-}
-
-.scene-lines span:nth-child(3) {
-  width: 66%;
+.scene-product-list small {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 850;
+  text-transform: uppercase;
 }
 
 .site-header {
@@ -1516,8 +1514,7 @@ h3 {
     min-height: 270px;
   }
 
-  .scene-panel-secondary,
-  .scene-panel-tertiary {
+  .scene-panel-secondary {
     display: none;
   }
 
@@ -1551,8 +1548,7 @@ h3 {
   }
 
   .scene-panel-primary,
-  .scene-panel-secondary,
-  .scene-panel-tertiary {
+  .scene-panel-secondary {
     display: none;
   }
 

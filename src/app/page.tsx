@@ -64,24 +64,29 @@ export default function Home() {
               <span />
             </div>
             <div className="scene-terminal">
-              <p>phlosion build graph</p>
-              <strong>portfolio / demos / releases</strong>
-              <div className="scene-lines">
-                <span />
-                <span />
-                <span />
+              <p>owned product lines</p>
+              <strong>Apps, AI systems, tools, and games.</strong>
+              <div className="scene-product-list">
+                <span>
+                  <b>Nexus</b>
+                  <small>active service</small>
+                </span>
+                <span>
+                  <b>Jarvin</b>
+                  <small>research system</small>
+                </span>
+                <span>
+                  <b>Cipher</b>
+                  <small>desktop release</small>
+                </span>
               </div>
             </div>
           </div>
           <div className="scene-panel scene-panel-secondary">
-            <span>ship-ready paths</span>
+            <span>company surface</span>
             <strong>
-              demo {'->'} feedback {'->'} release
+              demos {'->'} releases {'->'} support
             </strong>
-          </div>
-          <div className="scene-panel scene-panel-tertiary">
-            <span>local systems</span>
-            <strong>tools + memory + clients</strong>
           </div>
         </div>
 

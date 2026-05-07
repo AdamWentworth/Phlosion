@@ -59,7 +59,7 @@ export default function Home() {
             </div>
             <div className="scene-terminal">
               <p>phlosion build graph</p>
-              <strong>projects/products/experiments</strong>
+              <strong>portfolio / demos / releases</strong>
               <div className="scene-lines">
                 <span />
                 <span />

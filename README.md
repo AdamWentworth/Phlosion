@@ -9,6 +9,7 @@ The site is designed to claim a clear company home for the product portfolio and
 - Public-facing home for owned projects and product experiments
 - Clear ownership framing for Phlosion-built software products
 - Interactive demos, landing pages, changelogs, and release stories
+- Engineering notes that expose architecture, quality, release, and systems decisions in product context
 - A company-level container for projects that may later become products
 - Future monetization paths such as subscriptions, hosted services, support, downloads, or productized tooling
 

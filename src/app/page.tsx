@@ -14,11 +14,12 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { ProductShowcase } from '@/components/ProductShowcase';
-import { companyPrinciples, operatingPrinciples, projects } from '@/lib/projects';
+import { companyPrinciples, engineeringPractices, operatingPrinciples, projects } from '@/lib/projects';
 
 const navItems = [
   { href: '#products', label: 'Products' },
   { href: '#demos', label: 'Demos' },
+  { href: '#engineering', label: 'Engineering' },
   { href: '#company', label: 'Company' },
   { href: '#contact', label: 'Contact' },
 ];
@@ -48,6 +49,7 @@ const companySignals = [
 ];
 
 const principleIcons = [BadgeCheck, CircleDollarSign, FileText, Building2];
+const engineeringIcons = [Layers3, MonitorCog, PackageCheck, Code2];
 
 export default function Home() {
   return (
@@ -179,6 +181,50 @@ export default function Home() {
       </section>
 
       <ProductShowcase />
+
+      <section id="engineering" className="section-wrap engineering-section" aria-labelledby="engineering-title">
+        <div className="section-heading">
+          <p className="eyebrow">Engineering</p>
+          <h2 id="engineering-title">Engineering evidence in product context.</h2>
+          <p>
+            Phlosion keeps the technical layer visible where it helps people trust the products: architecture, interface
+            quality, release discipline, and systems depth.
+          </p>
+        </div>
+        <div className="engineering-grid" aria-label="Engineering practice areas">
+          {engineeringPractices.map((practice, index) => {
+            const Icon = engineeringIcons[index] ?? Code2;
+            return (
+              <article key={practice.label}>
+                <Icon size={20} aria-hidden="true" />
+                <h3>{practice.label}</h3>
+                <p>{practice.detail}</p>
+              </article>
+            );
+          })}
+        </div>
+        <div className="proof-matrix" aria-label="Technical evidence by product">
+          {projects.map((project) => {
+            const Icon = project.icon;
+            return (
+              <article key={project.name} className={`proof-card proof-card-${project.accent}`}>
+                <div>
+                  <span className="project-icon">
+                    <Icon size={20} aria-hidden="true" />
+                  </span>
+                  <p className="project-track">{project.track}</p>
+                  <h3>{project.name}</h3>
+                </div>
+                <ul>
+                  {project.engineeringProof.map((proof) => (
+                    <li key={proof}>{proof}</li>
+                  ))}
+                </ul>
+              </article>
+            );
+          })}
+        </div>
+      </section>
 
       <section id="projects" className="section-wrap project-section" aria-labelledby="projects-title">
         <div className="section-heading">

@@ -11,6 +11,13 @@ Where `adamwentworth.ca` is the recruiter-friendly resume site, `phlosion.com` i
 - A cleaner semantic container for projects that may later become products
 - Optional future monetization
 
+## Portfolio Tracks
+
+- **Pokemon Go Nexus:** full-stack coordination system
+- **Jarvin:** local AI assistant platform
+- **Cipher Snagem Editor:** cross-platform desktop tooling
+- **Pokemon Autochess:** systems-heavy game prototype
+
 ## Tech Stack
 
 - **Framework:** [Next.js](https://nextjs.org) App Router

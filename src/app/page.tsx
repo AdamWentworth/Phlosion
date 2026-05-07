@@ -4,7 +4,10 @@ import {
   CheckCircle2,
   Code2,
   Layers3,
+  MonitorCog,
+  PackageCheck,
   Radio,
+  Rocket,
   ShieldCheck,
   Sparkles,
   Terminal,
@@ -12,16 +15,34 @@ import {
 import { operatingPrinciples, projects } from '@/lib/projects';
 
 const navItems = [
-  { href: '#projects', label: 'Projects' },
+  { href: '#projects', label: 'Portfolio' },
   { href: '#process', label: 'Process' },
   { href: '#identity', label: 'Identity' },
   { href: '#contact', label: 'Contact' },
 ];
 
 const labSignals = [
-  { label: 'Product systems', value: '03', icon: Boxes },
-  { label: 'Build tracks', value: 'AI / Web / Games', icon: Layers3 },
-  { label: 'Release mode', value: 'Iterative', icon: Radio },
+  { label: 'Owned tracks', value: '04', icon: Boxes },
+  { label: 'Domains', value: 'AI / Web / Tools / Games', icon: Layers3 },
+  { label: 'Release mode', value: 'Open-source + product-led', icon: Radio },
+];
+
+const companySignals = [
+  {
+    label: 'Owned product tracks',
+    detail: 'Each project gets a clearer audience, release path, and product promise under the Phlosion brand.',
+    icon: Rocket,
+  },
+  {
+    label: 'Release surfaces',
+    detail: 'Repos can grow into demos, downloads, docs, changelogs, screenshots, and launch notes.',
+    icon: PackageCheck,
+  },
+  {
+    label: 'Technical range',
+    detail: 'The portfolio spans AI assistants, service-backed web systems, desktop tooling, and games.',
+    icon: MonitorCog,
+  },
 ];
 
 export default function Home() {
@@ -80,8 +101,8 @@ export default function Home() {
           <p className="eyebrow">Software product lab</p>
           <h1 id="hero-title">Phlosion</h1>
           <p className="hero-lede">
-            A branded home for ambitious software experiments that are being shaped into useful products, demos, and
-            production-ready systems.
+            An independent software product company shaping ambitious experiments into useful tools, product lines,
+            demos, and production-ready systems.
           </p>
           <div className="hero-actions" aria-label="Primary actions">
             <a className="button button-primary" href="#projects">
@@ -117,12 +138,24 @@ export default function Home() {
 
       <section id="projects" className="section-wrap project-section" aria-labelledby="projects-title">
         <div className="section-heading">
-          <p className="eyebrow">Projects</p>
-          <h2 id="projects-title">Product tracks, not resume bullets.</h2>
+          <p className="eyebrow">Portfolio</p>
+          <h2 id="projects-title">Owned products with room to grow.</h2>
           <p>
-            AdamWentworth.ca can stay focused on hiring signal. Phlosion is where owned projects get deeper product
-            framing, demos, changelogs, and release stories.
+            AdamWentworth.ca can stay focused on hiring signal. Phlosion is where owned projects get company-level
+            framing, deeper pages, demos, changelogs, releases, and product stories.
           </p>
+        </div>
+        <div className="portfolio-panel" aria-label="Company portfolio positioning">
+          {companySignals.map((signal) => {
+            const Icon = signal.icon;
+            return (
+              <article key={signal.label}>
+                <Icon size={20} aria-hidden="true" />
+                <h3>{signal.label}</h3>
+                <p>{signal.detail}</p>
+              </article>
+            );
+          })}
         </div>
         <div className="project-grid">
           {projects.map((project) => {
@@ -136,8 +169,19 @@ export default function Home() {
                   <span className="project-status">{project.status}</span>
                 </div>
                 <h3>{project.name}</h3>
+                <p className="project-track">{project.track}</p>
                 <p>{project.summary}</p>
                 <p className="project-detail">{project.details}</p>
+                <dl className="project-meta" aria-label={`${project.name} product context`}>
+                  <div>
+                    <dt>Audience</dt>
+                    <dd>{project.audience}</dd>
+                  </div>
+                  <div>
+                    <dt>Phlosion role</dt>
+                    <dd>{project.companyRole}</dd>
+                  </div>
+                </dl>
                 <ul className="tag-list" aria-label={`${project.name} technology tags`}>
                   {project.tags.map((tag) => (
                     <li key={tag}>{tag}</li>

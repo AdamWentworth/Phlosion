@@ -87,8 +87,10 @@ export default function Home() {
 
         <header className="site-header">
           <a className="brand-lockup" href="/" aria-label="Phlosion home">
-            <span className="brand-mark">Ph</span>
-            <span>Phlosion</span>
+            <span className="brand-mark" aria-hidden="true">
+              <img src="/phlosion-mark.svg" alt="" />
+            </span>
+            <img className="brand-wordmark" src="/phlosion-wordmark.svg" alt="Phlosion" />
           </a>
           <nav className="site-nav" aria-label="Primary navigation">
             {navItems.map((item) => (
@@ -104,6 +106,7 @@ export default function Home() {
         </header>
 
         <div className="hero-content">
+          <img className="hero-brand-mark" src="/phlosion-mark.svg" alt="" aria-hidden="true" />
           <p className="eyebrow">Independent software company</p>
           <h1 id="hero-title">Phlosion</h1>
           <p className="hero-lede">

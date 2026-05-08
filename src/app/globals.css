@@ -423,7 +423,7 @@ h3 {
   height: 88px;
   max-width: 100%;
   justify-content: flex-start;
-  gap: 12px;
+  gap: 10px;
   min-height: 0;
   margin-bottom: 18px;
   padding: 8px 10px;
@@ -450,7 +450,7 @@ h3 {
   display: block;
   min-width: 0;
   width: auto;
-  max-width: 116px;
+  max-width: 112px;
   height: 52px;
   object-fit: contain;
   object-position: left center;
@@ -506,9 +506,9 @@ h3 {
 }
 
 .product-brand-banner-cipher {
-  width: min(292px, 100%);
-  height: 94px;
-  gap: 12px;
+  width: min(224px, 100%);
+  height: 88px;
+  gap: 10px;
   border-color: rgba(188, 130, 255, 0.36);
   background:
     radial-gradient(circle at 22% 48%, rgba(167, 83, 255, 0.38), transparent 42%),
@@ -533,8 +533,8 @@ h3 {
 }
 
 .product-brand-banner-cipher .product-brand-wordmark {
-  max-width: 168px;
-  height: 68px;
+  max-width: 112px;
+  height: 52px;
   border-radius: 8px;
   filter: drop-shadow(0 0 16px rgba(169, 92, 255, 0.22)) drop-shadow(0 8px 14px rgba(7, 3, 15, 0.18));
 }

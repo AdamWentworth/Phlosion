@@ -9,7 +9,6 @@ export type Project = {
   productLine: string;
   ownedSurface: string;
   commercialPath: string;
-  engineeringProof: string[];
   summary: string;
   details: string;
   proof: {
@@ -24,6 +23,16 @@ export type Project = {
   href: string;
   icon: LucideIcon;
   accent: 'orange' | 'green' | 'blue' | 'cream';
+  brand?: {
+    alt: string;
+    icon: string;
+    iconFrame?: 'light' | 'dark';
+    lockupFrame?: 'light' | 'dark';
+    lockup?: string;
+    rowLockup?: string;
+    wordmark?: string;
+    darkLockup?: string;
+  };
   demo: {
     kind: 'nexus' | 'jarvin' | 'cipher' | 'autochess';
     label: string;
@@ -43,11 +52,6 @@ export const projects: Project[] = [
     productLine: 'Apps & subscription services',
     ownedSurface: 'Web/mobile clients, event workflows, location search, update delivery, and service infrastructure.',
     commercialPath: 'Subscription features for coordination, alerts, hosted communities, and power-user tools.',
-    engineeringProof: [
-      'Service-oriented backend split across auth, Pokemon API, location, receiver, storage, search, users, and events.',
-      'Kafka-backed update flow with Go producers/consumers, MySQL persistence, and SSE readers.',
-      'Geospatial persistence, Docker/NGINX service wiring, backups, and frontend package sharing.',
-    ],
     summary:
       'A full-stack Pokemon GO coordination platform with React web/mobile clients, Go and Express services, Kafka event sync, geospatial search, and persistent storage.',
     details:
@@ -104,6 +108,14 @@ export const projects: Project[] = [
     href: 'https://github.com/AdamWentworth/Go',
     icon: Globe2,
     accent: 'orange',
+    brand: {
+      alt: 'Pokemon Go Nexus',
+      icon: '/products/pokemon-go-nexus/nexus-logo.png',
+      iconFrame: 'light',
+      lockupFrame: 'dark',
+      lockup: '/products/pokemon-go-nexus/nexus-lockup-with-mark-transparent.png',
+      wordmark: '/products/pokemon-go-nexus/nexus-wordmark-transparent.png',
+    },
     demo: {
       kind: 'nexus',
       label: 'Raid coordination surface',
@@ -122,11 +134,6 @@ export const projects: Project[] = [
     ownedSurface:
       'Assistant clients, tool routing, local model workflows, memory, voice loops, and host orchestration.',
     commercialPath: 'Private assistant workflows, local-first tooling, and future managed automation products.',
-    engineeringProof: [
-      'FastAPI host architecture owns model runtimes, ASR/TTS, SQLite state, integrations, and tool execution.',
-      'Shared React, Tauri desktop, and Tauri Android clients connect to the trusted host over local network or WireGuard.',
-      'Planner and tool boundaries handle weather, reminders, calendar, workspace, research, and daily brief workflows.',
-    ],
     summary:
       'A private host-run assistant platform around local models, voice workflows, memory, safe tools, integrations, planning, and shared desktop/mobile clients.',
     details:
@@ -167,6 +174,14 @@ export const projects: Project[] = [
     href: 'https://github.com/AdamWentworth/Jarvin',
     icon: Bot,
     accent: 'green',
+    brand: {
+      alt: 'Jarvin',
+      icon: '/products/jarvin/jarvin-icon-clean.png',
+      iconFrame: 'dark',
+      lockupFrame: 'dark',
+      wordmark: '/products/jarvin/jarvin-wordmark-white.png',
+      darkLockup: '/products/jarvin/jarvin-lockup-dark.png',
+    },
     demo: {
       kind: 'jarvin',
       label: 'Host-run assistant loop',
@@ -184,11 +199,6 @@ export const projects: Project[] = [
     productLine: 'Desktop tools',
     ownedSurface: 'Avalonia UI, parser/codec systems, safe workspace flows, tests, packaging scripts, and releases.',
     commercialPath: 'Open-source releases today, with future support, documentation, downloads, or adjacent tooling.',
-    engineeringProof: [
-      'Shared .NET/Avalonia desktop codebase with separate Colosseum Tool and GoD Tool release targets.',
-      'Parser, codec, archive, parity, and workspace behavior backed by targeted automated tests.',
-      'Windows portable, Debian package, Linux portable, release docs, and packaging scripts are treated as product work.',
-    ],
     summary:
       'A Windows-first, cross-platform .NET/Avalonia remake of legacy Pokemon Colosseum and XD modding tools with safe workspace flows and release packaging.',
     details:
@@ -229,6 +239,14 @@ export const projects: Project[] = [
     href: 'https://github.com/AdamWentworth/CipherSnagemEditor',
     icon: Archive,
     accent: 'cream',
+    brand: {
+      alt: 'Cipher Snagem Editor',
+      icon: '/products/cipher-snagem-editor/cipher-snagem-mark-transparent.png',
+      iconFrame: 'dark',
+      lockupFrame: 'dark',
+      wordmark: '/products/cipher-snagem-editor/cipher-snagem-wordmark-transparent.png',
+      darkLockup: '/products/cipher-snagem-editor/cipher-snagem-lockup-transparent.png',
+    },
     demo: {
       kind: 'cipher',
       label: 'Desktop editor workflow',
@@ -246,11 +264,6 @@ export const projects: Project[] = [
     productLine: 'Games & runtime R&D',
     ownedSurface: 'Game loop architecture, combat simulation, scripting, rendering experiments, tests, and tooling.',
     commercialPath: 'Prototype-to-product exploration for original games, tooling, reusable systems, or demos.',
-    engineeringProof: [
-      'C++20 engine split across core, platform, rendering, runtime, game systems, VFX, tooling, and tests.',
-      'OpenGL and Direct3D 12 renderer work shares gameplay presentation while preserving backend-specific smoke coverage.',
-      'Lua gameplay scripts, JSON data, content packing, VFX preview tools, installers, and invariant tests support iteration.',
-    ],
     summary:
       'An engine-first C++20 auto-battler prototype with SDL2 platform work, OpenGL and Direct3D 12 rendering, Lua gameplay, VFX tooling, content pipelines, and tests.',
     details:
@@ -328,28 +341,5 @@ export const companyPrinciples = [
     label: 'Respect The Context',
     detail:
       'When products serve existing communities or fan interests, Phlosion presents and commercializes the software services it creates.',
-  },
-];
-
-export const engineeringPractices = [
-  {
-    label: 'Architecture',
-    detail:
-      'Products are framed around clients, services, data flow, tool boundaries, and release surfaces instead of isolated code snippets.',
-  },
-  {
-    label: 'Interface Quality',
-    detail:
-      'The site and product surfaces prioritize responsive layouts, accessible controls, visual hierarchy, and clear interaction states.',
-  },
-  {
-    label: 'Release Discipline',
-    detail:
-      'Build checks, type checks, dependency audits, packaging notes, docs, and changelogs are treated as product infrastructure.',
-  },
-  {
-    label: 'Systems Range',
-    detail:
-      'Phlosion spans web services, local AI workflows, desktop apps, binary tooling, and game/runtime systems under one product brand.',
   },
 ];

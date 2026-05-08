@@ -10,17 +10,15 @@ import {
   MonitorCog,
   PackageCheck,
   Radio,
-  Rocket,
   Sparkles,
 } from 'lucide-react';
 import { ProductShowcase } from '@/components/ProductShowcase';
 import { TechBadgeList } from '@/components/TechBadge';
-import { companyPrinciples, engineeringPractices, operatingPrinciples, projects } from '@/lib/projects';
+import { companyPrinciples, operatingPrinciples, projects, type Project } from '@/lib/projects';
 
 const navItems = [
   { href: '#products', label: 'Products' },
   { href: '#demos', label: 'Demos' },
-  { href: '#engineering', label: 'Engineering' },
   { href: '#company', label: 'Company' },
   { href: '#contact', label: 'Contact' },
 ];
@@ -31,26 +29,52 @@ const labSignals = [
   { label: 'Business surfaces', value: 'Services / releases / support', icon: Radio },
 ];
 
-const companySignals = [
-  {
-    label: 'Apps & Services',
-    detail: 'Web/mobile products, hosted workflows, subscriptions, and community coordination software.',
-    icon: Rocket,
-  },
-  {
-    label: 'Tools & Releases',
-    detail: 'Desktop applications, downloads, docs, changelogs, packaging, and support-ready release systems.',
-    icon: PackageCheck,
-  },
-  {
-    label: 'AI & Games',
-    detail: 'Local assistants, automation workflows, game prototypes, runtime systems, and product experiments.',
-    icon: MonitorCog,
-  },
-];
-
 const principleIcons = [BadgeCheck, CircleDollarSign, FileText, Building2];
-const engineeringIcons = [Layers3, MonitorCog, PackageCheck, Code2];
+
+function ProjectIconGraphic({ project, size }: { project: Project; size: number }) {
+  const Icon = project.icon;
+
+  if (project.brand?.icon) {
+    return <img className="project-icon-image" src={project.brand.icon} alt="" width={size} height={size} />;
+  }
+
+  return <Icon size={size} aria-hidden="true" />;
+}
+
+function ProjectIconFrame({ project, size }: { project: Project; size: number }) {
+  const brandFrameClass =
+    project.brand?.iconFrame === 'dark' ? 'project-icon-branded' : project.brand?.icon ? 'project-icon-logo' : '';
+  const kindClass = `project-icon-${project.demo.kind}`;
+
+  return (
+    <span className={brandFrameClass ? `project-icon ${brandFrameClass} ${kindClass}` : `project-icon ${kindClass}`}>
+      <ProjectIconGraphic project={project} size={size} />
+    </span>
+  );
+}
+
+function ProjectTitle({ project }: { project: Project }) {
+  if (project.brand?.wordmark) {
+    const lockupFrame = project.brand.lockupFrame ?? project.brand.iconFrame;
+    const bannerClass =
+      lockupFrame === 'dark'
+        ? `product-brand-banner product-brand-banner-row product-brand-banner-${project.demo.kind} product-brand-banner-lockup-dark`
+        : `product-brand-banner product-brand-banner-row product-brand-banner-${project.demo.kind} product-brand-banner-lockup-light`;
+
+    return (
+      <h3 className="project-title-branded">
+        <span className={bannerClass}>
+          <span className="product-brand-mark" aria-hidden="true">
+            <img src={project.brand.icon} alt="" />
+          </span>
+          <img className="product-brand-wordmark" src={project.brand.wordmark} alt={project.brand.alt} />
+        </span>
+      </h3>
+    );
+  }
+
+  return <h3>{project.name}</h3>;
+}
 
 export default function Home() {
   return (
@@ -91,8 +115,8 @@ export default function Home() {
               View demos
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
-            <a className="button button-secondary" href="#projects">
-              Explore portfolio
+            <a className="button button-secondary" href="#products">
+              Explore products
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </div>
@@ -116,25 +140,23 @@ export default function Home() {
       <section id="products" className="section-wrap product-lines-section" aria-labelledby="products-title">
         <div className="section-heading">
           <p className="eyebrow">Products</p>
-          <h2 id="products-title">Owned software products, with the engineering visible.</h2>
+          <h2 id="products-title">Product lines under the Phlosion brand.</h2>
           <p>
-            Each product line gets more room here than it does on a resume: who it serves, what Phlosion owns, what the
-            repo proves, and how the work could become a real release or service.
+            Each product line gets a public-facing shape: who it serves, what Phlosion owns, how it can be shown, and
+            what path it could take toward a real release or service.
           </p>
         </div>
         <div className="product-line-grid">
           {projects.map((project) => {
-            const Icon = project.icon;
+            const hasBrandTitle = Boolean(project.brand?.wordmark);
             return (
               <article key={project.name} className={`product-line product-line-${project.accent}`}>
-                <div className="product-line-top">
-                  <span className="project-icon">
-                    <Icon size={22} aria-hidden="true" />
-                  </span>
+                <div className={hasBrandTitle ? 'product-line-top product-line-top-status-only' : 'product-line-top'}>
+                  {!hasBrandTitle && <ProjectIconFrame project={project} size={32} />}
                   <span className="project-status">{project.status}</span>
                 </div>
                 <p className="project-track">{project.productLine}</p>
-                <h3>{project.name}</h3>
+                <ProjectTitle project={project} />
                 <p>{project.summary}</p>
                 <p className="product-line-detail">{project.details}</p>
                 <dl className="line-facts">
@@ -156,127 +178,13 @@ export default function Home() {
                   ))}
                 </dl>
                 <TechBadgeList
-                  labels={project.tags.slice(0, 8)}
-                  ariaLabel={`${project.name} core technology stack`}
+                  labels={project.tags}
+                  ariaLabel={`${project.name} technology stack`}
                   className="tech-badge-list-compact"
                 />
-                <a href="#demos">
-                  View product surface
-                  <ArrowUpRight size={16} aria-hidden="true" />
-                </a>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
-      <ProductShowcase />
-
-      <section id="engineering" className="section-wrap engineering-section" aria-labelledby="engineering-title">
-        <div className="section-heading">
-          <p className="eyebrow">Engineering</p>
-          <h2 id="engineering-title">Engineering evidence in product context.</h2>
-          <p>
-            Phlosion keeps the technical layer visible where it helps people trust the products: architecture, interface
-            quality, release discipline, and systems depth.
-          </p>
-        </div>
-        <div className="engineering-grid" aria-label="Engineering practice areas">
-          {engineeringPractices.map((practice, index) => {
-            const Icon = engineeringIcons[index] ?? Code2;
-            return (
-              <article key={practice.label}>
-                <Icon size={20} aria-hidden="true" />
-                <h3>{practice.label}</h3>
-                <p>{practice.detail}</p>
-              </article>
-            );
-          })}
-        </div>
-        <div className="proof-matrix" aria-label="Technical evidence by product">
-          {projects.map((project) => {
-            const Icon = project.icon;
-            return (
-              <article key={project.name} className={`proof-card proof-card-${project.accent}`}>
-                <div>
-                  <span className="project-icon">
-                    <Icon size={20} aria-hidden="true" />
-                  </span>
-                  <p className="project-track">{project.track}</p>
-                  <h3>{project.name}</h3>
-                </div>
-                <ul>
-                  {project.engineeringProof.map((proof) => (
-                    <li key={proof}>{proof}</li>
-                  ))}
-                </ul>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
-      <section id="projects" className="section-wrap project-section" aria-labelledby="projects-title">
-        <div className="section-heading">
-          <p className="eyebrow">Technical Registry</p>
-          <h2 id="projects-title">The product lines are backed by real systems.</h2>
-          <p>
-            Phlosion products can be shown as demos, but they also need the practical engineering beneath them:
-            services, clients, tests, packaging, docs, and operational workflows.
-          </p>
-        </div>
-        <div className="portfolio-panel" aria-label="Company portfolio positioning">
-          {companySignals.map((signal) => {
-            const Icon = signal.icon;
-            return (
-              <article key={signal.label}>
-                <Icon size={20} aria-hidden="true" />
-                <h3>{signal.label}</h3>
-                <p>{signal.detail}</p>
-              </article>
-            );
-          })}
-        </div>
-        <div className="project-grid">
-          {projects.map((project) => {
-            const Icon = project.icon;
-            return (
-              <article key={project.name} className={`project-card project-card-${project.accent}`}>
-                <div className="project-card-header">
-                  <span className="project-icon">
-                    <Icon size={22} aria-hidden="true" />
-                  </span>
-                  <span className="project-status">{project.status}</span>
-                </div>
-                <h3>{project.name}</h3>
-                <p className="project-track">{project.track}</p>
-                <p>{project.summary}</p>
-                <p className="project-detail">{project.details}</p>
-                <dl className="project-meta" aria-label={`${project.name} product context`}>
-                  <div>
-                    <dt>Audience</dt>
-                    <dd>{project.audience}</dd>
-                  </div>
-                  <div>
-                    <dt>Phlosion role</dt>
-                    <dd>{project.companyRole}</dd>
-                  </div>
-                </dl>
-                <dl
-                  className="project-evidence-grid project-evidence-preview"
-                  aria-label={`${project.name} highlights`}
-                >
-                  {project.proof.slice(0, 2).map((proof) => (
-                    <div key={proof.label}>
-                      <dt>{proof.label}</dt>
-                      <dd>{proof.text}</dd>
-                    </div>
-                  ))}
-                </dl>
-                <TechBadgeList labels={project.tags} ariaLabel={`${project.name} technology stack`} />
-                <details className="repository-details">
+                <details className="repository-details product-repository-details">
                   <summary>Repository details</summary>
-                  <dl className="project-evidence-grid" aria-label={`${project.name} deeper engineering evidence`}>
+                  <dl className="project-evidence-grid" aria-label={`${project.name} deeper implementation details`}>
                     {project.proof.slice(2).map((proof) => (
                       <div key={proof.label}>
                         <dt>{proof.label}</dt>
@@ -296,15 +204,23 @@ export default function Home() {
                     </ul>
                   </div>
                 </details>
-                <a href={project.href} target="_blank" rel="noreferrer">
-                  View repository
-                  <ArrowUpRight size={16} aria-hidden="true" />
-                </a>
+                <div className="product-action-row">
+                  <a href="#demos">
+                    View product surface
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </a>
+                  <a href={project.href} target="_blank" rel="noreferrer">
+                    View repository
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </a>
+                </div>
               </article>
             );
           })}
         </div>
       </section>
+
+      <ProductShowcase />
 
       <section id="company" className="section-wrap identity-section" aria-labelledby="company-title">
         <div className="identity-panel company-panel">

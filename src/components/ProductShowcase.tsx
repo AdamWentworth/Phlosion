@@ -3,13 +3,43 @@
 import { useState } from 'react';
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { TechBadgeList } from '@/components/TechBadge';
-import { projects } from '@/lib/projects';
+import { projects, type Project } from '@/lib/projects';
 
-function DemoVisual({ kind }: { kind: (typeof projects)[number]['demo']['kind'] }) {
-  if (kind === 'nexus') {
+function ProjectIconGraphic({ project, size }: { project: Project; size: number }) {
+  const Icon = project.icon;
+
+  if (project.brand?.icon) {
+    return <img className="project-icon-image" src={project.brand.icon} alt="" width={size} height={size} />;
+  }
+
+  return <Icon size={size} aria-hidden="true" />;
+}
+
+function ProjectIconFrame({ project, size }: { project: Project; size: number }) {
+  const brandFrameClass =
+    project.brand?.iconFrame === 'dark' ? 'project-icon-branded' : project.brand?.icon ? 'project-icon-logo' : '';
+  const kindClass = `project-icon-${project.demo.kind}`;
+  const className = brandFrameClass
+    ? `project-icon ${brandFrameClass} ${kindClass} project-icon-inline`
+    : `project-icon ${kindClass} project-icon-inline`;
+
+  return (
+    <span className={className}>
+      <ProjectIconGraphic project={project} size={size} />
+    </span>
+  );
+}
+
+function DemoVisual({ project }: { project: Project }) {
+  if (project.demo.kind === 'nexus') {
     return (
       <div className="demo-visual demo-visual-nexus" aria-hidden="true">
         <div className="demo-map">
+          {project.brand?.lockup && (
+            <span className="nexus-demo-brand">
+              <img src={project.brand.lockup} alt="" />
+            </span>
+          )}
           <span className="demo-pin demo-pin-primary" />
           <span className="demo-pin demo-pin-secondary" />
           <span className="demo-pin demo-pin-tertiary" />
@@ -24,26 +54,36 @@ function DemoVisual({ kind }: { kind: (typeof projects)[number]['demo']['kind'] 
     );
   }
 
-  if (kind === 'jarvin') {
+  if (project.demo.kind === 'jarvin') {
     return (
       <div className="demo-visual demo-visual-jarvin" aria-hidden="true">
-        <div className="assistant-thread">
-          <span className="thread-user">voice: plan tomorrow</span>
-          <span className="thread-tool">tool: calendar + memory</span>
-          <span className="thread-result">ready: brief generated</span>
+        <div className="jarvin-demo-brand">
+          <img src={project.brand?.darkLockup ?? '/products/jarvin/jarvin-lockup-dark.png'} alt="" />
         </div>
-        <div className="memory-stack">
-          <span />
-          <span />
-          <span />
+        <div className="jarvin-demo-flow">
+          <div className="assistant-thread">
+            <span className="thread-user">voice: plan tomorrow</span>
+            <span className="thread-tool">tool: calendar + memory</span>
+            <span className="thread-result">ready: brief generated</span>
+          </div>
+          <div className="memory-stack">
+            <span />
+            <span />
+            <span />
+          </div>
         </div>
       </div>
     );
   }
 
-  if (kind === 'cipher') {
+  if (project.demo.kind === 'cipher') {
     return (
       <div className="demo-visual demo-visual-cipher" aria-hidden="true">
+        {project.brand?.darkLockup && (
+          <div className="cipher-demo-brand">
+            <img src={project.brand.darkLockup} alt="" />
+          </div>
+        )}
         <div className="editor-toolbar">
           <span>Colosseum Tool</span>
           <strong>workspace clean</strong>
@@ -81,7 +121,6 @@ function DemoVisual({ kind }: { kind: (typeof projects)[number]['demo']['kind'] 
 export function ProductShowcase() {
   const [activeProjectName, setActiveProjectName] = useState(projects[0].name);
   const activeProject = projects.find((project) => project.name === activeProjectName) ?? projects[0];
-  const ActiveIcon = activeProject.icon;
 
   return (
     <section id="demos" className="section-wrap demo-section" aria-labelledby="demos-title">
@@ -97,7 +136,6 @@ export function ProductShowcase() {
       <div className="showcase-shell">
         <div className="showcase-tabs" role="tablist" aria-label="Product demo selector">
           {projects.map((project) => {
-            const Icon = project.icon;
             const isActive = project.name === activeProject.name;
             return (
               <button
@@ -108,7 +146,7 @@ export function ProductShowcase() {
                 className={isActive ? 'showcase-tab showcase-tab-active' : 'showcase-tab'}
                 onClick={() => setActiveProjectName(project.name)}
               >
-                <Icon size={18} aria-hidden="true" />
+                <ProjectIconFrame project={project} size={22} />
                 <span>
                   <strong>{project.name}</strong>
                   <small>{project.demo.label}</small>
@@ -122,7 +160,7 @@ export function ProductShowcase() {
           <div className="stage-copy">
             <span className="project-status">{activeProject.status}</span>
             <h3>
-              <ActiveIcon size={24} aria-hidden="true" />
+              <ProjectIconFrame project={activeProject} size={30} />
               {activeProject.demo.label}
             </h3>
             <p>{activeProject.demo.summary}</p>
@@ -171,7 +209,7 @@ export function ProductShowcase() {
                 <span />
                 <strong>{activeProject.demo.metric}</strong>
               </div>
-              <DemoVisual kind={activeProject.demo.kind} />
+              <DemoVisual project={activeProject} />
             </div>
           </div>
         </article>

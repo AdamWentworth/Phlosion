@@ -419,9 +419,11 @@ h3 {
 
 .product-brand-banner-row {
   display: inline-flex;
-  width: min(224px, 100%);
+  box-sizing: border-box;
+  width: 224px;
+  min-width: 224px;
+  max-width: 224px;
   height: 88px;
-  max-width: 100%;
   justify-content: flex-start;
   gap: 10px;
   min-height: 0;
@@ -506,7 +508,9 @@ h3 {
 }
 
 .product-brand-banner-cipher {
-  width: min(224px, 100%);
+  width: 224px;
+  min-width: 224px;
+  max-width: 224px;
   height: 88px;
   gap: 10px;
   border-color: rgba(188, 130, 255, 0.36);
@@ -533,8 +537,8 @@ h3 {
 }
 
 .product-brand-banner-cipher .product-brand-wordmark {
-  max-width: 112px;
-  height: 52px;
+  max-width: 116px;
+  height: 54px;
   border-radius: 8px;
   filter: drop-shadow(0 0 16px rgba(169, 92, 255, 0.22)) drop-shadow(0 8px 14px rgba(7, 3, 15, 0.18));
 }

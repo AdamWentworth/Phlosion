@@ -1,0 +1,155 @@
+/* Responsive and motion preference rules. */
+
+@media (max-width: 940px) {
+  .site-header,
+  .showcase-shell,
+  .showcase-stage,
+  .process-section,
+  .identity-panel,
+  .contact-section {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header {
+    display: grid;
+    justify-items: start;
+    padding: 18px 0;
+  }
+
+  .site-nav {
+    justify-content: flex-start;
+  }
+
+  .hero-content {
+    padding-top: 54px;
+  }
+
+  .product-line-grid,
+  .identity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-line {
+    min-height: auto;
+  }
+
+  .showcase-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-proof-list,
+  .project-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  #demos,
+  #products,
+  #company,
+  #process,
+  #capabilities,
+  #contact {
+    scroll-margin-top: 24px;
+  }
+
+  .hero-shell {
+    min-height: 92svh;
+  }
+
+  .site-header,
+  .hero-content,
+  .section-wrap {
+    width: calc(100% - 28px);
+  }
+
+  .site-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .site-nav a,
+  .header-link {
+    justify-content: center;
+  }
+
+  .header-link,
+  .button {
+    width: 100%;
+  }
+
+  .hero-content {
+    padding-top: 50px;
+  }
+
+  .hero-title-wordmark {
+    max-width: 100%;
+  }
+
+  .hero-actions,
+  .contact-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .showcase-tabs,
+  .signal-row {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-stage {
+    padding: 16px;
+  }
+
+  .demo-visual {
+    min-height: 260px;
+    padding: 14px;
+  }
+
+  .demo-visual-nexus,
+  .demo-visual-jarvin,
+  .demo-visual-autochess {
+    grid-template-columns: 1fr;
+  }
+
+  .demo-feed,
+  .memory-stack,
+  .combat-log {
+    display: none;
+  }
+
+  .editor-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .editor-table {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-badge {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .section-wrap {
+    padding: 58px 0;
+  }
+
+  .process-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}

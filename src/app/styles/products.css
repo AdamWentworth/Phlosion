@@ -1,0 +1,344 @@
+/* Product line cards and brand lockups. */
+
+.section-wrap {
+  width: calc(100% - 40px);
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: 86px 0;
+}
+
+.section-heading {
+  max-width: 780px;
+  margin-bottom: 32px;
+}
+
+.section-heading p:not(.eyebrow),
+.contact-section p {
+  color: var(--text-secondary);
+  font-size: 18px;
+}
+
+.product-line-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.product-line {
+  display: flex;
+  min-height: 520px;
+  flex-direction: column;
+  border: 1px solid rgba(244, 234, 209, 0.1);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255, 90, 0, 0.14), rgba(18, 20, 24, 0.96) 42%), rgba(18, 20, 24, 0.96);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.product-line-green {
+  background: linear-gradient(135deg, rgba(56, 161, 105, 0.12), rgba(18, 20, 24, 0.96) 42%), rgba(18, 20, 24, 0.96);
+  border-color: rgba(56, 161, 105, 0.2);
+}
+
+.product-line-blue {
+  background: linear-gradient(135deg, rgba(92, 170, 255, 0.12), rgba(18, 20, 24, 0.96) 42%), rgba(18, 20, 24, 0.96);
+  border-color: rgba(92, 170, 255, 0.22);
+}
+
+.product-line-cream {
+  background: linear-gradient(135deg, rgba(244, 234, 209, 0.11), rgba(18, 20, 24, 0.96) 42%), rgba(18, 20, 24, 0.96);
+  border-color: rgba(244, 234, 209, 0.2);
+}
+
+.product-line-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.product-line-top-status-only {
+  justify-content: flex-end;
+  margin-bottom: 18px;
+}
+
+.product-brand-banner {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(0, 67, 111, 0.12);
+  border-radius: 8px;
+  background: radial-gradient(circle at 18% 0%, rgba(0, 180, 255, 0.16), transparent 64%), rgba(255, 253, 249, 0.58);
+  margin: -6px 0 18px;
+  padding: 12px 14px;
+}
+
+.product-brand-banner-row {
+  display: inline-flex;
+  box-sizing: border-box;
+  width: 224px;
+  min-width: 224px;
+  max-width: 224px;
+  height: 88px;
+  justify-content: flex-start;
+  gap: 10px;
+  min-height: 0;
+  margin-bottom: 18px;
+  padding: 8px 10px;
+}
+
+.product-brand-mark {
+  display: inline-flex;
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-brand-mark img {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 14px rgba(0, 214, 255, 0.18)) drop-shadow(0 8px 12px rgba(0, 43, 79, 0.22));
+}
+
+.product-brand-wordmark {
+  display: block;
+  min-width: 0;
+  width: auto;
+  max-width: 112px;
+  height: 52px;
+  object-fit: contain;
+  object-position: left center;
+  filter: drop-shadow(0 8px 14px rgba(0, 43, 79, 0.12));
+}
+
+.product-brand-banner-lockup {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  min-height: 0;
+  justify-content: flex-start;
+  margin-bottom: 18px;
+  padding: 8px 10px;
+}
+
+.product-brand-banner-lockup-dark {
+  border-color: rgba(0, 214, 255, 0.22);
+  background:
+    radial-gradient(circle at 18% 45%, rgba(0, 214, 255, 0.2), transparent 42%),
+    linear-gradient(135deg, #031c32, #020b18 58%, #061326);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 12px 24px rgba(0, 43, 79, 0.14);
+}
+
+.product-brand-banner-jarvin {
+  gap: 10px;
+  border-color: rgba(0, 214, 255, 0.28);
+  background:
+    radial-gradient(circle at 18% 44%, rgba(0, 214, 255, 0.22), transparent 34%),
+    radial-gradient(circle at 78% 28%, rgba(255, 90, 0, 0.1), transparent 22%),
+    linear-gradient(135deg, #021321, #010814 62%, #051020);
+}
+
+.product-brand-banner-jarvin .product-brand-mark {
+  flex-basis: 70px;
+  width: 70px;
+  height: 70px;
+}
+
+.product-brand-banner-jarvin .product-brand-mark img {
+  width: 70px;
+  height: 70px;
+  filter: drop-shadow(0 0 18px rgba(0, 214, 255, 0.28)) drop-shadow(0 8px 12px rgba(0, 43, 79, 0.28));
+}
+
+.product-brand-banner-jarvin .product-brand-wordmark {
+  max-width: 112px;
+  height: 38px;
+  filter: drop-shadow(0 0 16px rgba(0, 214, 255, 0.12)) drop-shadow(0 8px 14px rgba(0, 43, 79, 0.16));
+}
+
+.product-brand-banner-cipher {
+  width: 224px;
+  min-width: 224px;
+  max-width: 224px;
+  height: 88px;
+  gap: 10px;
+  border-color: rgba(188, 130, 255, 0.36);
+  background:
+    radial-gradient(circle at 22% 48%, rgba(167, 83, 255, 0.38), transparent 42%),
+    radial-gradient(circle at 82% 18%, rgba(255, 188, 63, 0.13), transparent 26%),
+    linear-gradient(135deg, #19082a, #080411 54%, #210d37);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+    0 14px 26px rgba(37, 10, 59, 0.16);
+}
+
+.product-brand-banner-cipher .product-brand-mark {
+  flex-basis: 72px;
+  width: 72px;
+  height: 72px;
+}
+
+.product-brand-banner-cipher .product-brand-mark img {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  filter: drop-shadow(0 0 18px rgba(169, 92, 255, 0.34)) drop-shadow(0 8px 14px rgba(7, 3, 15, 0.34));
+}
+
+.product-brand-banner-cipher .product-brand-wordmark {
+  max-width: 116px;
+  height: 54px;
+  border-radius: 8px;
+  filter: drop-shadow(0 0 16px rgba(169, 92, 255, 0.22)) drop-shadow(0 8px 14px rgba(7, 3, 15, 0.18));
+}
+
+.product-brand-banner-autochess {
+  gap: 6px;
+  border-color: rgba(255, 188, 63, 0.34);
+  background:
+    radial-gradient(circle at 23% 50%, rgba(255, 188, 63, 0.25), transparent 42%),
+    radial-gradient(circle at 82% 22%, rgba(235, 50, 48, 0.14), transparent 28%),
+    linear-gradient(135deg, #1f1608, #070604 56%, #211303);
+  padding: 6px 8px;
+}
+
+.product-brand-banner-autochess .product-brand-mark {
+  flex-basis: 76px;
+  width: 76px;
+  height: 76px;
+}
+
+.product-brand-banner-autochess .product-brand-mark img {
+  width: 76px;
+  height: 76px;
+  filter: drop-shadow(0 0 16px rgba(255, 188, 63, 0.22)) drop-shadow(0 8px 14px rgba(7, 3, 0, 0.3));
+}
+
+.product-brand-banner-autochess .product-brand-wordmark {
+  max-width: 122px;
+  height: 58px;
+  filter: drop-shadow(0 0 16px rgba(255, 188, 63, 0.18)) drop-shadow(0 8px 14px rgba(7, 3, 0, 0.22));
+}
+
+.product-brand-banner-lockup-light {
+  border-color: rgba(92, 170, 255, 0.2);
+  background: radial-gradient(circle at 22% 48%, rgba(0, 180, 255, 0.13), transparent 44%), rgba(255, 253, 249, 0.76);
+}
+
+.product-brand-banner .product-brand-lockup-image {
+  display: block;
+  width: auto;
+  max-width: min(100%, 360px);
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  filter: drop-shadow(0 10px 16px rgba(0, 43, 79, 0.1));
+}
+
+.product-brand-banner-lockup-dark .product-brand-lockup-image,
+.product-brand-banner-lockup-light .product-brand-lockup-image {
+  width: auto;
+  height: 72px;
+}
+
+.project-title-branded {
+  margin: 0 0 14px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.project-title-branded .product-brand-banner {
+  margin: 0;
+}
+
+.product-line p {
+  color: var(--text-secondary);
+}
+
+.product-line-detail {
+  margin-bottom: 18px;
+  color: var(--text-muted) !important;
+}
+
+.line-facts,
+.stage-facts {
+  display: grid;
+  gap: 10px;
+  margin: 10px 0 22px;
+}
+
+.product-proof-list,
+.stage-proof-grid,
+.project-evidence-grid {
+  display: grid;
+  gap: 10px;
+  margin: 6px 0 20px;
+}
+
+.product-proof-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.line-facts div,
+.stage-facts div,
+.product-proof-list div,
+.stage-proof-grid div,
+.project-evidence-grid div {
+  border-top: 1px solid rgba(244, 234, 209, 0.1);
+  padding-top: 12px;
+}
+
+.line-facts dt,
+.stage-facts dt,
+.product-proof-list dt,
+.stage-proof-grid dt,
+.project-evidence-grid dt {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.line-facts dd,
+.stage-facts dd,
+.product-proof-list dd,
+.stage-proof-grid dd,
+.project-evidence-grid dd {
+  margin: 5px 0 0;
+  color: var(--highlight);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.product-proof-list dd,
+.stage-proof-grid dd,
+.project-evidence-grid dd {
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.product-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.product-action-row a {
+  width: fit-content;
+  gap: 8px;
+  color: var(--accent);
+  font-weight: 900;
+  text-decoration: none;
+}

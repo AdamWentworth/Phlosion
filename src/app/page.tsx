@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   ArrowUpRight,
   BadgeCheck,
@@ -12,9 +14,10 @@ import {
   Radio,
   Sparkles,
 } from 'lucide-react';
+import { ProjectIconFrame, ProjectTitle } from '@/components/ProjectBrand';
 import { ProductShowcase } from '@/components/ProductShowcase';
 import { TechBadgeList } from '@/components/TechBadge';
-import { companyPrinciples, operatingPrinciples, projects, type Project } from '@/lib/projects';
+import { companyPrinciples, operatingPrinciples, projects } from '@/lib/projects';
 
 const navItems = [
   { href: '#products', label: 'Products' },
@@ -31,62 +34,25 @@ const labSignals = [
 
 const principleIcons = [BadgeCheck, CircleDollarSign, FileText, Building2];
 
-function ProjectIconGraphic({ project, size }: { project: Project; size: number }) {
-  const Icon = project.icon;
-
-  if (project.brand?.icon) {
-    return <img className="project-icon-image" src={project.brand.icon} alt="" width={size} height={size} />;
-  }
-
-  return <Icon size={size} aria-hidden="true" />;
-}
-
-function ProjectIconFrame({ project, size }: { project: Project; size: number }) {
-  const brandFrameClass =
-    project.brand?.iconFrame === 'dark' ? 'project-icon-branded' : project.brand?.icon ? 'project-icon-logo' : '';
-  const kindClass = `project-icon-${project.demo.kind}`;
-
-  return (
-    <span className={brandFrameClass ? `project-icon ${brandFrameClass} ${kindClass}` : `project-icon ${kindClass}`}>
-      <ProjectIconGraphic project={project} size={size} />
-    </span>
-  );
-}
-
-function ProjectTitle({ project }: { project: Project }) {
-  if (project.brand?.wordmark) {
-    const lockupFrame = project.brand.lockupFrame ?? project.brand.iconFrame;
-    const bannerClass =
-      lockupFrame === 'dark'
-        ? `product-brand-banner product-brand-banner-row product-brand-banner-${project.demo.kind} product-brand-banner-lockup-dark`
-        : `product-brand-banner product-brand-banner-row product-brand-banner-${project.demo.kind} product-brand-banner-lockup-light`;
-
-    return (
-      <h3 className="project-title-branded">
-        <span className={bannerClass}>
-          <span className="product-brand-mark" aria-hidden="true">
-            <img src={project.brand.icon} alt="" />
-          </span>
-          <img className="product-brand-wordmark" src={project.brand.wordmark} alt={project.brand.alt} />
-        </span>
-      </h3>
-    );
-  }
-
-  return <h3>{project.name}</h3>;
-}
-
 export default function Home() {
   return (
     <main>
       <section className="hero-shell" aria-labelledby="hero-title">
         <header className="site-header">
-          <a className="brand-lockup" href="/" aria-label="Phlosion home">
+          <Link className="brand-lockup" href="/" aria-label="Phlosion home">
             <span className="brand-mark" aria-hidden="true">
-              <img src="/phlosion-mark.png" alt="" />
+              <Image src="/phlosion-mark.png" alt="" width={911} height={911} sizes="42px" loading="eager" />
             </span>
-            <img className="brand-wordmark" src="/phlosion-wordmark.png" alt="Phlosion" />
-          </a>
+            <Image
+              className="brand-wordmark"
+              src="/phlosion-wordmark.png"
+              alt="Phlosion"
+              width={1877}
+              height={342}
+              sizes="150px"
+              loading="eager"
+            />
+          </Link>
           <nav className="site-nav" aria-label="Primary navigation">
             {navItems.map((item) => (
               <a key={item.href} href={item.href}>
@@ -101,10 +67,29 @@ export default function Home() {
         </header>
 
         <div className="hero-content">
-          <img className="hero-brand-mark" src="/phlosion-mark.png" alt="" aria-hidden="true" />
+          <Image
+            className="hero-brand-mark"
+            src="/phlosion-mark.png"
+            alt=""
+            width={911}
+            height={911}
+            sizes="(max-width: 640px) 86px, 132px"
+            aria-hidden="true"
+            loading="eager"
+            preload
+          />
           <p className="eyebrow">Independent software company</p>
           <h1 id="hero-title" className="hero-wordmark-title">
-            <img className="hero-title-wordmark" src="/phlosion-wordmark.png" alt="Phlosion" />
+            <Image
+              className="hero-title-wordmark"
+              src="/phlosion-wordmark.png"
+              alt="Phlosion"
+              width={1877}
+              height={342}
+              sizes="(max-width: 760px) 100vw, 680px"
+              loading="eager"
+              preload
+            />
           </h1>
           <p className="hero-lede">
             Phlosion is a software company brand for owned apps, AI systems, tools, and games. It exists to build, show,

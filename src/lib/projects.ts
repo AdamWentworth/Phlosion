@@ -310,7 +310,7 @@ export const projects: Project[] = [
       iconFrame: 'dark',
       lockupFrame: 'dark',
       wordmark: '/products/pokemon-autochess/autochess-wordmark-transparent.png',
-      darkLockup: '/products/pokemon-autochess/autochess-lockup-transparent.png',
+      darkLockup: '/products/pokemon-autochess/autochess-mark-alt-transparent.png',
     },
     demo: {
       kind: 'autochess',

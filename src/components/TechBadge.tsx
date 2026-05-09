@@ -1,5 +1,7 @@
 import type { CSSProperties } from 'react';
+import Image from 'next/image';
 import { Code2 } from 'lucide-react';
+import { getImageSize } from '@/lib/imageSizes';
 import { getTechIcon, type CustomTechIcon } from '@/lib/techIcons';
 
 type TechBadgeProps = {
@@ -133,6 +135,7 @@ function CustomTechIconGlyph({ kind }: { kind: CustomTechIcon }) {
 export function TechBadge({ label }: TechBadgeProps) {
   const icon = getTechIcon(label);
   const color = icon?.kind === 'simple' ? `#${icon.icon.hex}` : (icon?.color ?? '#00436f');
+  const imageSize = icon?.kind === 'image' ? getImageSize(icon.src, { width: 18, height: 18 }) : null;
 
   return (
     <span className="tech-badge" style={{ '--tech-color': color } as TechBadgeStyle}>
@@ -143,7 +146,15 @@ export function TechBadge({ label }: TechBadgeProps) {
           </svg>
         ) : null}
         {icon?.kind === 'image' ? (
-          <img className={icon.className} src={icon.src} alt={icon.alt} loading="lazy" decoding="async" />
+          <Image
+            className={icon.className}
+            src={icon.src}
+            alt={icon.alt}
+            width={imageSize?.width ?? 18}
+            height={imageSize?.height ?? 18}
+            sizes="18px"
+            unoptimized={icon.src.endsWith('.svg')}
+          />
         ) : null}
         {icon?.kind === 'custom' ? <CustomTechIconGlyph kind={icon.custom} /> : null}
         {!icon ? <Code2 size={15} /> : null}

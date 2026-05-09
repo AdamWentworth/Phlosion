@@ -10,12 +10,23 @@ export const metadata: Metadata = {
   },
   description:
     'Phlosion is a branded hub for production-minded software projects, product experiments, demos, and changelogs by Adam Wentworth.',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Phlosion | Software Product Lab',
     description:
       'A product studio for ambitious software experiments across AI assistants, full-stack systems, and games.',
     url: 'https://phlosion.com',
     siteName: 'Phlosion',
+    images: [
+      {
+        url: '/phlosion-lockup.png',
+        width: 1536,
+        height: 587,
+        alt: 'Phlosion',
+      },
+    ],
     type: 'website',
   },
   twitter: {
@@ -23,6 +34,7 @@ export const metadata: Metadata = {
     title: 'Phlosion | Software Product Lab',
     description:
       'A product studio for ambitious software experiments across AI assistants, full-stack systems, and games.',
+    images: ['/phlosion-lockup.png'],
   },
   icons: {
     icon: [{ url: '/phlosion-mark.png', type: 'image/png' }],

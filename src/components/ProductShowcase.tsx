@@ -1,43 +1,29 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { ProjectIconFrame } from '@/components/ProjectBrand';
 import { TechBadgeList } from '@/components/TechBadge';
+import { getImageSize } from '@/lib/imageSizes';
 import { projects, type Project } from '@/lib/projects';
-
-function ProjectIconGraphic({ project, size }: { project: Project; size: number }) {
-  const Icon = project.icon;
-
-  if (project.brand?.icon) {
-    return <img className="project-icon-image" src={project.brand.icon} alt="" width={size} height={size} />;
-  }
-
-  return <Icon size={size} aria-hidden="true" />;
-}
-
-function ProjectIconFrame({ project, size }: { project: Project; size: number }) {
-  const brandFrameClass =
-    project.brand?.iconFrame === 'dark' ? 'project-icon-branded' : project.brand?.icon ? 'project-icon-logo' : '';
-  const kindClass = `project-icon-${project.demo.kind}`;
-  const className = brandFrameClass
-    ? `project-icon ${brandFrameClass} ${kindClass} project-icon-inline`
-    : `project-icon ${kindClass} project-icon-inline`;
-
-  return (
-    <span className={className}>
-      <ProjectIconGraphic project={project} size={size} />
-    </span>
-  );
-}
 
 function DemoVisual({ project }: { project: Project }) {
   if (project.demo.kind === 'nexus') {
+    const lockupSize = project.brand?.lockup ? getImageSize(project.brand.lockup, { width: 330, height: 140 }) : null;
+
     return (
       <div className="demo-visual demo-visual-nexus" aria-hidden="true">
         <div className="demo-map">
-          {project.brand?.lockup && (
+          {project.brand?.lockup && lockupSize && (
             <span className="nexus-demo-brand">
-              <img src={project.brand.lockup} alt="" />
+              <Image
+                src={project.brand.lockup}
+                alt=""
+                width={lockupSize.width}
+                height={lockupSize.height}
+                sizes="(max-width: 640px) 100vw, 330px"
+              />
             </span>
           )}
           <span className="demo-pin demo-pin-primary" />
@@ -55,10 +41,13 @@ function DemoVisual({ project }: { project: Project }) {
   }
 
   if (project.demo.kind === 'jarvin') {
+    const lockup = project.brand?.darkLockup ?? '/products/jarvin/jarvin-lockup-dark.png';
+    const lockupSize = getImageSize(lockup, { width: 310, height: 310 });
+
     return (
       <div className="demo-visual demo-visual-jarvin" aria-hidden="true">
         <div className="jarvin-demo-brand">
-          <img src={project.brand?.darkLockup ?? '/products/jarvin/jarvin-lockup-dark.png'} alt="" />
+          <Image src={lockup} alt="" width={lockupSize.width} height={lockupSize.height} sizes="310px" />
         </div>
         <div className="jarvin-demo-flow">
           <div className="assistant-thread">
@@ -77,11 +66,21 @@ function DemoVisual({ project }: { project: Project }) {
   }
 
   if (project.demo.kind === 'cipher') {
+    const lockupSize = project.brand?.darkLockup
+      ? getImageSize(project.brand.darkLockup, { width: 360, height: 164 })
+      : null;
+
     return (
       <div className="demo-visual demo-visual-cipher" aria-hidden="true">
-        {project.brand?.darkLockup && (
+        {project.brand?.darkLockup && lockupSize && (
           <div className="cipher-demo-brand">
-            <img src={project.brand.darkLockup} alt="" />
+            <Image
+              src={project.brand.darkLockup}
+              alt=""
+              width={lockupSize.width}
+              height={lockupSize.height}
+              sizes="360px"
+            />
           </div>
         )}
         <div className="editor-toolbar">
@@ -103,11 +102,21 @@ function DemoVisual({ project }: { project: Project }) {
     );
   }
 
+  const lockupSize = project.brand?.darkLockup
+    ? getImageSize(project.brand.darkLockup, { width: 340, height: 112 })
+    : null;
+
   return (
     <div className="demo-visual demo-visual-autochess" aria-hidden="true">
-      {project.brand?.darkLockup && (
+      {project.brand?.darkLockup && lockupSize && (
         <div className="autochess-demo-brand">
-          <img src={project.brand.darkLockup} alt="" />
+          <Image
+            src={project.brand.darkLockup}
+            alt=""
+            width={lockupSize.width}
+            height={lockupSize.height}
+            sizes="260px"
+          />
         </div>
       )}
       <div className="battle-board">
@@ -139,19 +148,18 @@ export function ProductShowcase() {
       </div>
 
       <div className="showcase-shell">
-        <div className="showcase-tabs" role="tablist" aria-label="Product demo selector">
+        <div className="showcase-tabs" role="group" aria-label="Product demo selector">
           {projects.map((project) => {
             const isActive = project.name === activeProject.name;
             return (
               <button
                 key={project.name}
                 type="button"
-                role="tab"
-                aria-selected={isActive}
+                aria-pressed={isActive}
                 className={isActive ? 'showcase-tab showcase-tab-active' : 'showcase-tab'}
                 onClick={() => setActiveProjectName(project.name)}
               >
-                <ProjectIconFrame project={project} size={22} />
+                <ProjectIconFrame project={project} size={22} inline />
                 <span>
                   <strong>{project.name}</strong>
                   <small>{project.demo.label}</small>
@@ -165,7 +173,7 @@ export function ProductShowcase() {
           <div className="stage-copy">
             <span className="project-status">{activeProject.status}</span>
             <h3>
-              <ProjectIconFrame project={activeProject} size={30} />
+              <ProjectIconFrame project={activeProject} size={30} inline />
               {activeProject.demo.label}
             </h3>
             <p>{activeProject.demo.summary}</p>

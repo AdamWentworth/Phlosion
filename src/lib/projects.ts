@@ -304,6 +304,14 @@ export const projects: Project[] = [
     href: 'https://github.com/AdamWentworth/PokemonAutochess',
     icon: Gamepad2,
     accent: 'blue',
+    brand: {
+      alt: 'Pokemon Autochess',
+      icon: '/products/pokemon-autochess/autochess-mark-transparent.png',
+      iconFrame: 'dark',
+      lockupFrame: 'dark',
+      wordmark: '/products/pokemon-autochess/autochess-wordmark-transparent.png',
+      darkLockup: '/products/pokemon-autochess/autochess-lockup-transparent.png',
+    },
     demo: {
       kind: 'autochess',
       label: 'Runtime combat sandbox',

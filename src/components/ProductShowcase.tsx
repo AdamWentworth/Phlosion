@@ -105,6 +105,11 @@ function DemoVisual({ project }: { project: Project }) {
 
   return (
     <div className="demo-visual demo-visual-autochess" aria-hidden="true">
+      {project.brand?.darkLockup && (
+        <div className="autochess-demo-brand">
+          <img src={project.brand.darkLockup} alt="" />
+        </div>
+      )}
       <div className="battle-board">
         {Array.from({ length: 16 }, (_, index) => (
           <span key={index} className={index === 5 || index === 10 || index === 11 ? 'board-unit' : ''} />

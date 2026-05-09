@@ -5,34 +5,49 @@ import {
   BadgeCheck,
   Boxes,
   Building2,
-  CircleDollarSign,
   Code2,
   FileText,
   Layers3,
   MonitorCog,
   PackageCheck,
-  Radio,
   Sparkles,
 } from 'lucide-react';
 import { ProjectIconFrame, ProjectTitle } from '@/components/ProjectBrand';
 import { ProductShowcase } from '@/components/ProductShowcase';
 import { TechBadgeList } from '@/components/TechBadge';
-import { companyPrinciples, operatingPrinciples, projects } from '@/lib/projects';
+import { operatingPrinciples, productJudgmentPrinciples, projects } from '@/lib/projects';
 
 const navItems = [
-  { href: '#products', label: 'Products' },
+  { href: '#products', label: 'Case studies' },
   { href: '#demos', label: 'Demos' },
-  { href: '#company', label: 'Company' },
+  { href: '#company', label: 'Judgment' },
   { href: '#contact', label: 'Contact' },
 ];
 
 const labSignals = [
-  { label: 'Owned products', value: '04', icon: Boxes },
-  { label: 'Software domains', value: 'Apps / AI / Tools / Games', icon: Layers3 },
-  { label: 'Business surfaces', value: 'Services / releases / support', icon: Radio },
+  { label: 'Case studies', value: '04 product tracks', icon: Boxes },
+  { label: 'Build range', value: 'Services / AI / desktop / games', icon: Layers3 },
+  { label: 'Hiring signal', value: 'Product-minded engineering', icon: BadgeCheck },
 ];
 
-const principleIcons = [BadgeCheck, CircleDollarSign, FileText, Building2];
+const principleIcons = [BadgeCheck, MonitorCog, FileText, Building2];
+
+const portfolioSurfaces = [
+  {
+    name: 'AdamWentworth.ca',
+    stack: 'Astro / TypeScript / CSS',
+    detail:
+      'A personal resume site for Adam as a candidate: education, experience, skills, selected projects, and PDF resume access.',
+    href: 'https://adamwentworth.ca',
+  },
+  {
+    name: 'Phlosion.com',
+    stack: 'Next.js / Tailwind CSS',
+    detail:
+      'This product-lab site frames the same engineering work as case studies with user needs, delivery surfaces, and market constraints.',
+    href: 'https://phlosion.com',
+  },
+];
 
 export default function Home() {
   return (
@@ -60,8 +75,8 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <a className="header-link" href="https://github.com/AdamWentworth" target="_blank" rel="noreferrer">
-            Source
+          <a className="header-link" href="https://adamwentworth.ca" target="_blank" rel="noreferrer">
+            Adam&apos;s resume
             <ArrowUpRight size={16} aria-hidden="true" />
           </a>
         </header>
@@ -78,7 +93,7 @@ export default function Home() {
             loading="eager"
             preload
           />
-          <p className="eyebrow">Independent software company</p>
+          <p className="eyebrow">Software product lab by Adam Wentworth</p>
           <h1 id="hero-title" className="hero-wordmark-title">
             <Image
               className="hero-title-wordmark"
@@ -92,16 +107,17 @@ export default function Home() {
             />
           </h1>
           <p className="hero-lede">
-            Phlosion is a software company brand for owned apps, AI systems, tools, and games. It exists to build, show,
-            release, and eventually commercialize the software products created under one roof.
+            Phlosion is Adam&apos;s branded case-study platform for full-stack services, local AI systems, desktop
+            tools, and C++ game/runtime work. It shows projects through users, delivery surfaces, architecture, and
+            product constraints.
           </p>
           <div className="hero-actions" aria-label="Primary actions">
-            <a className="button button-primary" href="#demos">
-              View demos
+            <a className="button button-primary" href="#products">
+              View case studies
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
-            <a className="button button-secondary" href="#products">
-              Explore products
+            <a className="button button-secondary" href="https://adamwentworth.ca" target="_blank" rel="noreferrer">
+              Adam&apos;s resume
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </div>
@@ -124,11 +140,11 @@ export default function Home() {
 
       <section id="products" className="section-wrap product-lines-section" aria-labelledby="products-title">
         <div className="section-heading">
-          <p className="eyebrow">Products</p>
-          <h2 id="products-title">Product lines under the Phlosion brand.</h2>
+          <p className="eyebrow">Product case studies</p>
+          <h2 id="products-title">Project work framed as product judgment.</h2>
           <p>
-            Each product line gets a public-facing shape: who it serves, what Phlosion owns, how it can be shown, and
-            what path it could take toward a real release or service.
+            Each case study connects the technical build to the person it serves, the workflow it supports, the delivery
+            surface it exposes, and the constraints a hiring manager can evaluate.
           </p>
         </div>
         <div className="product-line-grid">
@@ -140,18 +156,20 @@ export default function Home() {
                   {!hasBrandTitle && <ProjectIconFrame project={project} size={32} />}
                   <span className="project-status">{project.status}</span>
                 </div>
-                <p className="project-track">{project.productLine}</p>
+                <p className="project-track">
+                  {project.productTrack} / {project.caseStudyRole}
+                </p>
                 <ProjectTitle project={project} />
                 <p>{project.summary}</p>
                 <p className="product-line-detail">{project.details}</p>
                 <dl className="line-facts">
                   <div>
-                    <dt>Phlosion owns</dt>
-                    <dd>{project.ownedSurface}</dd>
+                    <dt>Delivery surface</dt>
+                    <dd>{project.deliverySurface}</dd>
                   </div>
                   <div>
-                    <dt>Commercial path</dt>
-                    <dd>{project.commercialPath}</dd>
+                    <dt>User/workflow fit</dt>
+                    <dd>{project.productConstraint}</dd>
                   </div>
                 </dl>
                 <dl className="product-proof-list" aria-label={`${project.name} product detail`}>
@@ -191,7 +209,7 @@ export default function Home() {
                 </details>
                 <div className="product-action-row">
                   <a href="#demos">
-                    View product surface
+                    View demo surface
                     <ArrowUpRight size={16} aria-hidden="true" />
                   </a>
                   <a href={project.href} target="_blank" rel="noreferrer">
@@ -203,6 +221,10 @@ export default function Home() {
             );
           })}
         </div>
+        <p className="project-disclaimer">
+          Pokemon-related projects are portfolio, learning, and community-support work. They are not affiliated with,
+          endorsed by, or sponsored by Nintendo, The Pokemon Company, Niantic, or related rights holders.
+        </p>
       </section>
 
       <ProductShowcase />
@@ -210,11 +232,11 @@ export default function Home() {
       <section id="company" className="section-wrap identity-section" aria-labelledby="company-title">
         <div className="identity-panel company-panel">
           <div>
-            <p className="eyebrow">Company Model</p>
-            <h2 id="company-title">Built to own, ship, and operate products.</h2>
+            <p className="eyebrow">Product judgment</p>
+            <h2 id="company-title">Engineering decisions tied to users, support, and delivery.</h2>
           </div>
           <div className="identity-grid company-grid">
-            {companyPrinciples.map((principle, index) => {
+            {productJudgmentPrinciples.map((principle, index) => {
               const Icon = principleIcons[index] ?? BadgeCheck;
               return (
                 <article key={principle.label}>
@@ -230,8 +252,8 @@ export default function Home() {
 
       <section id="process" className="section-wrap process-section" aria-labelledby="process-title">
         <div className="section-heading">
-          <p className="eyebrow">Operating Model</p>
-          <h2 id="process-title">Products should be able to become businesses.</h2>
+          <p className="eyebrow">Engineering operating model</p>
+          <h2 id="process-title">The work is evaluated by how it behaves.</h2>
         </div>
         <div className="process-grid">
           {operatingPrinciples.map((principle, index) => (
@@ -262,23 +284,40 @@ export default function Home() {
               <h3>Release Systems</h3>
               <p>Builds, tests, docs, packaging, downloads, and changelogs that make projects easier to trust.</p>
             </article>
+            {portfolioSurfaces.map((surface) => (
+              <article key={surface.name}>
+                <Code2 size={20} aria-hidden="true" />
+                <h3>{surface.name}</h3>
+                <p>
+                  <strong>{surface.stack}</strong>. {surface.detail}
+                </p>
+                <a className="text-link" href={surface.href} target="_blank" rel="noreferrer">
+                  Open site
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
       <section id="contact" className="section-wrap contact-section" aria-labelledby="contact-title">
         <div>
-          <p className="eyebrow">Next</p>
-          <h2 id="contact-title">Build and operate the next product line.</h2>
+          <p className="eyebrow">For recruiters</p>
+          <h2 id="contact-title">Evaluate the work, then talk to Adam.</h2>
           <p>
-            Phlosion is organized around software ownership: working demos, stronger release pages, technical writeups,
-            product operations, and revenue paths for tools that become real services.
+            Phlosion complements AdamWentworth.ca by showing how Adam thinks about users, market constraints,
+            architecture, testing, deployment, and support beyond a traditional resume.
           </p>
         </div>
         <div className="contact-actions">
           <a className="button button-primary" href="mailto:adamjohnwentworth@gmail.com">
             <Sparkles size={18} aria-hidden="true" />
-            Contact Phlosion
+            Contact Adam
+          </a>
+          <a className="button button-secondary" href="https://adamwentworth.ca" target="_blank" rel="noreferrer">
+            <FileText size={18} aria-hidden="true" />
+            Resume site
           </a>
           <a
             className="button button-secondary"

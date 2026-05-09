@@ -5,10 +5,10 @@ export type Project = {
   status: 'Active build' | 'Prototype' | 'Research system' | 'Desktop release';
   track: string;
   audience: string;
-  companyRole: string;
-  productLine: string;
-  ownedSurface: string;
-  commercialPath: string;
+  caseStudyRole: string;
+  productTrack: string;
+  deliverySurface: string;
+  productConstraint: string;
   summary: string;
   details: string;
   proof: {
@@ -48,14 +48,16 @@ export const projects: Project[] = [
     status: 'Active build',
     track: 'Full-stack coordination system',
     audience: 'Pokemon GO players and local communities',
-    companyRole: 'Flagship service-app product line',
-    productLine: 'Apps & subscription services',
-    ownedSurface: 'Web/mobile clients, event workflows, location search, update delivery, and service infrastructure.',
-    commercialPath: 'Subscription features for coordination, alerts, hosted communities, and power-user tools.',
+    caseStudyRole: 'Full-stack product candidate',
+    productTrack: 'Service-app case study',
+    deliverySurface:
+      'Web/mobile clients, event workflows, location search, update delivery, and service infrastructure.',
+    productConstraint:
+      'Coordination tools need trusted live state, nearby-player context, and deployment paths that could later support private hosted communities.',
     summary:
-      'A full-stack Pokemon GO coordination platform with React web/mobile clients, Go and Express services, Kafka event sync, geospatial search, and persistent storage.',
+      'An active full-stack coordination platform with React web/mobile clients, Go and Express services, Kafka event sync, geospatial search, and persistent storage.',
     details:
-      'Nexus is the flagship service-app track: the value is in the accounts, live event workflows, location intelligence, durable storage, deployment wiring, and user-facing coordination tools around the shared player interest.',
+      'Nexus shows product-minded full-stack work: accounts, live event workflows, location intelligence, durable storage, deployment wiring, and user-facing coordination tools around a real community workflow.',
     proof: [
       {
         label: 'Service map',
@@ -129,15 +131,16 @@ export const projects: Project[] = [
     status: 'Research system',
     track: 'Local AI assistant platform',
     audience: 'Personal automation and host-run AI workflows',
-    companyRole: 'AI systems and integration lab',
-    productLine: 'AI systems',
-    ownedSurface:
+    caseStudyRole: 'Model-adjacent product engineering',
+    productTrack: 'Local AI systems case study',
+    deliverySurface:
       'Assistant clients, tool routing, local model workflows, memory, voice loops, and host orchestration.',
-    commercialPath: 'Private assistant workflows, local-first tooling, and future managed automation products.',
+    productConstraint:
+      'Useful assistants need privacy boundaries, inspectable tools, persistent memory, and clients that make local model work feel practical.',
     summary:
       'A private host-run assistant platform around local models, voice workflows, memory, safe tools, integrations, planning, and shared desktop/mobile clients.',
     details:
-      'Jarvin is the AI systems lab: not a custom foundation model, but the product software around local models that makes voice, memory, tools, integrations, and proactive assistant behavior feel useful.',
+      'Jarvin is not a custom foundation model; it demonstrates the product software around local models: voice, memory, tools, integrations, and proactive assistant behavior that can be evaluated and owned.',
     proof: [
       {
         label: 'Local host',
@@ -195,14 +198,15 @@ export const projects: Project[] = [
     status: 'Desktop release',
     track: 'Cross-platform desktop tooling',
     audience: 'Pokemon Colosseum and XD modding communities',
-    companyRole: 'Preservation-grade desktop product line',
-    productLine: 'Desktop tools',
-    ownedSurface: 'Avalonia UI, parser/codec systems, safe workspace flows, tests, packaging scripts, and releases.',
-    commercialPath: 'Open-source releases today, with future support, documentation, downloads, or adjacent tooling.',
+    caseStudyRole: 'Cross-platform support tooling',
+    productTrack: 'Desktop tooling case study',
+    deliverySurface: 'Avalonia UI, parser/codec systems, safe workspace flows, tests, packaging scripts, and releases.',
+    productConstraint:
+      'Community tools need familiar workflows, Windows support, safe file boundaries, documentation, and releases that non-authors can actually run.',
     summary:
       'A Windows-first, cross-platform .NET/Avalonia remake of legacy Pokemon Colosseum and XD modding tools with safe workspace flows and release packaging.',
     details:
-      'Cipher turns preservation into release-grade tooling: a modern desktop UI over studied legacy behavior, safe ISO workspace boundaries, parser/codec coverage, documentation, and downloadable release artifacts.',
+      'Cipher studies prior Swift/macOS tooling and turns that preservation work into release-grade support software: a modern desktop UI, safe ISO workspace boundaries, parser/codec coverage, documentation, and downloadable artifacts.',
     proof: [
       {
         label: 'Release targets',
@@ -260,14 +264,15 @@ export const projects: Project[] = [
     status: 'Prototype',
     track: 'Systems-heavy game prototype',
     audience: 'Strategy game experiments and engine work',
-    companyRole: 'Games and runtime architecture track',
-    productLine: 'Games & runtime R&D',
-    ownedSurface: 'Game loop architecture, combat simulation, scripting, rendering experiments, tests, and tooling.',
-    commercialPath: 'Prototype-to-product exploration for original games, tooling, reusable systems, or demos.',
+    caseStudyRole: 'C++ systems learning lab',
+    productTrack: 'Games and runtime case study',
+    deliverySurface: 'Game loop architecture, combat simulation, scripting, rendering experiments, tests, and tooling.',
+    productConstraint:
+      'A game prototype needs fast iteration, deterministic runtime behavior, renderer flexibility, content validation, and tests that keep experiments honest.',
     summary:
       'An engine-first C++20 auto-battler prototype with SDL2 platform work, OpenGL and Direct3D 12 rendering, Lua gameplay, VFX tooling, content pipelines, and tests.',
     details:
-      'Autochess is the games and runtime systems track: the current game is one client of a reusable engine, with board state, combat simulation, renderer parity, scripting, data cooking, tooling, and release exploration.',
+      'Autochess is a learning-focused runtime systems project: the current game is one client of reusable engine work around board state, combat simulation, renderer parity, scripting, data cooking, tooling, and packaged tests.',
     proof: [
       {
         label: 'Engine layers',
@@ -323,31 +328,31 @@ export const projects: Project[] = [
 ];
 
 export const operatingPrinciples = [
-  'Every product track needs a clear user, workflow, and release surface.',
-  'Demos should expose real behavior: state, feedback, data, tooling, or runtime systems.',
-  'Infrastructure, testing, packaging, and documentation are treated as product features.',
-  'Client polish and backend architecture should make the same promise from different angles.',
+  'Start with the user workflow, then show the architecture that supports it.',
+  'Prefer concrete behavior over claims: state, feedback, data, tooling, or runtime systems.',
+  'Treat tests, packaging, documentation, and deployment paths as part of the product experience.',
+  'Use product constraints to explain engineering tradeoffs instead of presenting stacks as trivia.',
 ];
 
-export const companyPrinciples = [
+export const productJudgmentPrinciples = [
   {
-    label: 'Own The Software Layer',
+    label: 'Connect Need To System',
     detail:
-      'Phlosion is the home for the app code, service workflows, UI systems, docs, releases, and product direction behind each project.',
+      'Each case study names the user or community need, then shows the services, clients, tools, and release work that answer it.',
   },
   {
-    label: 'Build Revenue Paths',
+    label: 'Think In Support Surfaces',
     detail:
-      'Some tracks may stay open-source or experimental, while others can become subscriptions, hosted services, support tools, or downloadable products.',
+      'The work is framed around what another person would need to use, deploy, inspect, troubleshoot, or extend the software.',
   },
   {
     label: 'Show Real Behavior',
     detail:
-      'The site should keep moving toward demos, screenshots, changelogs, downloads, and concrete proof of what each product does.',
+      'Demos, screenshots, release notes, repository details, and architecture notes matter because they make the product claims testable.',
   },
   {
     label: 'Respect The Context',
     detail:
-      'When products serve existing communities or fan interests, Phlosion presents and commercializes the software services it creates.',
+      'Fan and community projects are presented as portfolio, support, and learning work with clear boundaries around affiliation and ownership.',
   },
 ];

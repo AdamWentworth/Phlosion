@@ -140,10 +140,10 @@ export function ProductShowcase() {
     <section id="demos" className="section-wrap demo-section" aria-labelledby="demos-title">
       <div className="section-heading">
         <p className="eyebrow">Demos</p>
-        <h2 id="demos-title">Product surfaces, not static claims.</h2>
+        <h2 id="demos-title">Interactive surfaces, not static claims.</h2>
         <p>
-          Each Phlosion project is framed around a working surface: the user flow, system feedback, release artifact, or
-          runtime loop that makes the software tangible.
+          Each Phlosion case study is framed around behavior a recruiter can inspect: the user flow, system feedback,
+          release artifact, or runtime loop that makes the software tangible.
         </p>
       </div>
 
@@ -177,14 +177,14 @@ export function ProductShowcase() {
               {activeProject.demo.label}
             </h3>
             <p>{activeProject.demo.summary}</p>
-            <dl className="stage-facts" aria-label={`${activeProject.name} company context`}>
+            <dl className="stage-facts" aria-label={`${activeProject.name} product context`}>
               <div>
-                <dt>Owned surface</dt>
-                <dd>{activeProject.ownedSurface}</dd>
+                <dt>Delivery surface</dt>
+                <dd>{activeProject.deliverySurface}</dd>
               </div>
               <div>
-                <dt>Commercial path</dt>
-                <dd>{activeProject.commercialPath}</dd>
+                <dt>User/workflow fit</dt>
+                <dd>{activeProject.productConstraint}</dd>
               </div>
             </dl>
             <ul className="demo-steps">

@@ -1,17 +1,17 @@
 # phlosion.com
 
-Phlosion is Adam Wentworth's independent software company brand for owned apps, AI systems, tools, games, demos, and product experiments.
+Phlosion is Adam Wentworth's software product lab: a recruiter-facing companion to [adamwentworth.ca](https://adamwentworth.ca) that turns project work into product case studies.
 
-The site is designed to claim a clear company home for the product portfolio and showcase working product surfaces: interactive demos, release pages, changelogs, documentation, and the technical systems behind each project.
+The site shows full-stack services, local AI systems, desktop tooling, and C++ game/runtime work through users, delivery surfaces, architecture, market constraints, and support needs.
 
 ## Purpose
 
-- Public-facing home for owned projects and product experiments
-- Clear ownership framing for Phlosion-built software products
-- Interactive demos, landing pages, changelogs, and release stories
-- Engineering notes that expose architecture, quality, release, and systems decisions in product context
-- A company-level container for projects that may later become products
-- Future monetization paths such as subscriptions, hosted services, support, downloads, or productized tooling
+- Product case studies for hiring managers and recruiters
+- A product-minded layer that complements Adam's resume site
+- Interactive demos, landing pages, release notes, documentation, and technical systems behind each project
+- Engineering notes that expose architecture, quality, release, and support decisions in product context
+- Careful framing for fan/community projects as portfolio, learning, or support tooling
+- A visible example of Adam's Next.js and Tailwind CSS work
 
 ## Portfolio Tracks
 
@@ -19,6 +19,8 @@ The site is designed to claim a clear company home for the product portfolio and
 - **Jarvin:** local AI assistant platform
 - **Cipher Snagem Editor:** cross-platform desktop tooling
 - **Pokemon Autochess:** systems-heavy game prototype
+- **AdamWentworth.ca:** Astro resume and portfolio site
+- **Phlosion.com:** Next.js and Tailwind CSS product-lab site
 
 ## Tech Stack
 

@@ -1,17 +1,17 @@
 # phlosion.com
 
-Phlosion is Adam Wentworth's software product lab: a recruiter-facing companion to [adamwentworth.ca](https://adamwentworth.ca) that turns project work into product case studies.
+Phlosion is a software product lab: a recruiter-facing companion to [adamwentworth.ca](https://adamwentworth.ca) that turns project work into product case studies.
 
-The site shows full-stack services, local AI systems, desktop tooling, and C++ game/runtime work through users, delivery surfaces, architecture, market constraints, and support needs.
+The site shows full-stack services, local AI systems, desktop tooling, websites, and C++ game/runtime work through users, delivery surfaces, architecture, market constraints, and support needs.
 
 ## Purpose
 
 - Product case studies for hiring managers and recruiters
-- A product-minded layer that complements Adam's resume site
+- A product-minded layer that complements the resume site
 - Interactive demos, landing pages, release notes, documentation, and technical systems behind each project
 - Engineering notes that expose architecture, quality, release, and support decisions in product context
 - Careful framing for fan/community projects as portfolio, learning, or support tooling
-- A visible example of Adam's Next.js and Tailwind CSS work
+- A visible example of Next.js and Tailwind CSS site work
 
 ## Portfolio Tracks
 

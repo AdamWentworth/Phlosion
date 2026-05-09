@@ -9,14 +9,14 @@ export const metadata: Metadata = {
     template: '%s | Phlosion',
   },
   description:
-    "Phlosion is Adam Wentworth's software product lab: recruiter-facing case studies for full-stack services, local AI systems, desktop tools, and C++ game/runtime work.",
+    'Phlosion is a software product lab for recruiter-facing case studies across full-stack services, local AI systems, desktop tools, websites, and C++ game/runtime work.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Phlosion | Software Product Lab',
     description:
-      "Adam Wentworth's product-minded engineering case studies across full-stack services, local AI systems, desktop tools, and games.",
+      'Product-minded engineering case studies across full-stack services, local AI systems, desktop tools, websites, and games.',
     url: 'https://phlosion.com',
     siteName: 'Phlosion',
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Phlosion | Software Product Lab',
     description:
-      "Adam Wentworth's product-minded engineering case studies across full-stack services, local AI systems, desktop tools, and games.",
+      'Product-minded engineering case studies across full-stack services, local AI systems, desktop tools, websites, and games.',
     images: ['/social-card.png'],
   },
   icons: {

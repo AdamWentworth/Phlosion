@@ -25,6 +25,7 @@
   }
 
   .product-line-grid,
+  .site-card-grid,
   .identity-grid {
     grid-template-columns: 1fr;
   }
@@ -46,6 +47,7 @@
 @media (max-width: 640px) {
   #demos,
   #products,
+  #sites,
   #company,
   #process,
   #capabilities,

@@ -24,6 +24,12 @@
   gap: 18px;
 }
 
+.site-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
 .product-line {
   display: flex;
   min-height: 520px;
@@ -262,6 +268,76 @@
 
 .product-line p {
   color: var(--text-secondary);
+}
+
+.site-card {
+  min-height: auto;
+}
+
+.site-brand-panel {
+  display: flex;
+  min-height: 92px;
+  align-items: center;
+  gap: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 67, 111, 0.16);
+  border-radius: 8px;
+  background: radial-gradient(circle at 18% 48%, rgba(255, 180, 31, 0.18), transparent 42%), rgba(255, 253, 249, 0.74);
+  margin: -4px 0 18px;
+  padding: 12px 14px;
+}
+
+.site-brand-panel-phlosion {
+  background:
+    radial-gradient(circle at 18% 46%, rgba(255, 90, 0, 0.16), transparent 42%),
+    radial-gradient(circle at 84% 24%, rgba(0, 67, 111, 0.08), transparent 30%), rgba(255, 253, 249, 0.84);
+}
+
+.site-brand-panel img {
+  display: block;
+  flex: 0 0 auto;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.site-brand-wordmark {
+  width: min(220px, calc(100% - 86px)) !important;
+  height: auto !important;
+}
+
+.site-monogram {
+  display: inline-flex;
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 43, 79, 0.16);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(0, 43, 79, 0.1), rgba(255, 180, 31, 0.18));
+  color: var(--highlight);
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.site-brand-copy {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.site-brand-copy strong {
+  color: var(--highlight);
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.site-brand-copy small {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .product-line-detail {

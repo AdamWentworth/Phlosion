@@ -1,9 +1,11 @@
 import type { SimpleIcon } from 'simple-icons';
 import {
   siApachekafka,
+  siAstro,
   siAvaloniaui,
   siCmake,
   siCplusplus,
+  siCss,
   siDocker,
   siDotnet,
   siExpress,
@@ -16,6 +18,7 @@ import {
   siMysql,
   siNginx,
   siNodedotjs,
+  siNextdotjs,
   siOllama,
   siOpengl,
   siPostgresql,
@@ -23,7 +26,9 @@ import {
   siReact,
   siSqlite,
   siTauri,
+  siTailwindcss,
   siTypescript,
+  siVercel,
   siVitest,
 } from 'simple-icons';
 
@@ -59,10 +64,12 @@ export type TechIconDefinition =
 
 const simpleTechIcons: Record<string, SimpleIcon> = {
   'Apache Kafka': siApachekafka,
+  Astro: siAstro,
   AvaloniaUI: siAvaloniaui,
   'C++20': siCplusplus,
   CMake: siCmake,
   Docker: siDocker,
+  CSS: siCss,
   '.NET 10': siDotnet,
   Express: siExpress,
   FastAPI: siFastapi,
@@ -74,6 +81,7 @@ const simpleTechIcons: Record<string, SimpleIcon> = {
   MongoDB: siMongodb,
   MySQL: siMysql,
   NGINX: siNginx,
+  'Next.js': siNextdotjs,
   Node: siNodedotjs,
   'Node.js': siNodedotjs,
   Ollama: siOllama,
@@ -85,7 +93,9 @@ const simpleTechIcons: Record<string, SimpleIcon> = {
   React: siReact,
   SQLite: siSqlite,
   Tauri: siTauri,
+  'Tailwind CSS': siTailwindcss,
   TypeScript: siTypescript,
+  Vercel: siVercel,
   Vitest: siVitest,
 };
 

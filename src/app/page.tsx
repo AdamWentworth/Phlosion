@@ -19,35 +19,82 @@ import { operatingPrinciples, productJudgmentPrinciples, projects } from '@/lib/
 
 const navItems = [
   { href: '#products', label: 'Case studies' },
+  { href: '#sites', label: 'Sites' },
   { href: '#demos', label: 'Demos' },
   { href: '#company', label: 'Judgment' },
   { href: '#contact', label: 'Contact' },
 ];
 
 const labSignals = [
-  { label: 'Case studies', value: '04 product tracks', icon: Boxes },
+  { label: 'Case studies', value: '04 products + 02 sites', icon: Boxes },
   { label: 'Build range', value: 'Services / AI / desktop / games', icon: Layers3 },
   { label: 'Hiring signal', value: 'Product-minded engineering', icon: BadgeCheck },
 ];
 
 const principleIcons = [BadgeCheck, MonitorCog, FileText, Building2];
 
-const portfolioSurfaces = [
+const siteCaseStudies = [
   {
     name: 'AdamWentworth.ca',
-    stack: 'Astro / TypeScript / CSS',
-    detail:
-      'A personal resume site for Adam as a candidate: education, experience, skills, selected projects, and PDF resume access.',
+    status: 'Live site',
+    track: 'Resume and portfolio surface',
+    brandStatus: 'Personal branding pending',
+    stack: ['Astro', 'TypeScript', 'CSS', 'Vercel'],
+    summary:
+      'A personal resume site for Adam Wentworth with education, experience, skills, selected projects, SEO metadata, sitemap output, and PDF resume access.',
+    deliverySurface:
+      'Static Astro site, structured resume content, downloadable PDF, responsive layout, and deployable build output.',
+    productConstraint:
+      'A resume site has to be fast, direct, scannable, and easy for recruiters to map back to experience and contact paths.',
     href: 'https://adamwentworth.ca',
+    brand: 'placeholder',
   },
   {
     name: 'Phlosion.com',
-    stack: 'Next.js / Tailwind CSS',
-    detail:
-      'This product-lab site frames the same engineering work as case studies with user needs, delivery surfaces, and market constraints.',
+    status: 'Live site',
+    track: 'Software product lab surface',
+    brandStatus: 'Phlosion brand system',
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    summary:
+      'This product-lab site frames project work as case studies with brand assets, product constraints, demo surfaces, repository evidence, and social metadata.',
+    deliverySurface:
+      'Next.js App Router site, Tailwind-backed styling, optimized media, generated social card, and responsive showcase sections.',
+    productConstraint:
+      'A product-lab site has to make varied work feel coherent without flattening the technical depth of each project.',
     href: 'https://phlosion.com',
+    brand: 'phlosion',
   },
 ];
+
+function SiteBrand({ site }: { site: (typeof siteCaseStudies)[number] }) {
+  if (site.brand === 'phlosion') {
+    return (
+      <div className="site-brand-panel site-brand-panel-phlosion" aria-label="Phlosion brand">
+        <Image src="/phlosion-mark.png" alt="" width={911} height={911} sizes="72px" />
+        <Image
+          className="site-brand-wordmark"
+          src="/phlosion-wordmark.png"
+          alt="Phlosion"
+          width={1877}
+          height={342}
+          sizes="220px"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="site-brand-panel site-brand-panel-pending" aria-label="AdamWentworth.ca brand pending">
+      <span className="site-monogram" aria-hidden="true">
+        AW
+      </span>
+      <span className="site-brand-copy">
+        <strong>{site.name}</strong>
+        <small>{site.brandStatus}</small>
+      </span>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -76,7 +123,7 @@ export default function Home() {
             ))}
           </nav>
           <a className="header-link" href="https://adamwentworth.ca" target="_blank" rel="noreferrer">
-            Adam&apos;s resume
+            Resume
             <ArrowUpRight size={16} aria-hidden="true" />
           </a>
         </header>
@@ -93,7 +140,7 @@ export default function Home() {
             loading="eager"
             preload
           />
-          <p className="eyebrow">Software product lab by Adam Wentworth</p>
+          <p className="eyebrow">Software product lab</p>
           <h1 id="hero-title" className="hero-wordmark-title">
             <Image
               className="hero-title-wordmark"
@@ -107,8 +154,8 @@ export default function Home() {
             />
           </h1>
           <p className="hero-lede">
-            Phlosion is Adam&apos;s branded case-study platform for full-stack services, local AI systems, desktop
-            tools, and C++ game/runtime work. It shows projects through users, delivery surfaces, architecture, and
+            Phlosion is a branded case-study platform for full-stack services, local AI systems, desktop tools,
+            websites, and C++ game/runtime work. It shows projects through users, delivery surfaces, architecture, and
             product constraints.
           </p>
           <div className="hero-actions" aria-label="Primary actions">
@@ -117,7 +164,7 @@ export default function Home() {
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
             <a className="button button-secondary" href="https://adamwentworth.ca" target="_blank" rel="noreferrer">
-              Adam&apos;s resume
+              Resume site
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </div>
@@ -227,6 +274,51 @@ export default function Home() {
         </p>
       </section>
 
+      <section id="sites" className="section-wrap site-section" aria-labelledby="sites-title">
+        <div className="section-heading">
+          <p className="eyebrow">Sites</p>
+          <h2 id="sites-title">The portfolio surfaces are part of the work.</h2>
+          <p>
+            These sites are separated from the product case studies, but they still show practical frontend decisions:
+            brand presentation, content modeling, metadata, deployment, responsiveness, and recruiter-facing flows.
+          </p>
+        </div>
+        <div className="site-card-grid">
+          {siteCaseStudies.map((site) => (
+            <article key={site.name} className="product-line site-card">
+              <div className="product-line-top product-line-top-status-only">
+                <span className="project-status">{site.status}</span>
+              </div>
+              <p className="project-track">{site.track}</p>
+              <SiteBrand site={site} />
+              <h3>{site.name}</h3>
+              <p>{site.summary}</p>
+              <dl className="line-facts">
+                <div>
+                  <dt>Brand surface</dt>
+                  <dd>{site.brandStatus}</dd>
+                </div>
+                <div>
+                  <dt>Delivery surface</dt>
+                  <dd>{site.deliverySurface}</dd>
+                </div>
+                <div>
+                  <dt>User/workflow fit</dt>
+                  <dd>{site.productConstraint}</dd>
+                </div>
+              </dl>
+              <TechBadgeList labels={site.stack} ariaLabel={`${site.name} technology stack`} />
+              <div className="product-action-row">
+                <a href={site.href} target="_blank" rel="noreferrer">
+                  Open site
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <ProductShowcase />
 
       <section id="company" className="section-wrap identity-section" aria-labelledby="company-title">
@@ -284,19 +376,6 @@ export default function Home() {
               <h3>Release Systems</h3>
               <p>Builds, tests, docs, packaging, downloads, and changelogs that make projects easier to trust.</p>
             </article>
-            {portfolioSurfaces.map((surface) => (
-              <article key={surface.name}>
-                <Code2 size={20} aria-hidden="true" />
-                <h3>{surface.name}</h3>
-                <p>
-                  <strong>{surface.stack}</strong>. {surface.detail}
-                </p>
-                <a className="text-link" href={surface.href} target="_blank" rel="noreferrer">
-                  Open site
-                  <ArrowUpRight size={16} aria-hidden="true" />
-                </a>
-              </article>
-            ))}
           </div>
         </div>
       </section>
@@ -304,16 +383,16 @@ export default function Home() {
       <section id="contact" className="section-wrap contact-section" aria-labelledby="contact-title">
         <div>
           <p className="eyebrow">For recruiters</p>
-          <h2 id="contact-title">Evaluate the work, then talk to Adam.</h2>
+          <h2 id="contact-title">Evaluate the work, then get in touch.</h2>
           <p>
-            Phlosion complements AdamWentworth.ca by showing how Adam thinks about users, market constraints,
-            architecture, testing, deployment, and support beyond a traditional resume.
+            Phlosion complements the resume site by showing product constraints, architecture, testing, deployment, and
+            support decisions beyond a traditional resume.
           </p>
         </div>
         <div className="contact-actions">
           <a className="button button-primary" href="mailto:adamjohnwentworth@gmail.com">
             <Sparkles size={18} aria-hidden="true" />
-            Contact Adam
+            Email
           </a>
           <a className="button button-secondary" href="https://adamwentworth.ca" target="_blank" rel="noreferrer">
             <FileText size={18} aria-hidden="true" />

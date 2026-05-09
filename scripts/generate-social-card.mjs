@@ -41,7 +41,7 @@ const background = Buffer.from(svg`
     <rect x="72" y="70" width="1056" height="490" rx="28" fill="url(#panel)" stroke="#E6C991" stroke-opacity="0.76" stroke-width="2"/>
     <path d="M88 512C276 480 440 528 612 496C796 462 920 378 1116 424" stroke="#FF5A00" stroke-opacity="0.18" stroke-width="18" stroke-linecap="round"/>
     <path d="M88 526C278 494 454 544 628 510C800 476 930 392 1116 438" stroke="#002B4F" stroke-opacity="0.13" stroke-width="10" stroke-linecap="round"/>
-    <text x="402" y="356" fill="#C72916" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="31" font-weight="900" letter-spacing="0">SOFTWARE PRODUCT LAB BY ADAM WENTWORTH</text>
+    <text x="402" y="356" fill="#C72916" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="31" font-weight="900" letter-spacing="0">SOFTWARE PRODUCT LAB</text>
     <text x="402" y="414" fill="#33485E" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="34" font-weight="760" letter-spacing="0">Case studies for full-stack services,</text>
     <text x="402" y="460" fill="#33485E" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="34" font-weight="760" letter-spacing="0">AI systems, desktop tools, and games.</text>
   </svg>

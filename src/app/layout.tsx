@@ -21,10 +21,10 @@ export const metadata: Metadata = {
     siteName: 'Phlosion',
     images: [
       {
-        url: '/phlosion-lockup.png',
-        width: 1536,
-        height: 587,
-        alt: 'Phlosion',
+        url: '/social-card.png',
+        width: 1200,
+        height: 630,
+        alt: 'Phlosion software product lab',
       },
     ],
     type: 'website',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: 'Phlosion | Software Product Lab',
     description:
       'A product studio for ambitious software experiments across AI assistants, full-stack systems, and games.',
-    images: ['/phlosion-lockup.png'],
+    images: ['/social-card.png'],
   },
   icons: {
     icon: [{ url: '/phlosion-mark.png', type: 'image/png' }],

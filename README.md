@@ -38,6 +38,7 @@ npm run dev
 
 ```bash
 npm run format
+npm run generate:social-card
 npm run optimize:media
 npm run verify
 ```

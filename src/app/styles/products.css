@@ -294,13 +294,13 @@
 }
 
 .site-brand-panel-resume {
-  min-height: 126px;
+  min-height: 86px;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   background:
     radial-gradient(circle at 16% 48%, rgba(54, 145, 255, 0.28), transparent 38%),
     linear-gradient(90deg, rgba(226, 235, 244, 0.82), rgba(33, 39, 46, 0.12));
-  padding: 14px 18px;
+  padding: 8px 14px;
 }
 
 .site-brand-panel img {
@@ -312,14 +312,14 @@
 }
 
 .site-brand-panel-resume .site-brand-resume-mark {
-  width: 94px !important;
-  height: 94px !important;
+  width: 56px !important;
+  height: 56px !important;
 }
 
 .site-brand-panel-resume .site-brand-resume-wordmark {
-  width: min(360px, calc(100% - 110px)) !important;
+  width: min(290px, calc(100% - 68px)) !important;
   height: auto !important;
-  flex: 1 1 auto;
+  flex: 0 1 290px;
   min-width: 0;
   object-fit: contain;
 }

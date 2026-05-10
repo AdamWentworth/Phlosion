@@ -38,7 +38,7 @@ const siteCaseStudies = [
     name: 'AdamWentworth.ca',
     status: 'Live site',
     track: 'Resume and portfolio surface',
-    brandStatus: 'Personal branding pending',
+    brandStatus: 'Adam Wentworth brand system',
     stack: ['Astro', 'TypeScript', 'CSS', 'Vercel'],
     summary:
       'A personal resume site for Adam Wentworth with education, experience, skills, selected projects, SEO metadata, sitemap output, and PDF resume access.',
@@ -47,7 +47,7 @@ const siteCaseStudies = [
     productConstraint:
       'A resume site has to be fast, direct, scannable, and easy for recruiters to map back to experience and contact paths.',
     href: 'https://adamwentworth.ca',
-    brand: 'placeholder',
+    brand: 'resume',
   },
   {
     name: 'Phlosion.com',
@@ -78,6 +78,29 @@ function SiteBrand({ site }: { site: (typeof siteCaseStudies)[number] }) {
           width={1877}
           height={342}
           sizes="220px"
+        />
+      </div>
+    );
+  }
+
+  if (site.brand === 'resume') {
+    return (
+      <div className="site-brand-panel site-brand-panel-resume" aria-label="Adam Wentworth brand">
+        <Image
+          className="site-brand-resume-mark"
+          src="/sites/adam-wentworth/aw-mark.png"
+          alt=""
+          width={640}
+          height={640}
+          sizes="92px"
+        />
+        <Image
+          className="site-brand-resume-wordmark"
+          src="/sites/adam-wentworth/aw-wordmark.png"
+          alt=""
+          width={1270}
+          height={205}
+          sizes="(max-width: 640px) 62vw, 360px"
         />
       </div>
     );

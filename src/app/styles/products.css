@@ -276,7 +276,8 @@
 
 .site-brand-panel {
   display: flex;
-  min-height: 92px;
+  height: 98px;
+  min-height: 98px;
   align-items: center;
   gap: 14px;
   overflow: hidden;
@@ -294,13 +295,12 @@
 }
 
 .site-brand-panel-resume {
-  min-height: 86px;
   align-items: center;
   gap: 12px;
   background:
     radial-gradient(circle at 16% 48%, rgba(54, 145, 255, 0.28), transparent 38%),
     linear-gradient(90deg, rgba(226, 235, 244, 0.82), rgba(33, 39, 46, 0.12));
-  padding: 8px 14px;
+  padding: 12px 14px;
 }
 
 .site-brand-panel img {

@@ -213,7 +213,7 @@ h3 {
   overflow: hidden;
   border: 1px solid var(--line-strong);
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(255, 90, 0, 0.08), rgba(255, 249, 239, 0.86) 44%), var(--surface-raised);
+  background: rgba(255, 253, 249, 0.9);
   box-shadow: var(--shadow-soft);
 }
 
@@ -222,6 +222,7 @@ h3 {
   --signal-soft: rgba(255, 90, 0, 0.13);
   position: relative;
   min-height: 116px;
+  background: linear-gradient(180deg, var(--signal-soft), rgba(255, 253, 249, 0.48) 62%);
   padding: 15px;
 }
 

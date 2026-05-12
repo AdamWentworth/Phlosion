@@ -29,12 +29,12 @@ const navItems = [
 ];
 
 const labSignals = [
-  { label: 'Apps', icon: MonitorSmartphone },
-  { label: 'AI', icon: Bot },
-  { label: 'Tools', icon: Wrench },
-  { label: 'Games', icon: Gamepad2 },
-  { label: 'Engines', icon: Cpu },
-] satisfies { label: string; icon: LucideIcon }[];
+  { label: 'Apps', value: 'Web + mobile', icon: MonitorSmartphone },
+  { label: 'AI', value: 'Local systems', icon: Bot },
+  { label: 'Tools', value: 'Desktop workflows', icon: Wrench },
+  { label: 'Games', value: 'Playable prototypes', icon: Gamepad2 },
+  { label: 'Engines', value: 'Runtime systems', icon: Cpu },
+] satisfies { label: string; value: string; icon: LucideIcon }[];
 
 const siteBuilds = [
   {
@@ -255,18 +255,20 @@ export default function Home() {
                 <ArrowUpRight size={18} aria-hidden="true" />
               </a>
             </div>
+            <dl className="signal-row" aria-label="Phlosion software lab focus areas">
+              {labSignals.map(({ label, value, icon: Icon }) => (
+                <div key={label} data-signal={label.toLowerCase()}>
+                  <dt>
+                    <span className="signal-icon" aria-hidden="true">
+                      <Icon size={22} strokeWidth={2.25} />
+                    </span>
+                    {label}
+                  </dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
-
-          <ul className="hero-spectrum" aria-label="Phlosion software lab focus areas">
-            {labSignals.map(({ label, icon: Icon }) => (
-              <li key={label} data-signal={label.toLowerCase()}>
-                <span className="hero-spectrum-icon" aria-hidden="true">
-                  <Icon size={28} strokeWidth={2.25} />
-                </span>
-                <span className="hero-spectrum-label">{label}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 

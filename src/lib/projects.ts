@@ -61,7 +61,7 @@ const nexusTagGroups = [
   },
   {
     label: 'Backend',
-    tags: ['Go', 'net/http', 'chi', 'Fiber', 'Kafka', 'MySQL', 'Postgres/PostGIS', 'Node', 'Express', 'MongoDB'],
+    tags: ['Go', 'net/http', 'chi', 'Fiber', 'Node', 'Express', 'MongoDB', 'Kafka', 'MySQL', 'Postgres/PostGIS'],
   },
   {
     label: 'Delivery',

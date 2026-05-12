@@ -314,6 +314,11 @@
   height: 16px;
 }
 
+.tech-badge-icon .tech-icon-image-vite {
+  width: 17px;
+  height: 17px;
+}
+
 .contact-section {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;

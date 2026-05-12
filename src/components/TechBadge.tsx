@@ -52,6 +52,29 @@ function CustomTechIconGlyph({ kind }: { kind: CustomTechIcon }) {
     );
   }
 
+  if (kind === 'zustand') {
+    return (
+      <svg aria-hidden="true" className="tech-badge-svg tech-badge-svg-text" viewBox="0 0 24 24">
+        <path d="M4.4 5.1h15.2v13.8H4.4V5.1Zm3.2 3v2.6h5.6l-5.9 5.2v2h9.9v-2.6h-5.8l5.8-5.2v-2H7.6Z" opacity="0.28" />
+        <text x="12" y="16" textAnchor="middle" fontSize="11.2" fontWeight="950">
+          Z
+        </text>
+      </svg>
+    );
+  }
+
+  if (kind === 'indexeddb') {
+    return (
+      <svg aria-hidden="true" className="tech-badge-svg tech-badge-svg-text" viewBox="0 0 24 24">
+        <path d="M5 6.6c0-2.1 14-2.1 14 0v10.8c0 2.1-14 2.1-14 0V6.6Z" opacity="0.26" />
+        <path d="M5 6.6c0 2.1 14 2.1 14 0M5 12c0 2.1 14 2.1 14 0M5 17.4c0 2.1 14 2.1 14 0" />
+        <text x="12" y="14.3" textAnchor="middle" fontSize="5.9" fontWeight="950">
+          IDB
+        </text>
+      </svg>
+    );
+  }
+
   if (kind === 'sdl') {
     return (
       <svg aria-hidden="true" className="tech-badge-svg" viewBox="0 0 24 24">

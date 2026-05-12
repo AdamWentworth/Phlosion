@@ -31,7 +31,6 @@ import {
   siTailwindcss,
   siTypescript,
   siVercel,
-  siVite,
 } from 'simple-icons';
 
 export type CustomTechIcon =
@@ -41,9 +40,11 @@ export type CustomTechIcon =
   | 'fiber'
   | 'gamecube'
   | 'http'
+  | 'indexeddb'
   | 'package'
   | 'sdl'
   | 'voice'
+  | 'zustand'
   | 'chi';
 
 export type TechIconDefinition =
@@ -100,7 +101,6 @@ const simpleTechIcons: Record<string, SimpleIcon> = {
   'Tailwind CSS': siTailwindcss,
   TypeScript: siTypescript,
   Vercel: siVercel,
-  Vite: siVite,
 };
 
 const imageTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'image' }>> = {
@@ -125,6 +125,13 @@ const imageTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'image'
     color: '#729b1b',
     className: 'tech-icon-image-vitest',
   },
+  Vite: {
+    kind: 'image',
+    src: '/tech/vite-logo.svg',
+    alt: '',
+    color: '#9162ff',
+    className: 'tech-icon-image-vite',
+  },
 };
 
 const customTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'custom' }>> = {
@@ -133,12 +140,14 @@ const customTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'custo
   'Direct3D 12': { kind: 'custom', custom: 'direct3d', color: '#10893e' },
   Fiber: { kind: 'custom', custom: 'fiber', color: '#00add8' },
   'GameCube ISO': { kind: 'custom', custom: 'gamecube', color: '#5f4bb6' },
+  IndexedDB: { kind: 'custom', custom: 'indexeddb', color: '#2f6db3' },
   'net/http': { kind: 'custom', custom: 'http', color: '#00add8' },
   'Release packaging': { kind: 'custom', custom: 'package', color: '#b94d00' },
   SDL2: { kind: 'custom', custom: 'sdl', color: '#17395f' },
   vcpkg: { kind: 'custom', custom: 'package', color: '#3f7f5f' },
   'Whisper ASR': { kind: 'custom', custom: 'voice', color: '#ff5a00' },
   'Windows/Linux': { kind: 'custom', custom: 'package', color: '#0078d4' },
+  Zustand: { kind: 'custom', custom: 'zustand', color: '#7a4c24' },
   chi: { kind: 'custom', custom: 'chi', color: '#00a650' },
 };
 

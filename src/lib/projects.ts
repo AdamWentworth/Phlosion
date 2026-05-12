@@ -56,20 +56,20 @@ const flattenTagGroups = (groups: TechTagGroup[]) => groups.flatMap((group) => g
 
 const nexusTagGroups = [
   {
-    label: 'Web client',
-    tags: ['React', 'React Router', 'Vite', 'TypeScript', 'Zustand', 'IndexedDB', 'Vitest'],
+    label: 'Frontend clients',
+    tags: ['React', 'React Router', 'Vite', 'TypeScript', 'Expo', 'Zustand', 'IndexedDB', 'Vitest'],
   },
   {
-    label: 'Mobile path',
-    tags: ['Expo'],
-  },
-  {
-    label: 'Go services',
+    label: 'Go service layer',
     tags: ['Go', 'net/http', 'chi', 'Fiber'],
   },
   {
-    label: 'Auth, sync, data',
-    tags: ['Node', 'Express', 'MongoDB', 'Kafka', 'MySQL', 'Postgres/PostGIS'],
+    label: 'Auth service',
+    tags: ['Node', 'Express', 'MongoDB'],
+  },
+  {
+    label: 'Sync and data stores',
+    tags: ['Kafka', 'MySQL', 'Postgres/PostGIS'],
   },
   {
     label: 'Delivery',

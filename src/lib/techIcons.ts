@@ -9,6 +9,7 @@ import {
   siDocker,
   siDotnet,
   siExpress,
+  siExpo,
   siFastapi,
   siGo,
   siJson,
@@ -24,11 +25,13 @@ import {
   siPostgresql,
   siPython,
   siReact,
+  siReactrouter,
   siSqlite,
   siTauri,
   siTailwindcss,
   siTypescript,
   siVercel,
+  siVite,
   siVitest,
 } from 'simple-icons';
 
@@ -71,6 +74,7 @@ const simpleTechIcons: Record<string, SimpleIcon> = {
   Docker: siDocker,
   CSS: siCss,
   '.NET 10': siDotnet,
+  Expo: siExpo,
   Express: siExpress,
   FastAPI: siFastapi,
   Go: siGo,
@@ -91,11 +95,13 @@ const simpleTechIcons: Record<string, SimpleIcon> = {
   PostgreSQL: siPostgresql,
   Python: siPython,
   React: siReact,
+  'React Router': siReactrouter,
   SQLite: siSqlite,
   Tauri: siTauri,
   'Tailwind CSS': siTailwindcss,
   TypeScript: siTypescript,
   Vercel: siVercel,
+  Vite: siVite,
   Vitest: siVitest,
 };
 

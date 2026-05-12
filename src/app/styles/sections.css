@@ -207,10 +207,6 @@
   margin-top: 2px;
 }
 
-.tech-badge-list-stage {
-  margin-top: 4px;
-}
-
 .tech-badge {
   display: inline-flex;
   min-height: 31px;
@@ -317,9 +313,8 @@
 }
 
 .line-facts div,
-.stage-facts div,
 .product-proof-list div,
-.stage-proof-grid div,
+.demo-scene-list div,
 .project-evidence-grid div {
   border-color: var(--line);
 }

@@ -370,15 +370,13 @@
   color: var(--text-muted) !important;
 }
 
-.line-facts,
-.stage-facts {
+.line-facts {
   display: grid;
   gap: 10px;
   margin: 10px 0 22px;
 }
 
 .product-proof-list,
-.stage-proof-grid,
 .project-evidence-grid {
   display: grid;
   gap: 10px;
@@ -390,18 +388,14 @@
 }
 
 .line-facts div,
-.stage-facts div,
 .product-proof-list div,
-.stage-proof-grid div,
 .project-evidence-grid div {
   border-top: 1px solid rgba(244, 234, 209, 0.1);
   padding-top: 12px;
 }
 
 .line-facts dt,
-.stage-facts dt,
 .product-proof-list dt,
-.stage-proof-grid dt,
 .project-evidence-grid dt {
   color: var(--text-muted);
   font-size: 11px;
@@ -410,9 +404,7 @@
 }
 
 .line-facts dd,
-.stage-facts dd,
 .product-proof-list dd,
-.stage-proof-grid dd,
 .project-evidence-grid dd {
   margin: 5px 0 0;
   color: var(--highlight);
@@ -422,7 +414,6 @@
 }
 
 .product-proof-list dd,
-.stage-proof-grid dd,
 .project-evidence-grid dd {
   color: var(--text-secondary);
   font-weight: 700;

@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { ProjectIconFrame } from '@/components/ProjectBrand';
-import { TechBadgeList } from '@/components/TechBadge';
 import { getImageSize } from '@/lib/imageSizes';
 import { projects, type Project } from '@/lib/projects';
 
@@ -32,9 +31,9 @@ function DemoVisual({ project }: { project: Project }) {
           <div className="demo-route" />
         </div>
         <div className="demo-feed">
-          <span>Raid lobby opened</span>
-          <strong>12 trainers nearby</strong>
-          <span>Kafka event delivered</span>
+          <span>Collection filters active</span>
+          <strong>Nearby trade matches</strong>
+          <span>Proposal ready</span>
         </div>
       </div>
     );
@@ -135,6 +134,7 @@ function DemoVisual({ project }: { project: Project }) {
 export function ProductShowcase() {
   const [activeProjectName, setActiveProjectName] = useState(projects[0].name);
   const activeProject = projects.find((project) => project.name === activeProjectName) ?? projects[0];
+  const demoScenes = activeProject.demo.scenes ?? [];
 
   return (
     <section id="demos" className="section-wrap demo-section" aria-labelledby="demos-title">
@@ -177,16 +177,6 @@ export function ProductShowcase() {
               {activeProject.demo.label}
             </h3>
             <p>{activeProject.demo.summary}</p>
-            <dl className="stage-facts" aria-label={`${activeProject.name} product context`}>
-              <div>
-                <dt>Delivery surface</dt>
-                <dd>{activeProject.deliverySurface}</dd>
-              </div>
-              <div>
-                <dt>User/workflow fit</dt>
-                <dd>{activeProject.productConstraint}</dd>
-              </div>
-            </dl>
             <ul className="demo-steps">
               {activeProject.demo.steps.map((step) => (
                 <li key={step}>
@@ -195,19 +185,16 @@ export function ProductShowcase() {
                 </li>
               ))}
             </ul>
-            <dl className="stage-proof-grid" aria-label={`${activeProject.name} implementation details`}>
-              {activeProject.proof.slice(0, 3).map((proof) => (
-                <div key={proof.label}>
-                  <dt>{proof.label}</dt>
-                  <dd>{proof.text}</dd>
-                </div>
-              ))}
-            </dl>
-            <TechBadgeList
-              labels={activeProject.tags.slice(0, 8)}
-              ariaLabel={`${activeProject.name} technology stack`}
-              className="tech-badge-list-stage"
-            />
+            {demoScenes.length > 0 && (
+              <dl className="demo-scene-list" aria-label={`${activeProject.name} demo moments`}>
+                {demoScenes.map((scene) => (
+                  <div key={scene.label}>
+                    <dt>{scene.label}</dt>
+                    <dd>{scene.text}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
             <a href={activeProject.href} target="_blank" rel="noreferrer">
               Open repository
               <ArrowUpRight size={16} aria-hidden="true" />

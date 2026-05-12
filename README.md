@@ -14,7 +14,7 @@ The site shows full-stack services, local AI systems, desktop tooling, web surfa
 
 ## Portfolio Tracks
 
-- **Pokemon Go Nexus:** full-stack coordination system
+- **Pokemon Go Nexus:** full-stack collection and trade platform
 - **Jarvin:** local AI assistant platform
 - **Cipher Snagem Editor:** cross-platform desktop tooling
 - **Pokemon Autochess:** systems-heavy game prototype

@@ -39,6 +39,10 @@ export type Project = {
     metric: string;
     summary: string;
     steps: string[];
+    scenes?: {
+      label: string;
+      text: string;
+    }[];
   };
 };
 
@@ -46,53 +50,58 @@ export const projects: Project[] = [
   {
     name: 'Pokemon Go Nexus',
     status: 'Active build',
-    track: 'Full-stack coordination system',
-    audience: 'Pokemon GO players and local communities',
-    labRole: 'Full-stack product candidate',
-    labTrack: 'Service app',
+    track: 'Full-stack collection and trade platform',
+    audience: 'Pokemon GO collectors, traders, and local communities',
+    labRole: 'Full-stack product platform',
+    labTrack: 'Collection + trade app',
     deliverySurface:
-      'Web/mobile clients, event workflows, location search, update delivery, and service infrastructure.',
+      'React/Vite web app, Expo mobile path, auth, Pokemon API, users/search/events/location services, receiver/storage pipeline, and NGINX routing.',
     productConstraint:
-      'Coordination tools need trusted live state, nearby-player context, and deployment paths that could later support private hosted communities.',
+      'Collection and trade software needs rich variant modeling, trusted account state, location-aware discovery, offline-friendly local storage, live sync, and deployment paths that can support hosted communities.',
     summary:
-      'An active full-stack coordination platform with React web/mobile clients, Go and Express services, Kafka event sync, geospatial search, and persistent storage.',
+      'An active full-stack Pokemon GO platform for managing collections, browsing variants, finding trainers, proposing trades, and syncing updates across web/mobile clients and backend services.',
     details:
-      'Nexus shows product-minded full-stack work: accounts, live event workflows, location intelligence, durable storage, deployment wiring, and user-facing coordination tools around a real community workflow.',
+      'Nexus is built as a product system, not a single app screen: collection management, public trainer views, search/list/map discovery, trade lifecycle flows, cached Pokemon data, service-worker batching, IndexedDB hydration, Kafka-backed persistence, SSE updates, and production-oriented deployment work all sit in one monorepo.',
     proof: [
       {
-        label: 'Service map',
-        text: 'The monorepo separates authentication, Pokemon data, location, receiver/storage, search, users, events, NGINX, tests, and frontend workspaces.',
+        label: 'Product surface',
+        text: 'The web app covers registration/login, account settings, collection browsing, Pokédex and owned-instance overlays, tag buckets, public trainer collections, search, map results, trade proposals, and trade status review.',
       },
       {
-        label: 'Live data flow',
-        text: 'Frontend batches flow through authenticated Go receivers into Kafka, storage consumers, MySQL persistence, and SSE-driven readers.',
+        label: 'Sync model',
+        text: 'Client edits update Zustand stores, persist through IndexedDB, queue receiver batches, flow through authenticated Go ingestion into Kafka/MySQL, then return through SSE and missed-update readers.',
       },
       {
-        label: 'Location intelligence',
-        text: 'PostGIS-backed location services and search readers support nearby-player and nearby-activity workflows instead of simple static lists.',
+        label: 'Service topology',
+        text: 'Auth runs on Express/MongoDB; Pokemon data uses Go net/http plus chi over SQLite; users/search/events/receiver/storage/location services use Go, MySQL, Kafka, and PostGIS behind NGINX route namespaces.',
       },
       {
-        label: 'Delivery surface',
-        text: 'Docker, NGINX, service docs, backups, Vitest coverage, and shared frontend packages make the system closer to a hosted product.',
+        label: 'Delivery discipline',
+        text: 'The repo includes Docker/compose service boundaries, frontend CI workflows, Vitest and browser-proofing paths, service tests, health/readiness probes, metrics, Trivy/SBOM checks, and deployment notes.',
       },
     ],
     repositorySignals: [
       {
-        label: 'Pokemon API',
-        text: 'Current API is Go net/http plus chi over SQLite with response caching, gzip/ETag support, health checks, readiness checks, and internal cache endpoints.',
+        label: 'Frontend workspace',
+        text: 'The frontend is a workspace with React 19, React Router 7, Vite 8, TypeScript 6, Zustand stores, shared contracts, shared UI tokens, IndexedDB persistence, SSE context, and Playwright/Vitest coverage.',
       },
       {
-        label: 'Go services',
-        text: 'Location, receiver, search, users, and events services use Fiber, Kafka, GORM/MySQL, PostGIS, JWT, Prometheus, and structured logging.',
+        label: 'Mobile path',
+        text: 'The Expo React Native app consumes shared contracts and has shipped vertical slices for auth, trainer search, Pokemon catalog, collection editing, search, trades, account/register, and mutation sync.',
       },
       {
-        label: 'Client state',
-        text: 'The React client workspaces include live update flows, IndexedDB state, shared packages, and web/mobile-facing product surfaces.',
+        label: 'Backend services',
+        text: 'The backend combines the cached Go Pokemon API, hardened auth, user overview/public snapshots, trade/wanted search, location autocomplete/geocode/reverse lookup, receiver ingestion, storage persistence, and events streaming.',
       },
     ],
     tags: [
       'React',
+      'React Router',
+      'Vite',
       'TypeScript',
+      'Zustand',
+      'IndexedDB',
+      'Expo',
       'Go',
       'net/http',
       'chi',
@@ -120,10 +129,25 @@ export const projects: Project[] = [
     },
     demo: {
       kind: 'nexus',
-      label: 'Raid coordination surface',
-      metric: 'Event sync',
-      summary: 'A live operations view for local events, nearby players, location search, and update delivery.',
-      steps: ['Find nearby activity', 'Publish event state', 'Sync mobile clients'],
+      label: 'Collection + trade walkthrough',
+      metric: 'Trade flow',
+      summary:
+        'A walkthrough surface for browsing a collection, finding location-aware matches, and moving into the trade flow.',
+      steps: ['Open collection', 'Search nearby matches', 'Propose trade'],
+      scenes: [
+        {
+          label: 'Collection workspace',
+          text: 'Browse variants, owned instances, caught/trade/wanted states, and tag-driven views.',
+        },
+        {
+          label: 'Search and map',
+          text: 'Switch between trainer search, Pokemon filters, list results, and map-backed discovery.',
+        },
+        {
+          label: 'Trade lifecycle',
+          text: 'Move from a selected match into proposals, status review, decisions, and completion/cancel flows.',
+        },
+      ],
     },
   },
   {

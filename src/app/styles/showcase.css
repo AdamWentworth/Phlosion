@@ -127,10 +127,6 @@
   font-size: 18px;
 }
 
-.stage-facts {
-  width: 100%;
-}
-
 .demo-steps {
   display: grid;
   gap: 10px;
@@ -150,6 +146,33 @@
 .demo-steps svg {
   color: var(--success);
   flex: 0 0 auto;
+}
+
+.demo-scene-list {
+  display: grid;
+  width: 100%;
+  gap: 10px;
+  margin: 0 0 24px;
+}
+
+.demo-scene-list div {
+  border-top: 1px solid rgba(244, 234, 209, 0.1);
+  padding-top: 12px;
+}
+
+.demo-scene-list dt {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.demo-scene-list dd {
+  margin: 5px 0 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .stage-copy a {

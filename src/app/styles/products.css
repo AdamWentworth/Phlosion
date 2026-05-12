@@ -299,61 +299,93 @@
   min-height: auto;
 }
 
+.product-line.site-card-resume {
+  border-color: rgba(42, 129, 255, 0.24);
+  background:
+    radial-gradient(circle at 84% 0%, rgba(61, 145, 255, 0.26), transparent 32%),
+    radial-gradient(circle at 14% 18%, rgba(255, 180, 31, 0.12), transparent 30%),
+    linear-gradient(225deg, rgba(42, 129, 255, 0.2), rgba(245, 248, 252, 0.9) 36%, #fff8ea 78%, #fffdf8);
+}
+
+.product-line.site-card-phlosion {
+  border-color: rgba(255, 90, 0, 0.24);
+  background:
+    radial-gradient(circle at 82% 4%, rgba(255, 90, 0, 0.18), transparent 34%),
+    radial-gradient(circle at 14% 18%, rgba(255, 180, 31, 0.16), transparent 30%),
+    linear-gradient(225deg, rgba(255, 90, 0, 0.14), rgba(255, 249, 239, 0.9) 42%), var(--surface-raised);
+}
+
 .site-brand-panel {
-  display: flex;
-  height: 98px;
-  min-height: 98px;
+  display: inline-flex;
+  box-sizing: border-box;
+  width: min(360px, 100%);
+  min-width: 0;
+  max-width: 360px;
+  height: 112px;
+  min-height: 0;
   align-items: center;
-  gap: 14px;
+  justify-content: flex-start;
+  gap: 10px;
   overflow: hidden;
-  border: 1px solid rgba(0, 67, 111, 0.16);
+  border: 1px solid rgba(0, 67, 111, 0.12);
   border-radius: 8px;
-  background: radial-gradient(circle at 18% 48%, rgba(255, 180, 31, 0.18), transparent 42%), rgba(255, 253, 249, 0.74);
+  background: rgba(255, 253, 249, 0.82);
   margin: -4px 0 18px;
-  padding: 12px 14px;
+  padding: 8px 10px;
 }
 
 .site-brand-panel-phlosion {
-  background:
-    radial-gradient(circle at 18% 46%, rgba(255, 90, 0, 0.16), transparent 42%),
-    radial-gradient(circle at 84% 24%, rgba(0, 67, 111, 0.08), transparent 30%), rgba(255, 253, 249, 0.84);
+  border-color: rgba(255, 90, 0, 0.22);
+  background: #fef8ed;
+  box-shadow: none;
 }
 
 .site-brand-panel-resume {
   align-items: center;
-  gap: 12px;
-  border-color: rgba(18, 28, 38, 0.18);
-  background:
-    radial-gradient(circle at 18% 48%, rgba(255, 255, 255, 0.92), transparent 34%),
-    radial-gradient(circle at 84% 20%, rgba(18, 28, 38, 0.1), transparent 30%),
-    linear-gradient(90deg, rgba(255, 253, 249, 0.96), rgba(228, 226, 220, 0.78));
-  padding: 12px 14px;
+  gap: 8px;
+  border-color: rgba(42, 129, 255, 0.2);
+  background: #f5f8fc;
+  box-shadow: none;
+  padding: 8px 10px;
 }
 
 .site-brand-panel img {
   display: block;
   flex: 0 0 auto;
-  width: 72px;
-  height: 72px;
+  width: 68px;
+  height: 68px;
   object-fit: contain;
+}
+
+.site-brand-panel-phlosion > img:first-child {
+  width: 72px !important;
+  height: 72px !important;
+  filter: drop-shadow(0 0 12px rgba(255, 90, 0, 0.18)) drop-shadow(0 7px 11px rgba(72, 45, 13, 0.18));
 }
 
 .site-brand-panel-resume .site-brand-resume-mark {
-  width: 56px !important;
-  height: 56px !important;
+  width: 64px !important;
+  height: 64px !important;
+  transform: scale(1.22);
 }
 
 .site-brand-panel-resume .site-brand-resume-wordmark {
-  width: min(290px, calc(100% - 68px)) !important;
+  width: min(226px, calc(100% - 92px)) !important;
   height: auto !important;
-  flex: 0 1 290px;
+  flex: 1 1 auto;
   min-width: 0;
   object-fit: contain;
+  filter: drop-shadow(0 6px 10px rgba(0, 43, 79, 0.1));
+  transform: scale(1.08);
+  transform-origin: left center;
 }
 
 .site-brand-wordmark {
-  width: min(220px, calc(100% - 86px)) !important;
+  width: min(202px, calc(100% - 92px)) !important;
   height: auto !important;
+  flex: 1 1 auto;
+  min-width: 0;
+  filter: drop-shadow(0 7px 12px rgba(72, 45, 13, 0.12));
 }
 
 .site-monogram {

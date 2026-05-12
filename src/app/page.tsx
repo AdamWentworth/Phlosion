@@ -81,7 +81,7 @@ function SiteBrand({ site }: { site: (typeof siteBuilds)[number] }) {
           alt="Phlosion"
           width={1877}
           height={342}
-          sizes="220px"
+          sizes="200px"
         />
       </div>
     );
@@ -96,7 +96,7 @@ function SiteBrand({ site }: { site: (typeof siteBuilds)[number] }) {
           alt=""
           width={640}
           height={640}
-          sizes="92px"
+          sizes="64px"
         />
         <Image
           className="site-brand-resume-wordmark"
@@ -104,7 +104,7 @@ function SiteBrand({ site }: { site: (typeof siteBuilds)[number] }) {
           alt=""
           width={1270}
           height={205}
-          sizes="(max-width: 640px) 62vw, 360px"
+          sizes="230px"
         />
       </div>
     );
@@ -346,7 +346,7 @@ export default function Home() {
         </div>
         <div className="site-card-grid">
           {siteBuilds.map((site) => (
-            <article key={site.name} className="product-line site-card">
+            <article key={site.name} className={`product-line site-card site-card-${site.brand}`}>
               <div className="product-line-top product-line-top-status-only">
                 <span className="project-status">{site.status}</span>
               </div>

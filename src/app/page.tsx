@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowUpRight, Code2, FileText, Sparkles } from 'lucide-react';
 import { ProjectTitle, ProjectTypeIconFrame } from '@/components/ProjectBrand';
 import { ProductShowcase } from '@/components/ProductShowcase';
-import { TechBadgeList } from '@/components/TechBadge';
+import { TechBadgeGroupList, TechBadgeList } from '@/components/TechBadge';
 import { projects } from '@/lib/projects';
 
 const navItems = [
@@ -198,11 +198,19 @@ export default function Home() {
                   {project.labTrack} / {project.labRole}
                 </p>
                 <p>{project.summary}</p>
-                <TechBadgeList
-                  labels={project.tags}
-                  ariaLabel={`${project.name} technology stack`}
-                  className="tech-badge-list-compact"
-                />
+                {project.tagGroups ? (
+                  <TechBadgeGroupList
+                    groups={project.tagGroups}
+                    ariaLabel={`${project.name} technology stack`}
+                    className="tech-badge-groups-compact"
+                  />
+                ) : (
+                  <TechBadgeList
+                    labels={project.tags}
+                    ariaLabel={`${project.name} technology stack`}
+                    className="tech-badge-list-compact"
+                  />
+                )}
                 <details className="repository-details product-repository-details">
                   <summary>More details</summary>
                   <p className="product-line-detail">{project.details}</p>

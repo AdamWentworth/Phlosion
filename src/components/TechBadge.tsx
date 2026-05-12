@@ -14,6 +14,15 @@ type TechBadgeListProps = {
   className?: string;
 };
 
+type TechBadgeGroupListProps = {
+  groups: {
+    label: string;
+    tags: string[];
+  }[];
+  ariaLabel: string;
+  className?: string;
+};
+
 type TechBadgeStyle = CSSProperties & {
   '--tech-color': string;
 };
@@ -58,15 +67,44 @@ function CustomTechIconGlyph({ kind }: { kind: CustomTechIcon }) {
   }
 
   if (kind === 'direct3d') {
+    const directXPath =
+      'M4 10h20l11 14 11-14h14L42 32l18 22H46L35 40 24 54H4l18-22L4 10ZM62 10h12v44H62V10ZM80 10h12v44H80V10Z';
+
     return (
-      <svg aria-hidden="true" className="tech-badge-svg" viewBox="0 0 24 24">
-        <path d="M0.6 4h4.7l2.9 4.7L11.1 4h4.7l-5.1 8 5.3 8h-4.7l-3.1-4.9L5.1 20H0.4l5.4-8L0.6 4Z" />
-        <rect x="16.4" y="4" width="3.2" height="16" rx="0.8" />
-        <rect x="20.8" y="4" width="3.2" height="16" rx="0.8" />
-        <path
-          d="M1.2 7.1h3.5l1 1.6H2.2l-1-1.6Zm12.8 0h1.1l-1 1.6h-1.2l1.1-1.6Zm2.9 0h2.2v1.6h-2.2V7.1Zm4.4 0h2.2v1.6h-2.2V7.1ZM3.5 11.2h3.1l1 1.6H4.5l-1-1.6Zm6.4 0h2.8l-1 1.6H8.9l1-1.6Zm7 0h2.2v1.6h-2.2v-1.6Zm4.4 0h2.2v1.6h-2.2v-1.6ZM2 15.3h3.1l-1.1 1.6H1l1-1.6Zm10.8 0h2.8l1.1 1.6h-2.9l-1-1.6Zm4.1 0h2.2v1.6h-2.2v-1.6Zm4.4 0h2.2v1.6h-2.2v-1.6Z"
-          opacity="0.3"
-        />
+      <svg aria-hidden="true" className="tech-badge-svg tech-badge-svg-directx" viewBox="0 0 96 64">
+        <defs>
+          <linearGradient id="directx-xii-gradient" x1="0" x2="0" y1="8" y2="56" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="#02a51f" />
+            <stop offset="0.28" stopColor="#78f06f" />
+            <stop offset="0.5" stopColor="#efffed" />
+            <stop offset="0.72" stopColor="#79e66f" />
+            <stop offset="1" stopColor="#028a19" />
+          </linearGradient>
+          <filter id="directx-xii-glow" x="-22%" y="-34%" width="144%" height="168%">
+            <feGaussianBlur stdDeviation="3.4" result="blur" />
+            <feFlood floodColor="#00ff38" floodOpacity="0.75" />
+            <feComposite in2="blur" operator="in" />
+            <feMerge>
+              <feMergeNode />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <clipPath id="directx-xii-clip">
+            <path d={directXPath} />
+          </clipPath>
+        </defs>
+        <g filter="url(#directx-xii-glow)">
+          <path d={directXPath} fill="url(#directx-xii-gradient)" />
+          <g clipPath="url(#directx-xii-clip)">
+            <rect x="0" y="13" width="96" height="4" fill="#052f09" opacity="0.24" />
+            <rect x="0" y="19" width="96" height="4" fill="#ffffff" opacity="0.26" />
+            <rect x="0" y="26" width="96" height="5" fill="#0ba82a" opacity="0.28" />
+            <rect x="0" y="34" width="96" height="5" fill="#ffffff" opacity="0.24" />
+            <rect x="0" y="42" width="96" height="5" fill="#0a8e22" opacity="0.32" />
+            <rect x="0" y="50" width="96" height="3" fill="#ffffff" opacity="0.2" />
+          </g>
+          <path d={directXPath} fill="none" stroke="#ddffd9" strokeWidth="1.4" opacity="0.32" />
+        </g>
       </svg>
     );
   }
@@ -175,5 +213,24 @@ export function TechBadgeList({ labels, ariaLabel, className }: TechBadgeListPro
         </li>
       ))}
     </ul>
+  );
+}
+
+export function TechBadgeGroupList({ groups, ariaLabel, className }: TechBadgeGroupListProps) {
+  const groupClassName = className ? `tech-badge-groups ${className}` : 'tech-badge-groups';
+
+  return (
+    <div className={groupClassName} role="group" aria-label={ariaLabel}>
+      {groups.map((group) => (
+        <div key={group.label} className="tech-badge-group">
+          <p className="tech-badge-group-label">{group.label}</p>
+          <TechBadgeList
+            labels={group.tags}
+            ariaLabel={`${group.label} technologies`}
+            className="tech-badge-list-grouped"
+          />
+        </div>
+      ))}
+    </div>
   );
 }

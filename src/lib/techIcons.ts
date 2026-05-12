@@ -32,7 +32,6 @@ import {
   siTypescript,
   siVercel,
   siVite,
-  siVitest,
 } from 'simple-icons';
 
 export type CustomTechIcon =
@@ -102,7 +101,6 @@ const simpleTechIcons: Record<string, SimpleIcon> = {
   TypeScript: siTypescript,
   Vercel: siVercel,
   Vite: siVite,
-  Vitest: siVitest,
 };
 
 const imageTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'image' }>> = {
@@ -119,6 +117,13 @@ const imageTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'image'
     alt: '',
     color: '#ffb300',
     className: 'tech-icon-image-sol2',
+  },
+  Vitest: {
+    kind: 'image',
+    src: '/tech/vitest-logo.svg',
+    alt: '',
+    color: '#729b1b',
+    className: 'tech-icon-image-vitest',
   },
 };
 

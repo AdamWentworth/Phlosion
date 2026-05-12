@@ -20,6 +20,7 @@ export type Project = {
     text: string;
   }[];
   tags: string[];
+  tagGroups?: TechTagGroup[];
   href: string;
   icon: LucideIcon;
   accent: 'orange' | 'green' | 'blue' | 'cream';
@@ -45,6 +46,81 @@ export type Project = {
     }[];
   };
 };
+
+export type TechTagGroup = {
+  label: string;
+  tags: string[];
+};
+
+const flattenTagGroups = (groups: TechTagGroup[]) => groups.flatMap((group) => group.tags);
+
+const nexusTagGroups = [
+  {
+    label: 'Web client',
+    tags: ['React', 'React Router', 'Vite', 'TypeScript', 'Zustand', 'IndexedDB', 'Vitest'],
+  },
+  {
+    label: 'Mobile path',
+    tags: ['Expo'],
+  },
+  {
+    label: 'Go services',
+    tags: ['Go', 'net/http', 'chi', 'Fiber'],
+  },
+  {
+    label: 'Auth, sync, data',
+    tags: ['Node', 'Express', 'MongoDB', 'Kafka', 'MySQL', 'Postgres/PostGIS'],
+  },
+  {
+    label: 'Delivery',
+    tags: ['Docker', 'NGINX'],
+  },
+] satisfies TechTagGroup[];
+
+const jarvinTagGroups = [
+  {
+    label: 'Host service',
+    tags: ['Python', 'FastAPI', 'SQLite'],
+  },
+  {
+    label: 'Local AI loop',
+    tags: ['llama.cpp', 'Ollama', 'Whisper ASR'],
+  },
+  {
+    label: 'Client surfaces',
+    tags: ['React', 'Tauri'],
+  },
+] satisfies TechTagGroup[];
+
+const cipherTagGroups = [
+  {
+    label: 'Desktop app',
+    tags: ['.NET 10', 'AvaloniaUI', 'C#'],
+  },
+  {
+    label: 'Game data',
+    tags: ['GameCube ISO', 'Binary formats'],
+  },
+  {
+    label: 'Release targets',
+    tags: ['Windows/Linux', 'Release packaging'],
+  },
+] satisfies TechTagGroup[];
+
+const autochessTagGroups = [
+  {
+    label: 'Runtime core',
+    tags: ['C++20', 'CMake', 'vcpkg'],
+  },
+  {
+    label: 'Platform + rendering',
+    tags: ['SDL2', 'OpenGL', 'Direct3D 12'],
+  },
+  {
+    label: 'Gameplay data',
+    tags: ['Lua', 'sol2', 'JSON'],
+  },
+] satisfies TechTagGroup[];
 
 export const projects: Project[] = [
   {
@@ -94,28 +170,8 @@ export const projects: Project[] = [
         text: 'The backend combines the cached Go Pokemon API, hardened auth, user overview/public snapshots, trade/wanted search, location autocomplete/geocode/reverse lookup, receiver ingestion, storage persistence, and events streaming.',
       },
     ],
-    tags: [
-      'React',
-      'React Router',
-      'Vite',
-      'TypeScript',
-      'Zustand',
-      'IndexedDB',
-      'Expo',
-      'Go',
-      'net/http',
-      'chi',
-      'Fiber',
-      'Kafka',
-      'MySQL',
-      'Postgres/PostGIS',
-      'Node',
-      'Express',
-      'MongoDB',
-      'Docker',
-      'NGINX',
-      'Vitest',
-    ],
+    tags: flattenTagGroups(nexusTagGroups),
+    tagGroups: nexusTagGroups,
     href: 'https://github.com/AdamWentworth/Go',
     icon: Globe2,
     accent: 'orange',
@@ -197,7 +253,8 @@ export const projects: Project[] = [
         text: 'llama.cpp and optional Ollama backends sit behind a runtime router, with Whisper ASR and local TTS completing the voice path.',
       },
     ],
-    tags: ['Python', 'FastAPI', 'React', 'Tauri', 'SQLite', 'llama.cpp', 'Ollama', 'Whisper ASR'],
+    tags: flattenTagGroups(jarvinTagGroups),
+    tagGroups: jarvinTagGroups,
     href: 'https://github.com/AdamWentworth/Jarvin',
     icon: Bot,
     accent: 'green',
@@ -263,7 +320,8 @@ export const projects: Project[] = [
         text: 'The README explicitly frames this as the stable legacy-editor parity line, not a general-purpose authoring suite.',
       },
     ],
-    tags: ['.NET 10', 'AvaloniaUI', 'C#', 'GameCube ISO', 'Binary formats', 'Windows/Linux', 'Release packaging'],
+    tags: flattenTagGroups(cipherTagGroups),
+    tagGroups: cipherTagGroups,
     href: 'https://github.com/AdamWentworth/CipherSnagemEditor',
     icon: Archive,
     accent: 'cream',
@@ -329,7 +387,8 @@ export const projects: Project[] = [
         text: 'The repo includes headless smoke tests, invariants, optional GL smoke draw, optional runtime smoke, CI build/test/data validation, and debug state snapshots.',
       },
     ],
-    tags: ['C++20', 'SDL2', 'OpenGL', 'Direct3D 12', 'Lua', 'sol2', 'CMake', 'JSON', 'vcpkg'],
+    tags: flattenTagGroups(autochessTagGroups),
+    tagGroups: autochessTagGroups,
     href: 'https://github.com/AdamWentworth/PokemonAutochess',
     icon: Gamepad2,
     accent: 'blue',

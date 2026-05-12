@@ -21,6 +21,7 @@ const imageSizes = {
   '/products/pokemon-go-nexus/nexus-wordmark-transparent.png': { width: 1561, height: 706 },
   '/tech/llamacpp-logo.svg': { width: 24, height: 24 },
   '/tech/sol2-logo.png': { width: 200, height: 200 },
+  '/tech/vitest-logo.svg': { width: 256, height: 234 },
 } satisfies Record<string, ImageSize>;
 
 export function getImageSize(src: string, fallback: ImageSize): ImageSize {

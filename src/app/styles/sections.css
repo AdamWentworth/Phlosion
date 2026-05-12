@@ -228,6 +228,31 @@
   margin-top: 2px;
 }
 
+.tech-badge-groups {
+  display: grid;
+  gap: 12px;
+  margin: 2px 0 22px;
+}
+
+.tech-badge-group {
+  display: grid;
+  gap: 6px;
+}
+
+.tech-badge-group-label {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.tech-badge-list-grouped {
+  margin: 0;
+}
+
 .tech-badge {
   display: inline-flex;
   min-height: 31px;
@@ -265,6 +290,12 @@
   fill: currentColor;
 }
 
+.tech-badge-svg-directx {
+  width: 21px;
+  height: 15px;
+  overflow: visible;
+}
+
 .tech-badge-svg-text text {
   fill: currentColor;
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
@@ -276,6 +307,11 @@
 
 .tech-icon-image-sol2 {
   border-radius: 999px;
+}
+
+.tech-badge-icon .tech-icon-image-vitest {
+  width: 17px;
+  height: 16px;
 }
 
 .contact-section {

@@ -29,6 +29,12 @@ function ProjectIconGraphic({ project, size }: { project: Project; size: number 
   return <Icon size={size} aria-hidden="true" />;
 }
 
+function ProjectTypeIconGraphic({ project, size }: { project: Project; size: number }) {
+  const Icon = project.icon;
+
+  return <Icon size={size} aria-hidden="true" />;
+}
+
 export function ProjectIconFrame({ project, size, inline = false }: ProjectIconFrameProps) {
   const brandFrameClass =
     project.brand?.iconFrame === 'dark' ? 'project-icon-branded' : project.brand?.icon ? 'project-icon-logo' : '';
@@ -44,6 +50,23 @@ export function ProjectIconFrame({ project, size, inline = false }: ProjectIconF
   return (
     <span className={className}>
       <ProjectIconGraphic project={project} size={size} />
+    </span>
+  );
+}
+
+export function ProjectTypeIconFrame({ project, size, inline = false }: ProjectIconFrameProps) {
+  const className = [
+    'project-icon',
+    'project-type-icon',
+    `project-type-icon-${project.demo.kind}`,
+    inline ? 'project-icon-inline' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  return (
+    <span className={className} aria-label={`${project.track} project type`}>
+      <ProjectTypeIconGraphic project={project} size={size} />
     </span>
   );
 }

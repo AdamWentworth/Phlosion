@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight, Code2, FileText, Sparkles } from 'lucide-react';
-import { ProjectIconFrame, ProjectTitle } from '@/components/ProjectBrand';
+import { ProjectTitle, ProjectTypeIconFrame } from '@/components/ProjectBrand';
 import { ProductShowcase } from '@/components/ProductShowcase';
 import { TechBadgeList } from '@/components/TechBadge';
 import { projects } from '@/lib/projects';
@@ -188,43 +188,36 @@ export default function Home() {
             const hasBrandTitle = Boolean(project.brand?.wordmark);
             return (
               <article key={project.name} className={`product-line product-line-${project.accent}`}>
-                <div className={hasBrandTitle ? 'product-line-top product-line-top-status-only' : 'product-line-top'}>
-                  {!hasBrandTitle && <ProjectIconFrame project={project} size={32} />}
+                <div className="product-line-top">
+                  <ProjectTypeIconFrame project={project} size={24} />
                   <span className="project-status">{project.status}</span>
                 </div>
                 <p className="project-track">
                   {project.labTrack} / {project.labRole}
                 </p>
                 <ProjectTitle project={project} />
+                {hasBrandTitle && <h3 className="product-name">{project.name}</h3>}
                 <p>{project.summary}</p>
-                <p className="product-line-detail">{project.details}</p>
-                <dl className="line-facts">
-                  <div>
-                    <dt>Delivery surface</dt>
-                    <dd>{project.deliverySurface}</dd>
-                  </div>
-                  <div>
-                    <dt>User/workflow fit</dt>
-                    <dd>{project.productConstraint}</dd>
-                  </div>
-                </dl>
-                <dl className="product-proof-list" aria-label={`${project.name} product detail`}>
-                  {project.proof.slice(0, 2).map((proof) => (
-                    <div key={proof.label}>
-                      <dt>{proof.label}</dt>
-                      <dd>{proof.text}</dd>
-                    </div>
-                  ))}
-                </dl>
                 <TechBadgeList
                   labels={project.tags}
                   ariaLabel={`${project.name} technology stack`}
                   className="tech-badge-list-compact"
                 />
                 <details className="repository-details product-repository-details">
-                  <summary>Repository details</summary>
-                  <dl className="project-evidence-grid" aria-label={`${project.name} deeper implementation details`}>
-                    {project.proof.slice(2).map((proof) => (
+                  <summary>More details</summary>
+                  <p className="product-line-detail">{project.details}</p>
+                  <dl className="line-facts">
+                    <div>
+                      <dt>Delivery surface</dt>
+                      <dd>{project.deliverySurface}</dd>
+                    </div>
+                    <div>
+                      <dt>User/workflow fit</dt>
+                      <dd>{project.productConstraint}</dd>
+                    </div>
+                  </dl>
+                  <dl className="product-proof-list" aria-label={`${project.name} product detail`}>
+                    {project.proof.map((proof) => (
                       <div key={proof.label}>
                         <dt>{proof.label}</dt>
                         <dd>{proof.text}</dd>

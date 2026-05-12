@@ -1,4 +1,4 @@
-import { Archive, Bot, Gamepad2, Globe2, type LucideIcon } from 'lucide-react';
+import { Bot, Disc3, Gamepad2, Globe2, type LucideIcon } from 'lucide-react';
 
 export type Project = {
   name: string;
@@ -372,7 +372,7 @@ const productCatalog: Project[] = [
     tags: flattenTagGroups(cipherTagGroups),
     tagGroups: cipherTagGroups,
     href: 'https://github.com/AdamWentworth/CipherSnagemEditor',
-    icon: Archive,
+    icon: Disc3,
     accent: 'cipher',
     brand: {
       alt: 'Cipher Snagem Editor',

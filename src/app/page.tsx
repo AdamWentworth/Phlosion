@@ -11,6 +11,7 @@ import {
   ListChecks,
   Mail,
   MonitorSmartphone,
+  Route,
   Workflow,
   Wrench,
   type LucideIcon,
@@ -169,6 +170,7 @@ function ProductDetails({ project }: { project: Project }) {
         ]}
       />
       <ProductDetailSection icon={ListChecks} title="System behavior" entries={project.proof} />
+      <ProductDetailSection icon={Route} title="Where next" entries={project.nextSteps} />
       <ProductDetailSection icon={GitBranch} title="Codebase signals" entries={project.repositorySignals} />
     </div>
   );

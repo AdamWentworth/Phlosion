@@ -19,6 +19,10 @@ export type Project = {
     label: string;
     text: string;
   }[];
+  nextSteps: {
+    label: string;
+    text: string;
+  }[];
   tags: string[];
   tagGroups?: TechTagGroup[];
   href: string;
@@ -65,7 +69,7 @@ const nexusTagGroups = [
   },
   {
     label: 'Delivery',
-    tags: ['Docker', 'NGINX'],
+    tags: ['Docker', 'NGINX', 'GitHub Actions'],
   },
 ] satisfies TechTagGroup[];
 
@@ -152,7 +156,7 @@ const productCatalog: Project[] = [
       },
       {
         label: 'Delivery discipline',
-        text: 'The repo includes Docker/compose service boundaries, frontend CI workflows, Vitest and browser-proofing paths, service tests, health/readiness probes, metrics, Trivy/SBOM checks, and deployment notes.',
+        text: 'The repo includes Docker/compose service boundaries, GitHub Actions CI/deploy workflows, Vitest and browser-proofing paths, service tests, health/readiness probes, metrics, Trivy/SBOM checks, and deployment notes.',
       },
     ],
     repositorySignals: [
@@ -167,6 +171,24 @@ const productCatalog: Project[] = [
       {
         label: 'Backend services',
         text: 'The backend combines the cached Go Pokemon API, hardened auth, user overview/public snapshots, trade/wanted search, location autocomplete/geocode/reverse lookup, receiver ingestion, storage persistence, and events streaming.',
+      },
+    ],
+    nextSteps: [
+      {
+        label: 'Next build',
+        text: 'The strongest next step is frontend product work: turning the existing service depth into a smoother collection, discovery, and trade-planning experience.',
+      },
+      {
+        label: 'Expansion path',
+        text: 'The backend can keep growing through paired service and interface features, such as community matching, notifications, calculators, and ranking signals.',
+      },
+      {
+        label: 'Blocker',
+        text: 'The backend is close to production-ready; the harder remaining work is time and a UI/UX layer that makes the complex data and trade flows feel clear enough to trust.',
+      },
+      {
+        label: 'Release path',
+        text: 'If the product becomes production viable, the deployment target should move from local server hardware toward cloud hosting with the existing CI/deploy workflow shape.',
       },
     ],
     tags: flattenTagGroups(nexusTagGroups),
@@ -252,6 +274,20 @@ const productCatalog: Project[] = [
         text: 'llama.cpp and optional Ollama backends sit behind a runtime router, with Whisper ASR and local TTS completing the voice path.',
       },
     ],
+    nextSteps: [
+      {
+        label: 'Next build',
+        text: 'The next meaningful work is research: better planning loops, clearer tool-evaluation boundaries, and stronger tests for instruction following.',
+      },
+      {
+        label: 'Blocker',
+        text: 'Local model quality is the main constraint. Stronger GPUs would make larger local LLMs practical and reduce the amount of product logic spent compensating for weak instruction following.',
+      },
+      {
+        label: 'Product path',
+        text: 'The platform can become more useful by tightening the assistant loop around reliable memory, voice behavior, and controlled tool execution rather than chasing novelty.',
+      },
+    ],
     tags: flattenTagGroups(jarvinTagGroups),
     tagGroups: jarvinTagGroups,
     href: 'https://github.com/AdamWentworth/Jarvin',
@@ -302,7 +338,7 @@ const productCatalog: Project[] = [
       },
       {
         label: 'Distribution',
-        text: 'Release packaging covers Windows portable zips, Ubuntu/Debian packages, Linux portable archives, and repeatable GitHub release workflow notes.',
+        text: 'GitHub Actions-backed release packaging covers Windows portable zips, Ubuntu/Debian packages, Linux portable archives, and repeatable release workflow notes.',
       },
     ],
     repositorySignals: [
@@ -317,6 +353,20 @@ const productCatalog: Project[] = [
       {
         label: 'Project scope',
         text: 'The README explicitly frames this as the stable legacy-editor parity line, not a general-purpose authoring suite.',
+      },
+    ],
+    nextSteps: [
+      {
+        label: 'Current state',
+        text: 'The core scope is essentially complete: a Windows/Linux-friendly GUI path for the original Swift/macOS editor concept, with packaging and release hygiene.',
+      },
+      {
+        label: 'Future path',
+        text: 'A later, separate version could become a deeper modding suite for authoring-heavy work like VFX, Pokemon models, animations, and richer game-data editing.',
+      },
+      {
+        label: 'Blocker',
+        text: 'That expansion is a different product scope, with more reverse-engineering risk and more content-authoring complexity than the parity-focused editor line.',
       },
     ],
     tags: flattenTagGroups(cipherTagGroups),
@@ -384,6 +434,20 @@ const productCatalog: Project[] = [
       {
         label: 'Test posture',
         text: 'The repo includes headless smoke tests, invariants, optional GL smoke draw, optional runtime smoke, CI build/test/data validation, and debug state snapshots.',
+      },
+    ],
+    nextSteps: [
+      {
+        label: 'Next build',
+        text: 'The prototype needs more playable content: additional 3D Pokemon models, attacks, mechanics, VFX, and staged encounters that move closer to a Kanto-inspired progression.',
+      },
+      {
+        label: 'Blocker',
+        text: 'The main constraint is content volume and tuning. The runtime has useful systems, but the game needs a larger asset/content pipeline and more playtesting to feel like a complete experience.',
+      },
+      {
+        label: 'Product path',
+        text: 'The right direction is to keep engine work tied to visible gameplay stages so rendering, scripting, combat, and VFX improvements stay grounded in playable behavior.',
       },
     ],
     tags: flattenTagGroups(autochessTagGroups),

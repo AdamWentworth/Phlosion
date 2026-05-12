@@ -95,7 +95,7 @@ const cipherTagGroups = [
   },
   {
     label: 'Release targets',
-    tags: ['Windows/Linux', 'Release packaging'],
+    tags: ['Windows', 'Linux', 'Release packaging'],
   },
 ] satisfies TechTagGroup[];
 

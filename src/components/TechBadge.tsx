@@ -153,6 +153,26 @@ function CustomTechIconGlyph({ kind }: { kind: CustomTechIcon }) {
     );
   }
 
+  if (kind === 'windows') {
+    return (
+      <svg aria-hidden="true" className="tech-badge-svg" viewBox="0 0 24 24">
+        <path d="M3 5.4 10.7 4.4v7.3H3V5.4Zm8.5-1.2L21 3v8.7h-9.5V4.2ZM3 12.5h7.7v7.2L3 18.6v-6.1Zm8.5 0H21V21l-9.5-1.2v-7.3Z" />
+      </svg>
+    );
+  }
+
+  if (kind === 'package' || kind === 'packageCheck') {
+    return (
+      <svg aria-hidden="true" className="tech-badge-svg" viewBox="0 0 24 24">
+        <path d="M12 2.8 20 7v10l-8 4.2L4 17V7l8-4.2Zm0 2.6L7.1 8 12 10.6 16.9 8 12 5.4Z" opacity="0.34" />
+        <path d="M5 8.6 12 12l7-3.4v2.2l-7 3.4-7-3.4V8.6Zm0 4.2 7 3.4 7-3.4V17l-7 3.6L5 17v-4.2Z" />
+        {kind === 'packageCheck' ? (
+          <path d="m9 15.3 1.4-1.4 1.7 1.7 3.7-4.3 1.5 1.3-5.1 5.9L9 15.3Z" fill="var(--surface)" />
+        ) : null}
+      </svg>
+    );
+  }
+
   if (kind === 'voice') {
     return (
       <svg aria-hidden="true" className="tech-badge-svg" viewBox="0 0 24 24">

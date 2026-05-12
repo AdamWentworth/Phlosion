@@ -17,6 +17,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { siGithub } from 'simple-icons';
+import { AnimatedDetails } from '@/components/AnimatedDetails';
 import { ProjectTitle, ProjectTypeIconFrame } from '@/components/ProjectBrand';
 import { ProductShowcase } from '@/components/ProductShowcase';
 import { TechBadgeGroupList, TechBadgeList } from '@/components/TechBadge';
@@ -311,10 +312,9 @@ export default function Home() {
                     className="tech-badge-list-compact"
                   />
                 )}
-                <details className="repository-details product-repository-details">
-                  <summary>More details</summary>
+                <AnimatedDetails className="repository-details product-repository-details" summary="More details">
                   <ProductDetails project={project} />
-                </details>
+                </AnimatedDetails>
                 <div className="product-action-row">
                   <a href="#demos">
                     View demo

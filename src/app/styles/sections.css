@@ -141,7 +141,9 @@
   margin-top: 0;
 }
 
-.repository-details summary {
+.repository-details summary,
+.repository-details-summary {
+  appearance: none;
   display: inline-flex;
   width: fit-content;
   max-width: 100%;
@@ -152,6 +154,7 @@
   background: rgba(255, 249, 239, 0.64);
   color: var(--accent);
   cursor: pointer;
+  font-family: inherit;
   font-size: 12px;
   font-weight: 900;
   list-style: none;
@@ -162,18 +165,63 @@
   display: none;
 }
 
-.repository-details summary::after {
+.repository-details summary::after,
+.repository-details-summary::after {
   content: '+';
   font-size: 15px;
   line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.repository-details-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-top: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    grid-template-rows 260ms ease,
+    margin-top 260ms ease,
+    opacity 180ms ease,
+    transform 260ms ease;
+}
+
+.repository-details-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.repository-details-summary:focus-visible {
+  outline: 3px solid rgba(255, 90, 0, 0.24);
+  outline-offset: 2px;
 }
 
 .repository-details[open] summary {
   margin-bottom: 14px;
 }
 
-.repository-details[open] summary::after {
+.repository-details[data-open='true'] .repository-details-panel {
+  grid-template-rows: 1fr;
+  margin-top: 14px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.repository-details[open] summary::after,
+.repository-details[data-open='true'] .repository-details-summary::after {
   content: '-';
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .repository-details-summary::after,
+  .repository-details-panel {
+    transition: none;
+  }
+
+  .repository-details-panel {
+    transform: none;
+  }
 }
 
 .tech-badge-list {

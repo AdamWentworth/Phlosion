@@ -216,6 +216,14 @@ h3 {
     box-shadow 160ms ease;
 }
 
+.button-brand-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
 .button:hover {
   transform: translateY(-1px);
 }

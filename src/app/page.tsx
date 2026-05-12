@@ -1,16 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  ArrowUpRight,
-  Code2,
-  FileText,
-  GitBranch,
-  Layers,
-  ListChecks,
-  Sparkles,
-  Workflow,
-  type LucideIcon,
-} from 'lucide-react';
+import { ArrowUpRight, FileText, GitBranch, Layers, ListChecks, Mail, Workflow, type LucideIcon } from 'lucide-react';
+import { siGithub } from 'simple-icons';
 import { ProjectTitle, ProjectTypeIconFrame } from '@/components/ProjectBrand';
 import { ProductShowcase } from '@/components/ProductShowcase';
 import { TechBadgeGroupList, TechBadgeList } from '@/components/TechBadge';
@@ -158,6 +149,14 @@ function ProductDetails({ project }: { project: Project }) {
       <ProductDetailSection icon={ListChecks} title="System behavior" entries={project.proof} />
       <ProductDetailSection icon={GitBranch} title="Codebase signals" entries={project.repositorySignals} />
     </div>
+  );
+}
+
+function SimpleIcon({ path }: { path: string }) {
+  return (
+    <svg className="button-brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d={path} />
+    </svg>
   );
 }
 
@@ -355,7 +354,7 @@ export default function Home() {
         </div>
         <div className="contact-actions">
           <a className="button button-primary" href="mailto:adamjohnwentworth@gmail.com">
-            <Sparkles size={18} aria-hidden="true" />
+            <Mail size={18} aria-hidden="true" />
             Email
           </a>
           <a className="button button-secondary" href="https://adamwentworth.ca" target="_blank" rel="noreferrer">
@@ -368,7 +367,7 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
           >
-            <Code2 size={18} aria-hidden="true" />
+            <SimpleIcon path={siGithub.path} />
             GitHub
           </a>
         </div>

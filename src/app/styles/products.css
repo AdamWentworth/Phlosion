@@ -370,14 +370,12 @@
 }
 
 .site-brand-panel-resume .site-brand-resume-wordmark {
-  width: min(226px, calc(100% - 92px)) !important;
+  width: min(218px, calc(100% - 92px)) !important;
   height: auto !important;
   flex: 1 1 auto;
   min-width: 0;
   object-fit: contain;
   filter: drop-shadow(0 6px 10px rgba(0, 43, 79, 0.1));
-  transform: scale(1.08);
-  transform-origin: left center;
 }
 
 .site-brand-wordmark {

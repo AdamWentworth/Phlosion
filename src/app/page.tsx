@@ -104,7 +104,7 @@ function SiteBrand({ site }: { site: (typeof siteBuilds)[number] }) {
           alt=""
           width={1270}
           height={205}
-          sizes="230px"
+          sizes="220px"
         />
       </div>
     );

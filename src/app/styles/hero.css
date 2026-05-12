@@ -288,6 +288,49 @@ h3 {
   --signal-soft: rgba(15, 111, 111, 0.13);
 }
 
+@media (min-width: 1080px) {
+  .hero-copy {
+    display: grid;
+    grid-template-columns: minmax(0, 680px) minmax(270px, 330px);
+    align-items: center;
+    column-gap: clamp(42px, 7vw, 92px);
+  }
+
+  .hero-copy > :not(.signal-row) {
+    grid-column: 1;
+  }
+
+  .signal-row {
+    grid-column: 2;
+    grid-row: 1 / span 5;
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin: 0;
+    align-self: center;
+  }
+
+  .signal-row div {
+    min-height: 92px;
+    padding: 14px;
+  }
+
+  .signal-row div + div {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .signal-row dt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+  }
+
+  .signal-row dd {
+    margin: 8px 0 0 52px;
+  }
+}
+
 .button {
   min-height: 46px;
   justify-content: center;

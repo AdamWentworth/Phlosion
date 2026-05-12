@@ -57,7 +57,7 @@ const flattenTagGroups = (groups: TechTagGroup[]) => groups.flatMap((group) => g
 const nexusTagGroups = [
   {
     label: 'Frontend',
-    tags: ['React', 'React Router', 'Vite', 'TypeScript', 'Expo', 'Zustand', 'IndexedDB', 'Vitest'],
+    tags: ['React', 'TypeScript', 'Vite', 'Expo', 'Vitest'],
   },
   {
     label: 'Backend',
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     summary:
       'An active full-stack Pokemon GO platform for managing collections, browsing variants, finding trainers, proposing trades, and syncing updates across web/mobile clients and backend services.',
     details:
-      'Nexus is built as a product system, not a single app screen: collection management, public trainer views, search/list/map discovery, trade lifecycle flows, cached Pokemon data, service-worker batching, IndexedDB hydration, Kafka-backed persistence, SSE updates, and production-oriented deployment work all sit in one monorepo.',
+      'Nexus is built as a product system, not a single app screen: collection management, public trainer views, search/list/map discovery, trade lifecycle flows, cached Pokemon data, service-worker batching, offline cache hydration, Kafka-backed persistence, SSE updates, and production-oriented deployment work all sit in one monorepo.',
     proof: [
       {
         label: 'Product surface',
@@ -137,7 +137,7 @@ export const projects: Project[] = [
       },
       {
         label: 'Sync model',
-        text: 'Client edits update Zustand stores, persist through IndexedDB, queue receiver batches, flow through authenticated Go ingestion into Kafka/MySQL, then return through SSE and missed-update readers.',
+        text: 'Client edits update local state, persist for offline recovery, queue receiver batches, flow through authenticated Go ingestion into Kafka/MySQL, then return through SSE and missed-update readers.',
       },
       {
         label: 'Service topology',
@@ -151,7 +151,7 @@ export const projects: Project[] = [
     repositorySignals: [
       {
         label: 'Frontend workspace',
-        text: 'The frontend is a workspace with React 19, React Router 7, Vite 8, TypeScript 6, Zustand stores, shared contracts, shared UI tokens, IndexedDB persistence, SSE context, and Playwright/Vitest coverage.',
+        text: 'The frontend is a workspace with React 19, TypeScript 6, Vite 8, Expo mobile work, shared contracts, shared UI tokens, SSE context, and Playwright/Vitest coverage.',
       },
       {
         label: 'Mobile path',

@@ -131,16 +131,20 @@
 }
 
 .repository-details {
+  min-width: 0;
+  max-width: 100%;
   margin: -2px 0 20px;
 }
 
 .product-repository-details {
+  min-width: 0;
   margin-top: 0;
 }
 
 .repository-details summary {
   display: inline-flex;
   width: fit-content;
+  max-width: 100%;
   align-items: center;
   gap: 8px;
   border: 1px solid var(--line);
@@ -170,30 +174,6 @@
 
 .repository-details[open] summary::after {
   content: '-';
-}
-
-.repository-signals {
-  margin: 0 0 20px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(255, 249, 239, 0.5);
-  padding: 14px 16px 16px;
-}
-
-.detail-group-label {
-  margin: 0 0 10px;
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 850;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.repository-signal-list {
-  display: grid;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
 }
 
 .tech-badge-list {
@@ -356,8 +336,6 @@
 }
 
 .line-facts div,
-.product-proof-list div,
-.repository-signal-list div,
 .demo-scene-list div,
 .project-evidence-grid div {
   border-color: var(--line);

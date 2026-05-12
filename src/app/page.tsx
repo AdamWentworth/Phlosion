@@ -1,10 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Code2, FileText, Sparkles } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Code2,
+  FileText,
+  GitBranch,
+  Layers,
+  ListChecks,
+  Sparkles,
+  Workflow,
+  type LucideIcon,
+} from 'lucide-react';
 import { ProjectTitle, ProjectTypeIconFrame } from '@/components/ProjectBrand';
 import { ProductShowcase } from '@/components/ProductShowcase';
 import { TechBadgeGroupList, TechBadgeList } from '@/components/TechBadge';
-import { projects } from '@/lib/projects';
+import { projects, type Project } from '@/lib/projects';
 
 const navItems = [
   { href: '#products', label: 'Products' },
@@ -95,6 +105,58 @@ function SiteBrand({ site }: { site: (typeof siteBuilds)[number] }) {
         <strong>{site.name}</strong>
         <small>{site.brandStatus}</small>
       </span>
+    </div>
+  );
+}
+
+type ProductDetailSectionProps = {
+  icon: LucideIcon;
+  title: string;
+  text?: string;
+  entries?: {
+    label: string;
+    text: string;
+  }[];
+};
+
+function ProductDetailSection({ icon: Icon, title, text, entries }: ProductDetailSectionProps) {
+  return (
+    <section className="product-detail-section" aria-label={title}>
+      <span className="product-detail-section-icon" aria-hidden="true">
+        <Icon size={16} strokeWidth={2.4} />
+      </span>
+      <div className="product-detail-section-content">
+        <h4>{title}</h4>
+        {text ? <p className="product-detail-section-text">{text}</p> : null}
+        {entries?.length ? (
+          <dl className="product-detail-entry-list">
+            {entries.map((entry) => (
+              <div key={entry.label}>
+                <dt>{entry.label}</dt>
+                <dd>{entry.text}</dd>
+              </div>
+            ))}
+          </dl>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
+function ProductDetails({ project }: { project: Project }) {
+  return (
+    <div className="product-detail-stack">
+      <ProductDetailSection icon={Layers} title="Product scope" text={project.details} />
+      <ProductDetailSection
+        icon={Workflow}
+        title="Workflow and surface"
+        entries={[
+          { label: 'Delivery surface', text: project.deliverySurface },
+          { label: 'User/workflow fit', text: project.productConstraint },
+        ]}
+      />
+      <ProductDetailSection icon={ListChecks} title="System behavior" entries={project.proof} />
+      <ProductDetailSection icon={GitBranch} title="Codebase signals" entries={project.repositorySignals} />
     </div>
   );
 }
@@ -213,36 +275,7 @@ export default function Home() {
                 )}
                 <details className="repository-details product-repository-details">
                   <summary>More details</summary>
-                  <p className="product-line-detail">{project.details}</p>
-                  <dl className="line-facts">
-                    <div>
-                      <dt>Delivery surface</dt>
-                      <dd>{project.deliverySurface}</dd>
-                    </div>
-                    <div>
-                      <dt>User/workflow fit</dt>
-                      <dd>{project.productConstraint}</dd>
-                    </div>
-                  </dl>
-                  <dl className="product-proof-list" aria-label={`${project.name} product detail`}>
-                    {project.proof.map((proof) => (
-                      <div key={proof.label}>
-                        <dt>{proof.label}</dt>
-                        <dd>{proof.text}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <div className="repository-signals">
-                    <p className="detail-group-label">Repo signals</p>
-                    <dl className="repository-signal-list" aria-label={`${project.name} repository signals`}>
-                      {project.repositorySignals.map((signal) => (
-                        <div key={signal.label}>
-                          <dt>{signal.label}</dt>
-                          <dd>{signal.text}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </div>
+                  <ProductDetails project={project} />
                 </details>
                 <div className="product-action-row">
                   <a href="#demos">

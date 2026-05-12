@@ -233,15 +233,15 @@ export default function Home() {
                     ))}
                   </dl>
                   <div className="repository-signals">
-                    <h4>Repo signals</h4>
-                    <ul>
+                    <p className="detail-group-label">Repo signals</p>
+                    <dl className="repository-signal-list" aria-label={`${project.name} repository signals`}>
                       {project.repositorySignals.map((signal) => (
-                        <li key={signal.label}>
-                          <strong>{signal.label}</strong>
-                          <span>{signal.text}</span>
-                        </li>
+                        <div key={signal.label}>
+                          <dt>{signal.label}</dt>
+                          <dd>{signal.text}</dd>
+                        </div>
                       ))}
-                    </ul>
+                    </dl>
                   </div>
                 </details>
                 <div className="product-action-row">

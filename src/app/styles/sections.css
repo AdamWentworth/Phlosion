@@ -177,42 +177,23 @@
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 249, 239, 0.5);
-  padding: 16px;
+  padding: 14px 16px 16px;
 }
 
-.repository-signals h4 {
-  margin: 0 0 12px;
-  color: var(--highlight);
-  font-size: 13px;
-  font-weight: 900;
+.detail-group-label {
+  margin: 0 0 10px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 850;
   letter-spacing: 0;
   text-transform: uppercase;
 }
 
-.repository-signals ul {
+.repository-signal-list {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   margin: 0;
   padding: 0;
-  list-style: none;
-}
-
-.repository-signals li {
-  display: grid;
-  gap: 3px;
-}
-
-.repository-signals strong {
-  color: var(--highlight);
-  font-size: 13px;
-  font-weight: 900;
-}
-
-.repository-signals span {
-  color: var(--text-secondary);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.45;
 }
 
 .tech-badge-list {
@@ -376,6 +357,7 @@
 
 .line-facts div,
 .product-proof-list div,
+.repository-signal-list div,
 .demo-scene-list div,
 .project-evidence-grid div {
   border-color: var(--line);

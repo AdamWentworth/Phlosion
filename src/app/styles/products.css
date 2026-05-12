@@ -373,8 +373,11 @@
 }
 
 .product-line-detail {
-  margin-bottom: 18px;
-  color: var(--text-muted) !important;
+  margin: 0 0 18px;
+  color: var(--text-secondary) !important;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.45;
 }
 
 .line-facts {
@@ -384,6 +387,7 @@
 }
 
 .product-proof-list,
+.repository-signal-list,
 .project-evidence-grid {
   display: grid;
   gap: 10px;
@@ -396,6 +400,7 @@
 
 .line-facts div,
 .product-proof-list div,
+.repository-signal-list div,
 .project-evidence-grid div {
   border-top: 1px solid rgba(244, 234, 209, 0.1);
   padding-top: 12px;
@@ -403,27 +408,28 @@
 
 .line-facts dt,
 .product-proof-list dt,
+.repository-signal-list dt,
 .project-evidence-grid dt {
   color: var(--text-muted);
   font-size: 11px;
-  font-weight: 900;
+  font-weight: 850;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .line-facts dd,
 .product-proof-list dd,
+.repository-signal-list dd,
 .project-evidence-grid dd {
   margin: 5px 0 0;
-  color: var(--highlight);
+  color: var(--text-secondary);
   font-size: 14px;
-  font-weight: 800;
-  line-height: 1.4;
+  font-weight: 650;
+  line-height: 1.45;
 }
 
-.product-proof-list dd,
-.project-evidence-grid dd {
-  color: var(--text-secondary);
-  font-weight: 700;
+.repository-signal-list {
+  margin: 0;
 }
 
 .product-action-row {

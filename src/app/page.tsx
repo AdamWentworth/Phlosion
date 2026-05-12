@@ -192,11 +192,11 @@ export default function Home() {
                   <ProjectTypeIconFrame project={project} size={24} />
                   <span className="project-status">{project.status}</span>
                 </div>
+                <h3 className="product-name">{project.name}</h3>
+                {hasBrandTitle && <ProjectTitle project={project} />}
                 <p className="project-track">
                   {project.labTrack} / {project.labRole}
                 </p>
-                <ProjectTitle project={project} />
-                {hasBrandTitle && <h3 className="product-name">{project.name}</h3>}
                 <p>{project.summary}</p>
                 <TechBadgeList
                   labels={project.tags}

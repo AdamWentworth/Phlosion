@@ -1,4 +1,4 @@
-import { Bot, Disc3, Gamepad2, Globe2, type LucideIcon } from 'lucide-react';
+import { Bot, Disc3, Gamepad2, MapPinned, type LucideIcon } from 'lucide-react';
 
 export type Project = {
   name: string;
@@ -194,7 +194,7 @@ const productCatalog: Project[] = [
     tags: flattenTagGroups(nexusTagGroups),
     tagGroups: nexusTagGroups,
     href: 'https://github.com/AdamWentworth/Go',
-    icon: Globe2,
+    icon: MapPinned,
     accent: 'nexus',
     brand: {
       alt: 'Pokemon Go Nexus',

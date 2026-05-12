@@ -443,7 +443,7 @@ const productCatalog: Project[] = [
       },
       {
         label: 'Blocker',
-        text: 'The main constraint is the 3D world and content layer. With no 3D modeling or 3D game-design background, getting animated models moving on a board is already meaningful engine progress, but a complete game needs stages, assets, tuning, and playtesting.',
+        text: 'The main constraint is the 3D world, VFX, and content layer. The runtime has useful systems, but a complete game needs authored stages, richer assets, visual feedback, tuning, and playtesting.',
       },
       {
         label: 'Product path',

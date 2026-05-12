@@ -3,6 +3,7 @@ import Link from 'next/link';
 import {
   ArrowUpRight,
   Bot,
+  Cpu,
   FileText,
   Gamepad2,
   GitBranch,
@@ -32,6 +33,7 @@ const labSignals = [
   { label: 'AI', icon: Bot },
   { label: 'Tools', icon: Wrench },
   { label: 'Games', icon: Gamepad2 },
+  { label: 'Engines', icon: Cpu },
 ] satisfies { label: string; icon: LucideIcon }[];
 
 const siteBuilds = [
@@ -213,53 +215,58 @@ export default function Home() {
         </header>
 
         <div className="hero-content">
-          <Image
-            className="hero-brand-mark"
-            src="/phlosion-mark.png"
-            alt=""
-            width={911}
-            height={911}
-            sizes="(max-width: 640px) 86px, 132px"
-            aria-hidden="true"
-            loading="eager"
-            preload
-          />
-          <p className="eyebrow">Software product lab</p>
-          <h1 id="hero-title" className="hero-wordmark-title">
+          <div className="hero-copy">
             <Image
-              className="hero-title-wordmark"
-              src="/phlosion-wordmark.png"
-              alt="Phlosion"
-              width={1877}
-              height={342}
-              sizes="(max-width: 760px) 100vw, 680px"
+              className="hero-brand-mark"
+              src="/phlosion-mark.png"
+              alt=""
+              width={911}
+              height={911}
+              sizes="(max-width: 640px) 86px, 132px"
+              aria-hidden="true"
               loading="eager"
               preload
             />
-          </h1>
-          <p className="hero-lede">
-            Phlosion is a software product lab for full-stack services, local AI systems, desktop tools, web surfaces,
-            and C++ game/runtime work. The lab keeps the software itself in focus: what it does, how it is built, and
-            where each build could go next.
-          </p>
-          <ul className="hero-signal-list" aria-label="Phlosion software lab focus areas">
+            <p className="eyebrow">Software product lab</p>
+            <h1 id="hero-title" className="hero-wordmark-title">
+              <Image
+                className="hero-title-wordmark"
+                src="/phlosion-wordmark.png"
+                alt="Phlosion"
+                width={1877}
+                height={342}
+                sizes="(max-width: 760px) 100vw, 680px"
+                loading="eager"
+                preload
+              />
+            </h1>
+            <p className="hero-lede">
+              Phlosion is a software product lab for full-stack services, local AI systems, desktop tools, web surfaces,
+              and C++ game/runtime work. The lab keeps the software itself in focus: what it does, how it is built, and
+              where each build could go next.
+            </p>
+            <div className="hero-actions" aria-label="Primary actions">
+              <a className="button button-primary" href="#products">
+                Explore products
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+              <a className="button button-secondary" href="#demos">
+                View demos
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+
+          <ul className="hero-spectrum" aria-label="Phlosion software lab focus areas">
             {labSignals.map(({ label, icon: Icon }) => (
               <li key={label} data-signal={label.toLowerCase()}>
-                <Icon size={17} strokeWidth={2.4} aria-hidden="true" />
-                <span>{label}</span>
+                <span className="hero-spectrum-icon" aria-hidden="true">
+                  <Icon size={28} strokeWidth={2.25} />
+                </span>
+                <span className="hero-spectrum-label">{label}</span>
               </li>
             ))}
           </ul>
-          <div className="hero-actions" aria-label="Primary actions">
-            <a className="button button-primary" href="#products">
-              Explore products
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
-            <a className="button button-secondary" href="#demos">
-              View demos
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
-          </div>
         </div>
       </section>
 

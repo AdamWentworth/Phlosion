@@ -110,10 +110,18 @@
 .hero-content {
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 680px) minmax(300px, 420px);
+  align-items: center;
+  gap: clamp(36px, 7vw, 86px);
   width: calc(100% - 40px);
   max-width: 1180px;
   margin-inline: auto;
   padding: clamp(72px, 12vh, 138px) 0 58px;
+}
+
+.hero-copy {
+  min-width: 0;
 }
 
 .hero-brand-mark {
@@ -194,47 +202,89 @@ h3 {
   line-height: 1.35;
 }
 
-.hero-signal-list {
-  display: flex;
-  flex-wrap: wrap;
+.hero-spectrum {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   width: 100%;
-  max-width: 680px;
-  gap: 10px;
-  margin: -8px 0 28px;
+  max-width: 420px;
+  gap: 12px;
+  justify-self: end;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.hero-signal-list li {
-  display: inline-flex;
-  min-height: 38px;
-  align-items: center;
-  gap: 8px;
+.hero-spectrum li {
+  --signal: var(--accent);
+  --signal-soft: rgba(255, 90, 0, 0.13);
+  position: relative;
+  display: flex;
+  min-height: 128px;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
   border: 1px solid rgba(0, 43, 79, 0.14);
-  border-radius: 999px;
-  background: rgba(255, 249, 239, 0.68);
-  box-shadow: 0 8px 18px rgba(72, 45, 13, 0.08);
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--signal-soft), transparent 58%), rgba(255, 249, 239, 0.72);
+  box-shadow: 0 18px 42px rgba(72, 45, 13, 0.12);
   color: var(--highlight);
-  font-size: 13px;
-  font-weight: 900;
-  padding: 8px 12px 8px 10px;
+  padding: 18px;
 }
 
-.hero-signal-list svg {
+.hero-spectrum li:first-child {
+  grid-column: span 2;
+  min-height: 154px;
+}
+
+.hero-spectrum li::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--signal);
+  content: '';
+}
+
+.hero-spectrum-icon {
+  display: inline-flex;
+  width: 52px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 43, 79, 0.12);
+  border-radius: 8px;
+  background: var(--signal-soft);
+  color: var(--signal);
+}
+
+.hero-spectrum-icon svg {
   flex: 0 0 auto;
-  color: var(--accent);
 }
 
-.hero-signal-list li[data-signal='ai'] svg {
-  color: var(--brand-navy-bright);
+.hero-spectrum-label {
+  color: var(--highlight);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 950;
+  line-height: 0.95;
 }
 
-.hero-signal-list li[data-signal='tools'] svg {
-  color: #7b4fbd;
+.hero-spectrum li[data-signal='ai'] {
+  --signal: var(--brand-navy-bright);
+  --signal-soft: rgba(54, 145, 255, 0.14);
 }
 
-.hero-signal-list li[data-signal='games'] svg {
-  color: #ba8016;
+.hero-spectrum li[data-signal='tools'] {
+  --signal: #7b4fbd;
+  --signal-soft: rgba(123, 79, 189, 0.14);
+}
+
+.hero-spectrum li[data-signal='games'] {
+  --signal: #ba8016;
+  --signal-soft: rgba(186, 128, 22, 0.14);
+}
+
+.hero-spectrum li[data-signal='engines'] {
+  --signal: #0f6f6f;
+  --signal-soft: rgba(15, 111, 111, 0.13);
 }
 
 .hero-actions,

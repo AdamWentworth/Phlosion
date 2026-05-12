@@ -194,6 +194,49 @@ h3 {
   line-height: 1.35;
 }
 
+.hero-signal-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 680px;
+  gap: 10px;
+  margin: -8px 0 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-signal-list li {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(0, 43, 79, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 249, 239, 0.68);
+  box-shadow: 0 8px 18px rgba(72, 45, 13, 0.08);
+  color: var(--highlight);
+  font-size: 13px;
+  font-weight: 900;
+  padding: 8px 12px 8px 10px;
+}
+
+.hero-signal-list svg {
+  flex: 0 0 auto;
+  color: var(--accent);
+}
+
+.hero-signal-list li[data-signal='ai'] svg {
+  color: var(--brand-navy-bright);
+}
+
+.hero-signal-list li[data-signal='tools'] svg {
+  color: #7b4fbd;
+}
+
+.hero-signal-list li[data-signal='games'] svg {
+  color: #ba8016;
+}
+
 .hero-actions,
 .contact-actions {
   display: flex;

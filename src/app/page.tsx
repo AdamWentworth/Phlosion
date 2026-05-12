@@ -1,6 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, FileText, GitBranch, Layers, ListChecks, Mail, Workflow, type LucideIcon } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Bot,
+  FileText,
+  Gamepad2,
+  GitBranch,
+  Layers,
+  ListChecks,
+  Mail,
+  MonitorSmartphone,
+  Workflow,
+  Wrench,
+  type LucideIcon,
+} from 'lucide-react';
 import { siGithub } from 'simple-icons';
 import { ProjectTitle, ProjectTypeIconFrame } from '@/components/ProjectBrand';
 import { ProductShowcase } from '@/components/ProductShowcase';
@@ -13,6 +26,13 @@ const navItems = [
   { href: '#demos', label: 'Demos' },
   { href: '#contact', label: 'Contact' },
 ];
+
+const labSignals = [
+  { label: 'Apps', icon: MonitorSmartphone },
+  { label: 'AI', icon: Bot },
+  { label: 'Tools', icon: Wrench },
+  { label: 'Games', icon: Gamepad2 },
+] satisfies { label: string; icon: LucideIcon }[];
 
 const siteBuilds = [
   {
@@ -222,6 +242,14 @@ export default function Home() {
             and C++ game/runtime work. The lab keeps the software itself in focus: what it does, how it is built, and
             where each build could go next.
           </p>
+          <ul className="hero-signal-list" aria-label="Phlosion software lab focus areas">
+            {labSignals.map(({ label, icon: Icon }) => (
+              <li key={label} data-signal={label.toLowerCase()}>
+                <Icon size={17} strokeWidth={2.4} aria-hidden="true" />
+                <span>{label}</span>
+              </li>
+            ))}
+          </ul>
           <div className="hero-actions" aria-label="Primary actions">
             <a className="button button-primary" href="#products">
               Explore products

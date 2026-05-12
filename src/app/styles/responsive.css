@@ -4,8 +4,6 @@
   .site-header,
   .showcase-shell,
   .showcase-stage,
-  .process-section,
-  .identity-panel,
   .contact-section {
     grid-template-columns: 1fr;
   }
@@ -25,8 +23,7 @@
   }
 
   .product-line-grid,
-  .site-card-grid,
-  .identity-grid {
+  .site-card-grid {
     grid-template-columns: 1fr;
   }
 
@@ -48,9 +45,6 @@
   #demos,
   #products,
   #sites,
-  #company,
-  #process,
-  #capabilities,
   #contact {
     scroll-margin-top: 24px;
   }
@@ -95,8 +89,7 @@
     flex-direction: column;
   }
 
-  .showcase-tabs,
-  .signal-row {
+  .showcase-tabs {
     grid-template-columns: 1fr;
   }
 
@@ -137,11 +130,6 @@
 
   .section-wrap {
     padding: 58px 0;
-  }
-
-  .process-item {
-    grid-template-columns: 1fr;
-    gap: 8px;
   }
 }
 

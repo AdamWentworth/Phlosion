@@ -140,10 +140,10 @@ export function ProductShowcase() {
     <section id="demos" className="section-wrap demo-section" aria-labelledby="demos-title">
       <div className="section-heading">
         <p className="eyebrow">Demos</p>
-        <h2 id="demos-title">Interactive surfaces, not static claims.</h2>
+        <h2 id="demos-title">The products need to be seen in motion.</h2>
         <p>
-          Each Phlosion case study is framed around behavior a recruiter can inspect: the user flow, system feedback,
-          release artifact, or runtime loop that makes the software tangible.
+          This is the lab bench for product footage, screenshots, interface flows, release artifacts, and runtime loops.
+          The current visuals are placeholders for the behavior each build is designed to show.
         </p>
       </div>
 

@@ -9,14 +9,14 @@ export const metadata: Metadata = {
     template: '%s | Phlosion',
   },
   description:
-    'Phlosion is a software product lab for recruiter-facing case studies across full-stack services, local AI systems, desktop tools, websites, and C++ game/runtime work.',
+    'Phlosion is a software product lab for full-stack services, local AI systems, desktop tools, web surfaces, and C++ game/runtime work.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Phlosion | Software Product Lab',
     description:
-      'Product-minded engineering case studies across full-stack services, local AI systems, desktop tools, websites, and games.',
+      'Software product lab work across full-stack services, local AI systems, desktop tools, web surfaces, and games.',
     url: 'https://phlosion.com',
     siteName: 'Phlosion',
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Phlosion | Software Product Lab',
     description:
-      'Product-minded engineering case studies across full-stack services, local AI systems, desktop tools, websites, and games.',
+      'Software product lab work across full-stack services, local AI systems, desktop tools, web surfaces, and games.',
     images: ['/social-card.png'],
   },
   icons: {

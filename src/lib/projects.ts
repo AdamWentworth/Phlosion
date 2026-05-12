@@ -5,8 +5,8 @@ export type Project = {
   status: 'Active build' | 'Prototype' | 'Research system' | 'Desktop release';
   track: string;
   audience: string;
-  caseStudyRole: string;
-  productTrack: string;
+  labRole: string;
+  labTrack: string;
   deliverySurface: string;
   productConstraint: string;
   summary: string;
@@ -48,8 +48,8 @@ export const projects: Project[] = [
     status: 'Active build',
     track: 'Full-stack coordination system',
     audience: 'Pokemon GO players and local communities',
-    caseStudyRole: 'Full-stack product candidate',
-    productTrack: 'Service-app case study',
+    labRole: 'Full-stack product candidate',
+    labTrack: 'Service app',
     deliverySurface:
       'Web/mobile clients, event workflows, location search, update delivery, and service infrastructure.',
     productConstraint:
@@ -131,8 +131,8 @@ export const projects: Project[] = [
     status: 'Research system',
     track: 'Local AI assistant platform',
     audience: 'Personal automation and host-run AI workflows',
-    caseStudyRole: 'Model-adjacent product engineering',
-    productTrack: 'Local AI systems case study',
+    labRole: 'Model-adjacent product engineering',
+    labTrack: 'Local AI system',
     deliverySurface:
       'Assistant clients, tool routing, local model workflows, memory, voice loops, and host orchestration.',
     productConstraint:
@@ -198,8 +198,8 @@ export const projects: Project[] = [
     status: 'Desktop release',
     track: 'Cross-platform desktop tooling',
     audience: 'Pokemon Colosseum and XD modding communities',
-    caseStudyRole: 'Cross-platform support tooling',
-    productTrack: 'Desktop tooling case study',
+    labRole: 'Cross-platform support tooling',
+    labTrack: 'Desktop tooling',
     deliverySurface: 'Avalonia UI, parser/codec systems, safe workspace flows, tests, packaging scripts, and releases.',
     productConstraint:
       'Community tools need familiar workflows, Windows support, safe file boundaries, documentation, and releases that non-authors can actually run.',
@@ -264,8 +264,8 @@ export const projects: Project[] = [
     status: 'Prototype',
     track: 'Systems-heavy game prototype',
     audience: 'Strategy game experiments and engine work',
-    caseStudyRole: 'C++ systems learning lab',
-    productTrack: 'Games and runtime case study',
+    labRole: 'C++ systems learning lab',
+    labTrack: 'Game/runtime prototype',
     deliverySurface: 'Game loop architecture, combat simulation, scripting, rendering experiments, tests, and tooling.',
     productConstraint:
       'A game prototype needs fast iteration, deterministic runtime behavior, renderer flexibility, content validation, and tests that keep experiments honest.',
@@ -324,35 +324,5 @@ export const projects: Project[] = [
       summary: 'A systems prototype for board state, scripted gameplay, rendering paths, and packaged tests.',
       steps: ['Place units', 'Resolve combat', 'Record playtest signal'],
     },
-  },
-];
-
-export const operatingPrinciples = [
-  'Start with the user workflow, then show the architecture that supports it.',
-  'Prefer concrete behavior over claims: state, feedback, data, tooling, or runtime systems.',
-  'Treat tests, packaging, documentation, and deployment paths as part of the product experience.',
-  'Use product constraints to explain engineering tradeoffs instead of presenting stacks as trivia.',
-];
-
-export const productJudgmentPrinciples = [
-  {
-    label: 'Connect Need To System',
-    detail:
-      'Each case study names the user or community need, then shows the services, clients, tools, and release work that answer it.',
-  },
-  {
-    label: 'Think In Support Surfaces',
-    detail:
-      'The work is framed around what another person would need to use, deploy, inspect, troubleshoot, or extend the software.',
-  },
-  {
-    label: 'Show Real Behavior',
-    detail:
-      'Demos, screenshots, release notes, repository details, and architecture notes matter because they make the product claims testable.',
-  },
-  {
-    label: 'Respect The Context',
-    detail:
-      'Fan and community projects are presented as portfolio, support, and learning work with clear boundaries around affiliation and ownership.',
   },
 ];

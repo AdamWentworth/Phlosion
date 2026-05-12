@@ -130,6 +130,13 @@ const imageTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'image'
     color: '#9162ff',
     className: 'tech-icon-image-vite',
   },
+  vcpkg: {
+    kind: 'image',
+    src: '/tech/vcpkg-logo.svg',
+    alt: '',
+    color: '#f9c438',
+    className: 'tech-icon-image-vcpkg',
+  },
 };
 
 const customTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'custom' }>> = {
@@ -141,7 +148,6 @@ const customTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'custo
   'net/http': { kind: 'custom', custom: 'http', color: '#00add8' },
   'Release packaging': { kind: 'custom', custom: 'packageCheck', color: '#b94d00' },
   SDL2: { kind: 'custom', custom: 'sdl', color: '#17395f' },
-  vcpkg: { kind: 'custom', custom: 'package', color: '#3f7f5f' },
   'Whisper ASR': { kind: 'custom', custom: 'voice', color: '#ff5a00' },
   Windows: { kind: 'custom', custom: 'windows', color: '#0078d4' },
   chi: { kind: 'custom', custom: 'chi', color: '#00a650' },

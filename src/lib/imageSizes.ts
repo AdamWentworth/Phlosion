@@ -22,6 +22,7 @@ const imageSizes = {
   '/tech/llamacpp-logo.svg': { width: 24, height: 24 },
   '/tech/sol2-logo.png': { width: 200, height: 200 },
   '/tech/vite-logo.svg': { width: 410, height: 404 },
+  '/tech/vcpkg-logo.svg': { width: 16, height: 16 },
   '/tech/vitest-logo.svg': { width: 256, height: 234 },
 } satisfies Record<string, ImageSize>;
 

@@ -80,16 +80,32 @@
   padding: 22px;
 }
 
-.showcase-stage-green {
-  background: linear-gradient(135deg, rgba(56, 161, 105, 0.12), rgba(18, 20, 24, 0.92) 38%), rgba(18, 20, 24, 0.96);
+.showcase-stage-nexus {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 90, 0, 0.18), transparent 36%),
+    radial-gradient(circle at 88% 14%, rgba(0, 67, 111, 0.18), transparent 34%),
+    linear-gradient(135deg, rgba(255, 90, 0, 0.12), rgba(18, 20, 24, 0.92) 38%), rgba(18, 20, 24, 0.96);
 }
 
-.showcase-stage-blue {
-  background: linear-gradient(135deg, rgba(92, 170, 255, 0.12), rgba(18, 20, 24, 0.92) 38%), rgba(18, 20, 24, 0.96);
+.showcase-stage-jarvin {
+  background:
+    radial-gradient(circle at 18% 4%, rgba(0, 214, 255, 0.18), transparent 34%),
+    radial-gradient(circle at 86% 20%, rgba(255, 90, 0, 0.09), transparent 28%),
+    linear-gradient(135deg, rgba(0, 67, 111, 0.16), rgba(18, 20, 24, 0.92) 38%), rgba(18, 20, 24, 0.96);
 }
 
-.showcase-stage-cream {
-  background: linear-gradient(135deg, rgba(244, 234, 209, 0.1), rgba(18, 20, 24, 0.92) 38%), rgba(18, 20, 24, 0.96);
+.showcase-stage-cipher {
+  background:
+    radial-gradient(circle at 18% 4%, rgba(167, 83, 255, 0.2), transparent 34%),
+    radial-gradient(circle at 86% 20%, rgba(255, 188, 63, 0.1), transparent 28%),
+    linear-gradient(135deg, rgba(95, 48, 145, 0.18), rgba(18, 20, 24, 0.92) 38%), rgba(18, 20, 24, 0.96);
+}
+
+.showcase-stage-autochess {
+  background:
+    radial-gradient(circle at 18% 4%, rgba(255, 188, 63, 0.24), transparent 36%),
+    radial-gradient(circle at 88% 18%, rgba(235, 50, 48, 0.12), transparent 28%),
+    linear-gradient(135deg, rgba(255, 188, 63, 0.16), rgba(18, 20, 24, 0.92) 38%), rgba(18, 20, 24, 0.96);
 }
 
 .stage-copy {

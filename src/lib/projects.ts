@@ -2,7 +2,7 @@ import { Archive, Bot, Gamepad2, Globe2, type LucideIcon } from 'lucide-react';
 
 export type Project = {
   name: string;
-  status: 'Active build' | 'Prototype' | 'Research system' | 'Desktop release';
+  status: 'Active build' | 'Engine prototype' | 'Host-run system' | 'Packaged release';
   track: string;
   audience: string;
   labRole: string;
@@ -23,7 +23,7 @@ export type Project = {
   tagGroups?: TechTagGroup[];
   href: string;
   icon: LucideIcon;
-  accent: 'orange' | 'green' | 'blue' | 'cream';
+  accent: 'nexus' | 'jarvin' | 'cipher' | 'autochess';
   brand?: {
     alt: string;
     icon: string;
@@ -114,12 +114,19 @@ const autochessTagGroups = [
   },
 ] satisfies TechTagGroup[];
 
-export const projects: Project[] = [
+const productOrder: Record<Project['demo']['kind'], number> = {
+  nexus: 0,
+  autochess: 1,
+  jarvin: 2,
+  cipher: 3,
+};
+
+const productCatalog: Project[] = [
   {
     name: 'Pokemon Go Nexus',
     status: 'Active build',
     track: 'Full-stack collection and trade platform',
-    audience: 'Pokemon GO collectors, traders, and local communities',
+    audience: 'Pokemon Go collectors, traders, and local communities',
     labRole: 'Full-stack product platform',
     labTrack: 'Collection + trade app',
     deliverySurface:
@@ -127,7 +134,7 @@ export const projects: Project[] = [
     productConstraint:
       'Collection and trade software needs rich variant modeling, trusted account state, location-aware discovery, offline-friendly local storage, live sync, and deployment paths that can support hosted communities.',
     summary:
-      'An active full-stack Pokemon GO platform for managing collections, browsing variants, finding trainers, proposing trades, and syncing updates across web/mobile clients and backend services.',
+      'An active full-stack Pokemon Go platform for managing collections, browsing variants, finding trainers, proposing trades, and syncing updates across web/mobile clients and backend services.',
     details:
       'Nexus is built as a product system, not a single app screen: collection management, public trainer views, search/list/map discovery, trade lifecycle flows, cached Pokemon data, service-worker batching, offline cache hydration, Kafka-backed persistence, SSE updates, and production-oriented deployment work all sit in one monorepo.',
     proof: [
@@ -166,7 +173,7 @@ export const projects: Project[] = [
     tagGroups: nexusTagGroups,
     href: 'https://github.com/AdamWentworth/Go',
     icon: Globe2,
-    accent: 'orange',
+    accent: 'nexus',
     brand: {
       alt: 'Pokemon Go Nexus',
       icon: '/products/pokemon-go-nexus/nexus-logo.png',
@@ -200,7 +207,7 @@ export const projects: Project[] = [
   },
   {
     name: 'Jarvin',
-    status: 'Research system',
+    status: 'Host-run system',
     track: 'Local AI assistant platform',
     audience: 'Personal automation and host-run AI workflows',
     labRole: 'Model-adjacent product engineering',
@@ -249,7 +256,7 @@ export const projects: Project[] = [
     tagGroups: jarvinTagGroups,
     href: 'https://github.com/AdamWentworth/Jarvin',
     icon: Bot,
-    accent: 'green',
+    accent: 'jarvin',
     brand: {
       alt: 'Jarvin',
       icon: '/products/jarvin/jarvin-icon-clean.png',
@@ -268,7 +275,7 @@ export const projects: Project[] = [
   },
   {
     name: 'Cipher Snagem Editor',
-    status: 'Desktop release',
+    status: 'Packaged release',
     track: 'Cross-platform desktop tooling',
     audience: 'Pokemon Colosseum and XD modding communities',
     labRole: 'Cross-platform support tooling',
@@ -316,7 +323,7 @@ export const projects: Project[] = [
     tagGroups: cipherTagGroups,
     href: 'https://github.com/AdamWentworth/CipherSnagemEditor',
     icon: Archive,
-    accent: 'cream',
+    accent: 'cipher',
     brand: {
       alt: 'Cipher Snagem Editor',
       icon: '/products/cipher-snagem-editor/cipher-snagem-mark-transparent.png',
@@ -335,7 +342,7 @@ export const projects: Project[] = [
   },
   {
     name: 'Pokemon Autochess',
-    status: 'Prototype',
+    status: 'Engine prototype',
     track: 'Systems-heavy game prototype',
     audience: 'Strategy game experiments and engine work',
     labRole: 'C++ systems learning lab',
@@ -383,7 +390,7 @@ export const projects: Project[] = [
     tagGroups: autochessTagGroups,
     href: 'https://github.com/AdamWentworth/PokemonAutochess',
     icon: Gamepad2,
-    accent: 'blue',
+    accent: 'autochess',
     brand: {
       alt: 'Pokemon Autochess',
       icon: '/products/pokemon-autochess/autochess-mark-transparent.png',
@@ -401,3 +408,7 @@ export const projects: Project[] = [
     },
   },
 ];
+
+export const projects = [...productCatalog].sort(
+  (left, right) => productOrder[left.demo.kind] - productOrder[right.demo.kind],
+);

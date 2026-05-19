@@ -28,6 +28,15 @@ type TechBadgeStyle = CSSProperties & {
 };
 
 function CustomTechIconGlyph({ kind }: { kind: CustomTechIcon }) {
+  if (kind === 'audio') {
+    return (
+      <svg aria-hidden="true" className="tech-badge-svg" viewBox="0 0 24 24">
+        <path d="M3 13h2.2v-2H3v2Zm4.1 4h2.2V7H7.1v10Zm4.1 3h2.2V4h-2.2v16Zm4.1-4h2.2V8h-2.2v8Zm4.1-3H21v-2h-1.6v2Z" />
+        <path d="M2.4 17.3c3 2.2 6.2 3.3 9.6 3.3 3.5 0 6.7-1.1 9.6-3.3" opacity="0.34" />
+      </svg>
+    );
+  }
+
   if (kind === 'fiber') {
     return (
       <svg aria-hidden="true" className="tech-badge-svg" viewBox="0 0 24 24">

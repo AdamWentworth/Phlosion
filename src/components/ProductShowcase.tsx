@@ -64,6 +64,49 @@ function DemoVisual({ project }: { project: Project }) {
     );
   }
 
+  if (project.demo.kind === 'trackextract') {
+    const lockup = project.brand?.darkLockup ?? '/products/trackextract/trackextract-logo-row-white.png';
+    const lockupSize = getImageSize(lockup, { width: 368, height: 100 });
+
+    return (
+      <div className="demo-visual demo-visual-trackextract" aria-hidden="true">
+        <div className="trackextract-demo-brand">
+          <Image src={lockup} alt="" width={lockupSize.width} height={lockupSize.height} sizes="368px" />
+        </div>
+        <div className="trackextract-wave-panel">
+          <div className="trackextract-waveform">
+            {Array.from({ length: 32 }, (_, index) => (
+              <span key={index} />
+            ))}
+          </div>
+          <div className="trackextract-render-status">
+            <span>import ready</span>
+            <strong>stems rendering</strong>
+            <span>export queued</span>
+          </div>
+        </div>
+        <div className="trackextract-stem-stack">
+          <span>
+            <strong>Vocals</strong>
+            <em />
+          </span>
+          <span>
+            <strong>Drums</strong>
+            <em />
+          </span>
+          <span>
+            <strong>Bass</strong>
+            <em />
+          </span>
+          <span>
+            <strong>Other</strong>
+            <em />
+          </span>
+        </div>
+      </div>
+    );
+  }
+
   if (project.demo.kind === 'cipher') {
     const lockupSize = project.brand?.darkLockup
       ? getImageSize(project.brand.darkLockup, { width: 360, height: 164 })

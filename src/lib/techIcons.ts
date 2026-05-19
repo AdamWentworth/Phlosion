@@ -11,6 +11,7 @@ import {
   siExpress,
   siExpo,
   siFastapi,
+  siFfmpeg,
   siGo,
   siGithubactions,
   siJson,
@@ -26,6 +27,7 @@ import {
   siPostgresql,
   siPython,
   siReact,
+  siRust,
   siSqlite,
   siTauri,
   siTailwindcss,
@@ -34,6 +36,7 @@ import {
 } from 'simple-icons';
 
 export type CustomTechIcon =
+  | 'audio'
   | 'binary'
   | 'csharp'
   | 'direct3d'
@@ -77,6 +80,7 @@ const simpleTechIcons: Record<string, SimpleIcon> = {
   Expo: siExpo,
   Express: siExpress,
   FastAPI: siFastapi,
+  FFmpeg: siFfmpeg,
   Go: siGo,
   'GitHub Actions': siGithubactions,
   JSON: siJson,
@@ -96,6 +100,7 @@ const simpleTechIcons: Record<string, SimpleIcon> = {
   PostgreSQL: siPostgresql,
   Python: siPython,
   React: siReact,
+  Rust: siRust,
   SQLite: siSqlite,
   Tauri: siTauri,
   'Tailwind CSS': siTailwindcss,
@@ -142,8 +147,10 @@ const imageTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'image'
 };
 
 const customTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'custom' }>> = {
+  'audio-separator': { kind: 'custom', custom: 'audio', color: '#24c8db' },
   'Binary formats': { kind: 'custom', custom: 'binary', color: '#345b7c' },
   'C#': { kind: 'custom', custom: 'csharp', color: '#7a3fb0' },
+  Demucs: { kind: 'custom', custom: 'audio', color: '#2ec4d6' },
   'Direct3D 12': { kind: 'custom', custom: 'direct3d', color: '#10893e' },
   Fiber: { kind: 'custom', custom: 'fiber', color: '#00add8' },
   'GameCube ISO': { kind: 'custom', custom: 'gamecube', color: '#5f4bb6' },

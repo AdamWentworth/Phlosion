@@ -39,6 +39,14 @@
     linear-gradient(135deg, #1f1608, #070604 58%, #211303);
 }
 
+.project-icon-trackextract.project-icon-branded {
+  border-color: rgba(46, 196, 214, 0.34);
+  background:
+    linear-gradient(145deg, rgba(46, 196, 214, 0.34), transparent 42%),
+    linear-gradient(32deg, rgba(115, 209, 139, 0.16), transparent 42%),
+    linear-gradient(135deg, #031b23, #06131c 58%, #081f26);
+}
+
 .project-icon-logo {
   overflow: hidden;
   border: 1px solid rgba(0, 43, 79, 0.12);
@@ -84,6 +92,10 @@
 
 .project-type-icon-jarvin {
   color: var(--success);
+}
+
+.project-type-icon-trackextract {
+  color: #0b7f8c;
 }
 
 .project-type-icon-autochess {
@@ -348,6 +360,7 @@
 .product-line,
 .product-line-nexus,
 .product-line-jarvin,
+.product-line-trackextract,
 .product-line-cipher,
 .product-line-autochess,
 .showcase-tab {
@@ -381,6 +394,14 @@
   background:
     radial-gradient(circle at 84% 0%, rgba(0, 214, 255, 0.16), transparent 31%),
     linear-gradient(225deg, rgba(0, 67, 111, 0.15), rgba(255, 249, 239, 0.9) 38%), var(--surface-raised);
+}
+
+.product-line-trackextract,
+.showcase-stage-trackextract {
+  border-color: rgba(11, 127, 140, 0.24);
+  background:
+    radial-gradient(circle at 84% 0%, rgba(46, 196, 214, 0.2), transparent 31%),
+    linear-gradient(225deg, rgba(11, 127, 140, 0.14), rgba(255, 249, 239, 0.9) 38%), var(--surface-raised);
 }
 
 .product-line-cipher,

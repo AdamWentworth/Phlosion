@@ -154,11 +154,13 @@
 
   .demo-visual-nexus,
   .demo-visual-jarvin,
+  .demo-visual-trackextract,
   .demo-visual-autochess {
     grid-template-columns: 1fr;
   }
 
   .demo-feed,
+  .trackextract-stem-stack,
   .memory-stack,
   .combat-log {
     display: none;

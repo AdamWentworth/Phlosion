@@ -58,6 +58,13 @@
   border-color: rgba(0, 214, 255, 0.22);
 }
 
+.product-line-trackextract {
+  background:
+    radial-gradient(circle at 84% 0%, rgba(46, 196, 214, 0.2), transparent 31%),
+    linear-gradient(225deg, rgba(11, 95, 103, 0.16), rgba(18, 20, 24, 0.96) 38%), rgba(18, 20, 24, 0.96);
+  border-color: rgba(46, 196, 214, 0.24);
+}
+
 .product-line-cipher {
   background:
     radial-gradient(circle at 18% 4%, rgba(167, 83, 255, 0.2), transparent 34%),
@@ -194,6 +201,36 @@
   max-width: 112px;
   height: 38px;
   filter: drop-shadow(0 0 16px rgba(0, 214, 255, 0.12)) drop-shadow(0 8px 14px rgba(0, 43, 79, 0.16));
+}
+
+.product-brand-banner-trackextract {
+  gap: 8px;
+  border-color: rgba(46, 196, 214, 0.34);
+  background:
+    linear-gradient(145deg, rgba(46, 196, 214, 0.24), transparent 38%),
+    linear-gradient(30deg, rgba(115, 209, 139, 0.14), transparent 44%),
+    linear-gradient(135deg, #031b23, #06131c 58%, #081f26);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+    0 14px 26px rgba(0, 43, 79, 0.16);
+}
+
+.product-brand-banner-trackextract .product-brand-mark {
+  flex-basis: 62px;
+  width: 62px;
+  height: 62px;
+}
+
+.product-brand-banner-trackextract .product-brand-mark img {
+  width: 62px;
+  height: 62px;
+  filter: drop-shadow(0 0 16px rgba(46, 196, 214, 0.28)) drop-shadow(0 8px 14px rgba(0, 31, 59, 0.28));
+}
+
+.product-brand-banner-trackextract .product-brand-wordmark {
+  max-width: 132px;
+  height: 26px;
+  filter: drop-shadow(0 0 16px rgba(46, 196, 214, 0.14)) drop-shadow(0 8px 14px rgba(0, 43, 79, 0.16));
 }
 
 .product-brand-banner-cipher {

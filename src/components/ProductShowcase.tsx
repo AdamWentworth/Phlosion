@@ -64,6 +64,58 @@ function DemoVisual({ project }: { project: Project }) {
     );
   }
 
+  if (project.demo.kind === 'winrift') {
+    const lockup = project.brand?.darkLockup ?? '/products/winrift/winrift-logo-tall-compact.png';
+    const lockupSize = getImageSize(lockup, { width: 476, height: 335 });
+    const championGuide = '/products/winrift/screenshots/champion-guide.png';
+    const championGuideSize = getImageSize(championGuide, { width: 1440, height: 1200 });
+    const homepage = '/products/winrift/screenshots/homepage.png';
+    const homepageSize = getImageSize(homepage, { width: 1440, height: 1000 });
+    const liveMatch = '/products/winrift/screenshots/live-match.png';
+    const liveMatchSize = getImageSize(liveMatch, { width: 1440, height: 1050 });
+
+    return (
+      <div className="demo-visual demo-visual-winrift" aria-hidden="true">
+        <div className="winrift-demo-brand">
+          <Image src={lockup} alt="" width={lockupSize.width} height={lockupSize.height} sizes="150px" />
+        </div>
+        <div className="winrift-screen-stack">
+          <div className="winrift-main-screen">
+            <Image
+              src={championGuide}
+              alt=""
+              width={championGuideSize.width}
+              height={championGuideSize.height}
+              sizes="(max-width: 640px) 100vw, 420px"
+            />
+          </div>
+          <div className="winrift-secondary-screens">
+            <span>
+              <Image src={homepage} alt="" width={homepageSize.width} height={homepageSize.height} sizes="190px" />
+            </span>
+            <span>
+              <Image src={liveMatch} alt="" width={liveMatchSize.width} height={liveMatchSize.height} sizes="190px" />
+            </span>
+          </div>
+        </div>
+        <div className="winrift-stat-panel">
+          <span>
+            <small>Champion page</small>
+            <strong>24,613 games</strong>
+          </span>
+          <span>
+            <small>Build lens</small>
+            <strong>vs. Champion</strong>
+          </span>
+          <span>
+            <small>Live scout</small>
+            <strong>10 players</strong>
+          </span>
+        </div>
+      </div>
+    );
+  }
+
   if (project.demo.kind === 'trackextract') {
     const lockup = project.brand?.darkLockup ?? '/products/trackextract/trackextract-logo-row-white.png';
     const lockupSize = getImageSize(lockup, { width: 368, height: 100 });

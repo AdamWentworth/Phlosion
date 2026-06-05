@@ -154,12 +154,19 @@
 
   .demo-visual-nexus,
   .demo-visual-jarvin,
+  .demo-visual-winrift,
   .demo-visual-trackextract,
   .demo-visual-autochess {
     grid-template-columns: 1fr;
   }
 
+  .winrift-screen-stack {
+    grid-template-rows: minmax(0, 1fr);
+  }
+
   .demo-feed,
+  .winrift-secondary-screens,
+  .winrift-stat-panel,
   .trackextract-stem-stack,
   .memory-stack,
   .combat-log {

@@ -47,6 +47,13 @@
     linear-gradient(135deg, #031b23, #06131c 58%, #081f26);
 }
 
+.project-icon-winrift.project-icon-branded {
+  border-color: rgba(45, 226, 244, 0.34);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(45, 226, 244, 0.34), transparent 58%),
+    linear-gradient(135deg, #132229, #071015 58%, #10232b);
+}
+
 .project-icon-logo {
   overflow: hidden;
   border: 1px solid rgba(0, 43, 79, 0.12);
@@ -92,6 +99,10 @@
 
 .project-type-icon-jarvin {
   color: var(--success);
+}
+
+.project-type-icon-winrift {
+  color: #0b7f8c;
 }
 
 .project-type-icon-trackextract {
@@ -359,6 +370,7 @@
 
 .product-line,
 .product-line-nexus,
+.product-line-winrift,
 .product-line-jarvin,
 .product-line-trackextract,
 .product-line-cipher,
@@ -394,6 +406,14 @@
   background:
     radial-gradient(circle at 84% 0%, rgba(0, 214, 255, 0.16), transparent 31%),
     linear-gradient(225deg, rgba(0, 67, 111, 0.15), rgba(255, 249, 239, 0.9) 38%), var(--surface-raised);
+}
+
+.product-line-winrift,
+.showcase-stage-winrift {
+  border-color: rgba(11, 127, 140, 0.26);
+  background:
+    radial-gradient(circle at 84% 0%, rgba(45, 226, 244, 0.22), transparent 31%),
+    linear-gradient(225deg, rgba(12, 83, 96, 0.16), rgba(255, 249, 239, 0.9) 38%), var(--surface-raised);
 }
 
 .product-line-trackextract,

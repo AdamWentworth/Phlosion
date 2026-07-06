@@ -743,6 +743,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
               {lightboxMedia.kind === 'video' ? (
                 <>
                   <video
+                    key={`${theme}-${lightboxMedia.moment.mediaKey}-desktop`}
                     className="nexus-lightbox-video nexus-lightbox-video-desktop"
                     autoPlay
                     loop
@@ -754,6 +755,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                     <source src={config.videoPath(theme, lightboxMedia.moment.mediaKey, 'desktop')} type="video/webm" />
                   </video>
                   <video
+                    key={`${theme}-${lightboxMedia.moment.mediaKey}-mobile`}
                     className="nexus-lightbox-video nexus-lightbox-video-mobile"
                     autoPlay
                     loop

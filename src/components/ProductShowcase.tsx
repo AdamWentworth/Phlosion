@@ -377,27 +377,60 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
     setCarouselHasMoved(true);
     setActiveScreenshotId(config.screenshots[nextIndex].id);
   };
-  const selectScreenshot = (screenshotId: string) => {
-    const nextIndex = config.screenshots.findIndex((screenshot) => screenshot.id === screenshotId);
+  const selectScreenshot = useCallback(
+    (screenshotId: string) => {
+      const nextIndex = config.screenshots.findIndex((screenshot) => screenshot.id === screenshotId);
 
-    if (nextIndex < 0 || nextIndex === activeScreenshotIndex) {
-      return;
-    }
+      if (nextIndex < 0 || nextIndex === activeScreenshotIndex) {
+        return;
+      }
 
-    const forwardDistance = (nextIndex - activeScreenshotIndex + config.screenshots.length) % config.screenshots.length;
-    const backwardDistance =
-      (activeScreenshotIndex - nextIndex + config.screenshots.length) % config.screenshots.length;
-    setCarouselDirection(forwardDistance <= backwardDistance ? 'next' : 'previous');
-    setCarouselHasMoved(true);
-    setActiveScreenshotId(screenshotId);
-  };
-  const openVideoLightbox = useCallback(
-    () => setLightboxMedia({ kind: 'video', moment: activeMoment }),
-    [activeMoment],
+      const forwardDistance =
+        (nextIndex - activeScreenshotIndex + config.screenshots.length) % config.screenshots.length;
+      const backwardDistance =
+        (activeScreenshotIndex - nextIndex + config.screenshots.length) % config.screenshots.length;
+      setCarouselDirection(forwardDistance <= backwardDistance ? 'next' : 'previous');
+      setCarouselHasMoved(true);
+      setActiveScreenshotId(screenshotId);
+    },
+    [activeScreenshotIndex, config.screenshots],
   );
-  const openScreenshotLightbox = useCallback((screenshot: CapturedScreenshot) => {
-    setLightboxMedia({ kind: 'screenshot', screenshot });
+  const showLightboxVideo = useCallback((moment: CapturedDemoMoment) => {
+    setActiveMomentId(moment.id);
+    setLightboxMedia({ kind: 'video', moment });
   }, []);
+  const showLightboxScreenshot = useCallback(
+    (screenshot: CapturedScreenshot) => {
+      selectScreenshot(screenshot.id);
+      setLightboxMedia({ kind: 'screenshot', screenshot });
+    },
+    [selectScreenshot],
+  );
+  const openVideoLightbox = useCallback(() => showLightboxVideo(activeMoment), [activeMoment, showLightboxVideo]);
+  const openScreenshotLightbox = showLightboxScreenshot;
+  const changeLightboxMedia = useCallback(
+    (direction: -1 | 1) => {
+      if (!lightboxMedia) {
+        return;
+      }
+
+      if (lightboxMedia.kind === 'video') {
+        const currentIndex = config.moments.findIndex((moment) => moment.id === lightboxMedia.moment.id);
+        const nextMoment = config.moments[(currentIndex + direction + config.moments.length) % config.moments.length];
+        showLightboxVideo(nextMoment);
+        return;
+      }
+
+      const currentIndex = config.screenshots.findIndex((screenshot) => screenshot.id === lightboxMedia.screenshot.id);
+      const nextScreenshot =
+        config.screenshots[(currentIndex + direction + config.screenshots.length) % config.screenshots.length];
+      setCarouselDirection(direction === 1 ? 'next' : 'previous');
+      setCarouselHasMoved(true);
+      setActiveScreenshotId(nextScreenshot.id);
+      setLightboxMedia({ kind: 'screenshot', screenshot: nextScreenshot });
+    },
+    [config.moments, config.screenshots, lightboxMedia, showLightboxVideo],
+  );
 
   useEffect(() => {
     const frame = videoFrameRef.current;
@@ -640,6 +673,71 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
               >
                 <X size={18} aria-hidden="true" />
               </button>
+            </div>
+            <div className="nexus-media-lightbox-controls">
+              <div className="nexus-lightbox-kind-tabs" role="group" aria-label={`${config.productName} media type`}>
+                <button
+                  type="button"
+                  aria-pressed={lightboxMedia.kind === 'video'}
+                  onClick={() => showLightboxVideo(activeMoment)}
+                >
+                  Videos
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={lightboxMedia.kind === 'screenshot'}
+                  onClick={() => showLightboxScreenshot(activeScreenshot)}
+                >
+                  Screens
+                </button>
+              </div>
+              <div className="nexus-lightbox-arrows">
+                <button
+                  type="button"
+                  aria-label={`Previous ${config.productName} ${
+                    lightboxMedia.kind === 'video' ? 'video' : 'screenshot'
+                  }`}
+                  onClick={() => changeLightboxMedia(-1)}
+                >
+                  <ChevronLeft size={16} aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  aria-label={`Next ${config.productName} ${lightboxMedia.kind === 'video' ? 'video' : 'screenshot'}`}
+                  onClick={() => changeLightboxMedia(1)}
+                >
+                  <ChevronRight size={16} aria-hidden="true" />
+                </button>
+              </div>
+            </div>
+            <div
+              className="nexus-media-lightbox-tabs"
+              role="group"
+              aria-label={`${config.productName} enlarged ${
+                lightboxMedia.kind === 'video' ? 'video' : 'screenshot'
+              } selector`}
+            >
+              {lightboxMedia.kind === 'video'
+                ? config.moments.map((moment) => (
+                    <button
+                      key={moment.id}
+                      type="button"
+                      aria-pressed={lightboxMedia.moment.id === moment.id}
+                      onClick={() => showLightboxVideo(moment)}
+                    >
+                      {moment.label}
+                    </button>
+                  ))
+                : config.screenshots.map((screenshot) => (
+                    <button
+                      key={screenshot.id}
+                      type="button"
+                      aria-pressed={lightboxMedia.screenshot.id === screenshot.id}
+                      onClick={() => showLightboxScreenshot(screenshot)}
+                    >
+                      {screenshot.label}
+                    </button>
+                  ))}
             </div>
             <div className="nexus-media-lightbox-frame">
               {lightboxMedia.kind === 'video' ? (

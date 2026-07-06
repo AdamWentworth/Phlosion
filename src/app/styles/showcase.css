@@ -790,7 +790,7 @@
   width: min(94vw, 1280px);
   max-height: 92vh;
   overflow: hidden;
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-rows: auto auto auto minmax(0, 1fr);
   border: 1px solid rgba(244, 234, 209, 0.18);
   border-radius: 8px;
   background: #030912;
@@ -836,6 +836,73 @@
   background: rgba(244, 234, 209, 0.14);
 }
 
+.nexus-media-lightbox-controls,
+.nexus-media-lightbox-tabs,
+.nexus-lightbox-kind-tabs,
+.nexus-lightbox-arrows {
+  display: flex;
+  gap: 6px;
+}
+
+.nexus-media-lightbox-controls {
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(244, 234, 209, 0.1);
+  padding: 10px 14px;
+}
+
+.nexus-media-lightbox-tabs {
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(244, 234, 209, 0.1);
+  padding: 10px 14px;
+}
+
+.nexus-lightbox-kind-tabs button,
+.nexus-media-lightbox-tabs button,
+.nexus-lightbox-arrows button {
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(244, 234, 209, 0.09);
+  color: rgba(255, 247, 232, 0.78);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.nexus-lightbox-kind-tabs button,
+.nexus-media-lightbox-tabs button {
+  padding: 8px 10px;
+}
+
+.nexus-lightbox-arrows button {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+}
+
+.nexus-lightbox-kind-tabs button[aria-pressed='true'],
+.nexus-media-lightbox-tabs button[aria-pressed='true'] {
+  background: linear-gradient(135deg, #fff0b3, #ffb41f);
+  color: #201304;
+}
+
+.demo-visual-winrift-media .nexus-lightbox-kind-tabs button[aria-pressed='true'],
+.demo-visual-winrift-media .nexus-media-lightbox-tabs button[aria-pressed='true'] {
+  background: linear-gradient(135deg, #2de2f4, #78f2c7);
+  color: #031018;
+}
+
+.nexus-lightbox-kind-tabs button:hover,
+.nexus-media-lightbox-tabs button:hover,
+.nexus-lightbox-arrows button:hover {
+  filter: brightness(1.08);
+}
+
 .nexus-media-lightbox-frame {
   display: grid;
   min-height: 0;
@@ -850,7 +917,7 @@
   width: 100%;
   max-width: 100%;
   height: 100%;
-  max-height: calc(92vh - 78px);
+  max-height: calc(92vh - 158px);
   object-fit: contain;
 }
 

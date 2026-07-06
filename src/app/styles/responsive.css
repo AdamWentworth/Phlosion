@@ -234,9 +234,18 @@
     padding: 10px;
   }
 
+  .nexus-media-lightbox-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .nexus-lightbox-kind-tabs button {
+    flex: 1 1 0;
+  }
+
   .nexus-lightbox-video,
   .nexus-lightbox-image {
-    max-height: calc(94svh - 70px);
+    max-height: calc(94svh - 166px);
   }
 
   .nexus-lightbox-video-desktop,

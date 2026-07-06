@@ -1,0 +1,127 @@
+{
+  "generatedAt": "2026-07-06T19:50:01.018Z",
+  "screenshots": [
+    {
+      "name": "home",
+      "viewport": "desktop",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-home-desktop.png"
+    },
+    {
+      "name": "champion-directory",
+      "viewport": "desktop",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-champion-directory-desktop.png"
+    },
+    {
+      "name": "champion-guide",
+      "viewport": "desktop",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-champion-guide-desktop.png"
+    },
+    {
+      "name": "tier-list",
+      "viewport": "desktop",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-tier-list-desktop.png"
+    },
+    {
+      "name": "summoner-profile",
+      "viewport": "desktop",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-summoner-profile-desktop.png"
+    },
+    {
+      "name": "live-match",
+      "viewport": "desktop",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-live-match-desktop.png"
+    },
+    {
+      "name": "live-builds",
+      "viewport": "desktop",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-live-builds-desktop.png"
+    },
+    {
+      "name": "win-conditions",
+      "viewport": "desktop",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-win-conditions-desktop.png"
+    },
+    {
+      "name": "home",
+      "viewport": "mobile",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-home-mobile.png"
+    },
+    {
+      "name": "champion-directory",
+      "viewport": "mobile",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-champion-directory-mobile.png"
+    },
+    {
+      "name": "champion-guide",
+      "viewport": "mobile",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-champion-guide-mobile.png"
+    },
+    {
+      "name": "tier-list",
+      "viewport": "mobile",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-tier-list-mobile.png"
+    },
+    {
+      "name": "summoner-profile",
+      "viewport": "mobile",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-summoner-profile-mobile.png"
+    },
+    {
+      "name": "live-match",
+      "viewport": "mobile",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-live-match-mobile.png"
+    },
+    {
+      "name": "live-builds",
+      "viewport": "mobile",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-live-builds-mobile.png"
+    },
+    {
+      "name": "win-conditions",
+      "viewport": "mobile",
+      "path": ".artifacts/demo-media/winrift/screenshots/winrift-win-conditions-mobile.png"
+    }
+  ],
+  "videos": [
+    {
+      "name": "champion-discovery",
+      "viewport": "desktop",
+      "path": ".artifacts/demo-media/winrift/videos/winrift-champion-discovery-desktop.webm"
+    },
+    {
+      "name": "tier-list",
+      "viewport": "desktop",
+      "path": ".artifacts/demo-media/winrift/videos/winrift-tier-list-desktop.webm"
+    },
+    {
+      "name": "summoner-profile",
+      "viewport": "desktop",
+      "path": ".artifacts/demo-media/winrift/videos/winrift-summoner-profile-desktop.webm"
+    },
+    {
+      "name": "live-match-analysis",
+      "viewport": "desktop",
+      "path": ".artifacts/demo-media/winrift/videos/winrift-live-match-analysis-desktop.webm"
+    },
+    {
+      "name": "champion-discovery",
+      "viewport": "mobile",
+      "path": ".artifacts/demo-media/winrift/videos/winrift-champion-discovery-mobile.webm"
+    },
+    {
+      "name": "tier-list",
+      "viewport": "mobile",
+      "path": ".artifacts/demo-media/winrift/videos/winrift-tier-list-mobile.webm"
+    },
+    {
+      "name": "summoner-profile",
+      "viewport": "mobile",
+      "path": ".artifacts/demo-media/winrift/videos/winrift-summoner-profile-mobile.webm"
+    },
+    {
+      "name": "live-match-analysis",
+      "viewport": "mobile",
+      "path": ".artifacts/demo-media/winrift/videos/winrift-live-match-analysis-mobile.webm"
+    }
+  ]
+}

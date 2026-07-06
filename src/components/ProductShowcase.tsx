@@ -2,36 +2,56 @@
 
 import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUpRight, CheckCircle2, ChevronLeft, ChevronRight, Moon, Sun } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, ChevronLeft, ChevronRight, Moon, Sun, type LucideIcon } from 'lucide-react';
 import { ProjectIconFrame } from '@/components/ProjectBrand';
 import { getImageSize } from '@/lib/imageSizes';
 import { projects, type Project } from '@/lib/projects';
 
-type NexusDemoTheme = 'dark' | 'light';
+type DemoViewport = 'desktop' | 'mobile';
+type DemoThemeId = 'dark' | 'light' | 'standard';
 
-type NexusDemoMoment = {
+type CapturedDemoMoment = {
   id: string;
   label: string;
   description: string;
   mediaKey: string;
+  posterKey?: string;
 };
 
-type NexusScreenshot = {
+type CapturedScreenshot = {
   id: string;
   label: string;
   imageKey: string;
 };
 
-type NexusVideoSnapshot = {
-  key: string;
-  theme: NexusDemoTheme;
+type CapturedDemoTheme = {
+  id: DemoThemeId;
   label: string;
-  mediaKey: string;
+  Icon?: LucideIcon;
 };
 
-type NexusCarouselDirection = 'previous' | 'next';
+type CapturedMediaConfig = {
+  productName: string;
+  visualClassName?: string;
+  themes: CapturedDemoTheme[];
+  moments: CapturedDemoMoment[];
+  screenshots: CapturedScreenshot[];
+  videoPath: (theme: DemoThemeId, mediaKey: string, viewport: DemoViewport) => string;
+  posterPath?: (theme: DemoThemeId, moment: CapturedDemoMoment, viewport: DemoViewport) => string;
+  screenshotPath: (theme: DemoThemeId, imageKey: string, viewport: DemoViewport) => string;
+  themeClassName?: (theme: DemoThemeId) => string;
+};
 
-const nexusDemoMoments: NexusDemoMoment[] = [
+type CapturedVideoSnapshot = {
+  key: string;
+  theme: DemoThemeId;
+  label: string;
+  moment: CapturedDemoMoment;
+};
+
+type CapturedCarouselDirection = 'previous' | 'next';
+
+const nexusDemoMoments: CapturedDemoMoment[] = [
   {
     id: 'collection',
     label: 'Collection',
@@ -58,7 +78,7 @@ const nexusDemoMoments: NexusDemoMoment[] = [
   },
 ];
 
-const nexusScreenshots: NexusScreenshot[] = [
+const nexusScreenshots: CapturedScreenshot[] = [
   {
     id: 'collection',
     label: 'Collection',
@@ -83,19 +103,132 @@ const nexusScreenshots: NexusScreenshot[] = [
 
 const nexusMediaBasePath = '/products/pokemon-go-nexus/demo';
 
-function nexusVideoPath(theme: NexusDemoTheme, mediaKey: string, viewport: 'desktop' | 'mobile') {
+function nexusVideoPath(theme: DemoThemeId, mediaKey: string, viewport: DemoViewport) {
   return `${nexusMediaBasePath}/videos/${theme}-${mediaKey}-${viewport}.webm`;
 }
 
-function nexusPosterPath(theme: NexusDemoTheme, mediaKey: string, viewport: 'desktop' | 'mobile') {
-  return `${nexusMediaBasePath}/posters/${theme}-${mediaKey}-${viewport}.png`;
+function nexusPosterPath(theme: DemoThemeId, moment: CapturedDemoMoment, viewport: DemoViewport) {
+  return `${nexusMediaBasePath}/posters/${theme}-${moment.mediaKey}-${viewport}.png`;
 }
 
-function nexusScreenshotPath(theme: NexusDemoTheme, imageKey: string, viewport: 'desktop' | 'mobile') {
+function nexusScreenshotPath(theme: DemoThemeId, imageKey: string, viewport: DemoViewport) {
   return `${nexusMediaBasePath}/screenshots/${theme}-${imageKey}-${viewport}.png`;
 }
 
-function NexusVideoPair({ video }: { video: NexusVideoSnapshot }) {
+const winRiftDemoMoments: CapturedDemoMoment[] = [
+  {
+    id: 'champion',
+    label: 'Champion Discovery',
+    description: 'Champion lookup into guide details with matchup-aware build, rune, and spell context.',
+    mediaKey: 'champion-discovery',
+    posterKey: 'champion-guide',
+  },
+  {
+    id: 'tier-list',
+    label: 'Tier List',
+    description: 'Patch-aware champion tiers, role filters, and summary views for browsing the meta.',
+    mediaKey: 'tier-list',
+    posterKey: 'tier-list',
+  },
+  {
+    id: 'summoner',
+    label: 'Summoner Profile',
+    description: 'Riot ID lookup, recent match context, ranked identity, and account-level scouting.',
+    mediaKey: 'summoner-profile',
+    posterKey: 'summoner-profile',
+  },
+  {
+    id: 'live',
+    label: 'Live Match',
+    description: 'Live participants, focused build analysis, and win-condition reads for the current lobby.',
+    mediaKey: 'live-match-analysis',
+    posterKey: 'live-match',
+  },
+];
+
+const winRiftScreenshots: CapturedScreenshot[] = [
+  {
+    id: 'home',
+    label: 'Home',
+    imageKey: 'home',
+  },
+  {
+    id: 'directory',
+    label: 'Directory',
+    imageKey: 'champion-directory',
+  },
+  {
+    id: 'guide',
+    label: 'Guide',
+    imageKey: 'champion-guide',
+  },
+  {
+    id: 'tiers',
+    label: 'Tier List',
+    imageKey: 'tier-list',
+  },
+  {
+    id: 'profile',
+    label: 'Profile',
+    imageKey: 'summoner-profile',
+  },
+  {
+    id: 'match',
+    label: 'Live Match',
+    imageKey: 'live-match',
+  },
+  {
+    id: 'builds',
+    label: 'Builds',
+    imageKey: 'live-builds',
+  },
+  {
+    id: 'conditions',
+    label: 'Win Conditions',
+    imageKey: 'win-conditions',
+  },
+];
+
+const winRiftMediaBasePath = '/products/winrift/demo';
+
+function winRiftVideoPath(_theme: DemoThemeId, mediaKey: string, viewport: DemoViewport) {
+  return `${winRiftMediaBasePath}/videos/winrift-${mediaKey}-${viewport}.webm`;
+}
+
+function winRiftPosterPath(_theme: DemoThemeId, moment: CapturedDemoMoment, viewport: DemoViewport) {
+  return `${winRiftMediaBasePath}/screenshots/winrift-${moment.posterKey ?? moment.mediaKey}-${viewport}.png`;
+}
+
+function winRiftScreenshotPath(_theme: DemoThemeId, imageKey: string, viewport: DemoViewport) {
+  return `${winRiftMediaBasePath}/screenshots/winrift-${imageKey}-${viewport}.png`;
+}
+
+const nexusMediaConfig: CapturedMediaConfig = {
+  productName: 'PokeGo Nexus',
+  themes: [
+    { id: 'dark', label: 'Dark', Icon: Moon },
+    { id: 'light', label: 'Light', Icon: Sun },
+  ],
+  moments: nexusDemoMoments,
+  screenshots: nexusScreenshots,
+  videoPath: nexusVideoPath,
+  posterPath: nexusPosterPath,
+  screenshotPath: nexusScreenshotPath,
+  themeClassName: (theme) => `nexus-media-theme-${theme}`,
+};
+
+const winRiftMediaConfig: CapturedMediaConfig = {
+  productName: 'WinRift',
+  visualClassName: 'demo-visual-winrift-media',
+  themes: [{ id: 'standard', label: 'Default' }],
+  moments: winRiftDemoMoments,
+  screenshots: winRiftScreenshots,
+  videoPath: winRiftVideoPath,
+  posterPath: winRiftPosterPath,
+  screenshotPath: winRiftScreenshotPath,
+};
+
+function CapturedVideoPair({ config, video }: { config: CapturedMediaConfig; video: CapturedVideoSnapshot }) {
   return (
     <>
       <video
@@ -105,9 +238,9 @@ function NexusVideoPair({ video }: { video: NexusVideoSnapshot }) {
         muted
         playsInline
         preload="metadata"
-        poster={nexusPosterPath(video.theme, video.mediaKey, 'desktop')}
+        poster={config.posterPath?.(video.theme, video.moment, 'desktop')}
       >
-        <source src={nexusVideoPath(video.theme, video.mediaKey, 'desktop')} type="video/webm" />
+        <source src={config.videoPath(video.theme, video.moment.mediaKey, 'desktop')} type="video/webm" />
       </video>
       <video
         className="nexus-demo-video nexus-demo-video-mobile"
@@ -116,28 +249,30 @@ function NexusVideoPair({ video }: { video: NexusVideoSnapshot }) {
         muted
         playsInline
         preload="metadata"
-        poster={nexusPosterPath(video.theme, video.mediaKey, 'mobile')}
+        poster={config.posterPath?.(video.theme, video.moment, 'mobile')}
       >
-        <source src={nexusVideoPath(video.theme, video.mediaKey, 'mobile')} type="video/webm" />
+        <source src={config.videoPath(video.theme, video.moment.mediaKey, 'mobile')} type="video/webm" />
       </video>
     </>
   );
 }
 
-function NexusMediaVisual({ project }: { project: Project }) {
-  const [theme, setTheme] = useState<NexusDemoTheme>('dark');
-  const [activeMomentId, setActiveMomentId] = useState(nexusDemoMoments[0].id);
-  const [activeScreenshotId, setActiveScreenshotId] = useState(nexusScreenshots[0].id);
-  const [carouselDirection, setCarouselDirection] = useState<NexusCarouselDirection>('next');
+function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig; project: Project }) {
+  const defaultTheme = config.themes[0];
+  const [theme, setTheme] = useState<DemoThemeId>(defaultTheme.id);
+  const [activeMomentId, setActiveMomentId] = useState(config.moments[0].id);
+  const [activeScreenshotId, setActiveScreenshotId] = useState(config.screenshots[0].id);
+  const [carouselDirection, setCarouselDirection] = useState<CapturedCarouselDirection>('next');
   const [carouselHasMoved, setCarouselHasMoved] = useState(false);
-  const activeMoment = nexusDemoMoments.find((moment) => moment.id === activeMomentId) ?? nexusDemoMoments[0];
+  const activeMoment = config.moments.find((moment) => moment.id === activeMomentId) ?? config.moments[0];
   const activeScreenshot =
-    nexusScreenshots.find((screenshot) => screenshot.id === activeScreenshotId) ?? nexusScreenshots[0];
-  const activeScreenshotIndex = nexusScreenshots.findIndex((screenshot) => screenshot.id === activeScreenshot.id);
+    config.screenshots.find((screenshot) => screenshot.id === activeScreenshotId) ?? config.screenshots[0];
+  const activeScreenshotIndex = config.screenshots.findIndex((screenshot) => screenshot.id === activeScreenshot.id);
   const carouselScreenshots = [
     {
       slot: 'previous',
-      screenshot: nexusScreenshots[(activeScreenshotIndex - 1 + nexusScreenshots.length) % nexusScreenshots.length],
+      screenshot:
+        config.screenshots[(activeScreenshotIndex - 1 + config.screenshots.length) % config.screenshots.length],
     },
     {
       slot: 'active',
@@ -145,23 +280,23 @@ function NexusMediaVisual({ project }: { project: Project }) {
     },
     {
       slot: 'next',
-      screenshot: nexusScreenshots[(activeScreenshotIndex + 1) % nexusScreenshots.length],
+      screenshot: config.screenshots[(activeScreenshotIndex + 1) % config.screenshots.length],
     },
   ];
   const wordmarkSize = project.brand?.wordmark
     ? getImageSize(project.brand.wordmark, { width: 280, height: 88 })
     : null;
-  const activeVideo = useMemo<NexusVideoSnapshot>(
+  const activeVideo = useMemo<CapturedVideoSnapshot>(
     () => ({
       key: `${theme}-${activeMoment.mediaKey}`,
       theme,
       label: activeMoment.label,
-      mediaKey: activeMoment.mediaKey,
+      moment: activeMoment,
     }),
-    [activeMoment.label, activeMoment.mediaKey, theme],
+    [activeMoment, theme],
   );
   const activeVideoRef = useRef(activeVideo);
-  const [previousVideo, setPreviousVideo] = useState<NexusVideoSnapshot | null>(null);
+  const [previousVideo, setPreviousVideo] = useState<CapturedVideoSnapshot | null>(null);
 
   useEffect(() => {
     if (activeVideoRef.current.key === activeVideo.key) {
@@ -180,27 +315,33 @@ function NexusMediaVisual({ project }: { project: Project }) {
   }, [activeVideo]);
 
   const changeScreenshot = (direction: -1 | 1) => {
-    const nextIndex = (activeScreenshotIndex + direction + nexusScreenshots.length) % nexusScreenshots.length;
+    const nextIndex = (activeScreenshotIndex + direction + config.screenshots.length) % config.screenshots.length;
     setCarouselDirection(direction === 1 ? 'next' : 'previous');
     setCarouselHasMoved(true);
-    setActiveScreenshotId(nexusScreenshots[nextIndex].id);
+    setActiveScreenshotId(config.screenshots[nextIndex].id);
   };
   const selectScreenshot = (screenshotId: string) => {
-    const nextIndex = nexusScreenshots.findIndex((screenshot) => screenshot.id === screenshotId);
+    const nextIndex = config.screenshots.findIndex((screenshot) => screenshot.id === screenshotId);
 
     if (nextIndex < 0 || nextIndex === activeScreenshotIndex) {
       return;
     }
 
-    const forwardDistance = (nextIndex - activeScreenshotIndex + nexusScreenshots.length) % nexusScreenshots.length;
-    const backwardDistance = (activeScreenshotIndex - nextIndex + nexusScreenshots.length) % nexusScreenshots.length;
+    const forwardDistance = (nextIndex - activeScreenshotIndex + config.screenshots.length) % config.screenshots.length;
+    const backwardDistance =
+      (activeScreenshotIndex - nextIndex + config.screenshots.length) % config.screenshots.length;
     setCarouselDirection(forwardDistance <= backwardDistance ? 'next' : 'previous');
     setCarouselHasMoved(true);
     setActiveScreenshotId(screenshotId);
   };
 
+  const themeClassName = config.themeClassName?.(theme) ?? '';
+  const visualClassName = ['demo-visual', 'demo-visual-nexus', config.visualClassName, themeClassName]
+    .filter(Boolean)
+    .join(' ');
+
   return (
-    <div className={`demo-visual demo-visual-nexus nexus-media-theme-${theme}`}>
+    <div className={visualClassName}>
       <div className="nexus-media-toolbar">
         {project.brand?.wordmark && wordmarkSize && (
           <span className="nexus-media-brand">
@@ -213,21 +354,30 @@ function NexusMediaVisual({ project }: { project: Project }) {
             />
           </span>
         )}
-        <div className="nexus-theme-toggle" role="group" aria-label="PokeGo Nexus media theme">
-          <button type="button" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}>
-            <Moon size={14} aria-hidden="true" />
-            Dark
-          </button>
-          <button type="button" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}>
-            <Sun size={14} aria-hidden="true" />
-            Light
-          </button>
-        </div>
+        {config.themes.length > 1 && (
+          <div className="nexus-theme-toggle" role="group" aria-label={`${config.productName} media theme`}>
+            {config.themes.map((themeOption) => {
+              const Icon = themeOption.Icon;
+
+              return (
+                <button
+                  key={themeOption.id}
+                  type="button"
+                  aria-pressed={theme === themeOption.id}
+                  onClick={() => setTheme(themeOption.id)}
+                >
+                  {Icon && <Icon size={14} aria-hidden="true" />}
+                  {themeOption.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <div className="nexus-media-content">
-        <div className="nexus-moment-tabs" role="group" aria-label="PokeGo Nexus demo moment">
-          {nexusDemoMoments.map((moment) => (
+        <div className="nexus-moment-tabs" role="group" aria-label={`${config.productName} demo moment`}>
+          {config.moments.map((moment) => (
             <button
               key={moment.id}
               type="button"
@@ -242,11 +392,11 @@ function NexusMediaVisual({ project }: { project: Project }) {
         <div className="nexus-media-frame" aria-label={`${activeMoment.label} demo video`}>
           {previousVideo && (
             <div key={`previous-${previousVideo.key}`} className="nexus-video-layer nexus-video-layer-previous">
-              <NexusVideoPair video={previousVideo} />
+              <CapturedVideoPair config={config} video={previousVideo} />
             </div>
           )}
           <div key={`active-${activeVideo.key}`} className="nexus-video-layer nexus-video-layer-active">
-            <NexusVideoPair video={activeVideo} />
+            <CapturedVideoPair config={config} video={activeVideo} />
           </div>
         </div>
 
@@ -259,10 +409,18 @@ function NexusMediaVisual({ project }: { project: Project }) {
           <div className="nexus-image-header">
             <span>Screens</span>
             <div className="nexus-image-arrows">
-              <button type="button" aria-label="Previous PokeGo Nexus screenshot" onClick={() => changeScreenshot(-1)}>
+              <button
+                type="button"
+                aria-label={`Previous ${config.productName} screenshot`}
+                onClick={() => changeScreenshot(-1)}
+              >
                 <ChevronLeft size={16} aria-hidden="true" />
               </button>
-              <button type="button" aria-label="Next PokeGo Nexus screenshot" onClick={() => changeScreenshot(1)}>
+              <button
+                type="button"
+                aria-label={`Next ${config.productName} screenshot`}
+                onClick={() => changeScreenshot(1)}
+              >
                 <ChevronRight size={16} aria-hidden="true" />
               </button>
             </div>
@@ -293,16 +451,16 @@ function NexusMediaVisual({ project }: { project: Project }) {
                   >
                     <Image
                       className="nexus-carousel-image nexus-carousel-image-desktop"
-                      src={nexusScreenshotPath(theme, screenshot.imageKey, 'desktop')}
-                      alt={isActive ? `${screenshot.label} PokeGo Nexus ${theme} desktop screenshot` : ''}
+                      src={config.screenshotPath(theme, screenshot.imageKey, 'desktop')}
+                      alt={isActive ? `${screenshot.label} ${config.productName} desktop screenshot` : ''}
                       width={1440}
-                      height={900}
+                      height={1000}
                       sizes="(max-width: 640px) 0px, 520px"
                     />
                     <Image
                       className="nexus-carousel-image nexus-carousel-image-mobile"
-                      src={nexusScreenshotPath(theme, screenshot.imageKey, 'mobile')}
-                      alt={isActive ? `${screenshot.label} PokeGo Nexus ${theme} mobile screenshot` : ''}
+                      src={config.screenshotPath(theme, screenshot.imageKey, 'mobile')}
+                      alt={isActive ? `${screenshot.label} ${config.productName} mobile screenshot` : ''}
                       width={390}
                       height={844}
                       sizes="(max-width: 640px) 260px, 0px"
@@ -312,8 +470,8 @@ function NexusMediaVisual({ project }: { project: Project }) {
               })}
             </div>
           </div>
-          <div className="nexus-image-tabs" role="group" aria-label="PokeGo Nexus screenshot selector">
-            {nexusScreenshots.map((screenshot) => (
+          <div className="nexus-image-tabs" role="group" aria-label={`${config.productName} screenshot selector`}>
+            {config.screenshots.map((screenshot) => (
               <button
                 key={screenshot.id}
                 type="button"
@@ -332,7 +490,11 @@ function NexusMediaVisual({ project }: { project: Project }) {
 
 function DemoVisual({ project }: { project: Project }) {
   if (project.demo.kind === 'nexus') {
-    return <NexusMediaVisual project={project} />;
+    return <CapturedMediaVisual key="nexus" config={nexusMediaConfig} project={project} />;
+  }
+
+  if (project.demo.kind === 'winrift') {
+    return <CapturedMediaVisual key="winrift" config={winRiftMediaConfig} project={project} />;
   }
 
   if (project.demo.kind === 'jarvin') {
@@ -355,58 +517,6 @@ function DemoVisual({ project }: { project: Project }) {
             <span />
             <span />
           </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (project.demo.kind === 'winrift') {
-    const lockup = project.brand?.darkLockup ?? '/products/winrift/winrift-logo-tall-compact.png';
-    const lockupSize = getImageSize(lockup, { width: 476, height: 335 });
-    const championGuide = '/products/winrift/screenshots/champion-guide.png';
-    const championGuideSize = getImageSize(championGuide, { width: 1440, height: 1200 });
-    const homepage = '/products/winrift/screenshots/homepage.png';
-    const homepageSize = getImageSize(homepage, { width: 1440, height: 1000 });
-    const liveMatch = '/products/winrift/screenshots/live-match.png';
-    const liveMatchSize = getImageSize(liveMatch, { width: 1440, height: 1050 });
-
-    return (
-      <div className="demo-visual demo-visual-winrift" aria-hidden="true">
-        <div className="winrift-demo-brand">
-          <Image src={lockup} alt="" width={lockupSize.width} height={lockupSize.height} sizes="150px" />
-        </div>
-        <div className="winrift-screen-stack">
-          <div className="winrift-main-screen">
-            <Image
-              src={championGuide}
-              alt=""
-              width={championGuideSize.width}
-              height={championGuideSize.height}
-              sizes="(max-width: 640px) 100vw, 420px"
-            />
-          </div>
-          <div className="winrift-secondary-screens">
-            <span>
-              <Image src={homepage} alt="" width={homepageSize.width} height={homepageSize.height} sizes="190px" />
-            </span>
-            <span>
-              <Image src={liveMatch} alt="" width={liveMatchSize.width} height={liveMatchSize.height} sizes="190px" />
-            </span>
-          </div>
-        </div>
-        <div className="winrift-stat-panel">
-          <span>
-            <small>Champion page</small>
-            <strong>24,613 games</strong>
-          </span>
-          <span>
-            <small>Build lens</small>
-            <strong>vs. Champion</strong>
-          </span>
-          <span>
-            <small>Live scout</small>
-            <strong>10 players</strong>
-          </span>
         </div>
       </div>
     );

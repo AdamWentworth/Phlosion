@@ -238,11 +238,11 @@ const productCatalog: Project[] = [
     },
     demo: {
       kind: 'nexus',
-      label: 'Collection + trade walkthrough',
-      metric: 'Trade flow',
+      label: 'App walkthrough',
+      metric: 'App demo',
       summary:
-        'A walkthrough surface for browsing a collection, finding location-aware matches, and moving into the trade flow.',
-      steps: ['Open collection', 'Search nearby matches', 'Propose trade'],
+        'A walkthrough surface for browsing a collection, searching Pokemon, inspecting map results, and reviewing account workflows.',
+      steps: ['Open collection', 'Search and map', 'Inspect workflows'],
       scenes: [
         {
           label: 'Collection workspace',
@@ -253,8 +253,8 @@ const productCatalog: Project[] = [
           text: 'Switch between trainer search, Pokemon filters, list results, and map-backed discovery.',
         },
         {
-          label: 'Trade lifecycle',
-          text: 'Move from a selected match into proposals, status review, decisions, and completion/cancel flows.',
+          label: 'Workflow depth',
+          text: 'Move through instance overlays, account lifecycle, edit surfaces, and trade-planning paths as the product grows.',
         },
       ],
     },

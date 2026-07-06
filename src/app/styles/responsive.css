@@ -160,6 +160,79 @@
     grid-template-columns: 1fr;
   }
 
+  .nexus-media-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nexus-media-brand {
+    width: min(170px, 64%);
+  }
+
+  .nexus-theme-toggle {
+    width: 100%;
+  }
+
+  .nexus-theme-toggle button {
+    flex: 1 1 0;
+  }
+
+  .nexus-media-frame {
+    justify-self: center;
+    width: min(100%, 260px);
+    aspect-ratio: 390 / 844;
+  }
+
+  .nexus-demo-video-desktop {
+    display: none;
+  }
+
+  .nexus-demo-video-mobile {
+    display: block;
+  }
+
+  .nexus-media-details {
+    gap: 8px;
+  }
+
+  .nexus-media-details strong {
+    font-size: 18px;
+  }
+
+  .nexus-image-frame {
+    justify-self: center;
+    width: min(100%, 260px);
+    aspect-ratio: 390 / 844;
+  }
+
+  .nexus-image-peek-track {
+    inset: 8px;
+  }
+
+  .nexus-carousel-slide {
+    width: 78%;
+  }
+
+  .nexus-carousel-image-desktop {
+    display: none;
+  }
+
+  .nexus-carousel-image-mobile {
+    display: block;
+  }
+
+  .nexus-moment-tabs,
+  .nexus-image-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .nexus-moment-tabs button,
+  .nexus-image-tabs button {
+    flex: 0 0 auto;
+  }
+
   .winrift-screen-stack {
     grid-template-rows: minmax(0, 1fr);
   }

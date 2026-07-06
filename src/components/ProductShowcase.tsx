@@ -1,42 +1,338 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
-import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowUpRight, CheckCircle2, ChevronLeft, ChevronRight, Moon, Sun } from 'lucide-react';
 import { ProjectIconFrame } from '@/components/ProjectBrand';
 import { getImageSize } from '@/lib/imageSizes';
 import { projects, type Project } from '@/lib/projects';
 
-function DemoVisual({ project }: { project: Project }) {
-  if (project.demo.kind === 'nexus') {
-    const lockupSize = project.brand?.lockup ? getImageSize(project.brand.lockup, { width: 330, height: 140 }) : null;
+type NexusDemoTheme = 'dark' | 'light';
 
-    return (
-      <div className="demo-visual demo-visual-nexus" aria-hidden="true">
-        <div className="demo-map">
-          {project.brand?.lockup && lockupSize && (
-            <span className="nexus-demo-brand">
-              <Image
-                src={project.brand.lockup}
-                alt=""
-                width={lockupSize.width}
-                height={lockupSize.height}
-                sizes="(max-width: 640px) 100vw, 330px"
-              />
-            </span>
-          )}
-          <span className="demo-pin demo-pin-primary" />
-          <span className="demo-pin demo-pin-secondary" />
-          <span className="demo-pin demo-pin-tertiary" />
-          <div className="demo-route" />
-        </div>
-        <div className="demo-feed">
-          <span>Collection filters active</span>
-          <strong>Nearby trade matches</strong>
-          <span>Proposal ready</span>
+type NexusDemoMoment = {
+  id: string;
+  label: string;
+  description: string;
+  mediaKey: string;
+};
+
+type NexusScreenshot = {
+  id: string;
+  label: string;
+  imageKey: string;
+};
+
+type NexusVideoSnapshot = {
+  key: string;
+  theme: NexusDemoTheme;
+  label: string;
+  mediaKey: string;
+};
+
+type NexusCarouselDirection = 'previous' | 'next';
+
+const nexusDemoMoments: NexusDemoMoment[] = [
+  {
+    id: 'collection',
+    label: 'Collection',
+    description: 'Favorites-first collection browsing with owned-instance overlays and live Pokemon artwork.',
+    mediaKey: 'collection-overlay',
+  },
+  {
+    id: 'search',
+    label: 'Search',
+    description: 'Pokemon filters, list results, location context, and the map-backed discovery surface.',
+    mediaKey: 'search-results',
+  },
+  {
+    id: 'edit',
+    label: 'Edit Instance',
+    description: 'A caught instance edit flow with moves, IVs, location autocomplete, date, and ball metadata.',
+    mediaKey: 'workflow-instance-edit',
+  },
+  {
+    id: 'account',
+    label: 'Account',
+    description: 'Registration, account details, profile edits, and cleanup in one end-to-end lifecycle.',
+    mediaKey: 'auth-lifecycle',
+  },
+];
+
+const nexusScreenshots: NexusScreenshot[] = [
+  {
+    id: 'collection',
+    label: 'Collection',
+    imageKey: 'collection',
+  },
+  {
+    id: 'overlay',
+    label: 'Overlay',
+    imageKey: 'instance-overlay',
+  },
+  {
+    id: 'list',
+    label: 'List',
+    imageKey: 'search-results-list',
+  },
+  {
+    id: 'map',
+    label: 'Map',
+    imageKey: 'search-results-map',
+  },
+];
+
+const nexusMediaBasePath = '/products/pokemon-go-nexus/demo';
+
+function nexusVideoPath(theme: NexusDemoTheme, mediaKey: string, viewport: 'desktop' | 'mobile') {
+  return `${nexusMediaBasePath}/videos/${theme}-${mediaKey}-${viewport}.webm`;
+}
+
+function nexusPosterPath(theme: NexusDemoTheme, mediaKey: string, viewport: 'desktop' | 'mobile') {
+  return `${nexusMediaBasePath}/posters/${theme}-${mediaKey}-${viewport}.png`;
+}
+
+function nexusScreenshotPath(theme: NexusDemoTheme, imageKey: string, viewport: 'desktop' | 'mobile') {
+  return `${nexusMediaBasePath}/screenshots/${theme}-${imageKey}-${viewport}.png`;
+}
+
+function NexusVideoPair({ video }: { video: NexusVideoSnapshot }) {
+  return (
+    <>
+      <video
+        className="nexus-demo-video nexus-demo-video-desktop"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        poster={nexusPosterPath(video.theme, video.mediaKey, 'desktop')}
+      >
+        <source src={nexusVideoPath(video.theme, video.mediaKey, 'desktop')} type="video/webm" />
+      </video>
+      <video
+        className="nexus-demo-video nexus-demo-video-mobile"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        poster={nexusPosterPath(video.theme, video.mediaKey, 'mobile')}
+      >
+        <source src={nexusVideoPath(video.theme, video.mediaKey, 'mobile')} type="video/webm" />
+      </video>
+    </>
+  );
+}
+
+function NexusMediaVisual({ project }: { project: Project }) {
+  const [theme, setTheme] = useState<NexusDemoTheme>('dark');
+  const [activeMomentId, setActiveMomentId] = useState(nexusDemoMoments[0].id);
+  const [activeScreenshotId, setActiveScreenshotId] = useState(nexusScreenshots[0].id);
+  const [carouselDirection, setCarouselDirection] = useState<NexusCarouselDirection>('next');
+  const [carouselHasMoved, setCarouselHasMoved] = useState(false);
+  const activeMoment = nexusDemoMoments.find((moment) => moment.id === activeMomentId) ?? nexusDemoMoments[0];
+  const activeScreenshot =
+    nexusScreenshots.find((screenshot) => screenshot.id === activeScreenshotId) ?? nexusScreenshots[0];
+  const activeScreenshotIndex = nexusScreenshots.findIndex((screenshot) => screenshot.id === activeScreenshot.id);
+  const carouselScreenshots = [
+    {
+      slot: 'previous',
+      screenshot: nexusScreenshots[(activeScreenshotIndex - 1 + nexusScreenshots.length) % nexusScreenshots.length],
+    },
+    {
+      slot: 'active',
+      screenshot: activeScreenshot,
+    },
+    {
+      slot: 'next',
+      screenshot: nexusScreenshots[(activeScreenshotIndex + 1) % nexusScreenshots.length],
+    },
+  ];
+  const wordmarkSize = project.brand?.wordmark
+    ? getImageSize(project.brand.wordmark, { width: 280, height: 88 })
+    : null;
+  const activeVideo = useMemo<NexusVideoSnapshot>(
+    () => ({
+      key: `${theme}-${activeMoment.mediaKey}`,
+      theme,
+      label: activeMoment.label,
+      mediaKey: activeMoment.mediaKey,
+    }),
+    [activeMoment.label, activeMoment.mediaKey, theme],
+  );
+  const activeVideoRef = useRef(activeVideo);
+  const [previousVideo, setPreviousVideo] = useState<NexusVideoSnapshot | null>(null);
+
+  useEffect(() => {
+    if (activeVideoRef.current.key === activeVideo.key) {
+      activeVideoRef.current = activeVideo;
+      return undefined;
+    }
+
+    setPreviousVideo(activeVideoRef.current);
+    activeVideoRef.current = activeVideo;
+
+    const timeout = window.setTimeout(() => {
+      setPreviousVideo(null);
+    }, 360);
+
+    return () => window.clearTimeout(timeout);
+  }, [activeVideo]);
+
+  const changeScreenshot = (direction: -1 | 1) => {
+    const nextIndex = (activeScreenshotIndex + direction + nexusScreenshots.length) % nexusScreenshots.length;
+    setCarouselDirection(direction === 1 ? 'next' : 'previous');
+    setCarouselHasMoved(true);
+    setActiveScreenshotId(nexusScreenshots[nextIndex].id);
+  };
+  const selectScreenshot = (screenshotId: string) => {
+    const nextIndex = nexusScreenshots.findIndex((screenshot) => screenshot.id === screenshotId);
+
+    if (nextIndex < 0 || nextIndex === activeScreenshotIndex) {
+      return;
+    }
+
+    const forwardDistance = (nextIndex - activeScreenshotIndex + nexusScreenshots.length) % nexusScreenshots.length;
+    const backwardDistance = (activeScreenshotIndex - nextIndex + nexusScreenshots.length) % nexusScreenshots.length;
+    setCarouselDirection(forwardDistance <= backwardDistance ? 'next' : 'previous');
+    setCarouselHasMoved(true);
+    setActiveScreenshotId(screenshotId);
+  };
+
+  return (
+    <div className={`demo-visual demo-visual-nexus nexus-media-theme-${theme}`}>
+      <div className="nexus-media-toolbar">
+        {project.brand?.wordmark && wordmarkSize && (
+          <span className="nexus-media-brand">
+            <Image
+              src={project.brand.wordmark}
+              alt=""
+              width={wordmarkSize.width}
+              height={wordmarkSize.height}
+              sizes="(max-width: 640px) 150px, 220px"
+            />
+          </span>
+        )}
+        <div className="nexus-theme-toggle" role="group" aria-label="PokeGo Nexus media theme">
+          <button type="button" aria-pressed={theme === 'dark'} onClick={() => setTheme('dark')}>
+            <Moon size={14} aria-hidden="true" />
+            Dark
+          </button>
+          <button type="button" aria-pressed={theme === 'light'} onClick={() => setTheme('light')}>
+            <Sun size={14} aria-hidden="true" />
+            Light
+          </button>
         </div>
       </div>
-    );
+
+      <div className="nexus-media-content">
+        <div className="nexus-moment-tabs" role="group" aria-label="PokeGo Nexus demo moment">
+          {nexusDemoMoments.map((moment) => (
+            <button
+              key={moment.id}
+              type="button"
+              aria-pressed={activeMoment.id === moment.id}
+              onClick={() => setActiveMomentId(moment.id)}
+            >
+              {moment.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="nexus-media-frame" aria-label={`${activeMoment.label} demo video`}>
+          {previousVideo && (
+            <div key={`previous-${previousVideo.key}`} className="nexus-video-layer nexus-video-layer-previous">
+              <NexusVideoPair video={previousVideo} />
+            </div>
+          )}
+          <div key={`active-${activeVideo.key}`} className="nexus-video-layer nexus-video-layer-active">
+            <NexusVideoPair video={activeVideo} />
+          </div>
+        </div>
+
+        <div className="nexus-media-details">
+          <strong>{activeMoment.label}</strong>
+          <p>{activeMoment.description}</p>
+        </div>
+
+        <div className="nexus-image-carousel">
+          <div className="nexus-image-header">
+            <span>Screens</span>
+            <div className="nexus-image-arrows">
+              <button type="button" aria-label="Previous PokeGo Nexus screenshot" onClick={() => changeScreenshot(-1)}>
+                <ChevronLeft size={16} aria-hidden="true" />
+              </button>
+              <button type="button" aria-label="Next PokeGo Nexus screenshot" onClick={() => changeScreenshot(1)}>
+                <ChevronRight size={16} aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+          <div className="nexus-image-frame" aria-label={`${activeScreenshot.label} screenshot carousel`}>
+            <div
+              className={
+                carouselHasMoved
+                  ? `nexus-image-peek-track nexus-image-peek-track-${carouselDirection}`
+                  : 'nexus-image-peek-track'
+              }
+            >
+              {carouselScreenshots.map(({ slot, screenshot }) => {
+                const isActive = slot === 'active';
+
+                return (
+                  <button
+                    key={`${slot}-${screenshot.id}`}
+                    type="button"
+                    className={
+                      isActive
+                        ? 'nexus-carousel-slide nexus-carousel-slide-active'
+                        : `nexus-carousel-slide nexus-carousel-slide-peek nexus-carousel-slide-${slot}`
+                    }
+                    aria-label={`Show ${screenshot.label} screenshot`}
+                    aria-current={isActive ? 'true' : undefined}
+                    onClick={() => selectScreenshot(screenshot.id)}
+                  >
+                    <Image
+                      className="nexus-carousel-image nexus-carousel-image-desktop"
+                      src={nexusScreenshotPath(theme, screenshot.imageKey, 'desktop')}
+                      alt={isActive ? `${screenshot.label} PokeGo Nexus ${theme} desktop screenshot` : ''}
+                      width={1440}
+                      height={900}
+                      sizes="(max-width: 640px) 0px, 520px"
+                    />
+                    <Image
+                      className="nexus-carousel-image nexus-carousel-image-mobile"
+                      src={nexusScreenshotPath(theme, screenshot.imageKey, 'mobile')}
+                      alt={isActive ? `${screenshot.label} PokeGo Nexus ${theme} mobile screenshot` : ''}
+                      width={390}
+                      height={844}
+                      sizes="(max-width: 640px) 260px, 0px"
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <div className="nexus-image-tabs" role="group" aria-label="PokeGo Nexus screenshot selector">
+            {nexusScreenshots.map((screenshot) => (
+              <button
+                key={screenshot.id}
+                type="button"
+                aria-pressed={activeScreenshot.id === screenshot.id}
+                onClick={() => selectScreenshot(screenshot.id)}
+              >
+                {screenshot.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DemoVisual({ project }: { project: Project }) {
+  if (project.demo.kind === 'nexus') {
+    return <NexusMediaVisual project={project} />;
   }
 
   if (project.demo.kind === 'jarvin') {
@@ -238,7 +534,7 @@ export function ProductShowcase() {
         <h2 id="demos-title">The products need to be seen in motion.</h2>
         <p>
           This is the lab bench for product footage, screenshots, interface flows, release artifacts, and runtime loops.
-          The current visuals are placeholders for the behavior each build is designed to show.
+          Some views use captured product media; others stage the behavior each build is designed to show.
         </p>
       </div>
 

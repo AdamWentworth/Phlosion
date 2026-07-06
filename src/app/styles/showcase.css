@@ -439,6 +439,54 @@
   background: #07111f;
   aspect-ratio: 16 / 10;
   box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+  cursor: zoom-in;
+}
+
+.nexus-media-expand-hitbox {
+  position: absolute;
+  z-index: 5;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.nexus-media-expand-hitbox svg,
+.nexus-carousel-expand-icon {
+  display: grid;
+  place-items: center;
+  box-sizing: content-box;
+  border: 1px solid rgba(244, 234, 209, 0.14);
+  border-radius: 8px;
+  background: rgba(3, 9, 18, 0.72);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+  color: #fff7e8;
+  padding: 8px;
+  opacity: 0;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.nexus-media-frame:hover .nexus-media-expand-hitbox svg,
+.nexus-media-frame:focus-visible .nexus-media-expand-hitbox svg,
+.nexus-carousel-slide-active:hover .nexus-carousel-expand-icon,
+.nexus-carousel-slide-active:focus-visible .nexus-carousel-expand-icon {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.nexus-media-frame:focus-visible {
+  outline: 2px solid rgba(255, 180, 31, 0.72);
+  outline-offset: 3px;
+}
+
+.nexus-media-theme-light .nexus-media-expand-hitbox svg,
+.nexus-media-theme-light .nexus-carousel-expand-icon {
+  border-color: rgba(20, 76, 78, 0.16);
+  background: rgba(255, 255, 255, 0.88);
+  color: #123a3d;
 }
 
 .nexus-media-theme-light .nexus-media-frame {
@@ -452,6 +500,7 @@
   inset: 0;
   display: grid;
   place-items: center;
+  pointer-events: none;
 }
 
 .nexus-video-layer-active {
@@ -470,6 +519,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  pointer-events: none;
 }
 
 .nexus-demo-video-mobile {
@@ -633,7 +683,7 @@
   border: 1px solid rgba(244, 234, 209, 0.12);
   border-radius: 8px;
   background: rgba(3, 9, 18, 0.84);
-  cursor: pointer;
+  cursor: zoom-in;
   padding: 0;
   transition:
     opacity 180ms ease,
@@ -651,6 +701,10 @@
   opacity: 1;
   transform: translate(-50%, -50%);
   box-shadow: 0 18px 34px rgba(0, 0, 0, 0.28);
+}
+
+.nexus-carousel-slide-peek {
+  cursor: pointer;
 }
 
 .nexus-carousel-slide-previous {
@@ -708,8 +762,101 @@
   display: none;
 }
 
+.nexus-carousel-expand-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  pointer-events: none;
+}
+
 .nexus-image-tabs {
   flex-wrap: wrap;
+}
+
+.nexus-media-lightbox {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(1, 7, 12, 0.82);
+  backdrop-filter: blur(10px);
+  padding: 24px;
+  animation: nexusVideoFadeIn 180ms ease both;
+}
+
+.nexus-media-lightbox-panel {
+  display: grid;
+  width: min(94vw, 1280px);
+  max-height: 92vh;
+  overflow: hidden;
+  grid-template-rows: auto minmax(0, 1fr);
+  border: 1px solid rgba(244, 234, 209, 0.18);
+  border-radius: 8px;
+  background: #030912;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48);
+}
+
+.nexus-media-lightbox-bar {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(244, 234, 209, 0.12);
+  color: #fff7e8;
+  padding: 10px 12px 10px 16px;
+}
+
+.nexus-media-lightbox-bar strong {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nexus-media-lightbox-close {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(244, 234, 209, 0.14);
+  border-radius: 8px;
+  background: rgba(244, 234, 209, 0.08);
+  color: #fff7e8;
+  cursor: pointer;
+}
+
+.nexus-media-lightbox-close:hover,
+.nexus-media-lightbox-close:focus-visible {
+  background: rgba(244, 234, 209, 0.14);
+}
+
+.nexus-media-lightbox-frame {
+  display: grid;
+  min-height: 0;
+  place-items: center;
+  overflow: hidden;
+  padding: 14px;
+}
+
+.nexus-lightbox-video,
+.nexus-lightbox-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: calc(92vh - 78px);
+  object-fit: contain;
+}
+
+.nexus-lightbox-video-mobile,
+.nexus-lightbox-image-mobile {
+  display: none;
 }
 
 .demo-feed,

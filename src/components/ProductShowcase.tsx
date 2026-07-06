@@ -1,8 +1,18 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUpRight, CheckCircle2, ChevronLeft, ChevronRight, Moon, Sun, type LucideIcon } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  Moon,
+  Sun,
+  X,
+  type LucideIcon,
+} from 'lucide-react';
 import { ProjectIconFrame } from '@/components/ProjectBrand';
 import { getImageSize } from '@/lib/imageSizes';
 import { projects, type Project } from '@/lib/projects';
@@ -48,6 +58,16 @@ type CapturedVideoSnapshot = {
   label: string;
   moment: CapturedDemoMoment;
 };
+
+type CapturedLightboxMedia =
+  | {
+      kind: 'video';
+      moment: CapturedDemoMoment;
+    }
+  | {
+      kind: 'screenshot';
+      screenshot: CapturedScreenshot;
+    };
 
 type CapturedCarouselDirection = 'previous' | 'next';
 
@@ -264,6 +284,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
   const [activeScreenshotId, setActiveScreenshotId] = useState(config.screenshots[0].id);
   const [carouselDirection, setCarouselDirection] = useState<CapturedCarouselDirection>('next');
   const [carouselHasMoved, setCarouselHasMoved] = useState(false);
+  const [lightboxMedia, setLightboxMedia] = useState<CapturedLightboxMedia | null>(null);
   const activeMoment = config.moments.find((moment) => moment.id === activeMomentId) ?? config.moments[0];
   const activeScreenshot =
     config.screenshots.find((screenshot) => screenshot.id === activeScreenshotId) ?? config.screenshots[0];
@@ -296,6 +317,8 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
     [activeMoment, theme],
   );
   const activeVideoRef = useRef(activeVideo);
+  const videoFrameRef = useRef<HTMLDivElement>(null);
+  const imageFrameRef = useRef<HTMLDivElement>(null);
   const [previousVideo, setPreviousVideo] = useState<CapturedVideoSnapshot | null>(null);
 
   useEffect(() => {
@@ -313,6 +336,40 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
 
     return () => window.clearTimeout(timeout);
   }, [activeVideo]);
+
+  useEffect(() => {
+    if (!lightboxMedia) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setLightboxMedia(null);
+      }
+    };
+    const handleNativeClick = (event: MouseEvent) => {
+      const target = event.target;
+
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      if (target.closest('.nexus-media-lightbox-close') || target.classList.contains('nexus-media-lightbox')) {
+        setLightboxMedia(null);
+      }
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('click', handleNativeClick);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('click', handleNativeClick);
+    };
+  }, [lightboxMedia]);
 
   const changeScreenshot = (direction: -1 | 1) => {
     const nextIndex = (activeScreenshotIndex + direction + config.screenshots.length) % config.screenshots.length;
@@ -334,6 +391,53 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
     setCarouselHasMoved(true);
     setActiveScreenshotId(screenshotId);
   };
+  const openVideoLightbox = useCallback(
+    () => setLightboxMedia({ kind: 'video', moment: activeMoment }),
+    [activeMoment],
+  );
+  const openScreenshotLightbox = useCallback((screenshot: CapturedScreenshot) => {
+    setLightboxMedia({ kind: 'screenshot', screenshot });
+  }, []);
+
+  useEffect(() => {
+    const frame = videoFrameRef.current;
+
+    if (!frame) {
+      return undefined;
+    }
+
+    frame.addEventListener('click', openVideoLightbox);
+
+    return () => frame.removeEventListener('click', openVideoLightbox);
+  }, [openVideoLightbox]);
+
+  useEffect(() => {
+    const frame = imageFrameRef.current;
+
+    if (!frame) {
+      return undefined;
+    }
+
+    const handleNativeScreenshotClick = (event: MouseEvent) => {
+      const target = event.target;
+
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      const activeSlide = target.closest<HTMLButtonElement>('.nexus-carousel-slide-active');
+      const screenshotId = activeSlide?.dataset.screenshotId;
+      const screenshot = config.screenshots.find((item) => item.id === screenshotId);
+
+      if (screenshot) {
+        openScreenshotLightbox(screenshot);
+      }
+    };
+
+    frame.addEventListener('click', handleNativeScreenshotClick);
+
+    return () => frame.removeEventListener('click', handleNativeScreenshotClick);
+  }, [config.screenshots, openScreenshotLightbox]);
 
   const themeClassName = config.themeClassName?.(theme) ?? '';
   const visualClassName = ['demo-visual', 'demo-visual-nexus', config.visualClassName, themeClassName]
@@ -389,7 +493,21 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
           ))}
         </div>
 
-        <div className="nexus-media-frame" aria-label={`${activeMoment.label} demo video`}>
+        <div
+          ref={videoFrameRef}
+          className="nexus-media-frame"
+          role="button"
+          tabIndex={0}
+          aria-label={`Enlarge ${activeMoment.label} ${config.productName} video`}
+          onMouseUp={openVideoLightbox}
+          onClick={openVideoLightbox}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              openVideoLightbox();
+            }
+          }}
+        >
           {previousVideo && (
             <div key={`previous-${previousVideo.key}`} className="nexus-video-layer nexus-video-layer-previous">
               <CapturedVideoPair config={config} video={previousVideo} />
@@ -398,6 +516,9 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
           <div key={`active-${activeVideo.key}`} className="nexus-video-layer nexus-video-layer-active">
             <CapturedVideoPair config={config} video={activeVideo} />
           </div>
+          <span className="nexus-media-expand-hitbox" aria-hidden="true">
+            <Maximize2 size={16} aria-hidden="true" />
+          </span>
         </div>
 
         <div className="nexus-media-details">
@@ -427,6 +548,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
           </div>
           <div className="nexus-image-frame" aria-label={`${activeScreenshot.label} screenshot carousel`}>
             <div
+              ref={imageFrameRef}
               className={
                 carouselHasMoved
                   ? `nexus-image-peek-track nexus-image-peek-track-${carouselDirection}`
@@ -440,6 +562,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                   <button
                     key={`${slot}-${screenshot.id}`}
                     type="button"
+                    data-screenshot-id={screenshot.id}
                     className={
                       isActive
                         ? 'nexus-carousel-slide nexus-carousel-slide-active'
@@ -447,7 +570,12 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                     }
                     aria-label={`Show ${screenshot.label} screenshot`}
                     aria-current={isActive ? 'true' : undefined}
-                    onClick={() => selectScreenshot(screenshot.id)}
+                    onMouseUp={() => {
+                      if (isActive) {
+                        openScreenshotLightbox(screenshot);
+                      }
+                    }}
+                    onClick={() => (isActive ? openScreenshotLightbox(screenshot) : selectScreenshot(screenshot.id))}
                   >
                     <Image
                       className="nexus-carousel-image nexus-carousel-image-desktop"
@@ -465,6 +593,11 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                       height={844}
                       sizes="(max-width: 640px) 260px, 0px"
                     />
+                    {isActive && (
+                      <span className="nexus-carousel-expand-icon" aria-hidden="true">
+                        <Maximize2 size={15} />
+                      </span>
+                    )}
                   </button>
                 );
               })}
@@ -484,6 +617,80 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
           </div>
         </div>
       </div>
+      {lightboxMedia && (
+        <div
+          className="nexus-media-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${config.productName} enlarged ${
+            lightboxMedia.kind === 'video' ? lightboxMedia.moment.label : lightboxMedia.screenshot.label
+          } media`}
+          onClick={() => setLightboxMedia(null)}
+        >
+          <div className="nexus-media-lightbox-panel" onClick={(event) => event.stopPropagation()}>
+            <div className="nexus-media-lightbox-bar">
+              <strong>
+                {lightboxMedia.kind === 'video' ? lightboxMedia.moment.label : lightboxMedia.screenshot.label}
+              </strong>
+              <button
+                type="button"
+                className="nexus-media-lightbox-close"
+                aria-label="Close enlarged media"
+                onClick={() => setLightboxMedia(null)}
+              >
+                <X size={18} aria-hidden="true" />
+              </button>
+            </div>
+            <div className="nexus-media-lightbox-frame">
+              {lightboxMedia.kind === 'video' ? (
+                <>
+                  <video
+                    className="nexus-lightbox-video nexus-lightbox-video-desktop"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    controls
+                    poster={config.posterPath?.(theme, lightboxMedia.moment, 'desktop')}
+                  >
+                    <source src={config.videoPath(theme, lightboxMedia.moment.mediaKey, 'desktop')} type="video/webm" />
+                  </video>
+                  <video
+                    className="nexus-lightbox-video nexus-lightbox-video-mobile"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    controls
+                    poster={config.posterPath?.(theme, lightboxMedia.moment, 'mobile')}
+                  >
+                    <source src={config.videoPath(theme, lightboxMedia.moment.mediaKey, 'mobile')} type="video/webm" />
+                  </video>
+                </>
+              ) : (
+                <>
+                  <Image
+                    className="nexus-lightbox-image nexus-lightbox-image-desktop"
+                    src={config.screenshotPath(theme, lightboxMedia.screenshot.imageKey, 'desktop')}
+                    alt={`${lightboxMedia.screenshot.label} ${config.productName} desktop screenshot`}
+                    width={1440}
+                    height={1000}
+                    sizes="(max-width: 640px) 0px, 92vw"
+                  />
+                  <Image
+                    className="nexus-lightbox-image nexus-lightbox-image-mobile"
+                    src={config.screenshotPath(theme, lightboxMedia.screenshot.imageKey, 'mobile')}
+                    alt={`${lightboxMedia.screenshot.label} ${config.productName} mobile screenshot`}
+                    width={390}
+                    height={844}
+                    sizes="(max-width: 640px) 88vw, 0px"
+                  />
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

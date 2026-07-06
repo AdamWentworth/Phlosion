@@ -221,6 +221,34 @@
     display: block;
   }
 
+  .nexus-media-lightbox {
+    padding: 12px;
+  }
+
+  .nexus-media-lightbox-panel {
+    width: min(100%, 390px);
+    max-height: 94svh;
+  }
+
+  .nexus-media-lightbox-frame {
+    padding: 10px;
+  }
+
+  .nexus-lightbox-video,
+  .nexus-lightbox-image {
+    max-height: calc(94svh - 70px);
+  }
+
+  .nexus-lightbox-video-desktop,
+  .nexus-lightbox-image-desktop {
+    display: none;
+  }
+
+  .nexus-lightbox-video-mobile,
+  .nexus-lightbox-image-mobile {
+    display: block;
+  }
+
   .nexus-moment-tabs,
   .nexus-image-tabs {
     flex-wrap: nowrap;

@@ -319,7 +319,10 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
   const activeVideoRef = useRef(activeVideo);
   const videoFrameRef = useRef<HTMLDivElement>(null);
   const imageFrameRef = useRef<HTMLDivElement>(null);
+  const lightboxDesktopVideoRef = useRef<HTMLVideoElement>(null);
+  const lightboxMobileVideoRef = useRef<HTMLVideoElement>(null);
   const [previousVideo, setPreviousVideo] = useState<CapturedVideoSnapshot | null>(null);
+  const lightboxVideoSourceKey = lightboxMedia?.kind === 'video' ? `${theme}-${lightboxMedia.moment.mediaKey}` : null;
 
   useEffect(() => {
     if (activeVideoRef.current.key === activeVideo.key) {
@@ -370,6 +373,21 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
       document.removeEventListener('click', handleNativeClick);
     };
   }, [lightboxMedia]);
+
+  useEffect(() => {
+    if (!lightboxVideoSourceKey) {
+      return;
+    }
+
+    for (const video of [lightboxDesktopVideoRef.current, lightboxMobileVideoRef.current]) {
+      if (!video) {
+        continue;
+      }
+
+      video.load();
+      void video.play().catch(() => {});
+    }
+  }, [lightboxVideoSourceKey]);
 
   const changeScreenshot = (direction: -1 | 1) => {
     const nextIndex = (activeScreenshotIndex + direction + config.screenshots.length) % config.screenshots.length;
@@ -743,7 +761,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
               {lightboxMedia.kind === 'video' ? (
                 <>
                   <video
-                    key={`${theme}-${lightboxMedia.moment.mediaKey}-desktop`}
+                    ref={lightboxDesktopVideoRef}
                     className="nexus-lightbox-video nexus-lightbox-video-desktop"
                     autoPlay
                     loop
@@ -755,7 +773,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                     <source src={config.videoPath(theme, lightboxMedia.moment.mediaKey, 'desktop')} type="video/webm" />
                   </video>
                   <video
-                    key={`${theme}-${lightboxMedia.moment.mediaKey}-mobile`}
+                    ref={lightboxMobileVideoRef}
                     className="nexus-lightbox-video nexus-lightbox-video-mobile"
                     autoPlay
                     loop

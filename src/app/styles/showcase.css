@@ -97,6 +97,8 @@
 }
 
 .showcase-stage-winrift {
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  overflow: visible;
   background:
     radial-gradient(circle at 18% 4%, rgba(45, 226, 244, 0.18), transparent 34%),
     radial-gradient(circle at 86% 20%, rgba(218, 232, 238, 0.12), transparent 28%),

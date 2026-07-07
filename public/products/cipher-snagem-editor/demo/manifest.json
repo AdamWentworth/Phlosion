@@ -5,8 +5,8 @@
     "fps": 30
   },
   "source": {
-    "iso": "/home/adam/Pokemon Colosseum/Pokemon Colosseum.iso",
-    "app": "/home/adam/Projects/CipherSnagemEditor/.local/fresh-cipher-package/packages/colosseum-tool-linux-x64/ColosseumTool"
+    "iso": "Pokemon Colosseum.iso",
+    "app": "ColosseumTool"
   },
   "screenshots": [
     {

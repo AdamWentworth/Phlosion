@@ -70,9 +70,9 @@
 .showcase-stage {
   display: grid;
   min-height: 480px;
-  grid-template-columns: 0.82fr 1.18fr;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
   gap: 20px;
-  overflow: hidden;
+  overflow: visible;
   border: 1px solid rgba(244, 234, 209, 0.12);
   border-radius: 8px;
   background: linear-gradient(135deg, rgba(255, 90, 0, 0.14), rgba(18, 20, 24, 0.92) 38%), rgba(18, 20, 24, 0.96);
@@ -81,8 +81,6 @@
 }
 
 .showcase-stage-nexus {
-  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
-  overflow: visible;
   background:
     radial-gradient(circle at 12% 0%, rgba(255, 90, 0, 0.18), transparent 36%),
     radial-gradient(circle at 88% 14%, rgba(0, 67, 111, 0.18), transparent 34%),
@@ -97,8 +95,6 @@
 }
 
 .showcase-stage-winrift {
-  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
-  overflow: visible;
   background:
     radial-gradient(circle at 18% 4%, rgba(45, 226, 244, 0.18), transparent 34%),
     radial-gradient(circle at 86% 20%, rgba(218, 232, 238, 0.12), transparent 28%),
@@ -106,8 +102,6 @@
 }
 
 .showcase-stage-trackextract {
-  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
-  overflow: visible;
   background:
     linear-gradient(150deg, rgba(46, 196, 214, 0.18), transparent 30%),
     linear-gradient(28deg, rgba(115, 209, 139, 0.11), transparent 36%),
@@ -401,6 +395,56 @@
 .demo-visual-trackextract-media.nexus-media-theme-light .nexus-image-tabs button {
   background: rgba(36, 124, 117, 0.1);
   color: rgba(17, 58, 55, 0.8);
+}
+
+.demo-visual-autochess-media {
+  background: linear-gradient(140deg, rgba(4, 10, 7, 0.98), rgba(24, 19, 12, 0.96) 54%, rgba(5, 11, 13, 0.94));
+}
+
+.demo-visual-autochess-media .nexus-media-brand {
+  width: min(190px, 42%);
+}
+
+.demo-visual-autochess-media .nexus-media-brand img {
+  filter: drop-shadow(0 10px 22px rgba(255, 184, 70, 0.16));
+}
+
+.demo-visual-autochess-media .nexus-moment-tabs,
+.demo-visual-autochess-media .nexus-media-details,
+.demo-visual-autochess-media .nexus-image-carousel {
+  border-color: rgba(255, 184, 70, 0.16);
+  background: rgba(4, 9, 7, 0.76);
+}
+
+.demo-visual-autochess-media .nexus-media-frame,
+.demo-visual-autochess-media .nexus-image-frame {
+  border-color: rgba(112, 210, 142, 0.18);
+  background: #030704;
+  box-shadow: 0 18px 38px rgba(0, 12, 5, 0.34);
+}
+
+.demo-visual-autochess-media .nexus-moment-tabs button,
+.demo-visual-autochess-media .nexus-image-tabs button {
+  background: rgba(112, 210, 142, 0.1);
+  color: rgba(240, 255, 238, 0.84);
+}
+
+.demo-visual-autochess-media .nexus-moment-tabs button[aria-pressed='true'],
+.demo-visual-autochess-media .nexus-image-tabs button[aria-pressed='true'],
+.demo-visual-autochess-media .nexus-lightbox-kind-tabs button[aria-pressed='true'],
+.demo-visual-autochess-media .nexus-media-lightbox-tabs button[aria-pressed='true'] {
+  background: linear-gradient(135deg, #75d98e, #ffb846);
+  color: #071006;
+}
+
+.demo-visual-autochess-media .nexus-image-arrows button {
+  background: rgba(255, 184, 70, 0.12);
+  color: #fff7de;
+}
+
+.demo-visual-autochess-media .nexus-carousel-slide {
+  border-color: rgba(112, 210, 142, 0.2);
+  background: rgba(4, 9, 7, 0.86);
 }
 
 .nexus-media-toolbar {

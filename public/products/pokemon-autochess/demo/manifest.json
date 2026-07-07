@@ -1,0 +1,86 @@
+{
+  "source": "PokemonAutochess debug/demo_media capture set",
+  "dimensions": {
+    "desktop": {
+      "width": 1760,
+      "height": 1100,
+      "fps": 30
+    }
+  },
+  "screenshots": [
+    {
+      "id": "menu",
+      "path": "screenshots/pokemon-autochess-menu-desktop.png"
+    },
+    {
+      "id": "starter-trio",
+      "path": "screenshots/pokemon-autochess-starter-trio-desktop.png"
+    },
+    {
+      "id": "bulbasaur-line",
+      "path": "screenshots/pokemon-autochess-bulbasaur-line-desktop.png"
+    },
+    {
+      "id": "charmander-line",
+      "path": "screenshots/pokemon-autochess-charmander-line-desktop.png"
+    },
+    {
+      "id": "squirtle-line",
+      "path": "screenshots/pokemon-autochess-squirtle-line-desktop.png"
+    },
+    {
+      "id": "bulbasaur-route1-combat",
+      "path": "screenshots/pokemon-autochess-bulbasaur-route1-combat-desktop.png"
+    },
+    {
+      "id": "charmander-route1-combat",
+      "path": "screenshots/pokemon-autochess-charmander-route1-combat-desktop.png"
+    },
+    {
+      "id": "squirtle-route1-combat",
+      "path": "screenshots/pokemon-autochess-squirtle-route1-combat-desktop.png"
+    },
+    {
+      "id": "dense-roster",
+      "path": "screenshots/pokemon-autochess-dense-roster-desktop.png"
+    }
+  ],
+  "videos": [
+    {
+      "id": "menu",
+      "path": "videos/pokemon-autochess-menu-desktop.mp4"
+    },
+    {
+      "id": "starter-trio",
+      "path": "videos/pokemon-autochess-starter-trio-desktop.mp4"
+    },
+    {
+      "id": "bulbasaur-line",
+      "path": "videos/pokemon-autochess-bulbasaur-line-desktop.mp4"
+    },
+    {
+      "id": "charmander-line",
+      "path": "videos/pokemon-autochess-charmander-line-desktop.mp4"
+    },
+    {
+      "id": "squirtle-line",
+      "path": "videos/pokemon-autochess-squirtle-line-desktop.mp4"
+    },
+    {
+      "id": "bulbasaur-route1-combat",
+      "path": "videos/pokemon-autochess-bulbasaur-route1-combat-desktop.mp4"
+    },
+    {
+      "id": "charmander-route1-combat",
+      "path": "videos/pokemon-autochess-charmander-route1-combat-desktop.mp4"
+    },
+    {
+      "id": "squirtle-route1-combat",
+      "path": "videos/pokemon-autochess-squirtle-route1-combat-desktop.mp4"
+    },
+    {
+      "id": "dense-roster",
+      "path": "videos/pokemon-autochess-dense-roster-desktop.mp4"
+    }
+  ]
+}

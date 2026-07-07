@@ -697,8 +697,23 @@ const productCatalog: Project[] = [
       kind: 'autochess',
       label: 'Runtime combat sandbox',
       metric: 'Engine systems',
-      summary: 'A systems prototype for board state, scripted gameplay, rendering paths, and packaged tests.',
-      steps: ['Place units', 'Resolve combat', 'Record playtest signal'],
+      summary:
+        'A captured engine prototype showing starter units, evolution-line staging, Route 1 combat, and debug roster scale.',
+      steps: ['Stage starters', 'Resolve Route 1 combat', 'Inspect debug rosters'],
+      scenes: [
+        {
+          label: 'Starter staging',
+          text: 'Show Bulbasaur, Charmander, and Squirtle together and individually across the current evolution-line coverage.',
+        },
+        {
+          label: 'Route 1 combat',
+          text: 'Capture level-1 starter encounters against Pidgey and Rattata with health bars, combat HUD, and battle feed.',
+        },
+        {
+          label: 'Debug roster',
+          text: 'Use repeatable snapshots to present denser board states until the game receives upgraded authored content.',
+        },
+      ],
     },
   },
 ];

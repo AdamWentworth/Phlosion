@@ -48,6 +48,7 @@ type CapturedMediaConfig = {
   moments: CapturedDemoMoment[];
   screenshots: CapturedScreenshot[];
   videoPath: (theme: DemoThemeId, mediaKey: string, viewport: DemoViewport) => string;
+  videoType?: string;
   posterPath?: (theme: DemoThemeId, moment: CapturedDemoMoment, viewport: DemoViewport) => string;
   screenshotPath: (theme: DemoThemeId, imageKey: string, viewport: DemoViewport) => string;
   themeClassName?: (theme: DemoThemeId) => string;
@@ -297,6 +298,125 @@ function trackExtractScreenshotPath(theme: DemoThemeId, imageKey: string, viewpo
   return `${trackExtractMediaBasePath}/screenshots/trackextract-${theme}-${imageKey}-${viewport}.png`;
 }
 
+const autochessDemoMoments: CapturedDemoMoment[] = [
+  {
+    id: 'trio',
+    label: 'Starter Trio',
+    description: 'Bulbasaur, Charmander, and Squirtle staged together to show the current board renderer.',
+    mediaKey: 'starter-trio',
+  },
+  {
+    id: 'bulbasaur-combat',
+    label: 'Bulbasaur Combat',
+    description: 'A level-1 Route 1 encounter against Pidgey and Rattata with combat HUD and battle feed.',
+    mediaKey: 'bulbasaur-route1-combat',
+  },
+  {
+    id: 'charmander-combat',
+    label: 'Charmander Combat',
+    description: 'A level-1 Charmander fight against Route 1 enemies showing attack resolution and health bars.',
+    mediaKey: 'charmander-route1-combat',
+  },
+  {
+    id: 'squirtle-combat',
+    label: 'Squirtle Combat',
+    description: 'A level-1 Squirtle encounter against Pidgey and Rattata in the scripted combat sandbox.',
+    mediaKey: 'squirtle-route1-combat',
+  },
+  {
+    id: 'bulbasaur',
+    label: 'Bulbasaur Line',
+    description: 'Starter-line content coverage with Bulbasaur and Ivysaur represented in the current build.',
+    mediaKey: 'bulbasaur-line',
+  },
+  {
+    id: 'charmander',
+    label: 'Charmander Line',
+    description: 'Charmander, Charmeleon, and Charizard staged with the tail-fire rendering path visible.',
+    mediaKey: 'charmander-line',
+  },
+  {
+    id: 'squirtle',
+    label: 'Squirtle Line',
+    description: 'Squirtle and Wartortle staged as a snapshot of the water-starter content path.',
+    mediaKey: 'squirtle-line',
+  },
+  {
+    id: 'roster',
+    label: 'Dense Roster',
+    description: 'A larger debug board with bench and roster density for stress-testing layout and readability.',
+    mediaKey: 'dense-roster',
+  },
+  {
+    id: 'menu',
+    label: 'Menu',
+    description: 'Runtime entry surface for launch, settings, and mode setup before moving into the board loop.',
+    mediaKey: 'menu',
+  },
+];
+
+const autochessScreenshots: CapturedScreenshot[] = [
+  {
+    id: 'trio',
+    label: 'Starter Trio',
+    imageKey: 'starter-trio',
+  },
+  {
+    id: 'bulbasaur-combat',
+    label: 'Bulbasaur Fight',
+    imageKey: 'bulbasaur-route1-combat',
+  },
+  {
+    id: 'charmander-combat',
+    label: 'Charmander Fight',
+    imageKey: 'charmander-route1-combat',
+  },
+  {
+    id: 'squirtle-combat',
+    label: 'Squirtle Fight',
+    imageKey: 'squirtle-route1-combat',
+  },
+  {
+    id: 'bulbasaur',
+    label: 'Bulbasaur',
+    imageKey: 'bulbasaur-line',
+  },
+  {
+    id: 'charmander',
+    label: 'Charmander',
+    imageKey: 'charmander-line',
+  },
+  {
+    id: 'squirtle',
+    label: 'Squirtle',
+    imageKey: 'squirtle-line',
+  },
+  {
+    id: 'roster',
+    label: 'Roster',
+    imageKey: 'dense-roster',
+  },
+  {
+    id: 'menu',
+    label: 'Menu',
+    imageKey: 'menu',
+  },
+];
+
+const autochessMediaBasePath = '/products/pokemon-autochess/demo';
+
+function autochessVideoPath(_theme: DemoThemeId, mediaKey: string, viewport: DemoViewport) {
+  return `${autochessMediaBasePath}/videos/pokemon-autochess-${mediaKey}-${viewport}.mp4`;
+}
+
+function autochessPosterPath(_theme: DemoThemeId, moment: CapturedDemoMoment, viewport: DemoViewport) {
+  return `${autochessMediaBasePath}/posters/pokemon-autochess-${moment.mediaKey}-${viewport}.png`;
+}
+
+function autochessScreenshotPath(_theme: DemoThemeId, imageKey: string, viewport: DemoViewport) {
+  return `${autochessMediaBasePath}/screenshots/pokemon-autochess-${imageKey}-${viewport}.png`;
+}
+
 const nexusMediaConfig: CapturedMediaConfig = {
   productName: 'PokeGo Nexus',
   themes: [
@@ -338,6 +458,19 @@ const trackExtractMediaConfig: CapturedMediaConfig = {
   themeClassName: (theme) => `nexus-media-theme-${theme}`,
 };
 
+const autochessMediaConfig: CapturedMediaConfig = {
+  productName: 'Pokemon Autochess',
+  visualClassName: 'demo-visual-autochess-media demo-visual-desktop-only',
+  viewports: ['desktop'],
+  themes: [{ id: 'standard', label: 'Default' }],
+  moments: autochessDemoMoments,
+  screenshots: autochessScreenshots,
+  videoPath: autochessVideoPath,
+  videoType: 'video/mp4',
+  posterPath: autochessPosterPath,
+  screenshotPath: autochessScreenshotPath,
+};
+
 function CapturedVideoPair({ config, video }: { config: CapturedMediaConfig; video: CapturedVideoSnapshot }) {
   const supportsDesktop = supportsDemoViewport(config, 'desktop');
   const supportsMobile = supportsDemoViewport(config, 'mobile');
@@ -354,7 +487,10 @@ function CapturedVideoPair({ config, video }: { config: CapturedMediaConfig; vid
           preload="metadata"
           poster={config.posterPath?.(video.theme, video.moment, 'desktop')}
         >
-          <source src={config.videoPath(video.theme, video.moment.mediaKey, 'desktop')} type="video/webm" />
+          <source
+            src={config.videoPath(video.theme, video.moment.mediaKey, 'desktop')}
+            type={config.videoType ?? 'video/webm'}
+          />
         </video>
       )}
       {supportsMobile && (
@@ -367,7 +503,10 @@ function CapturedVideoPair({ config, video }: { config: CapturedMediaConfig; vid
           preload="metadata"
           poster={config.posterPath?.(video.theme, video.moment, 'mobile')}
         >
-          <source src={config.videoPath(video.theme, video.moment.mediaKey, 'mobile')} type="video/webm" />
+          <source
+            src={config.videoPath(video.theme, video.moment.mediaKey, 'mobile')}
+            type={config.videoType ?? 'video/webm'}
+          />
         </video>
       )}
     </>
@@ -881,7 +1020,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                     >
                       <source
                         src={config.videoPath(theme, lightboxMedia.moment.mediaKey, 'desktop')}
-                        type="video/webm"
+                        type={config.videoType ?? 'video/webm'}
                       />
                     </video>
                   )}
@@ -898,7 +1037,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                     >
                       <source
                         src={config.videoPath(theme, lightboxMedia.moment.mediaKey, 'mobile')}
-                        type="video/webm"
+                        type={config.videoType ?? 'video/webm'}
                       />
                     </video>
                   )}
@@ -946,6 +1085,10 @@ function DemoVisual({ project }: { project: Project }) {
 
   if (project.demo.kind === 'trackextract') {
     return <CapturedMediaVisual key="trackextract" config={trackExtractMediaConfig} project={project} />;
+  }
+
+  if (project.demo.kind === 'autochess') {
+    return <CapturedMediaVisual key="autochess" config={autochessMediaConfig} project={project} />;
   }
 
   if (project.demo.kind === 'jarvin') {
@@ -1040,10 +1183,41 @@ function DemoVisual({ project }: { project: Project }) {
   );
 }
 
+function projectDemoSlug(project: Project) {
+  return project.name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
 export function ProductShowcase() {
   const [activeProjectName, setActiveProjectName] = useState(projects[0].name);
   const activeProject = projects.find((project) => project.name === activeProjectName) ?? projects[0];
   const demoScenes = activeProject.demo.scenes ?? [];
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const requestedDemo = params.get('demo');
+
+    if (!requestedDemo) {
+      return;
+    }
+
+    const requested = requestedDemo.toLowerCase();
+    const requestedProject = projects.find(
+      (project) => project.demo.kind === requested || projectDemoSlug(project) === requested,
+    );
+
+    if (requestedProject) {
+      const frame = window.requestAnimationFrame(() => {
+        setActiveProjectName(requestedProject.name);
+      });
+
+      return () => window.cancelAnimationFrame(frame);
+    }
+
+    return undefined;
+  }, []);
 
   return (
     <section id="demos" className="section-wrap demo-section" aria-labelledby="demos-title">

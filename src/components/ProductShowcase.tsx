@@ -500,6 +500,91 @@ function jarvinScreenshotPath(_theme: DemoThemeId, imageKey: string, viewport: D
   return `${jarvinMediaBasePath}/screenshots/jarvin-${imageKey}-${viewport}.png`;
 }
 
+const cipherDemoMoments: CapturedDemoMoment[] = [
+  {
+    id: 'workspace',
+    label: 'Workspace',
+    description: 'Open a Colosseum ISO and review the loaded editor workspace, tool list, and project log.',
+    mediaKey: 'workspace-loaded',
+    posterKey: 'workspace',
+  },
+  {
+    id: 'pokemon-stats',
+    label: 'Pokemon Editor',
+    description: 'Browse starter Pokemon records and inspect stats, typing, abilities, move slots, and evolution data.',
+    mediaKey: 'pokemon-stats',
+    posterKey: 'pokemon-stats',
+  },
+  {
+    id: 'move-editor',
+    label: 'Move Editor',
+    description: 'Review move records with type, category, targeting, power, accuracy, PP, and behavior flags in view.',
+    mediaKey: 'move-editor',
+    posterKey: 'move-editor',
+  },
+  {
+    id: 'verde',
+    label: 'Trainer Editor 1',
+    description: 'Review Shadow Bayleef and the surrounding story battle party in the trainer editor.',
+    mediaKey: 'trainer-verde',
+    posterKey: 'trainer-editor',
+  },
+  {
+    id: 'rosso',
+    label: 'Trainer Editor 2',
+    description: 'Show Shadow Quilava alongside editable party, move, and battle metadata fields.',
+    mediaKey: 'trainer-rosso',
+    posterKey: 'trainer-editor',
+  },
+  {
+    id: 'bluno',
+    label: 'Trainer Editor 3',
+    description: 'Inspect trainer battle data with Shadow Croconaw, party slots, moves, and metadata animated in-place.',
+    mediaKey: 'trainer-bluno',
+    posterKey: 'trainer-editor',
+  },
+];
+
+const cipherScreenshots: CapturedScreenshot[] = [
+  {
+    id: 'workspace',
+    label: 'Workspace',
+    imageKey: 'workspace',
+  },
+  {
+    id: 'trainer',
+    label: 'Trainer',
+    imageKey: 'trainer-editor',
+  },
+  {
+    id: 'stats',
+    label: 'Pokemon Stats',
+    imageKey: 'pokemon-stats',
+  },
+  {
+    id: 'moves',
+    label: 'Moves',
+    imageKey: 'move-editor',
+  },
+];
+
+const cipherMediaBasePath = '/products/cipher-snagem-editor/demo';
+const cipherMediaVersion = '20260707-stats-selection-sync';
+
+function cipherVideoPath(_theme: DemoThemeId, mediaKey: string, viewport: DemoViewport) {
+  return `${cipherMediaBasePath}/videos/cipher-snagem-${mediaKey}-${viewport}.mp4?v=${cipherMediaVersion}`;
+}
+
+function cipherPosterPath(_theme: DemoThemeId, moment: CapturedDemoMoment, viewport: DemoViewport) {
+  return `${cipherMediaBasePath}/screenshots/cipher-snagem-${
+    moment.posterKey ?? moment.mediaKey
+  }-${viewport}.png`;
+}
+
+function cipherScreenshotPath(_theme: DemoThemeId, imageKey: string, viewport: DemoViewport) {
+  return `${cipherMediaBasePath}/screenshots/cipher-snagem-${imageKey}-${viewport}.png`;
+}
+
 const nexusMediaConfig: CapturedMediaConfig = {
   productName: 'PokeGo Nexus',
   themes: [
@@ -566,14 +651,30 @@ const jarvinMediaConfig: CapturedMediaConfig = {
   screenshotPath: jarvinScreenshotPath,
 };
 
+const cipherMediaConfig: CapturedMediaConfig = {
+  productName: 'Cipher Snagem Editor',
+  visualClassName: 'demo-visual-cipher-media demo-visual-desktop-only',
+  viewports: ['desktop'],
+  themes: [{ id: 'standard', label: 'Default' }],
+  moments: cipherDemoMoments,
+  screenshots: cipherScreenshots,
+  videoPath: cipherVideoPath,
+  videoType: 'video/mp4',
+  posterPath: cipherPosterPath,
+  screenshotPath: cipherScreenshotPath,
+};
+
 function CapturedVideoPair({ config, video }: { config: CapturedMediaConfig; video: CapturedVideoSnapshot }) {
   const supportsDesktop = supportsDemoViewport(config, 'desktop');
   const supportsMobile = supportsDemoViewport(config, 'mobile');
+  const desktopVideoPath = config.videoPath(video.theme, video.moment.mediaKey, 'desktop');
+  const mobileVideoPath = config.videoPath(video.theme, video.moment.mediaKey, 'mobile');
 
   return (
     <>
       {supportsDesktop && (
         <video
+          key={desktopVideoPath}
           className="nexus-demo-video nexus-demo-video-desktop"
           autoPlay
           loop
@@ -582,14 +683,12 @@ function CapturedVideoPair({ config, video }: { config: CapturedMediaConfig; vid
           preload="metadata"
           poster={config.posterPath?.(video.theme, video.moment, 'desktop')}
         >
-          <source
-            src={config.videoPath(video.theme, video.moment.mediaKey, 'desktop')}
-            type={config.videoType ?? 'video/webm'}
-          />
+          <source src={desktopVideoPath} type={config.videoType ?? 'video/webm'} />
         </video>
       )}
       {supportsMobile && (
         <video
+          key={mobileVideoPath}
           className="nexus-demo-video nexus-demo-video-mobile"
           autoPlay
           loop
@@ -598,10 +697,7 @@ function CapturedVideoPair({ config, video }: { config: CapturedMediaConfig; vid
           preload="metadata"
           poster={config.posterPath?.(video.theme, video.moment, 'mobile')}
         >
-          <source
-            src={config.videoPath(video.theme, video.moment.mediaKey, 'mobile')}
-            type={config.videoType ?? 'video/webm'}
-          />
+          <source src={mobileVideoPath} type={config.videoType ?? 'video/webm'} />
         </video>
       )}
     </>
@@ -973,6 +1069,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                         alt={isActive ? `${screenshot.label} ${config.productName} desktop screenshot` : ''}
                         width={desktopMediaSize.width}
                         height={desktopMediaSize.height}
+                        loading={isActive ? 'eager' : 'lazy'}
                         sizes={desktopOnly ? '(max-width: 640px) 260px, 520px' : '(max-width: 640px) 0px, 520px'}
                       />
                     )}
@@ -983,6 +1080,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                         alt={isActive ? `${screenshot.label} ${config.productName} mobile screenshot` : ''}
                         width={mobileMediaSize.width}
                         height={mobileMediaSize.height}
+                        loading={isActive ? 'eager' : 'lazy'}
                         sizes="(max-width: 640px) 260px, 0px"
                       />
                     )}
@@ -1104,6 +1202,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                 <>
                   {supportsDesktop && (
                     <video
+                      key={config.videoPath(theme, lightboxMedia.moment.mediaKey, 'desktop')}
                       ref={lightboxDesktopVideoRef}
                       className="nexus-lightbox-video nexus-lightbox-video-desktop"
                       autoPlay
@@ -1121,6 +1220,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                   )}
                   {supportsMobile && (
                     <video
+                      key={config.videoPath(theme, lightboxMedia.moment.mediaKey, 'mobile')}
                       ref={lightboxMobileVideoRef}
                       className="nexus-lightbox-video nexus-lightbox-video-mobile"
                       autoPlay
@@ -1191,40 +1291,7 @@ function DemoVisual({ project }: { project: Project }) {
   }
 
   if (project.demo.kind === 'cipher') {
-    const lockupSize = project.brand?.darkLockup
-      ? getImageSize(project.brand.darkLockup, { width: 360, height: 164 })
-      : null;
-
-    return (
-      <div className="demo-visual demo-visual-cipher" aria-hidden="true">
-        {project.brand?.darkLockup && lockupSize && (
-          <div className="cipher-demo-brand">
-            <Image
-              src={project.brand.darkLockup}
-              alt=""
-              width={lockupSize.width}
-              height={lockupSize.height}
-              sizes="360px"
-            />
-          </div>
-        )}
-        <div className="editor-toolbar">
-          <span>Colosseum Tool</span>
-          <strong>workspace clean</strong>
-        </div>
-        <div className="editor-table">
-          <span>Trainer</span>
-          <span>Pokemon</span>
-          <span>Patch</span>
-          <strong>Miror B.</strong>
-          <strong>Ludicolo</strong>
-          <strong>valid</strong>
-          <strong>Evice</strong>
-          <strong>Slaking</strong>
-          <strong>queued</strong>
-        </div>
-      </div>
-    );
+    return <CapturedMediaVisual key="cipher" config={cipherMediaConfig} project={project} />;
   }
 
   const lockupSize = project.brand?.darkLockup

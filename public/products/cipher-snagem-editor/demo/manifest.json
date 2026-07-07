@@ -1,0 +1,55 @@
+{
+  "product": "cipher-snagem-editor",
+  "frame": {
+    "mode": "native-window",
+    "fps": 30
+  },
+  "source": {
+    "iso": "/home/adam/Pokemon Colosseum/Pokemon Colosseum.iso",
+    "app": "/home/adam/Projects/CipherSnagemEditor/.local/fresh-cipher-package/packages/colosseum-tool-linux-x64/ColosseumTool"
+  },
+  "screenshots": [
+    {
+      "id": "workspace",
+      "path": "screenshots/cipher-snagem-workspace-desktop.png"
+    },
+    {
+      "id": "trainer-editor",
+      "path": "screenshots/cipher-snagem-trainer-editor-desktop.png"
+    },
+    {
+      "id": "pokemon-stats",
+      "path": "screenshots/cipher-snagem-pokemon-stats-desktop.png"
+    },
+    {
+      "id": "move-editor",
+      "path": "screenshots/cipher-snagem-move-editor-desktop.png"
+    }
+  ],
+  "videos": [
+    {
+      "id": "workspace-loaded",
+      "path": "videos/cipher-snagem-workspace-loaded-desktop.mp4"
+    },
+    {
+      "id": "pokemon-stats",
+      "path": "videos/cipher-snagem-pokemon-stats-desktop.mp4"
+    },
+    {
+      "id": "move-editor",
+      "path": "videos/cipher-snagem-move-editor-desktop.mp4"
+    },
+    {
+      "id": "trainer-verde",
+      "path": "videos/cipher-snagem-trainer-verde-desktop.mp4"
+    },
+    {
+      "id": "trainer-rosso",
+      "path": "videos/cipher-snagem-trainer-rosso-desktop.mp4"
+    },
+    {
+      "id": "trainer-bluno",
+      "path": "videos/cipher-snagem-trainer-bluno-desktop.mp4"
+    }
+  ]
+}

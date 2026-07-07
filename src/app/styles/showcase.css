@@ -806,36 +806,6 @@
   display: none;
 }
 
-.demo-feed,
-.assistant-thread,
-.combat-log {
-  display: grid;
-  align-content: start;
-  gap: 10px;
-}
-
-.demo-feed span,
-.assistant-thread span,
-.combat-log span,
-.editor-toolbar span {
-  border: 1px solid rgba(244, 234, 209, 0.09);
-  border-radius: 8px;
-  background: rgba(244, 234, 209, 0.04);
-  color: var(--text-secondary);
-  font-size: 13px;
-  font-weight: 800;
-  padding: 10px;
-}
-
-.demo-feed strong,
-.combat-log strong,
-.editor-toolbar strong {
-  border-radius: 8px;
-  background: rgba(255, 90, 0, 0.16);
-  color: var(--highlight);
-  padding: 12px;
-}
-
 @keyframes pulsePin {
   50% {
     transform: scale(1.14);

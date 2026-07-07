@@ -42,6 +42,15 @@ type CapturedLightboxMedia =
 
 type CapturedCarouselDirection = 'previous' | 'next';
 
+const mediaConfigsByDemoKind = {
+  nexus: nexusMediaConfig,
+  winrift: winRiftMediaConfig,
+  trackextract: trackExtractMediaConfig,
+  autochess: autochessMediaConfig,
+  jarvin: jarvinMediaConfig,
+  cipher: cipherMediaConfig,
+} satisfies Record<Project['demo']['kind'], CapturedMediaConfig>;
+
 function CapturedVideoPair({ config, video }: { config: CapturedMediaConfig; video: CapturedVideoSnapshot }) {
   const supportsDesktop = supportsDemoViewport(config, 'desktop');
   const supportsMobile = supportsDemoViewport(config, 'mobile');
@@ -648,58 +657,9 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
 }
 
 function DemoVisual({ project }: { project: Project }) {
-  if (project.demo.kind === 'nexus') {
-    return <CapturedMediaVisual key="nexus" config={nexusMediaConfig} project={project} />;
-  }
+  const config = mediaConfigsByDemoKind[project.demo.kind];
 
-  if (project.demo.kind === 'winrift') {
-    return <CapturedMediaVisual key="winrift" config={winRiftMediaConfig} project={project} />;
-  }
-
-  if (project.demo.kind === 'trackextract') {
-    return <CapturedMediaVisual key="trackextract" config={trackExtractMediaConfig} project={project} />;
-  }
-
-  if (project.demo.kind === 'autochess') {
-    return <CapturedMediaVisual key="autochess" config={autochessMediaConfig} project={project} />;
-  }
-
-  if (project.demo.kind === 'jarvin') {
-    return <CapturedMediaVisual key="jarvin" config={jarvinMediaConfig} project={project} />;
-  }
-
-  if (project.demo.kind === 'cipher') {
-    return <CapturedMediaVisual key="cipher" config={cipherMediaConfig} project={project} />;
-  }
-
-  const lockupSize = project.brand?.darkLockup
-    ? getImageSize(project.brand.darkLockup, { width: 340, height: 112 })
-    : null;
-
-  return (
-    <div className="demo-visual demo-visual-autochess" aria-hidden="true">
-      {project.brand?.darkLockup && lockupSize && (
-        <div className="autochess-demo-brand">
-          <Image
-            src={project.brand.darkLockup}
-            alt=""
-            width={lockupSize.width}
-            height={lockupSize.height}
-            sizes="260px"
-          />
-        </div>
-      )}
-      <div className="battle-board">
-        {Array.from({ length: 16 }, (_, index) => (
-          <span key={index} className={index === 5 || index === 10 || index === 11 ? 'board-unit' : ''} />
-        ))}
-      </div>
-      <div className="combat-log">
-        <span>round 04</span>
-        <strong>ability chain resolved</strong>
-      </div>
-    </div>
-  );
+  return <CapturedMediaVisual key={project.demo.kind} config={config} project={project} />;
 }
 
 function projectDemoSlug(project: Project) {

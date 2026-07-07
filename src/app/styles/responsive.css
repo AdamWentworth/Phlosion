@@ -152,11 +152,7 @@
     padding: 14px;
   }
 
-  .demo-visual-nexus,
-  .demo-visual-jarvin,
-  .demo-visual-winrift,
-  .demo-visual-trackextract,
-  .demo-visual-autochess {
+  .demo-visual-nexus {
     grid-template-columns: 1fr;
   }
 
@@ -298,28 +294,6 @@
   .nexus-moment-tabs button,
   .nexus-image-tabs button {
     flex: 0 0 auto;
-  }
-
-  .winrift-screen-stack {
-    grid-template-rows: minmax(0, 1fr);
-  }
-
-  .demo-feed,
-  .winrift-secondary-screens,
-  .winrift-stat-panel,
-  .trackextract-stem-stack,
-  .memory-stack,
-  .combat-log {
-    display: none;
-  }
-
-  .editor-toolbar {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .editor-table {
-    grid-template-columns: 1fr;
   }
 
   .tech-badge {

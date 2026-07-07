@@ -473,41 +473,8 @@
   border-color: rgba(255, 246, 232, 0.12);
 }
 
-.demo-window-bar strong,
-.demo-window .editor-table span {
+.demo-window-bar strong {
   color: rgba(255, 246, 232, 0.68);
-}
-
-.demo-map {
-  border-color: rgba(92, 170, 255, 0.22);
-  background-image:
-    linear-gradient(rgba(255, 246, 232, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 246, 232, 0.07) 1px, transparent 1px);
-}
-
-.demo-feed span,
-.assistant-thread span,
-.combat-log span,
-.editor-toolbar span {
-  border-color: rgba(255, 246, 232, 0.12);
-  background: rgba(255, 246, 232, 0.07);
-  color: rgba(255, 246, 232, 0.82);
-}
-
-.demo-feed strong,
-.combat-log strong,
-.editor-toolbar strong,
-.editor-table strong {
-  color: #fff6e8;
-}
-
-.memory-stack span {
-  background: linear-gradient(135deg, rgba(56, 161, 105, 0.26), rgba(255, 246, 232, 0.07));
-}
-
-.battle-board span {
-  background: rgba(255, 246, 232, 0.06);
-  border-color: rgba(255, 246, 232, 0.08);
 }
 
 .contact-section {

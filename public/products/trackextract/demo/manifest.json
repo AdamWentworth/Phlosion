@@ -5,49 +5,49 @@
       "name": "workspace",
       "theme": "dark",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/screenshots/trackextract-dark-workspace-desktop.png"
+      "path": "screenshots/trackextract-dark-workspace-desktop.png"
     },
     {
       "name": "rendered-stems",
       "theme": "dark",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/screenshots/trackextract-dark-rendered-stems-desktop.png"
+      "path": "screenshots/trackextract-dark-rendered-stems-desktop.png"
     },
     {
       "name": "model-library",
       "theme": "dark",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/screenshots/trackextract-dark-model-library-desktop.png"
+      "path": "screenshots/trackextract-dark-model-library-desktop.png"
     },
     {
       "name": "cleanup-chain",
       "theme": "dark",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/screenshots/trackextract-dark-cleanup-chain-desktop.png"
+      "path": "screenshots/trackextract-dark-cleanup-chain-desktop.png"
     },
     {
       "name": "workspace",
       "theme": "light",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/screenshots/trackextract-light-workspace-desktop.png"
+      "path": "screenshots/trackextract-light-workspace-desktop.png"
     },
     {
       "name": "rendered-stems",
       "theme": "light",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/screenshots/trackextract-light-rendered-stems-desktop.png"
+      "path": "screenshots/trackextract-light-rendered-stems-desktop.png"
     },
     {
       "name": "model-library",
       "theme": "light",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/screenshots/trackextract-light-model-library-desktop.png"
+      "path": "screenshots/trackextract-light-model-library-desktop.png"
     },
     {
       "name": "cleanup-chain",
       "theme": "light",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/screenshots/trackextract-light-cleanup-chain-desktop.png"
+      "path": "screenshots/trackextract-light-cleanup-chain-desktop.png"
     }
   ],
   "videos": [
@@ -55,49 +55,49 @@
       "name": "import-run",
       "theme": "dark",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/videos/trackextract-dark-import-run-desktop.webm"
+      "path": "videos/trackextract-dark-import-run-desktop.webm"
     },
     {
       "name": "model-library",
       "theme": "dark",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/videos/trackextract-dark-model-library-desktop.webm"
+      "path": "videos/trackextract-dark-model-library-desktop.webm"
     },
     {
       "name": "cleanup-chain",
       "theme": "dark",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/videos/trackextract-dark-cleanup-chain-desktop.webm"
+      "path": "videos/trackextract-dark-cleanup-chain-desktop.webm"
     },
     {
       "name": "preview-export",
       "theme": "dark",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/videos/trackextract-dark-preview-export-desktop.webm"
+      "path": "videos/trackextract-dark-preview-export-desktop.webm"
     },
     {
       "name": "import-run",
       "theme": "light",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/videos/trackextract-light-import-run-desktop.webm"
+      "path": "videos/trackextract-light-import-run-desktop.webm"
     },
     {
       "name": "model-library",
       "theme": "light",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/videos/trackextract-light-model-library-desktop.webm"
+      "path": "videos/trackextract-light-model-library-desktop.webm"
     },
     {
       "name": "cleanup-chain",
       "theme": "light",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/videos/trackextract-light-cleanup-chain-desktop.webm"
+      "path": "videos/trackextract-light-cleanup-chain-desktop.webm"
     },
     {
       "name": "preview-export",
       "theme": "light",
       "viewport": "desktop",
-      "path": ".artifacts/demo-media/trackextract/videos/trackextract-light-preview-export-desktop.webm"
+      "path": "videos/trackextract-light-preview-export-desktop.webm"
     }
   ]
 }

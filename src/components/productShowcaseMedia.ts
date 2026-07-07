@@ -500,7 +500,8 @@ const cipherDemoMoments: CapturedDemoMoment[] = [
   {
     id: 'bluno',
     label: 'Trainer Editor 3',
-    description: 'Inspect trainer battle data with Shadow Croconaw, party slots, moves, and metadata animated in-place.',
+    description:
+      'Inspect trainer battle data with Shadow Croconaw, party slots, moves, and metadata animated in-place.',
     mediaKey: 'trainer-bluno',
     posterKey: 'trainer-editor',
   },
@@ -537,9 +538,7 @@ function cipherVideoPath(_theme: DemoThemeId, mediaKey: string, viewport: DemoVi
 }
 
 function cipherPosterPath(_theme: DemoThemeId, moment: CapturedDemoMoment, viewport: DemoViewport) {
-  return `${cipherMediaBasePath}/screenshots/cipher-snagem-${
-    moment.posterKey ?? moment.mediaKey
-  }-${viewport}.png`;
+  return `${cipherMediaBasePath}/screenshots/cipher-snagem-${moment.posterKey ?? moment.mediaKey}-${viewport}.png`;
 }
 
 function cipherScreenshotPath(_theme: DemoThemeId, imageKey: string, viewport: DemoViewport) {
@@ -624,4 +623,3 @@ export const cipherMediaConfig: CapturedMediaConfig = {
   posterPath: cipherPosterPath,
   screenshotPath: cipherScreenshotPath,
 };
-

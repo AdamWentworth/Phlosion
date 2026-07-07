@@ -2,14 +2,7 @@
 
 import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import {
-  ArrowUpRight,
-  CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
-  Maximize2,
-  X,
-} from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
 import { ProjectIconFrame } from '@/components/ProjectBrand';
 import {
   autochessMediaConfig,

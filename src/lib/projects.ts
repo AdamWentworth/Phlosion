@@ -438,8 +438,23 @@ const productCatalog: Project[] = [
       kind: 'jarvin',
       label: 'Host-run assistant loop',
       metric: 'Local-first AI',
-      summary: 'A private assistant surface for voice capture, local model work, tool execution, and memory updates.',
-      steps: ['Capture request', 'Route tool safely', 'Store useful context'],
+      summary:
+        'A private assistant surface for chat, voice, local model routing, host-task approval, diagnostics, and memory-backed workspace state.',
+      steps: ['Open assistant workspace', 'Approve host tasks', 'Review voice and host settings'],
+      scenes: [
+        {
+          label: 'Assistant workspace',
+          text: 'Move through persistent conversations, typed requests, weather-backed briefs, model controls, and local host status.',
+        },
+        {
+          label: 'Host task guardrails',
+          text: 'Review read/write intent, risk, details, and proposed execution steps before Jarvin touches local project state.',
+        },
+        {
+          label: 'Settings depth',
+          text: 'Inspect host URL, LLM backend, voice devices, profile preferences, notifications, diagnostics, and action logs.',
+        },
+      ],
     },
   },
   {

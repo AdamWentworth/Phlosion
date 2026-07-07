@@ -417,6 +417,89 @@ function autochessScreenshotPath(_theme: DemoThemeId, imageKey: string, viewport
   return `${autochessMediaBasePath}/screenshots/pokemon-autochess-${imageKey}-${viewport}.png`;
 }
 
+const jarvinDemoMoments: CapturedDemoMoment[] = [
+  {
+    id: 'morning',
+    label: 'Morning Brief',
+    description: 'Typed assistant chat with a weather-backed morning brief and local host status in view.',
+    mediaKey: 'morning-brief',
+    posterKey: 'morning-brief',
+  },
+  {
+    id: 'task',
+    label: 'Host Task',
+    description: 'Approval-gated host task review for local workspace inspection without mutating files.',
+    mediaKey: 'host-task-approval',
+    posterKey: 'host-task-approval',
+  },
+  {
+    id: 'settings',
+    label: 'Settings',
+    description: 'Host connection, voice, profile, diagnostics, model, and device controls in one desktop surface.',
+    mediaKey: 'settings-tour',
+    posterKey: 'settings-voice',
+  },
+  {
+    id: 'guardrails',
+    label: 'Guardrails',
+    description: 'Trust and approval controls for deciding when Jarvin can perform local host actions.',
+    mediaKey: 'approval-guardrails',
+    posterKey: 'host-task-approval',
+  },
+];
+
+const jarvinScreenshots: CapturedScreenshot[] = [
+  {
+    id: 'workspace',
+    label: 'Workspace',
+    imageKey: 'chat-workspace',
+  },
+  {
+    id: 'brief',
+    label: 'Brief',
+    imageKey: 'morning-brief',
+  },
+  {
+    id: 'task',
+    label: 'Task',
+    imageKey: 'host-task-approval',
+  },
+  {
+    id: 'general',
+    label: 'General',
+    imageKey: 'settings-general',
+  },
+  {
+    id: 'voice',
+    label: 'Voice',
+    imageKey: 'settings-voice',
+  },
+  {
+    id: 'profile',
+    label: 'Profile',
+    imageKey: 'settings-profile',
+  },
+  {
+    id: 'diagnostics',
+    label: 'Diagnostics',
+    imageKey: 'settings-diagnostics',
+  },
+];
+
+const jarvinMediaBasePath = '/products/jarvin/demo';
+
+function jarvinVideoPath(_theme: DemoThemeId, mediaKey: string, viewport: DemoViewport) {
+  return `${jarvinMediaBasePath}/videos/jarvin-${mediaKey}-${viewport}.webm`;
+}
+
+function jarvinPosterPath(_theme: DemoThemeId, moment: CapturedDemoMoment, viewport: DemoViewport) {
+  return `${jarvinMediaBasePath}/screenshots/jarvin-${moment.posterKey ?? moment.mediaKey}-${viewport}.png`;
+}
+
+function jarvinScreenshotPath(_theme: DemoThemeId, imageKey: string, viewport: DemoViewport) {
+  return `${jarvinMediaBasePath}/screenshots/jarvin-${imageKey}-${viewport}.png`;
+}
+
 const nexusMediaConfig: CapturedMediaConfig = {
   productName: 'PokeGo Nexus',
   themes: [
@@ -469,6 +552,18 @@ const autochessMediaConfig: CapturedMediaConfig = {
   videoType: 'video/mp4',
   posterPath: autochessPosterPath,
   screenshotPath: autochessScreenshotPath,
+};
+
+const jarvinMediaConfig: CapturedMediaConfig = {
+  productName: 'Jarvin',
+  visualClassName: 'demo-visual-jarvin-media demo-visual-desktop-only',
+  viewports: ['desktop'],
+  themes: [{ id: 'standard', label: 'Default' }],
+  moments: jarvinDemoMoments,
+  screenshots: jarvinScreenshots,
+  videoPath: jarvinVideoPath,
+  posterPath: jarvinPosterPath,
+  screenshotPath: jarvinScreenshotPath,
 };
 
 function CapturedVideoPair({ config, video }: { config: CapturedMediaConfig; video: CapturedVideoSnapshot }) {
@@ -1092,28 +1187,7 @@ function DemoVisual({ project }: { project: Project }) {
   }
 
   if (project.demo.kind === 'jarvin') {
-    const lockup = project.brand?.darkLockup ?? '/products/jarvin/jarvin-lockup-dark.png';
-    const lockupSize = getImageSize(lockup, { width: 310, height: 310 });
-
-    return (
-      <div className="demo-visual demo-visual-jarvin" aria-hidden="true">
-        <div className="jarvin-demo-brand">
-          <Image src={lockup} alt="" width={lockupSize.width} height={lockupSize.height} sizes="310px" />
-        </div>
-        <div className="jarvin-demo-flow">
-          <div className="assistant-thread">
-            <span className="thread-user">voice: plan tomorrow</span>
-            <span className="thread-tool">tool: calendar + memory</span>
-            <span className="thread-result">ready: brief generated</span>
-          </div>
-          <div className="memory-stack">
-            <span />
-            <span />
-            <span />
-          </div>
-        </div>
-      </div>
-    );
+    return <CapturedMediaVisual key="jarvin" config={jarvinMediaConfig} project={project} />;
   }
 
   if (project.demo.kind === 'cipher') {

@@ -106,6 +106,8 @@
 }
 
 .showcase-stage-trackextract {
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  overflow: visible;
   background:
     linear-gradient(150deg, rgba(46, 196, 214, 0.18), transparent 30%),
     linear-gradient(28deg, rgba(115, 209, 139, 0.11), transparent 36%),
@@ -338,6 +340,67 @@
 .demo-visual-winrift-media .nexus-carousel-slide {
   border-color: rgba(45, 226, 244, 0.18);
   background: rgba(2, 10, 16, 0.86);
+}
+
+.demo-visual-trackextract-media .nexus-media-brand img {
+  filter: drop-shadow(0 10px 22px rgba(45, 212, 191, 0.2));
+}
+
+.demo-visual-trackextract-media .nexus-moment-tabs,
+.demo-visual-trackextract-media .nexus-media-details,
+.demo-visual-trackextract-media .nexus-image-carousel {
+  border-color: rgba(45, 212, 191, 0.18);
+  background: rgba(5, 16, 23, 0.74);
+}
+
+.demo-visual-trackextract-media .nexus-media-frame,
+.demo-visual-trackextract-media .nexus-image-frame {
+  border-color: rgba(45, 212, 191, 0.22);
+  background: #071017;
+  box-shadow: 0 18px 38px rgba(0, 26, 24, 0.3);
+}
+
+.demo-visual-trackextract-media .nexus-moment-tabs button,
+.demo-visual-trackextract-media .nexus-image-tabs button {
+  background: rgba(45, 212, 191, 0.1);
+  color: rgba(230, 255, 251, 0.84);
+}
+
+.demo-visual-trackextract-media .nexus-moment-tabs button[aria-pressed='true'],
+.demo-visual-trackextract-media .nexus-image-tabs button[aria-pressed='true'],
+.demo-visual-trackextract-media .nexus-theme-toggle button[aria-pressed='true'] {
+  background: linear-gradient(135deg, #2dd4bf, #73d18b);
+  color: #071312;
+}
+
+.demo-visual-trackextract-media .nexus-image-arrows button {
+  background: rgba(45, 212, 191, 0.12);
+  color: #e9fffb;
+}
+
+.demo-visual-trackextract-media .nexus-carousel-slide {
+  border-color: rgba(45, 212, 191, 0.2);
+  background: rgba(5, 16, 23, 0.86);
+}
+
+.demo-visual-trackextract-media.nexus-media-theme-light .nexus-moment-tabs,
+.demo-visual-trackextract-media.nexus-media-theme-light .nexus-media-details,
+.demo-visual-trackextract-media.nexus-media-theme-light .nexus-image-carousel {
+  border-color: rgba(36, 124, 117, 0.18);
+  background: rgba(255, 253, 248, 0.82);
+}
+
+.demo-visual-trackextract-media.nexus-media-theme-light .nexus-media-frame,
+.demo-visual-trackextract-media.nexus-media-theme-light .nexus-image-frame {
+  border-color: rgba(36, 124, 117, 0.2);
+  background: #f4f8f7;
+  box-shadow: 0 18px 38px rgba(28, 81, 84, 0.13);
+}
+
+.demo-visual-trackextract-media.nexus-media-theme-light .nexus-moment-tabs button,
+.demo-visual-trackextract-media.nexus-media-theme-light .nexus-image-tabs button {
+  background: rgba(36, 124, 117, 0.1);
+  color: rgba(17, 58, 55, 0.8);
 }
 
 .nexus-media-toolbar {

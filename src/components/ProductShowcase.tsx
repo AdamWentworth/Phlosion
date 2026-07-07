@@ -43,6 +43,7 @@ type CapturedDemoTheme = {
 type CapturedMediaConfig = {
   productName: string;
   visualClassName?: string;
+  viewports?: DemoViewport[];
   themes: CapturedDemoTheme[];
   moments: CapturedDemoMoment[];
   screenshots: CapturedScreenshot[];
@@ -51,6 +52,9 @@ type CapturedMediaConfig = {
   screenshotPath: (theme: DemoThemeId, imageKey: string, viewport: DemoViewport) => string;
   themeClassName?: (theme: DemoThemeId) => string;
 };
+
+const desktopMediaSize = { width: 1760, height: 1100 };
+const mobileMediaSize = { width: 390, height: 844 };
 
 type CapturedVideoSnapshot = {
   key: string;
@@ -223,6 +227,76 @@ function winRiftScreenshotPath(_theme: DemoThemeId, imageKey: string, viewport: 
   return `${winRiftMediaBasePath}/screenshots/winrift-${imageKey}-${viewport}.png`;
 }
 
+const trackExtractDemoMoments: CapturedDemoMoment[] = [
+  {
+    id: 'import',
+    label: 'Import',
+    description: 'Import a demo track, select a six-stem workflow, render stems, and inspect the generated preview.',
+    mediaKey: 'import-run',
+    posterKey: 'workspace',
+  },
+  {
+    id: 'models',
+    label: 'Models',
+    description: 'Filter model status, task, and backend metadata while choosing or installing workflow models.',
+    mediaKey: 'model-library',
+    posterKey: 'model-library',
+  },
+  {
+    id: 'cleanup',
+    label: 'Cleanup',
+    description: 'Prepare a multi-step vocal cleanup workflow, install its required models, and run the chain.',
+    mediaKey: 'cleanup-chain',
+    posterKey: 'cleanup-chain',
+  },
+  {
+    id: 'export',
+    label: 'Export',
+    description: 'Review generated stems, solo or mute parts, choose an export format, and export the selected stems.',
+    mediaKey: 'preview-export',
+    posterKey: 'rendered-stems',
+  },
+];
+
+const trackExtractScreenshots: CapturedScreenshot[] = [
+  {
+    id: 'workspace',
+    label: 'Workspace',
+    imageKey: 'workspace',
+  },
+  {
+    id: 'stems',
+    label: 'Stems',
+    imageKey: 'rendered-stems',
+  },
+  {
+    id: 'models',
+    label: 'Models',
+    imageKey: 'model-library',
+  },
+  {
+    id: 'cleanup',
+    label: 'Setup',
+    imageKey: 'cleanup-chain',
+  },
+];
+
+const trackExtractMediaBasePath = '/products/trackextract/demo';
+
+function trackExtractVideoPath(theme: DemoThemeId, mediaKey: string, viewport: DemoViewport) {
+  return `${trackExtractMediaBasePath}/videos/trackextract-${theme}-${mediaKey}-${viewport}.webm`;
+}
+
+function trackExtractPosterPath(theme: DemoThemeId, moment: CapturedDemoMoment, viewport: DemoViewport) {
+  return `${trackExtractMediaBasePath}/screenshots/trackextract-${theme}-${
+    moment.posterKey ?? moment.mediaKey
+  }-${viewport}.png`;
+}
+
+function trackExtractScreenshotPath(theme: DemoThemeId, imageKey: string, viewport: DemoViewport) {
+  return `${trackExtractMediaBasePath}/screenshots/trackextract-${theme}-${imageKey}-${viewport}.png`;
+}
+
 const nexusMediaConfig: CapturedMediaConfig = {
   productName: 'PokeGo Nexus',
   themes: [
@@ -248,33 +322,60 @@ const winRiftMediaConfig: CapturedMediaConfig = {
   screenshotPath: winRiftScreenshotPath,
 };
 
+const trackExtractMediaConfig: CapturedMediaConfig = {
+  productName: 'TrackExtract',
+  visualClassName: 'demo-visual-trackextract-media demo-visual-desktop-only',
+  viewports: ['desktop'],
+  themes: [
+    { id: 'dark', label: 'Dark', Icon: Moon },
+    { id: 'light', label: 'Light', Icon: Sun },
+  ],
+  moments: trackExtractDemoMoments,
+  screenshots: trackExtractScreenshots,
+  videoPath: trackExtractVideoPath,
+  posterPath: trackExtractPosterPath,
+  screenshotPath: trackExtractScreenshotPath,
+  themeClassName: (theme) => `nexus-media-theme-${theme}`,
+};
+
 function CapturedVideoPair({ config, video }: { config: CapturedMediaConfig; video: CapturedVideoSnapshot }) {
+  const supportsDesktop = supportsDemoViewport(config, 'desktop');
+  const supportsMobile = supportsDemoViewport(config, 'mobile');
+
   return (
     <>
-      <video
-        className="nexus-demo-video nexus-demo-video-desktop"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        poster={config.posterPath?.(video.theme, video.moment, 'desktop')}
-      >
-        <source src={config.videoPath(video.theme, video.moment.mediaKey, 'desktop')} type="video/webm" />
-      </video>
-      <video
-        className="nexus-demo-video nexus-demo-video-mobile"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        poster={config.posterPath?.(video.theme, video.moment, 'mobile')}
-      >
-        <source src={config.videoPath(video.theme, video.moment.mediaKey, 'mobile')} type="video/webm" />
-      </video>
+      {supportsDesktop && (
+        <video
+          className="nexus-demo-video nexus-demo-video-desktop"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster={config.posterPath?.(video.theme, video.moment, 'desktop')}
+        >
+          <source src={config.videoPath(video.theme, video.moment.mediaKey, 'desktop')} type="video/webm" />
+        </video>
+      )}
+      {supportsMobile && (
+        <video
+          className="nexus-demo-video nexus-demo-video-mobile"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster={config.posterPath?.(video.theme, video.moment, 'mobile')}
+        >
+          <source src={config.videoPath(video.theme, video.moment.mediaKey, 'mobile')} type="video/webm" />
+        </video>
+      )}
     </>
   );
+}
+
+function supportsDemoViewport(config: CapturedMediaConfig, viewport: DemoViewport) {
+  return (config.viewports ?? ['desktop', 'mobile']).includes(viewport);
 }
 
 function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig; project: Project }) {
@@ -323,6 +424,9 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
   const lightboxMobileVideoRef = useRef<HTMLVideoElement>(null);
   const [previousVideo, setPreviousVideo] = useState<CapturedVideoSnapshot | null>(null);
   const lightboxVideoSourceKey = lightboxMedia?.kind === 'video' ? `${theme}-${lightboxMedia.moment.mediaKey}` : null;
+  const supportsDesktop = supportsDemoViewport(config, 'desktop');
+  const supportsMobile = supportsDemoViewport(config, 'mobile');
+  const desktopOnly = supportsDesktop && !supportsMobile;
 
   useEffect(() => {
     if (activeVideoRef.current.key === activeVideo.key) {
@@ -628,22 +732,26 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                     }}
                     onClick={() => (isActive ? openScreenshotLightbox(screenshot) : selectScreenshot(screenshot.id))}
                   >
-                    <Image
-                      className="nexus-carousel-image nexus-carousel-image-desktop"
-                      src={config.screenshotPath(theme, screenshot.imageKey, 'desktop')}
-                      alt={isActive ? `${screenshot.label} ${config.productName} desktop screenshot` : ''}
-                      width={1440}
-                      height={1000}
-                      sizes="(max-width: 640px) 0px, 520px"
-                    />
-                    <Image
-                      className="nexus-carousel-image nexus-carousel-image-mobile"
-                      src={config.screenshotPath(theme, screenshot.imageKey, 'mobile')}
-                      alt={isActive ? `${screenshot.label} ${config.productName} mobile screenshot` : ''}
-                      width={390}
-                      height={844}
-                      sizes="(max-width: 640px) 260px, 0px"
-                    />
+                    {supportsDesktop && (
+                      <Image
+                        className="nexus-carousel-image nexus-carousel-image-desktop"
+                        src={config.screenshotPath(theme, screenshot.imageKey, 'desktop')}
+                        alt={isActive ? `${screenshot.label} ${config.productName} desktop screenshot` : ''}
+                        width={desktopMediaSize.width}
+                        height={desktopMediaSize.height}
+                        sizes={desktopOnly ? '(max-width: 640px) 260px, 520px' : '(max-width: 640px) 0px, 520px'}
+                      />
+                    )}
+                    {supportsMobile && (
+                      <Image
+                        className="nexus-carousel-image nexus-carousel-image-mobile"
+                        src={config.screenshotPath(theme, screenshot.imageKey, 'mobile')}
+                        alt={isActive ? `${screenshot.label} ${config.productName} mobile screenshot` : ''}
+                        width={mobileMediaSize.width}
+                        height={mobileMediaSize.height}
+                        sizes="(max-width: 640px) 260px, 0px"
+                      />
+                    )}
                     {isActive && (
                       <span className="nexus-carousel-expand-icon" aria-hidden="true">
                         <Maximize2 size={15} />
@@ -670,7 +778,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
       </div>
       {lightboxMedia && (
         <div
-          className="nexus-media-lightbox"
+          className={desktopOnly ? 'nexus-media-lightbox nexus-media-lightbox-desktop-only' : 'nexus-media-lightbox'}
           role="dialog"
           aria-modal="true"
           aria-label={`${config.productName} enlarged ${
@@ -760,49 +868,63 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
             <div className="nexus-media-lightbox-frame">
               {lightboxMedia.kind === 'video' ? (
                 <>
-                  <video
-                    ref={lightboxDesktopVideoRef}
-                    className="nexus-lightbox-video nexus-lightbox-video-desktop"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    controls
-                    poster={config.posterPath?.(theme, lightboxMedia.moment, 'desktop')}
-                  >
-                    <source src={config.videoPath(theme, lightboxMedia.moment.mediaKey, 'desktop')} type="video/webm" />
-                  </video>
-                  <video
-                    ref={lightboxMobileVideoRef}
-                    className="nexus-lightbox-video nexus-lightbox-video-mobile"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    controls
-                    poster={config.posterPath?.(theme, lightboxMedia.moment, 'mobile')}
-                  >
-                    <source src={config.videoPath(theme, lightboxMedia.moment.mediaKey, 'mobile')} type="video/webm" />
-                  </video>
+                  {supportsDesktop && (
+                    <video
+                      ref={lightboxDesktopVideoRef}
+                      className="nexus-lightbox-video nexus-lightbox-video-desktop"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      controls
+                      poster={config.posterPath?.(theme, lightboxMedia.moment, 'desktop')}
+                    >
+                      <source
+                        src={config.videoPath(theme, lightboxMedia.moment.mediaKey, 'desktop')}
+                        type="video/webm"
+                      />
+                    </video>
+                  )}
+                  {supportsMobile && (
+                    <video
+                      ref={lightboxMobileVideoRef}
+                      className="nexus-lightbox-video nexus-lightbox-video-mobile"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      controls
+                      poster={config.posterPath?.(theme, lightboxMedia.moment, 'mobile')}
+                    >
+                      <source
+                        src={config.videoPath(theme, lightboxMedia.moment.mediaKey, 'mobile')}
+                        type="video/webm"
+                      />
+                    </video>
+                  )}
                 </>
               ) : (
                 <>
-                  <Image
-                    className="nexus-lightbox-image nexus-lightbox-image-desktop"
-                    src={config.screenshotPath(theme, lightboxMedia.screenshot.imageKey, 'desktop')}
-                    alt={`${lightboxMedia.screenshot.label} ${config.productName} desktop screenshot`}
-                    width={1440}
-                    height={1000}
-                    sizes="(max-width: 640px) 0px, 92vw"
-                  />
-                  <Image
-                    className="nexus-lightbox-image nexus-lightbox-image-mobile"
-                    src={config.screenshotPath(theme, lightboxMedia.screenshot.imageKey, 'mobile')}
-                    alt={`${lightboxMedia.screenshot.label} ${config.productName} mobile screenshot`}
-                    width={390}
-                    height={844}
-                    sizes="(max-width: 640px) 88vw, 0px"
-                  />
+                  {supportsDesktop && (
+                    <Image
+                      className="nexus-lightbox-image nexus-lightbox-image-desktop"
+                      src={config.screenshotPath(theme, lightboxMedia.screenshot.imageKey, 'desktop')}
+                      alt={`${lightboxMedia.screenshot.label} ${config.productName} desktop screenshot`}
+                      width={desktopMediaSize.width}
+                      height={desktopMediaSize.height}
+                      sizes={desktopOnly ? '92vw' : '(max-width: 640px) 0px, 92vw'}
+                    />
+                  )}
+                  {supportsMobile && (
+                    <Image
+                      className="nexus-lightbox-image nexus-lightbox-image-mobile"
+                      src={config.screenshotPath(theme, lightboxMedia.screenshot.imageKey, 'mobile')}
+                      alt={`${lightboxMedia.screenshot.label} ${config.productName} mobile screenshot`}
+                      width={mobileMediaSize.width}
+                      height={mobileMediaSize.height}
+                      sizes="(max-width: 640px) 88vw, 0px"
+                    />
+                  )}
                 </>
               )}
             </div>
@@ -820,6 +942,10 @@ function DemoVisual({ project }: { project: Project }) {
 
   if (project.demo.kind === 'winrift') {
     return <CapturedMediaVisual key="winrift" config={winRiftMediaConfig} project={project} />;
+  }
+
+  if (project.demo.kind === 'trackextract') {
+    return <CapturedMediaVisual key="trackextract" config={trackExtractMediaConfig} project={project} />;
   }
 
   if (project.demo.kind === 'jarvin') {
@@ -842,49 +968,6 @@ function DemoVisual({ project }: { project: Project }) {
             <span />
             <span />
           </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (project.demo.kind === 'trackextract') {
-    const lockup = project.brand?.darkLockup ?? '/products/trackextract/trackextract-logo-row-white.png';
-    const lockupSize = getImageSize(lockup, { width: 368, height: 100 });
-
-    return (
-      <div className="demo-visual demo-visual-trackextract" aria-hidden="true">
-        <div className="trackextract-demo-brand">
-          <Image src={lockup} alt="" width={lockupSize.width} height={lockupSize.height} sizes="368px" />
-        </div>
-        <div className="trackextract-wave-panel">
-          <div className="trackextract-waveform">
-            {Array.from({ length: 32 }, (_, index) => (
-              <span key={index} />
-            ))}
-          </div>
-          <div className="trackextract-render-status">
-            <span>import ready</span>
-            <strong>stems rendering</strong>
-            <span>export queued</span>
-          </div>
-        </div>
-        <div className="trackextract-stem-stack">
-          <span>
-            <strong>Vocals</strong>
-            <em />
-          </span>
-          <span>
-            <strong>Drums</strong>
-            <em />
-          </span>
-          <span>
-            <strong>Bass</strong>
-            <em />
-          </span>
-          <span>
-            <strong>Other</strong>
-            <em />
-          </span>
         </div>
       </div>
     );

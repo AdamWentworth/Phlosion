@@ -258,6 +258,36 @@
     display: block;
   }
 
+  .demo-visual-desktop-only .nexus-media-frame,
+  .demo-visual-desktop-only .nexus-image-frame {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .demo-visual-desktop-only .nexus-demo-video-desktop,
+  .demo-visual-desktop-only .nexus-carousel-image-desktop {
+    display: block;
+  }
+
+  .demo-visual-desktop-only .nexus-demo-video-mobile,
+  .demo-visual-desktop-only .nexus-carousel-image-mobile {
+    display: none;
+  }
+
+  .nexus-media-lightbox-desktop-only .nexus-media-lightbox-panel {
+    width: min(100%, 1040px);
+  }
+
+  .nexus-media-lightbox-desktop-only .nexus-lightbox-video-desktop,
+  .nexus-media-lightbox-desktop-only .nexus-lightbox-image-desktop {
+    display: block;
+  }
+
+  .nexus-media-lightbox-desktop-only .nexus-lightbox-video-mobile,
+  .nexus-media-lightbox-desktop-only .nexus-lightbox-image-mobile {
+    display: none;
+  }
+
   .nexus-moment-tabs,
   .nexus-image-tabs {
     flex-wrap: nowrap;

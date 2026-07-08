@@ -2,12 +2,16 @@
 
 .showcase-shell {
   display: grid;
-  grid-template-columns: 320px minmax(0, 1fr);
-  gap: 18px;
+  gap: 16px;
+}
+
+.demo-section {
+  max-width: 1320px;
 }
 
 .showcase-tabs {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
   gap: 10px;
   align-content: start;
 }
@@ -22,7 +26,8 @@
   background: rgba(18, 20, 24, 0.74);
   color: var(--text-secondary);
   cursor: pointer;
-  padding: 14px;
+  min-height: 78px;
+  padding: 12px;
   text-align: left;
   transition:
     background 160ms ease,
@@ -53,9 +58,11 @@
 .showcase-tab span {
   display: grid;
   gap: 2px;
+  min-width: 0;
 }
 
 .showcase-tab strong {
+  overflow-wrap: anywhere;
   font-size: 14px;
   line-height: 1.25;
 }
@@ -70,8 +77,8 @@
 .showcase-stage {
   display: grid;
   min-height: 480px;
-  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
-  gap: 20px;
+  grid-template-columns: minmax(260px, 0.52fr) minmax(0, 1.48fr);
+  gap: 22px;
   overflow: visible;
   border: 1px solid rgba(244, 234, 209, 0.12);
   border-radius: 8px;

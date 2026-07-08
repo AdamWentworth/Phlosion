@@ -48,7 +48,7 @@
   }
 
   .showcase-tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .project-evidence-grid {
@@ -140,7 +140,7 @@
   }
 
   .showcase-tabs {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .showcase-stage {
@@ -303,6 +303,12 @@
 
   .section-wrap {
     padding: 58px 0;
+  }
+}
+
+@media (max-width: 440px) {
+  .showcase-tabs {
+    grid-template-columns: 1fr;
   }
 }
 

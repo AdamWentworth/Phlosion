@@ -731,7 +731,7 @@ export function ProductShowcase() {
           })}
         </div>
 
-        <article id="demo-stage" className={`showcase-stage showcase-stage-${activeProject.accent}`}>
+        <article className={`showcase-stage showcase-stage-${activeProject.accent}`}>
           <div className="stage-copy">
             <span className="project-status">{activeProject.status}</span>
             <h3>
@@ -763,7 +763,7 @@ export function ProductShowcase() {
             </a>
           </div>
 
-          <div className="stage-demo">
+          <div id="demo-stage" className="stage-demo">
             <div className="demo-window">
               <div className="demo-window-bar">
                 <span />

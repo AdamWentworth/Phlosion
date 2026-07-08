@@ -731,7 +731,7 @@ export function ProductShowcase() {
           })}
         </div>
 
-        <article className={`showcase-stage showcase-stage-${activeProject.accent}`}>
+        <article id="demo-stage" className={`showcase-stage showcase-stage-${activeProject.accent}`}>
           <div className="stage-copy">
             <span className="project-status">{activeProject.status}</span>
             <h3>

@@ -88,10 +88,10 @@ export const nexusProject: Project = {
   accent: 'nexus',
   brand: {
     alt: 'Pokemon Go Nexus',
-    icon: '/products/pokemon-go-nexus/nexus-logo.png',
+    icon: '/products/pokemon-go-nexus/nexus-logo-mark-transparent.png',
     iconFrame: 'light',
     lockupFrame: 'dark',
-    lockup: '/products/pokemon-go-nexus/nexus-lockup-with-mark-transparent.png',
+    lockup: '/products/pokemon-go-nexus/nexus-lockup-v2-transparent.png',
     wordmark: '/products/pokemon-go-nexus/nexus-wordmark-transparent.png',
   },
   demo: {

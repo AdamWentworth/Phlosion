@@ -122,6 +122,20 @@ const imageTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'image'
     color: '#ff8236',
     className: 'tech-icon-image-llama',
   },
+  OpenCV: {
+    kind: 'image',
+    src: '/tech/opencv-logo.svg',
+    alt: '',
+    color: '#128dff',
+    className: 'tech-icon-image-opencv',
+  },
+  'Tesseract OCR': {
+    kind: 'image',
+    src: '/tech/tesseract-logo.png',
+    alt: '',
+    color: '#1162bf',
+    className: 'tech-icon-image-tesseract',
+  },
   sol2: {
     kind: 'image',
     src: '/tech/sol2-logo.png',

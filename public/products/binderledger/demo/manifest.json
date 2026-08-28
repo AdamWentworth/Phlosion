@@ -1,0 +1,87 @@
+{
+  "generatedAt": "2026-08-28T21:29:09.697Z",
+  "screenshots": [
+    {
+      "name": "catalog",
+      "path": "screenshots/binderledger-catalog-desktop.png",
+      "viewport": "desktop"
+    },
+    {
+      "name": "catalog-card-details",
+      "path": "screenshots/binderledger-catalog-card-details-desktop.png",
+      "viewport": "desktop"
+    },
+    {
+      "name": "catalog-sets",
+      "path": "screenshots/binderledger-catalog-sets-desktop.png",
+      "viewport": "desktop"
+    },
+    {
+      "name": "market-overview",
+      "path": "screenshots/binderledger-market-overview-desktop.png",
+      "viewport": "desktop"
+    },
+    {
+      "name": "market-set-rankings",
+      "path": "screenshots/binderledger-market-set-rankings-desktop.png",
+      "viewport": "desktop"
+    },
+    {
+      "name": "market-card-movers",
+      "path": "screenshots/binderledger-market-card-movers-desktop.png",
+      "viewport": "desktop"
+    },
+    {
+      "name": "catalog",
+      "path": "screenshots/binderledger-catalog-mobile.png",
+      "viewport": "mobile"
+    },
+    {
+      "name": "catalog-card-details",
+      "path": "screenshots/binderledger-catalog-card-details-mobile.png",
+      "viewport": "mobile"
+    },
+    {
+      "name": "catalog-sets",
+      "path": "screenshots/binderledger-catalog-sets-mobile.png",
+      "viewport": "mobile"
+    },
+    {
+      "name": "market-overview",
+      "path": "screenshots/binderledger-market-overview-mobile.png",
+      "viewport": "mobile"
+    },
+    {
+      "name": "market-set-rankings",
+      "path": "screenshots/binderledger-market-set-rankings-mobile.png",
+      "viewport": "mobile"
+    },
+    {
+      "name": "market-card-movers",
+      "path": "screenshots/binderledger-market-card-movers-mobile.png",
+      "viewport": "mobile"
+    }
+  ],
+  "videos": [
+    {
+      "name": "catalog-exploration",
+      "path": "videos/binderledger-catalog-exploration-desktop.webm",
+      "viewport": "desktop"
+    },
+    {
+      "name": "market-exploration",
+      "path": "videos/binderledger-market-exploration-desktop.webm",
+      "viewport": "desktop"
+    },
+    {
+      "name": "catalog-exploration",
+      "path": "videos/binderledger-catalog-exploration-mobile.webm",
+      "viewport": "mobile"
+    },
+    {
+      "name": "market-exploration",
+      "path": "videos/binderledger-market-exploration-mobile.webm",
+      "viewport": "mobile"
+    }
+  ]
+}

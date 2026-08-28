@@ -6,6 +6,7 @@ import { ArrowUpRight, CheckCircle2, ChevronLeft, ChevronRight, Maximize2, X } f
 import { ProjectIconFrame } from '@/components/ProjectBrand';
 import {
   autochessMediaConfig,
+  binderLedgerMediaConfig,
   cipherMediaConfig,
   jarvinMediaConfig,
   nexusMediaConfig,
@@ -44,6 +45,7 @@ type CapturedCarouselDirection = 'previous' | 'next';
 
 const mediaConfigsByDemoKind = {
   nexus: nexusMediaConfig,
+  binderledger: binderLedgerMediaConfig,
   winrift: winRiftMediaConfig,
   trackextract: trackExtractMediaConfig,
   autochess: autochessMediaConfig,

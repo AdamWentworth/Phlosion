@@ -101,6 +101,72 @@ function nexusScreenshotPath(theme: DemoThemeId, imageKey: string, viewport: Dem
   return `${nexusMediaBasePath}/screenshots/${theme}-${imageKey}-${viewport}.png`;
 }
 
+const binderLedgerDemoMoments: CapturedDemoMoment[] = [
+  {
+    id: 'catalog',
+    label: 'Catalog Exploration',
+    description:
+      'Browse exact printings, change the catalog density, inspect condition-aware card details, and move into set-level discovery.',
+    mediaKey: 'catalog-exploration',
+    posterKey: 'catalog',
+  },
+  {
+    id: 'market',
+    label: 'Market Exploration',
+    description:
+      'Review market health and price history, compare set rankings, then drill into card movers and their observations.',
+    mediaKey: 'market-exploration',
+    posterKey: 'market-overview',
+  },
+];
+
+const binderLedgerScreenshots: CapturedScreenshot[] = [
+  {
+    id: 'catalog',
+    label: 'Catalog',
+    imageKey: 'catalog',
+  },
+  {
+    id: 'details',
+    label: 'Card Details',
+    imageKey: 'catalog-card-details',
+  },
+  {
+    id: 'sets',
+    label: 'Sets',
+    imageKey: 'catalog-sets',
+  },
+  {
+    id: 'market',
+    label: 'Market',
+    imageKey: 'market-overview',
+  },
+  {
+    id: 'rankings',
+    label: 'Set Rankings',
+    imageKey: 'market-set-rankings',
+  },
+  {
+    id: 'movers',
+    label: 'Card Movers',
+    imageKey: 'market-card-movers',
+  },
+];
+
+const binderLedgerMediaBasePath = '/products/binderledger/demo';
+
+function binderLedgerVideoPath(_theme: DemoThemeId, mediaKey: string, viewport: DemoViewport) {
+  return `${binderLedgerMediaBasePath}/videos/binderledger-${mediaKey}-${viewport}.webm`;
+}
+
+function binderLedgerPosterPath(_theme: DemoThemeId, moment: CapturedDemoMoment, viewport: DemoViewport) {
+  return `${binderLedgerMediaBasePath}/screenshots/binderledger-${moment.posterKey ?? moment.mediaKey}-${viewport}.png`;
+}
+
+function binderLedgerScreenshotPath(_theme: DemoThemeId, imageKey: string, viewport: DemoViewport) {
+  return `${binderLedgerMediaBasePath}/screenshots/binderledger-${imageKey}-${viewport}.png`;
+}
+
 const winRiftDemoMoments: CapturedDemoMoment[] = [
   {
     id: 'champion',
@@ -557,6 +623,17 @@ export const nexusMediaConfig: CapturedMediaConfig = {
   posterPath: nexusPosterPath,
   screenshotPath: nexusScreenshotPath,
   themeClassName: (theme) => `nexus-media-theme-${theme}`,
+};
+
+export const binderLedgerMediaConfig: CapturedMediaConfig = {
+  productName: 'BinderLedger',
+  visualClassName: 'demo-visual-binderledger-media',
+  themes: [{ id: 'standard', label: 'Default' }],
+  moments: binderLedgerDemoMoments,
+  screenshots: binderLedgerScreenshots,
+  videoPath: binderLedgerVideoPath,
+  posterPath: binderLedgerPosterPath,
+  screenshotPath: binderLedgerScreenshotPath,
 };
 
 export const winRiftMediaConfig: CapturedMediaConfig = {

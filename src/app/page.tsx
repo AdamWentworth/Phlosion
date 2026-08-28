@@ -331,8 +331,8 @@ export default function Home() {
         </div>
         <p className="project-disclaimer">
           Pokemon- and League-related projects are portfolio, learning, analytics, and community-support work. They are
-          not affiliated with, endorsed by, or sponsored by Nintendo, The Pokemon Company, Niantic, Riot Games, or
-          related rights holders.
+          not affiliated with, endorsed by, or sponsored by Nintendo, Creatures, GAME FREAK, The Pokemon Company,
+          Niantic, Riot Games, any data provider, or related rights holders.
         </p>
       </section>
 

@@ -18,9 +18,11 @@ import {
 } from 'lucide-react';
 import { siGithub } from 'simple-icons';
 import { AnimatedDetails } from '@/components/AnimatedDetails';
+import { PhlosionWordmark } from '@/components/PhlosionWordmark';
 import { ProjectTitle, ProjectTypeIconFrame } from '@/components/ProjectBrand';
 import { ProductShowcase } from '@/components/ProductShowcase';
 import { TechBadgeGroupList, TechBadgeList } from '@/components/TechBadge';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { projects, type Project } from '@/lib/projects';
 
 const navItems = [
@@ -76,14 +78,7 @@ function SiteBrand({ site }: { site: (typeof siteBuilds)[number] }) {
     return (
       <div className="site-brand-panel site-brand-panel-phlosion" aria-label="Phlosion brand">
         <Image src="/brand/phlosion-mark.png" alt="" width={1254} height={1254} sizes="72px" />
-        <Image
-          className="site-brand-wordmark"
-          src="/brand/phlosion-wordmark-blue.png"
-          alt="Phlosion"
-          width={1877}
-          height={342}
-          sizes="200px"
-        />
+        <PhlosionWordmark className="site-brand-wordmark" sizes="200px" />
       </div>
     );
   }
@@ -194,15 +189,7 @@ export default function Home() {
             <span className="brand-mark" aria-hidden="true">
               <Image src="/brand/phlosion-mark.png" alt="" width={1254} height={1254} sizes="42px" loading="eager" />
             </span>
-            <Image
-              className="brand-wordmark"
-              src="/brand/phlosion-wordmark-blue.png"
-              alt="Phlosion"
-              width={1877}
-              height={342}
-              sizes="150px"
-              loading="eager"
-            />
+            <PhlosionWordmark className="brand-wordmark" sizes="150px" loading="eager" />
           </Link>
           <nav className="site-nav" aria-label="Primary navigation">
             {navItems.map((item) => (
@@ -211,10 +198,13 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <a className="header-link" href="https://adamwentworth.ca" target="_blank" rel="noreferrer">
-            Resume
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
+          <div className="header-actions">
+            <ThemeToggle />
+            <a className="header-link" href="https://adamwentworth.ca" target="_blank" rel="noreferrer">
+              Resume
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          </div>
         </header>
 
         <div className="hero-content">
@@ -232,12 +222,8 @@ export default function Home() {
             />
             <p className="eyebrow">Software product lab</p>
             <h1 id="hero-title" className="hero-wordmark-title">
-              <Image
+              <PhlosionWordmark
                 className="hero-title-wordmark"
-                src="/brand/phlosion-wordmark-blue.png"
-                alt="Phlosion"
-                width={1877}
-                height={342}
                 sizes="(max-width: 760px) 100vw, 680px"
                 loading="eager"
                 preload

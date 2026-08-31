@@ -1,6 +1,16 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import type { ReactNode } from 'react';
 import './globals.css';
+
+const themeInitScript = `
+  try {
+    const savedTheme = localStorage.getItem('phlosion-theme');
+    document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+  } catch {
+    document.documentElement.dataset.theme = 'dark';
+  }
+`;
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://phlosion.com'),
@@ -48,8 +58,13 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <body>
+        {children}
+        <Script id="theme-init" strategy="beforeInteractive">
+          {themeInitScript}
+        </Script>
+      </body>
     </html>
   );
 }

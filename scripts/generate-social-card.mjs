@@ -15,7 +15,10 @@ function svg(strings, ...values) {
 
 async function pngBuffer(relativePath, options) {
   return sharp(await readFile(path.join(brandDir, relativePath)))
-    .resize(options)
+    .resize({
+      ...options,
+      background: { r: 0, g: 0, b: 0, alpha: 0 },
+    })
     .png()
     .toBuffer();
 }
@@ -23,48 +26,54 @@ async function pngBuffer(relativePath, options) {
 const background = Buffer.from(svg`
   <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <radialGradient id="ember" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(238 114) rotate(57) scale(430 360)">
-        <stop stop-color="#FFB41F" stop-opacity="0.42"/>
+      <radialGradient id="ember" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(188 132) rotate(49) scale(474 408)">
+        <stop stop-color="#FF5A00" stop-opacity="0.24"/>
         <stop offset="1" stop-color="#FFB41F" stop-opacity="0"/>
       </radialGradient>
       <radialGradient id="flare" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(963 156) rotate(128) scale(410 330)">
-        <stop stop-color="#FF5A00" stop-opacity="0.26"/>
+        <stop stop-color="#FFB41F" stop-opacity="0.13"/>
         <stop offset="1" stop-color="#FF5A00" stop-opacity="0"/>
       </radialGradient>
       <linearGradient id="panel" x1="120" y1="96" x2="1080" y2="552" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#FFFDF8" stop-opacity="0.94"/>
-        <stop offset="1" stop-color="#FAECD3" stop-opacity="0.88"/>
+        <stop stop-color="#0B1C2D" stop-opacity="0.98"/>
+        <stop offset="1" stop-color="#07111F" stop-opacity="0.98"/>
+      </linearGradient>
+      <linearGradient id="accent" x1="92" y1="526" x2="1108" y2="444" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FF5A00"/>
+        <stop offset="0.54" stop-color="#FFB41F"/>
+        <stop offset="1" stop-color="#FF5A00"/>
       </linearGradient>
     </defs>
-    <rect width="${width}" height="${height}" fill="#FEF8ED"/>
+    <rect width="${width}" height="${height}" fill="#050B13"/>
     <rect width="${width}" height="${height}" fill="url(#ember)"/>
     <rect width="${width}" height="${height}" fill="url(#flare)"/>
-    <rect x="72" y="70" width="1056" height="490" rx="28" fill="url(#panel)" stroke="#E6C991" stroke-opacity="0.76" stroke-width="2"/>
-    <path d="M88 512C276 480 440 528 612 496C796 462 920 378 1116 424" stroke="#FF5A00" stroke-opacity="0.18" stroke-width="18" stroke-linecap="round"/>
-    <path d="M88 526C278 494 454 544 628 510C800 476 930 392 1116 438" stroke="#002B4F" stroke-opacity="0.13" stroke-width="10" stroke-linecap="round"/>
-    <text x="402" y="356" fill="#C72916" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="31" font-weight="900" letter-spacing="0">SOFTWARE PRODUCT LAB</text>
-    <text x="402" y="414" fill="#33485E" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="0">Product builds for services, AI systems,</text>
-    <text x="402" y="456" fill="#33485E" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="0">desktop tools, websites, and games.</text>
+    <rect x="72" y="70" width="1056" height="490" rx="28" fill="url(#panel)" stroke="#FFF2D8" stroke-opacity="0.15" stroke-width="2"/>
+    <rect x="456" y="170" width="3" height="320" rx="1.5" fill="#FFF2D8" fill-opacity="0.12"/>
+    <path d="M92 522C282 490 450 534 626 504C798 474 930 468 1108 500" stroke="url(#accent)" stroke-opacity="0.72" stroke-width="7" stroke-linecap="round"/>
+    <path d="M92 536C284 504 456 548 634 518C806 488 936 482 1108 514" stroke="#FFF2D8" stroke-opacity="0.1" stroke-width="3" stroke-linecap="round"/>
+    <text x="486" y="352" fill="#FF7B32" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="29" font-weight="900" letter-spacing="0">SOFTWARE PRODUCT LAB</text>
+    <text x="486" y="414" fill="#F5F8FC" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="0">Product builds for services, AI systems,</text>
+    <text x="486" y="456" fill="#F5F8FC" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="0">desktop tools, websites, and games.</text>
   </svg>
 `);
 
 const [mark, wordmark] = await Promise.all([
   pngBuffer('phlosion-mark.png', {
-    width: 260,
-    height: 260,
+    width: 320,
+    height: 320,
     fit: 'contain',
   }),
-  pngBuffer('phlosion-wordmark-blue.png', {
-    width: 640,
-    height: 120,
+  pngBuffer('phlosion-wordmark-cream.png', {
+    width: 610,
+    height: 112,
     fit: 'contain',
   }),
 ]);
 
 const card = await sharp(background)
   .composite([
-    { input: mark, left: 124, top: 176 },
-    { input: wordmark, left: 394, top: 190 },
+    { input: mark, left: 112, top: 150 },
+    { input: wordmark, left: 478, top: 190 },
   ])
   .png({
     compressionLevel: 9,

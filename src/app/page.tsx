@@ -75,10 +75,10 @@ function SiteBrand({ site }: { site: (typeof siteBuilds)[number] }) {
   if (site.brand === 'phlosion') {
     return (
       <div className="site-brand-panel site-brand-panel-phlosion" aria-label="Phlosion brand">
-        <Image src="/phlosion-mark.png" alt="" width={911} height={911} sizes="72px" />
+        <Image src="/brand/phlosion-mark.png" alt="" width={1254} height={1254} sizes="72px" />
         <Image
           className="site-brand-wordmark"
-          src="/phlosion-wordmark.png"
+          src="/brand/phlosion-wordmark-blue.png"
           alt="Phlosion"
           width={1877}
           height={342}
@@ -192,11 +192,11 @@ export default function Home() {
         <header className="site-header">
           <Link className="brand-lockup" href="/" aria-label="Phlosion home">
             <span className="brand-mark" aria-hidden="true">
-              <Image src="/phlosion-mark.png" alt="" width={911} height={911} sizes="42px" loading="eager" />
+              <Image src="/brand/phlosion-mark.png" alt="" width={1254} height={1254} sizes="42px" loading="eager" />
             </span>
             <Image
               className="brand-wordmark"
-              src="/phlosion-wordmark.png"
+              src="/brand/phlosion-wordmark-blue.png"
               alt="Phlosion"
               width={1877}
               height={342}
@@ -221,10 +221,10 @@ export default function Home() {
           <div className="hero-copy">
             <Image
               className="hero-brand-mark"
-              src="/phlosion-mark.png"
+              src="/brand/phlosion-mark.png"
               alt=""
-              width={911}
-              height={911}
+              width={1254}
+              height={1254}
               sizes="(max-width: 640px) 86px, 132px"
               aria-hidden="true"
               loading="eager"
@@ -234,7 +234,7 @@ export default function Home() {
             <h1 id="hero-title" className="hero-wordmark-title">
               <Image
                 className="hero-title-wordmark"
-                src="/phlosion-wordmark.png"
+                src="/brand/phlosion-wordmark-blue.png"
                 alt="Phlosion"
                 width={1877}
                 height={342}

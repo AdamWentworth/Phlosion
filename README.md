@@ -17,11 +17,11 @@ The site is a Next.js app that presents full-stack services, analytics systems, 
 
 ## 🖼️ Brand Surface
 
-| Social card                                     | Phlosion lockup                                                            |
-| ----------------------------------------------- | -------------------------------------------------------------------------- |
-| ![Phlosion social card](public/social-card.png) | ![Phlosion horizontal lockup](public/brand/phlosion-lockup-horizontal.png) |
+| Social card                                                    | Phlosion lockup                                                                 |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| ![Phlosion social card](public/brand/phlosion-social-card.png) | ![Phlosion horizontal lockup](public/brand/phlosion-lockup-horizontal-blue.png) |
 
-Product brand assets live in `public/products/`, site brand assets live in `public/brand/` and `public/sites/`, and generated/social media assets live in `public/social-card.png`.
+Product brand assets live in `public/products/`, Phlosion site-brand and social assets live in `public/brand/`, and linked-site assets live in `public/sites/`.
 
 ---
 
@@ -30,12 +30,12 @@ Product brand assets live in `public/products/`, site brand assets live in `publ
 ```plaintext
 Phlosion/
 |-- public/
-|   |-- brand/                 # Phlosion brand lockups and marks
+|   |-- brand/                 # Canonical Phlosion mark, wordmarks, lockups, and social card
 |   |-- products/              # Product-specific logos, wordmarks, screenshots
 |   |-- sites/                 # Brand assets for linked web builds
-|   |-- tech/                  # Local technology logos used by badges
-|   `-- social-card.png        # Open Graph / social preview card
+|   `-- tech/                  # Local technology logos used by badges
 |-- scripts/
+|   |-- generate-phlosion-lockups.mjs
 |   |-- generate-social-card.mjs
 |   `-- optimize-media.mjs
 |-- src/
@@ -144,10 +144,11 @@ npm run verify
 ### Generate the Social Card
 
 ```bash
+npm run generate:brand-lockups
 npm run generate:social-card
 ```
 
-This writes `public/social-card.png` from the Phlosion brand assets.
+The lockup generator writes blue and cream horizontal variants from the canonical mark and wordmark geometry. The social-card generator then writes `public/brand/phlosion-social-card.png` from the current Phlosion brand assets.
 
 ### Optimize Media
 
@@ -220,7 +221,7 @@ Typical deployment flow:
 1. Push to GitHub.
 2. Vercel builds with `npm run build`.
 3. The custom domain points to the Vercel project.
-4. Social preview metadata uses `public/social-card.png`.
+4. Social preview metadata uses `public/brand/phlosion-social-card.png`.
 
 ---
 

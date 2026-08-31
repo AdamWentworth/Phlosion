@@ -4,8 +4,8 @@ export type ImageSize = {
 };
 
 const imageSizes = {
-  '/phlosion-mark.png': { width: 911, height: 911 },
-  '/phlosion-wordmark.png': { width: 1877, height: 342 },
+  '/brand/phlosion-mark.png': { width: 1254, height: 1254 },
+  '/brand/phlosion-wordmark-blue.png': { width: 1877, height: 342 },
   '/products/binderledger/binderledger-icon.png': { width: 1254, height: 1254 },
   '/products/binderledger/binderledger-mark.png': { width: 112, height: 168 },
   '/products/binderledger/binderledger-wordmark.png': { width: 720, height: 124 },

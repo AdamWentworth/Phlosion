@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "generate:brand-lockups": "node scripts/generate-phlosion-lockups.mjs",
     "generate:social-card": "node scripts/generate-social-card.mjs",
     "optimize:media": "node scripts/optimize-media.mjs",
     "test:e2e": "playwright test",

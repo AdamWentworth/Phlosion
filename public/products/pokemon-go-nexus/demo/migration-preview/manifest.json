@@ -1,0 +1,4301 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-08T03:42:19.651Z",
+  "source": {
+    "branch": "mobile/native-migration",
+    "commit": "5abb87121825ad7cc3eb71b1f33d81037117559f",
+    "dirty": true,
+    "sourceSha256": "84cc84701da9ede2238fa286ebb411100eff4dbc335bec713b2d85319ec26555"
+  },
+  "renderer": "responsive-web",
+  "buildMode": "e2e-production",
+  "buildSha256": "552d5fd5dbbfac59be762e163ca03124fe22d27a1bc0c1705a476f031d5af059",
+  "data": "Synthetic demo accounts and fixture APIs; real product UI and artwork; externally served map tiles.",
+  "limitations": [
+    "Browser captures do not certify native Android/iOS behavior or backend integration.",
+    "Native preview remains subject to physical-device release gates.",
+    "Email verification shows an incomplete-link state. Account media reviews settings without registering or deleting accounts."
+  ],
+  "routes": [
+    "/",
+    "/getting-started",
+    "/help",
+    "/faq",
+    "/about",
+    "/safety",
+    "/pokedex",
+    "/pokemon",
+    "/raid",
+    "/raid/methodology",
+    "/max",
+    "/pvp",
+    "/pvp/methodology",
+    "/rankings",
+    "/trades",
+    "/login",
+    "/register",
+    "/reset-password",
+    "/verify-email-change",
+    "/profile",
+    "/profile/friends",
+    "/profile/:username",
+    "/friends",
+    "/settings",
+    "/settings/account",
+    "/account",
+    "/search",
+    "/pokemon/:username",
+    "/trade-board",
+    "/trade-board/:username",
+    "/privacy",
+    "/terms",
+    "/data-deletion",
+    "*"
+  ],
+  "aliases": {
+    "/account": "/settings/account",
+    "/friends": "/profile/friends"
+  },
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobile": {
+      "width": 412,
+      "height": 915
+    }
+  },
+  "flows": [
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "account",
+      "shots": [
+        {
+          "key": "settings",
+          "route": "/settings",
+          "file": "screenshots/dark-settings-desktop.webp"
+        },
+        {
+          "key": "settings-preferences",
+          "route": "/settings",
+          "file": "screenshots/dark-settings-preferences-desktop.webp"
+        },
+        {
+          "key": "account",
+          "route": "/settings/account",
+          "file": "screenshots/dark-account-desktop.webp"
+        },
+        {
+          "key": "account-security",
+          "route": "/settings/account",
+          "file": "screenshots/dark-account-security-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-account-desktop.webm",
+      "durationSeconds": 7.686999999999999,
+      "segments": [
+        {
+          "start": 3.618,
+          "end": 6.711
+        },
+        {
+          "start": 8.711,
+          "end": 13.305
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "account",
+      "shots": [
+        {
+          "key": "settings",
+          "route": "/settings",
+          "file": "screenshots/dark-settings-mobile.webp"
+        },
+        {
+          "key": "settings-preferences",
+          "route": "/settings",
+          "file": "screenshots/dark-settings-preferences-mobile.webp"
+        },
+        {
+          "key": "account",
+          "route": "/settings/account",
+          "file": "screenshots/dark-account-mobile.webp"
+        },
+        {
+          "key": "account-security",
+          "route": "/settings/account",
+          "file": "screenshots/dark-account-security-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-account-mobile.webm",
+      "durationSeconds": 7.572000000000001,
+      "segments": [
+        {
+          "start": 3.045,
+          "end": 6.085
+        },
+        {
+          "start": 7.728,
+          "end": 12.26
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "collection",
+      "shots": [
+        {
+          "key": "catalog",
+          "route": "/pokemon",
+          "file": "screenshots/dark-catalog-desktop.webp"
+        },
+        {
+          "key": "collection",
+          "route": "/pokemon",
+          "file": "screenshots/dark-collection-desktop.webp"
+        },
+        {
+          "key": "instance-overlay",
+          "route": "/pokemon",
+          "file": "screenshots/dark-instance-overlay-desktop.webp"
+        },
+        {
+          "key": "instance-edit",
+          "route": "/pokemon",
+          "file": "screenshots/dark-instance-edit-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-collection-desktop.webm",
+      "durationSeconds": 9.698,
+      "segments": [
+        {
+          "start": 4.291,
+          "end": 13.989
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "collection",
+      "shots": [
+        {
+          "key": "catalog",
+          "route": "/pokemon",
+          "file": "screenshots/dark-catalog-mobile.webp"
+        },
+        {
+          "key": "collection",
+          "route": "/pokemon",
+          "file": "screenshots/dark-collection-mobile.webp"
+        },
+        {
+          "key": "instance-overlay",
+          "route": "/pokemon",
+          "file": "screenshots/dark-instance-overlay-mobile.webp"
+        },
+        {
+          "key": "instance-edit",
+          "route": "/pokemon",
+          "file": "screenshots/dark-instance-edit-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-collection-mobile.webm",
+      "durationSeconds": 9.283999999999999,
+      "segments": [
+        {
+          "start": 3.191,
+          "end": 12.475
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "guide",
+      "shots": [
+        {
+          "key": "home-guest",
+          "route": "/",
+          "file": "screenshots/dark-home-guest-desktop.webp"
+        },
+        {
+          "key": "getting-started",
+          "route": "/getting-started",
+          "file": "screenshots/dark-getting-started-desktop.webp"
+        },
+        {
+          "key": "faq",
+          "route": "/faq",
+          "file": "screenshots/dark-faq-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-guide-desktop.webm",
+      "durationSeconds": 5.25,
+      "segments": [
+        {
+          "start": 3.589,
+          "end": 5.009
+        },
+        {
+          "start": 7.955,
+          "end": 9.16
+        },
+        {
+          "start": 10.8,
+          "end": 13.425
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "guide",
+      "shots": [
+        {
+          "key": "home-guest",
+          "route": "/",
+          "file": "screenshots/dark-home-guest-mobile.webp"
+        },
+        {
+          "key": "getting-started",
+          "route": "/getting-started",
+          "file": "screenshots/dark-getting-started-mobile.webp"
+        },
+        {
+          "key": "faq",
+          "route": "/faq",
+          "file": "screenshots/dark-faq-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-guide-mobile.webm",
+      "durationSeconds": 5.019,
+      "segments": [
+        {
+          "start": 3.063,
+          "end": 4.285
+        },
+        {
+          "start": 5.903,
+          "end": 7.085
+        },
+        {
+          "start": 8.595,
+          "end": 11.21
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "home",
+      "shots": [
+        {
+          "key": "home",
+          "route": "/",
+          "file": "screenshots/dark-home-desktop.webp"
+        },
+        {
+          "key": "quick-navigation",
+          "route": "/",
+          "file": "screenshots/dark-quick-navigation-desktop.webp"
+        },
+        {
+          "key": "home-dashboard",
+          "route": "/",
+          "file": "screenshots/dark-home-dashboard-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-home-desktop.webm",
+      "durationSeconds": 7.155,
+      "segments": [
+        {
+          "start": 3.325,
+          "end": 10.48
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "home",
+      "shots": [
+        {
+          "key": "home",
+          "route": "/",
+          "file": "screenshots/dark-home-mobile.webp"
+        },
+        {
+          "key": "quick-navigation",
+          "route": "/",
+          "file": "screenshots/dark-quick-navigation-mobile.webp"
+        },
+        {
+          "key": "home-dashboard",
+          "route": "/",
+          "file": "screenshots/dark-home-dashboard-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-home-mobile.webm",
+      "durationSeconds": 6.909,
+      "segments": [
+        {
+          "start": 2.982,
+          "end": 9.891
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "max",
+      "shots": [
+        {
+          "key": "max",
+          "route": "/max",
+          "file": "screenshots/dark-max-desktop.webp"
+        },
+        {
+          "key": "max-boss-teams",
+          "route": "/max",
+          "file": "screenshots/dark-max-boss-teams-desktop.webp"
+        },
+        {
+          "key": "max-party",
+          "route": "/max",
+          "file": "screenshots/dark-max-party-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-max-desktop.webm",
+      "durationSeconds": 6.987,
+      "segments": [
+        {
+          "start": 2.858,
+          "end": 9.845
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "max",
+      "shots": [
+        {
+          "key": "max",
+          "route": "/max",
+          "file": "screenshots/dark-max-mobile.webp"
+        },
+        {
+          "key": "max-boss-teams",
+          "route": "/max",
+          "file": "screenshots/dark-max-boss-teams-mobile.webp"
+        },
+        {
+          "key": "max-party",
+          "route": "/max",
+          "file": "screenshots/dark-max-party-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-max-mobile.webm",
+      "durationSeconds": 6.777000000000001,
+      "segments": [
+        {
+          "start": 2.847,
+          "end": 9.624
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "pokedex",
+      "shots": [
+        {
+          "key": "pokedex",
+          "route": "/pokedex",
+          "file": "screenshots/dark-pokedex-desktop.webp"
+        },
+        {
+          "key": "pokedex-region",
+          "route": "/pokedex",
+          "file": "screenshots/dark-pokedex-region-desktop.webp"
+        },
+        {
+          "key": "pokedex-search",
+          "route": "/pokedex",
+          "file": "screenshots/dark-pokedex-search-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-pokedex-desktop.webm",
+      "durationSeconds": 8.937999999999999,
+      "segments": [
+        {
+          "start": 3.563,
+          "end": 12.501
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "pokedex",
+      "shots": [
+        {
+          "key": "pokedex",
+          "route": "/pokedex",
+          "file": "screenshots/dark-pokedex-mobile.webp"
+        },
+        {
+          "key": "pokedex-region",
+          "route": "/pokedex",
+          "file": "screenshots/dark-pokedex-region-mobile.webp"
+        },
+        {
+          "key": "pokedex-search",
+          "route": "/pokedex",
+          "file": "screenshots/dark-pokedex-search-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-pokedex-mobile.webm",
+      "durationSeconds": 9.627,
+      "segments": [
+        {
+          "start": 3.36,
+          "end": 12.987
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "pvp",
+      "shots": [
+        {
+          "key": "pvp",
+          "route": "/pvp",
+          "file": "screenshots/dark-pvp-desktop.webp"
+        },
+        {
+          "key": "pvp-team-builder",
+          "route": "/pvp",
+          "file": "screenshots/dark-pvp-team-builder-desktop.webp"
+        },
+        {
+          "key": "pvp-iv-rank",
+          "route": "/pvp",
+          "file": "screenshots/dark-pvp-iv-rank-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-pvp-desktop.webm",
+      "durationSeconds": 8.023,
+      "segments": [
+        {
+          "start": 2.782,
+          "end": 10.805
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "pvp",
+      "shots": [
+        {
+          "key": "pvp",
+          "route": "/pvp",
+          "file": "screenshots/dark-pvp-mobile.webp"
+        },
+        {
+          "key": "pvp-team-builder",
+          "route": "/pvp",
+          "file": "screenshots/dark-pvp-team-builder-mobile.webp"
+        },
+        {
+          "key": "pvp-iv-rank",
+          "route": "/pvp",
+          "file": "screenshots/dark-pvp-iv-rank-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-pvp-mobile.webm",
+      "durationSeconds": 7.491999999999999,
+      "segments": [
+        {
+          "start": 2.602,
+          "end": 10.094
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "raid",
+      "shots": [
+        {
+          "key": "raid",
+          "route": "/raid",
+          "file": "screenshots/dark-raid-desktop.webp"
+        },
+        {
+          "key": "raid-counters",
+          "route": "/raid",
+          "file": "screenshots/dark-raid-counters-desktop.webp"
+        },
+        {
+          "key": "raid-counter-results",
+          "route": "/raid",
+          "file": "screenshots/dark-raid-counter-results-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-raid-desktop.webm",
+      "durationSeconds": 8.869,
+      "segments": [
+        {
+          "start": 4.013,
+          "end": 12.882
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "raid",
+      "shots": [
+        {
+          "key": "raid",
+          "route": "/raid",
+          "file": "screenshots/dark-raid-mobile.webp"
+        },
+        {
+          "key": "raid-counters",
+          "route": "/raid",
+          "file": "screenshots/dark-raid-counters-mobile.webp"
+        },
+        {
+          "key": "raid-counter-results",
+          "route": "/raid",
+          "file": "screenshots/dark-raid-counter-results-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-raid-mobile.webm",
+      "durationSeconds": 8.282,
+      "segments": [
+        {
+          "start": 3.681,
+          "end": 11.963
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "rankings",
+      "shots": [
+        {
+          "key": "rankings",
+          "route": "/rankings",
+          "file": "screenshots/dark-rankings-desktop.webp"
+        },
+        {
+          "key": "rankings-rarest",
+          "route": "/rankings",
+          "file": "screenshots/dark-rankings-rarest-desktop.webp"
+        },
+        {
+          "key": "rankings-search",
+          "route": "/rankings",
+          "file": "screenshots/dark-rankings-search-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-rankings-desktop.webm",
+      "durationSeconds": 6.632999999999999,
+      "segments": [
+        {
+          "start": 3.714,
+          "end": 10.347
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "rankings",
+      "shots": [
+        {
+          "key": "rankings",
+          "route": "/rankings",
+          "file": "screenshots/dark-rankings-mobile.webp"
+        },
+        {
+          "key": "rankings-rarest",
+          "route": "/rankings",
+          "file": "screenshots/dark-rankings-rarest-mobile.webp"
+        },
+        {
+          "key": "rankings-search",
+          "route": "/rankings",
+          "file": "screenshots/dark-rankings-search-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-rankings-mobile.webm",
+      "durationSeconds": 6.584000000000001,
+      "segments": [
+        {
+          "start": 3.36,
+          "end": 9.944
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "references",
+      "shots": [
+        {
+          "key": "help",
+          "route": "/help",
+          "file": "screenshots/dark-help-desktop.webp"
+        },
+        {
+          "key": "about",
+          "route": "/about",
+          "file": "screenshots/dark-about-desktop.webp"
+        },
+        {
+          "key": "safety",
+          "route": "/safety",
+          "file": "screenshots/dark-safety-desktop.webp"
+        },
+        {
+          "key": "privacy",
+          "route": "/privacy",
+          "file": "screenshots/dark-privacy-desktop.webp"
+        },
+        {
+          "key": "terms",
+          "route": "/terms",
+          "file": "screenshots/dark-terms-desktop.webp"
+        },
+        {
+          "key": "data-deletion",
+          "route": "/data-deletion",
+          "file": "screenshots/dark-data-deletion-desktop.webp"
+        },
+        {
+          "key": "raid-methodology",
+          "route": "/raid/methodology",
+          "file": "screenshots/dark-raid-methodology-desktop.webp"
+        },
+        {
+          "key": "pvp-methodology",
+          "route": "/pvp/methodology",
+          "file": "screenshots/dark-pvp-methodology-desktop.webp"
+        },
+        {
+          "key": "login",
+          "route": "/login",
+          "file": "screenshots/dark-login-desktop.webp"
+        },
+        {
+          "key": "register",
+          "route": "/register",
+          "file": "screenshots/dark-register-desktop.webp"
+        },
+        {
+          "key": "reset-password",
+          "route": "/reset-password",
+          "file": "screenshots/dark-reset-password-desktop.webp"
+        },
+        {
+          "key": "verify-email-change",
+          "route": "/verify-email-change",
+          "file": "screenshots/dark-verify-email-change-desktop.webp"
+        },
+        {
+          "key": "not-found",
+          "route": "/missing-reference-route",
+          "file": "screenshots/dark-not-found-desktop.webp"
+        }
+      ],
+      "video": null,
+      "durationSeconds": 16.746999999999993,
+      "segments": [
+        {
+          "start": 2.812,
+          "end": 3.911
+        },
+        {
+          "start": 5.345,
+          "end": 6.566
+        },
+        {
+          "start": 8.765,
+          "end": 10.016
+        },
+        {
+          "start": 11.475,
+          "end": 12.608
+        },
+        {
+          "start": 14.036,
+          "end": 15.499
+        },
+        {
+          "start": 17.22,
+          "end": 18.33
+        },
+        {
+          "start": 20.414,
+          "end": 21.637
+        },
+        {
+          "start": 23.652,
+          "end": 24.815
+        },
+        {
+          "start": 26.294,
+          "end": 27.376
+        },
+        {
+          "start": 28.881,
+          "end": 30.051
+        },
+        {
+          "start": 32.074,
+          "end": 33.177
+        },
+        {
+          "start": 35.057,
+          "end": 36.175
+        },
+        {
+          "start": 37.773,
+          "end": 40.384
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "references",
+      "shots": [
+        {
+          "key": "help",
+          "route": "/help",
+          "file": "screenshots/dark-help-mobile.webp"
+        },
+        {
+          "key": "about",
+          "route": "/about",
+          "file": "screenshots/dark-about-mobile.webp"
+        },
+        {
+          "key": "safety",
+          "route": "/safety",
+          "file": "screenshots/dark-safety-mobile.webp"
+        },
+        {
+          "key": "privacy",
+          "route": "/privacy",
+          "file": "screenshots/dark-privacy-mobile.webp"
+        },
+        {
+          "key": "terms",
+          "route": "/terms",
+          "file": "screenshots/dark-terms-mobile.webp"
+        },
+        {
+          "key": "data-deletion",
+          "route": "/data-deletion",
+          "file": "screenshots/dark-data-deletion-mobile.webp"
+        },
+        {
+          "key": "raid-methodology",
+          "route": "/raid/methodology",
+          "file": "screenshots/dark-raid-methodology-mobile.webp"
+        },
+        {
+          "key": "pvp-methodology",
+          "route": "/pvp/methodology",
+          "file": "screenshots/dark-pvp-methodology-mobile.webp"
+        },
+        {
+          "key": "login",
+          "route": "/login",
+          "file": "screenshots/dark-login-mobile.webp"
+        },
+        {
+          "key": "register",
+          "route": "/register",
+          "file": "screenshots/dark-register-mobile.webp"
+        },
+        {
+          "key": "reset-password",
+          "route": "/reset-password",
+          "file": "screenshots/dark-reset-password-mobile.webp"
+        },
+        {
+          "key": "verify-email-change",
+          "route": "/verify-email-change",
+          "file": "screenshots/dark-verify-email-change-mobile.webp"
+        },
+        {
+          "key": "not-found",
+          "route": "/missing-reference-route",
+          "file": "screenshots/dark-not-found-mobile.webp"
+        }
+      ],
+      "video": null,
+      "durationSeconds": 15.524999999999991,
+      "segments": [
+        {
+          "start": 2.199,
+          "end": 3.262
+        },
+        {
+          "start": 4.691,
+          "end": 5.83
+        },
+        {
+          "start": 7.446,
+          "end": 8.606
+        },
+        {
+          "start": 10.774,
+          "end": 11.89
+        },
+        {
+          "start": 13.39,
+          "end": 14.437
+        },
+        {
+          "start": 15.946,
+          "end": 16.999
+        },
+        {
+          "start": 18.801,
+          "end": 19.897
+        },
+        {
+          "start": 21.416,
+          "end": 22.488
+        },
+        {
+          "start": 24.016,
+          "end": 25.079
+        },
+        {
+          "start": 26.598,
+          "end": 27.639
+        },
+        {
+          "start": 29.386,
+          "end": 30.428
+        },
+        {
+          "start": 32.092,
+          "end": 33.126
+        },
+        {
+          "start": 34.772,
+          "end": 37.371
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "search",
+      "shots": [
+        {
+          "key": "search",
+          "route": "/search",
+          "file": "screenshots/dark-search-desktop.webp"
+        },
+        {
+          "key": "trainer-search-results",
+          "route": "/search",
+          "file": "screenshots/dark-trainer-search-results-desktop.webp"
+        },
+        {
+          "key": "search-filters",
+          "route": "/search",
+          "file": "screenshots/dark-search-filters-desktop.webp"
+        },
+        {
+          "key": "search-results-list",
+          "route": "/search",
+          "file": "screenshots/dark-search-results-list-desktop.webp"
+        },
+        {
+          "key": "search-results-map",
+          "route": "/search",
+          "file": "screenshots/dark-search-results-map-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-search-desktop.webm",
+      "durationSeconds": 14.841999999999999,
+      "segments": [
+        {
+          "start": 3.396,
+          "end": 18.238
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "search",
+      "shots": [
+        {
+          "key": "search",
+          "route": "/search",
+          "file": "screenshots/dark-search-mobile.webp"
+        },
+        {
+          "key": "trainer-search-results",
+          "route": "/search",
+          "file": "screenshots/dark-trainer-search-results-mobile.webp"
+        },
+        {
+          "key": "search-filters",
+          "route": "/search",
+          "file": "screenshots/dark-search-filters-mobile.webp"
+        },
+        {
+          "key": "search-results-list",
+          "route": "/search",
+          "file": "screenshots/dark-search-results-list-mobile.webp"
+        },
+        {
+          "key": "search-results-map",
+          "route": "/search",
+          "file": "screenshots/dark-search-results-map-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-search-mobile.webm",
+      "durationSeconds": 14.267,
+      "segments": [
+        {
+          "start": 2.951,
+          "end": 17.218
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "social",
+      "shots": [
+        {
+          "key": "trainer-profile",
+          "route": "/profile",
+          "file": "screenshots/dark-trainer-profile-desktop.webp"
+        },
+        {
+          "key": "friends",
+          "route": "/profile/friends",
+          "file": "screenshots/dark-friends-desktop.webp"
+        },
+        {
+          "key": "public-profile",
+          "route": "/profile/NexusDemo",
+          "file": "screenshots/dark-public-profile-desktop.webp"
+        },
+        {
+          "key": "public-collection",
+          "route": "/pokemon/NexusDemo",
+          "file": "screenshots/dark-public-collection-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-social-desktop.webm",
+      "durationSeconds": 6.702,
+      "segments": [
+        {
+          "start": 3.26,
+          "end": 4.42
+        },
+        {
+          "start": 6.128,
+          "end": 7.37
+        },
+        {
+          "start": 8.816,
+          "end": 10.495
+        },
+        {
+          "start": 14.519,
+          "end": 17.14
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "social",
+      "shots": [
+        {
+          "key": "trainer-profile",
+          "route": "/profile",
+          "file": "screenshots/dark-trainer-profile-mobile.webp"
+        },
+        {
+          "key": "friends",
+          "route": "/profile/friends",
+          "file": "screenshots/dark-friends-mobile.webp"
+        },
+        {
+          "key": "public-profile",
+          "route": "/profile/NexusDemo",
+          "file": "screenshots/dark-public-profile-mobile.webp"
+        },
+        {
+          "key": "public-collection",
+          "route": "/pokemon/NexusDemo",
+          "file": "screenshots/dark-public-collection-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-social-mobile.webm",
+      "durationSeconds": 5.847999999999999,
+      "segments": [
+        {
+          "start": 2.99,
+          "end": 4.103
+        },
+        {
+          "start": 5.904,
+          "end": 6.961
+        },
+        {
+          "start": 8.813,
+          "end": 9.907
+        },
+        {
+          "start": 13.861,
+          "end": 16.445
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "trade-board",
+      "shots": [
+        {
+          "key": "trade-board",
+          "route": "/trade-board",
+          "file": "screenshots/dark-trade-board-desktop.webp"
+        },
+        {
+          "key": "trade-board-preview",
+          "route": "/trade-board",
+          "file": "screenshots/dark-trade-board-preview-desktop.webp"
+        },
+        {
+          "key": "public-trade-board",
+          "route": "/trade-board/NexusDemo",
+          "file": "screenshots/dark-public-trade-board-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-trade-board-desktop.webm",
+      "durationSeconds": 5.942,
+      "segments": [
+        {
+          "start": 3.342,
+          "end": 6.501
+        },
+        {
+          "start": 8.332,
+          "end": 11.115
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "trade-board",
+      "shots": [
+        {
+          "key": "trade-board",
+          "route": "/trade-board",
+          "file": "screenshots/dark-trade-board-mobile.webp"
+        },
+        {
+          "key": "trade-board-preview",
+          "route": "/trade-board",
+          "file": "screenshots/dark-trade-board-preview-mobile.webp"
+        },
+        {
+          "key": "public-trade-board",
+          "route": "/trade-board/NexusDemo",
+          "file": "screenshots/dark-public-trade-board-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-trade-board-mobile.webm",
+      "durationSeconds": 5.658000000000002,
+      "segments": [
+        {
+          "start": 2.981,
+          "end": 6.065
+        },
+        {
+          "start": 7.646,
+          "end": 10.22
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "trades",
+      "shots": [
+        {
+          "key": "trade-preferences",
+          "route": "/trades",
+          "file": "screenshots/dark-trade-preferences-desktop.webp"
+        },
+        {
+          "key": "trade-activity",
+          "route": "/trades",
+          "file": "screenshots/dark-trade-activity-desktop.webp"
+        },
+        {
+          "key": "trade-pending",
+          "route": "/trades",
+          "file": "screenshots/dark-trade-pending-desktop.webp"
+        }
+      ],
+      "video": "videos/dark-trades-desktop.webm",
+      "durationSeconds": 6.779000000000001,
+      "segments": [
+        {
+          "start": 3.582,
+          "end": 10.361
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "dark",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "trades",
+      "shots": [
+        {
+          "key": "trade-preferences",
+          "route": "/trades",
+          "file": "screenshots/dark-trade-preferences-mobile.webp"
+        },
+        {
+          "key": "trade-activity",
+          "route": "/trades",
+          "file": "screenshots/dark-trade-activity-mobile.webp"
+        },
+        {
+          "key": "trade-pending",
+          "route": "/trades",
+          "file": "screenshots/dark-trade-pending-mobile.webp"
+        }
+      ],
+      "video": "videos/dark-trades-mobile.webm",
+      "durationSeconds": 6.5760000000000005,
+      "segments": [
+        {
+          "start": 3.033,
+          "end": 9.609
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "account",
+      "shots": [
+        {
+          "key": "settings",
+          "route": "/settings",
+          "file": "screenshots/light-settings-desktop.webp"
+        },
+        {
+          "key": "settings-preferences",
+          "route": "/settings",
+          "file": "screenshots/light-settings-preferences-desktop.webp"
+        },
+        {
+          "key": "account",
+          "route": "/settings/account",
+          "file": "screenshots/light-account-desktop.webp"
+        },
+        {
+          "key": "account-security",
+          "route": "/settings/account",
+          "file": "screenshots/light-account-security-desktop.webp"
+        }
+      ],
+      "video": "videos/light-account-desktop.webm",
+      "durationSeconds": 7.714999999999998,
+      "segments": [
+        {
+          "start": 3.376,
+          "end": 6.499
+        },
+        {
+          "start": 8.018,
+          "end": 12.61
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "account",
+      "shots": [
+        {
+          "key": "settings",
+          "route": "/settings",
+          "file": "screenshots/light-settings-mobile.webp"
+        },
+        {
+          "key": "settings-preferences",
+          "route": "/settings",
+          "file": "screenshots/light-settings-preferences-mobile.webp"
+        },
+        {
+          "key": "account",
+          "route": "/settings/account",
+          "file": "screenshots/light-account-mobile.webp"
+        },
+        {
+          "key": "account-security",
+          "route": "/settings/account",
+          "file": "screenshots/light-account-security-mobile.webp"
+        }
+      ],
+      "video": "videos/light-account-mobile.webm",
+      "durationSeconds": 7.5809999999999995,
+      "segments": [
+        {
+          "start": 3.045,
+          "end": 6.068
+        },
+        {
+          "start": 7.766,
+          "end": 12.324
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "collection",
+      "shots": [
+        {
+          "key": "catalog",
+          "route": "/pokemon",
+          "file": "screenshots/light-catalog-desktop.webp"
+        },
+        {
+          "key": "collection",
+          "route": "/pokemon",
+          "file": "screenshots/light-collection-desktop.webp"
+        },
+        {
+          "key": "instance-overlay",
+          "route": "/pokemon",
+          "file": "screenshots/light-instance-overlay-desktop.webp"
+        },
+        {
+          "key": "instance-edit",
+          "route": "/pokemon",
+          "file": "screenshots/light-instance-edit-desktop.webp"
+        }
+      ],
+      "video": "videos/light-collection-desktop.webm",
+      "durationSeconds": 9.644,
+      "segments": [
+        {
+          "start": 4.288,
+          "end": 13.932
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "collection",
+      "shots": [
+        {
+          "key": "catalog",
+          "route": "/pokemon",
+          "file": "screenshots/light-catalog-mobile.webp"
+        },
+        {
+          "key": "collection",
+          "route": "/pokemon",
+          "file": "screenshots/light-collection-mobile.webp"
+        },
+        {
+          "key": "instance-overlay",
+          "route": "/pokemon",
+          "file": "screenshots/light-instance-overlay-mobile.webp"
+        },
+        {
+          "key": "instance-edit",
+          "route": "/pokemon",
+          "file": "screenshots/light-instance-edit-mobile.webp"
+        }
+      ],
+      "video": "videos/light-collection-mobile.webm",
+      "durationSeconds": 9.206,
+      "segments": [
+        {
+          "start": 3.092,
+          "end": 12.298
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "guide",
+      "shots": [
+        {
+          "key": "home-guest",
+          "route": "/",
+          "file": "screenshots/light-home-guest-desktop.webp"
+        },
+        {
+          "key": "getting-started",
+          "route": "/getting-started",
+          "file": "screenshots/light-getting-started-desktop.webp"
+        },
+        {
+          "key": "faq",
+          "route": "/faq",
+          "file": "screenshots/light-faq-desktop.webp"
+        }
+      ],
+      "video": "videos/light-guide-desktop.webm",
+      "durationSeconds": 5.279999999999999,
+      "segments": [
+        {
+          "start": 3.395,
+          "end": 4.85
+        },
+        {
+          "start": 6.869,
+          "end": 8.1
+        },
+        {
+          "start": 9.983,
+          "end": 12.577
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "guide",
+      "shots": [
+        {
+          "key": "home-guest",
+          "route": "/",
+          "file": "screenshots/light-home-guest-mobile.webp"
+        },
+        {
+          "key": "getting-started",
+          "route": "/getting-started",
+          "file": "screenshots/light-getting-started-mobile.webp"
+        },
+        {
+          "key": "faq",
+          "route": "/faq",
+          "file": "screenshots/light-faq-mobile.webp"
+        }
+      ],
+      "video": "videos/light-guide-mobile.webm",
+      "durationSeconds": 5.327999999999999,
+      "segments": [
+        {
+          "start": 2.907,
+          "end": 4.077
+        },
+        {
+          "start": 5.696,
+          "end": 6.917
+        },
+        {
+          "start": 8.486,
+          "end": 11.423
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "home",
+      "shots": [
+        {
+          "key": "home",
+          "route": "/",
+          "file": "screenshots/light-home-desktop.webp"
+        },
+        {
+          "key": "quick-navigation",
+          "route": "/",
+          "file": "screenshots/light-quick-navigation-desktop.webp"
+        },
+        {
+          "key": "home-dashboard",
+          "route": "/",
+          "file": "screenshots/light-home-dashboard-desktop.webp"
+        }
+      ],
+      "video": "videos/light-home-desktop.webm",
+      "durationSeconds": 7.298,
+      "segments": [
+        {
+          "start": 3.246,
+          "end": 10.544
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "home",
+      "shots": [
+        {
+          "key": "home",
+          "route": "/",
+          "file": "screenshots/light-home-mobile.webp"
+        },
+        {
+          "key": "quick-navigation",
+          "route": "/",
+          "file": "screenshots/light-quick-navigation-mobile.webp"
+        },
+        {
+          "key": "home-dashboard",
+          "route": "/",
+          "file": "screenshots/light-home-dashboard-mobile.webp"
+        }
+      ],
+      "video": "videos/light-home-mobile.webm",
+      "durationSeconds": 6.951,
+      "segments": [
+        {
+          "start": 3.261,
+          "end": 10.212
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "max",
+      "shots": [
+        {
+          "key": "max",
+          "route": "/max",
+          "file": "screenshots/light-max-desktop.webp"
+        },
+        {
+          "key": "max-boss-teams",
+          "route": "/max",
+          "file": "screenshots/light-max-boss-teams-desktop.webp"
+        },
+        {
+          "key": "max-party",
+          "route": "/max",
+          "file": "screenshots/light-max-party-desktop.webp"
+        }
+      ],
+      "video": "videos/light-max-desktop.webm",
+      "durationSeconds": 7.005000000000001,
+      "segments": [
+        {
+          "start": 2.936,
+          "end": 9.941
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "max",
+      "shots": [
+        {
+          "key": "max",
+          "route": "/max",
+          "file": "screenshots/light-max-mobile.webp"
+        },
+        {
+          "key": "max-boss-teams",
+          "route": "/max",
+          "file": "screenshots/light-max-boss-teams-mobile.webp"
+        },
+        {
+          "key": "max-party",
+          "route": "/max",
+          "file": "screenshots/light-max-party-mobile.webp"
+        }
+      ],
+      "video": "videos/light-max-mobile.webm",
+      "durationSeconds": 6.859000000000001,
+      "segments": [
+        {
+          "start": 3.13,
+          "end": 9.989
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "pokedex",
+      "shots": [
+        {
+          "key": "pokedex",
+          "route": "/pokedex",
+          "file": "screenshots/light-pokedex-desktop.webp"
+        },
+        {
+          "key": "pokedex-region",
+          "route": "/pokedex",
+          "file": "screenshots/light-pokedex-region-desktop.webp"
+        },
+        {
+          "key": "pokedex-search",
+          "route": "/pokedex",
+          "file": "screenshots/light-pokedex-search-desktop.webp"
+        }
+      ],
+      "video": "videos/light-pokedex-desktop.webm",
+      "durationSeconds": 10.304,
+      "segments": [
+        {
+          "start": 3.372,
+          "end": 13.676
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "pokedex",
+      "shots": [
+        {
+          "key": "pokedex",
+          "route": "/pokedex",
+          "file": "screenshots/light-pokedex-mobile.webp"
+        },
+        {
+          "key": "pokedex-region",
+          "route": "/pokedex",
+          "file": "screenshots/light-pokedex-region-mobile.webp"
+        },
+        {
+          "key": "pokedex-search",
+          "route": "/pokedex",
+          "file": "screenshots/light-pokedex-search-mobile.webp"
+        }
+      ],
+      "video": "videos/light-pokedex-mobile.webm",
+      "durationSeconds": 9.437000000000001,
+      "segments": [
+        {
+          "start": 2.979,
+          "end": 12.416
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "pvp",
+      "shots": [
+        {
+          "key": "pvp",
+          "route": "/pvp",
+          "file": "screenshots/light-pvp-desktop.webp"
+        },
+        {
+          "key": "pvp-team-builder",
+          "route": "/pvp",
+          "file": "screenshots/light-pvp-team-builder-desktop.webp"
+        },
+        {
+          "key": "pvp-iv-rank",
+          "route": "/pvp",
+          "file": "screenshots/light-pvp-iv-rank-desktop.webp"
+        }
+      ],
+      "video": "videos/light-pvp-desktop.webm",
+      "durationSeconds": 8.238,
+      "segments": [
+        {
+          "start": 2.689,
+          "end": 10.927
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "pvp",
+      "shots": [
+        {
+          "key": "pvp",
+          "route": "/pvp",
+          "file": "screenshots/light-pvp-mobile.webp"
+        },
+        {
+          "key": "pvp-team-builder",
+          "route": "/pvp",
+          "file": "screenshots/light-pvp-team-builder-mobile.webp"
+        },
+        {
+          "key": "pvp-iv-rank",
+          "route": "/pvp",
+          "file": "screenshots/light-pvp-iv-rank-mobile.webp"
+        }
+      ],
+      "video": "videos/light-pvp-mobile.webm",
+      "durationSeconds": 7.593,
+      "segments": [
+        {
+          "start": 2.651,
+          "end": 10.244
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "raid",
+      "shots": [
+        {
+          "key": "raid",
+          "route": "/raid",
+          "file": "screenshots/light-raid-desktop.webp"
+        },
+        {
+          "key": "raid-counters",
+          "route": "/raid",
+          "file": "screenshots/light-raid-counters-desktop.webp"
+        },
+        {
+          "key": "raid-counter-results",
+          "route": "/raid",
+          "file": "screenshots/light-raid-counter-results-desktop.webp"
+        }
+      ],
+      "video": "videos/light-raid-desktop.webm",
+      "durationSeconds": 8.761,
+      "segments": [
+        {
+          "start": 3.572,
+          "end": 12.333
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "raid",
+      "shots": [
+        {
+          "key": "raid",
+          "route": "/raid",
+          "file": "screenshots/light-raid-mobile.webp"
+        },
+        {
+          "key": "raid-counters",
+          "route": "/raid",
+          "file": "screenshots/light-raid-counters-mobile.webp"
+        },
+        {
+          "key": "raid-counter-results",
+          "route": "/raid",
+          "file": "screenshots/light-raid-counter-results-mobile.webp"
+        }
+      ],
+      "video": "videos/light-raid-mobile.webm",
+      "durationSeconds": 8.315999999999999,
+      "segments": [
+        {
+          "start": 3.383,
+          "end": 11.699
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "rankings",
+      "shots": [
+        {
+          "key": "rankings",
+          "route": "/rankings",
+          "file": "screenshots/light-rankings-desktop.webp"
+        },
+        {
+          "key": "rankings-rarest",
+          "route": "/rankings",
+          "file": "screenshots/light-rankings-rarest-desktop.webp"
+        },
+        {
+          "key": "rankings-search",
+          "route": "/rankings",
+          "file": "screenshots/light-rankings-search-desktop.webp"
+        }
+      ],
+      "video": "videos/light-rankings-desktop.webm",
+      "durationSeconds": 6.644,
+      "segments": [
+        {
+          "start": 4.375,
+          "end": 11.019
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "rankings",
+      "shots": [
+        {
+          "key": "rankings",
+          "route": "/rankings",
+          "file": "screenshots/light-rankings-mobile.webp"
+        },
+        {
+          "key": "rankings-rarest",
+          "route": "/rankings",
+          "file": "screenshots/light-rankings-rarest-mobile.webp"
+        },
+        {
+          "key": "rankings-search",
+          "route": "/rankings",
+          "file": "screenshots/light-rankings-search-mobile.webp"
+        }
+      ],
+      "video": "videos/light-rankings-mobile.webm",
+      "durationSeconds": 6.526999999999999,
+      "segments": [
+        {
+          "start": 3.33,
+          "end": 9.857
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "references",
+      "shots": [
+        {
+          "key": "help",
+          "route": "/help",
+          "file": "screenshots/light-help-desktop.webp"
+        },
+        {
+          "key": "about",
+          "route": "/about",
+          "file": "screenshots/light-about-desktop.webp"
+        },
+        {
+          "key": "safety",
+          "route": "/safety",
+          "file": "screenshots/light-safety-desktop.webp"
+        },
+        {
+          "key": "privacy",
+          "route": "/privacy",
+          "file": "screenshots/light-privacy-desktop.webp"
+        },
+        {
+          "key": "terms",
+          "route": "/terms",
+          "file": "screenshots/light-terms-desktop.webp"
+        },
+        {
+          "key": "data-deletion",
+          "route": "/data-deletion",
+          "file": "screenshots/light-data-deletion-desktop.webp"
+        },
+        {
+          "key": "raid-methodology",
+          "route": "/raid/methodology",
+          "file": "screenshots/light-raid-methodology-desktop.webp"
+        },
+        {
+          "key": "pvp-methodology",
+          "route": "/pvp/methodology",
+          "file": "screenshots/light-pvp-methodology-desktop.webp"
+        },
+        {
+          "key": "login",
+          "route": "/login",
+          "file": "screenshots/light-login-desktop.webp"
+        },
+        {
+          "key": "register",
+          "route": "/register",
+          "file": "screenshots/light-register-desktop.webp"
+        },
+        {
+          "key": "reset-password",
+          "route": "/reset-password",
+          "file": "screenshots/light-reset-password-desktop.webp"
+        },
+        {
+          "key": "verify-email-change",
+          "route": "/verify-email-change",
+          "file": "screenshots/light-verify-email-change-desktop.webp"
+        },
+        {
+          "key": "not-found",
+          "route": "/missing-reference-route",
+          "file": "screenshots/light-not-found-desktop.webp"
+        }
+      ],
+      "video": null,
+      "durationSeconds": 16.747999999999998,
+      "segments": [
+        {
+          "start": 1.872,
+          "end": 2.946
+        },
+        {
+          "start": 4.406,
+          "end": 5.577
+        },
+        {
+          "start": 7.946,
+          "end": 9.042
+        },
+        {
+          "start": 11.504,
+          "end": 12.61
+        },
+        {
+          "start": 14.134,
+          "end": 15.372
+        },
+        {
+          "start": 16.875,
+          "end": 18.202
+        },
+        {
+          "start": 19.742,
+          "end": 21.101
+        },
+        {
+          "start": 22.688,
+          "end": 23.942
+        },
+        {
+          "start": 25.424,
+          "end": 26.497
+        },
+        {
+          "start": 27.947,
+          "end": 29.079
+        },
+        {
+          "start": 31.277,
+          "end": 32.467
+        },
+        {
+          "start": 34.031,
+          "end": 35.145
+        },
+        {
+          "start": 36.835,
+          "end": 39.449
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "references",
+      "shots": [
+        {
+          "key": "help",
+          "route": "/help",
+          "file": "screenshots/light-help-mobile.webp"
+        },
+        {
+          "key": "about",
+          "route": "/about",
+          "file": "screenshots/light-about-mobile.webp"
+        },
+        {
+          "key": "safety",
+          "route": "/safety",
+          "file": "screenshots/light-safety-mobile.webp"
+        },
+        {
+          "key": "privacy",
+          "route": "/privacy",
+          "file": "screenshots/light-privacy-mobile.webp"
+        },
+        {
+          "key": "terms",
+          "route": "/terms",
+          "file": "screenshots/light-terms-mobile.webp"
+        },
+        {
+          "key": "data-deletion",
+          "route": "/data-deletion",
+          "file": "screenshots/light-data-deletion-mobile.webp"
+        },
+        {
+          "key": "raid-methodology",
+          "route": "/raid/methodology",
+          "file": "screenshots/light-raid-methodology-mobile.webp"
+        },
+        {
+          "key": "pvp-methodology",
+          "route": "/pvp/methodology",
+          "file": "screenshots/light-pvp-methodology-mobile.webp"
+        },
+        {
+          "key": "login",
+          "route": "/login",
+          "file": "screenshots/light-login-mobile.webp"
+        },
+        {
+          "key": "register",
+          "route": "/register",
+          "file": "screenshots/light-register-mobile.webp"
+        },
+        {
+          "key": "reset-password",
+          "route": "/reset-password",
+          "file": "screenshots/light-reset-password-mobile.webp"
+        },
+        {
+          "key": "verify-email-change",
+          "route": "/verify-email-change",
+          "file": "screenshots/light-verify-email-change-mobile.webp"
+        },
+        {
+          "key": "not-found",
+          "route": "/missing-reference-route",
+          "file": "screenshots/light-not-found-mobile.webp"
+        }
+      ],
+      "video": null,
+      "durationSeconds": 15.343000000000004,
+      "segments": [
+        {
+          "start": 1.893,
+          "end": 2.943
+        },
+        {
+          "start": 4.458,
+          "end": 5.569
+        },
+        {
+          "start": 7.782,
+          "end": 8.834
+        },
+        {
+          "start": 10.596,
+          "end": 11.638
+        },
+        {
+          "start": 13.201,
+          "end": 14.256
+        },
+        {
+          "start": 16.245,
+          "end": 17.299
+        },
+        {
+          "start": 19.29,
+          "end": 20.385
+        },
+        {
+          "start": 21.938,
+          "end": 23.016
+        },
+        {
+          "start": 24.588,
+          "end": 25.658
+        },
+        {
+          "start": 27.142,
+          "end": 28.208
+        },
+        {
+          "start": 29.703,
+          "end": 30.758
+        },
+        {
+          "start": 32.751,
+          "end": 33.793
+        },
+        {
+          "start": 35.269,
+          "end": 37.842
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "search",
+      "shots": [
+        {
+          "key": "search",
+          "route": "/search",
+          "file": "screenshots/light-search-desktop.webp"
+        },
+        {
+          "key": "trainer-search-results",
+          "route": "/search",
+          "file": "screenshots/light-trainer-search-results-desktop.webp"
+        },
+        {
+          "key": "search-filters",
+          "route": "/search",
+          "file": "screenshots/light-search-filters-desktop.webp"
+        },
+        {
+          "key": "search-results-list",
+          "route": "/search",
+          "file": "screenshots/light-search-results-list-desktop.webp"
+        },
+        {
+          "key": "search-results-map",
+          "route": "/search",
+          "file": "screenshots/light-search-results-map-desktop.webp"
+        }
+      ],
+      "video": "videos/light-search-desktop.webm",
+      "durationSeconds": 14.622,
+      "segments": [
+        {
+          "start": 3.175,
+          "end": 17.797
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "search",
+      "shots": [
+        {
+          "key": "search",
+          "route": "/search",
+          "file": "screenshots/light-search-mobile.webp"
+        },
+        {
+          "key": "trainer-search-results",
+          "route": "/search",
+          "file": "screenshots/light-trainer-search-results-mobile.webp"
+        },
+        {
+          "key": "search-filters",
+          "route": "/search",
+          "file": "screenshots/light-search-filters-mobile.webp"
+        },
+        {
+          "key": "search-results-list",
+          "route": "/search",
+          "file": "screenshots/light-search-results-list-mobile.webp"
+        },
+        {
+          "key": "search-results-map",
+          "route": "/search",
+          "file": "screenshots/light-search-results-map-mobile.webp"
+        }
+      ],
+      "video": "videos/light-search-mobile.webm",
+      "durationSeconds": 14.07,
+      "segments": [
+        {
+          "start": 2.968,
+          "end": 17.038
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "social",
+      "shots": [
+        {
+          "key": "trainer-profile",
+          "route": "/profile",
+          "file": "screenshots/light-trainer-profile-desktop.webp"
+        },
+        {
+          "key": "friends",
+          "route": "/profile/friends",
+          "file": "screenshots/light-friends-desktop.webp"
+        },
+        {
+          "key": "public-profile",
+          "route": "/profile/NexusDemo",
+          "file": "screenshots/light-public-profile-desktop.webp"
+        },
+        {
+          "key": "public-collection",
+          "route": "/pokemon/NexusDemo",
+          "file": "screenshots/light-public-collection-desktop.webp"
+        }
+      ],
+      "video": "videos/light-social-desktop.webm",
+      "durationSeconds": 5.973999999999997,
+      "segments": [
+        {
+          "start": 2.954,
+          "end": 4.11
+        },
+        {
+          "start": 5.996,
+          "end": 7.091
+        },
+        {
+          "start": 8.875,
+          "end": 9.985
+        },
+        {
+          "start": 12.131,
+          "end": 14.744
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "social",
+      "shots": [
+        {
+          "key": "trainer-profile",
+          "route": "/profile",
+          "file": "screenshots/light-trainer-profile-mobile.webp"
+        },
+        {
+          "key": "friends",
+          "route": "/profile/friends",
+          "file": "screenshots/light-friends-mobile.webp"
+        },
+        {
+          "key": "public-profile",
+          "route": "/profile/NexusDemo",
+          "file": "screenshots/light-public-profile-mobile.webp"
+        },
+        {
+          "key": "public-collection",
+          "route": "/pokemon/NexusDemo",
+          "file": "screenshots/light-public-collection-mobile.webp"
+        }
+      ],
+      "video": "videos/light-social-mobile.webm",
+      "durationSeconds": 5.7740000000000045,
+      "segments": [
+        {
+          "start": 2.873,
+          "end": 3.966
+        },
+        {
+          "start": 6.302,
+          "end": 7.341
+        },
+        {
+          "start": 8.809,
+          "end": 9.89
+        },
+        {
+          "start": 11.886,
+          "end": 14.447
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "trade-board",
+      "shots": [
+        {
+          "key": "trade-board",
+          "route": "/trade-board",
+          "file": "screenshots/light-trade-board-desktop.webp"
+        },
+        {
+          "key": "trade-board-preview",
+          "route": "/trade-board",
+          "file": "screenshots/light-trade-board-preview-desktop.webp"
+        },
+        {
+          "key": "public-trade-board",
+          "route": "/trade-board/NexusDemo",
+          "file": "screenshots/light-public-trade-board-desktop.webp"
+        }
+      ],
+      "video": "videos/light-trade-board-desktop.webm",
+      "durationSeconds": 5.818000000000001,
+      "segments": [
+        {
+          "start": 3.372,
+          "end": 6.511
+        },
+        {
+          "start": 8.165,
+          "end": 10.844
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "trade-board",
+      "shots": [
+        {
+          "key": "trade-board",
+          "route": "/trade-board",
+          "file": "screenshots/light-trade-board-mobile.webp"
+        },
+        {
+          "key": "trade-board-preview",
+          "route": "/trade-board",
+          "file": "screenshots/light-trade-board-preview-mobile.webp"
+        },
+        {
+          "key": "public-trade-board",
+          "route": "/trade-board/NexusDemo",
+          "file": "screenshots/light-public-trade-board-mobile.webp"
+        }
+      ],
+      "video": "videos/light-trade-board-mobile.webm",
+      "durationSeconds": 5.612000000000001,
+      "segments": [
+        {
+          "start": 3.002,
+          "end": 6.032
+        },
+        {
+          "start": 7.604,
+          "end": 10.186
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "desktop",
+      "size": {
+        "width": 1440,
+        "height": 900
+      },
+      "flow": "trades",
+      "shots": [
+        {
+          "key": "trade-preferences",
+          "route": "/trades",
+          "file": "screenshots/light-trade-preferences-desktop.webp"
+        },
+        {
+          "key": "trade-activity",
+          "route": "/trades",
+          "file": "screenshots/light-trade-activity-desktop.webp"
+        },
+        {
+          "key": "trade-pending",
+          "route": "/trades",
+          "file": "screenshots/light-trade-pending-desktop.webp"
+        }
+      ],
+      "video": "videos/light-trades-desktop.webm",
+      "durationSeconds": 6.702,
+      "segments": [
+        {
+          "start": 3.254,
+          "end": 9.956
+        }
+      ],
+      "runtimeErrors": []
+    },
+    {
+      "theme": "light",
+      "viewport": "mobile",
+      "size": {
+        "width": 412,
+        "height": 915
+      },
+      "flow": "trades",
+      "shots": [
+        {
+          "key": "trade-preferences",
+          "route": "/trades",
+          "file": "screenshots/light-trade-preferences-mobile.webp"
+        },
+        {
+          "key": "trade-activity",
+          "route": "/trades",
+          "file": "screenshots/light-trade-activity-mobile.webp"
+        },
+        {
+          "key": "trade-pending",
+          "route": "/trades",
+          "file": "screenshots/light-trade-pending-mobile.webp"
+        }
+      ],
+      "video": "videos/light-trades-mobile.webm",
+      "durationSeconds": 6.640000000000001,
+      "segments": [
+        {
+          "start": 3.02,
+          "end": 9.66
+        }
+      ],
+      "runtimeErrors": []
+    }
+  ],
+  "assets": [
+    {
+      "file": "screenshots/dark-about-desktop.webp",
+      "bytes": 83186,
+      "sha256": "39643705bbaccc7842d196890d7baa191b3dccad5574faaa3d4eb858cdc677d0"
+    },
+    {
+      "file": "screenshots/dark-about-mobile.webp",
+      "bytes": 57506,
+      "sha256": "c73a4fe0d550a124b0503ce33b2f323af749898cbfacff7ad7b2e3e26d8b1626"
+    },
+    {
+      "file": "screenshots/dark-account-desktop.webp",
+      "bytes": 42926,
+      "sha256": "30d399af165c856cb883e7fbf64f18420a4f6684f043ed60cfe485e823a19f96"
+    },
+    {
+      "file": "screenshots/dark-account-mobile.webp",
+      "bytes": 32132,
+      "sha256": "38754f3ea5e2233fa64a5f377c239b8ec1c2bf36afe17ada591737dcdb637702"
+    },
+    {
+      "file": "screenshots/dark-account-security-desktop.webp",
+      "bytes": 35712,
+      "sha256": "506a61f37e8127a33891e447d6dc8ea7ead4294f8f25e7a1834f431a9b6c903e"
+    },
+    {
+      "file": "screenshots/dark-account-security-mobile.webp",
+      "bytes": 29588,
+      "sha256": "31c31432bbca20fd51eaae78cdf309cf4660b39902740166b37e1b491d6ac10a"
+    },
+    {
+      "file": "screenshots/dark-catalog-desktop.webp",
+      "bytes": 112082,
+      "sha256": "607d528a72d1b414f6e1b4067c9b5d36801d65460b651c3c0178ab07012733cc"
+    },
+    {
+      "file": "screenshots/dark-catalog-mobile.webp",
+      "bytes": 28530,
+      "sha256": "2fca7a2b3bcc268503ec0463ee36823c6e0871e1a41973f6b9201adf5d19fb51"
+    },
+    {
+      "file": "screenshots/dark-collection-desktop.webp",
+      "bytes": 43258,
+      "sha256": "067362e7f9de435ae43a51f4c884174e31033158145b70bfd8fe2d8339b606bb"
+    },
+    {
+      "file": "screenshots/dark-collection-mobile.webp",
+      "bytes": 22908,
+      "sha256": "a8091e0526850246f46e8589a310551124141a27f4a252172c57ef08346a8959"
+    },
+    {
+      "file": "screenshots/dark-data-deletion-desktop.webp",
+      "bytes": 64012,
+      "sha256": "4bed4fe5ffbaa80b0a96e63842316cb1346f31c91e4650ce2cf4c3fa87185666"
+    },
+    {
+      "file": "screenshots/dark-data-deletion-mobile.webp",
+      "bytes": 52006,
+      "sha256": "a16f619a95a7bd96a142c743c783ff25a439c9c4cdcef09a0e47e9fe3c446996"
+    },
+    {
+      "file": "screenshots/dark-faq-desktop.webp",
+      "bytes": 47990,
+      "sha256": "2ff05d638cdfba0f07649884b30f830759539997adca345f4179260399b4da0a"
+    },
+    {
+      "file": "screenshots/dark-faq-mobile.webp",
+      "bytes": 39428,
+      "sha256": "2fea108d9adb5ccba50db3a389266403244b00ceac24f3d10e406c1f0f48dfb5"
+    },
+    {
+      "file": "screenshots/dark-friends-desktop.webp",
+      "bytes": 18152,
+      "sha256": "8379df0317751161d132c070b643aafb09617bc4cad0bf7b63feef0b4fd2115c"
+    },
+    {
+      "file": "screenshots/dark-friends-mobile.webp",
+      "bytes": 13274,
+      "sha256": "cc4b74f0b0ba1fd0f402ab4f26054621faef2c3dc6e0ad7eb733112a30dd1e94"
+    },
+    {
+      "file": "screenshots/dark-getting-started-desktop.webp",
+      "bytes": 59312,
+      "sha256": "450402788a870cca83120a51b7625ebe50438909e559f032b2bac892527a2a38"
+    },
+    {
+      "file": "screenshots/dark-getting-started-mobile.webp",
+      "bytes": 33812,
+      "sha256": "3a0eea4f86d602299a79116844d0628b620e81050538899d3ec67f0e936de0f9"
+    },
+    {
+      "file": "screenshots/dark-help-desktop.webp",
+      "bytes": 77424,
+      "sha256": "82bd958bdda2e967164932d0cdbfdda481ed1a3e7b2c9f156f218fc4cded7d55"
+    },
+    {
+      "file": "screenshots/dark-help-mobile.webp",
+      "bytes": 48662,
+      "sha256": "60a76f861e7ee5999083f60ee76adcce3208f40418d4e969e110b2aa2fe7572a"
+    },
+    {
+      "file": "screenshots/dark-home-dashboard-desktop.webp",
+      "bytes": 57744,
+      "sha256": "2eda2af5aa24875b7db7024801308e8065df1b2a148c8648f8ab266834c2c2aa"
+    },
+    {
+      "file": "screenshots/dark-home-dashboard-mobile.webp",
+      "bytes": 35184,
+      "sha256": "c98246eee15e4c90a3f4cd106235d44cdec1523bee65ff6033b550e562df81ab"
+    },
+    {
+      "file": "screenshots/dark-home-desktop.webp",
+      "bytes": 63550,
+      "sha256": "a3ab2c6243a436da65941e92532317fabfe9e19b06f751005925aaa6fdeb731a"
+    },
+    {
+      "file": "screenshots/dark-home-guest-desktop.webp",
+      "bytes": 84746,
+      "sha256": "4f969b0b29aaee800443b99f465126b622575778bb9c2c6991dcc29dacd2572a"
+    },
+    {
+      "file": "screenshots/dark-home-guest-mobile.webp",
+      "bytes": 54990,
+      "sha256": "89de082c3bad578ef68669d714ed2d37ca60d80aa95fba4bde2cba8983dc370d"
+    },
+    {
+      "file": "screenshots/dark-home-mobile.webp",
+      "bytes": 38196,
+      "sha256": "55e2a04e828013061456d75753859fc7372e3aacc30fc5cf746cb7ed2b042378"
+    },
+    {
+      "file": "screenshots/dark-instance-edit-desktop.webp",
+      "bytes": 36150,
+      "sha256": "4b12b12fc1dc993945d8bb31f96f7925253f9b9a07cdda384dd1830b3426d522"
+    },
+    {
+      "file": "screenshots/dark-instance-edit-mobile.webp",
+      "bytes": 28652,
+      "sha256": "4a77fefcef99d5ffba1c2683518e3d6803469c792ce694430ec5bcf7cf4494f3"
+    },
+    {
+      "file": "screenshots/dark-instance-overlay-desktop.webp",
+      "bytes": 35482,
+      "sha256": "b725b843505040ffafc1b184d8819d64837709ee1b0693dc855650274825dc36"
+    },
+    {
+      "file": "screenshots/dark-instance-overlay-mobile.webp",
+      "bytes": 26738,
+      "sha256": "a4a72819f435d0c04921d7f0085e4c4396620301214cc778380079ef931a1dfd"
+    },
+    {
+      "file": "screenshots/dark-login-desktop.webp",
+      "bytes": 15910,
+      "sha256": "4b590ceb6aa1d8a9e4228027ca882e5a479976e3aeb2339cbe4de3188a36a07c"
+    },
+    {
+      "file": "screenshots/dark-login-mobile.webp",
+      "bytes": 13206,
+      "sha256": "5c9dc117f70b81156aaaa436f3868a8e1ba2f714c657571987d9c65b983e345e"
+    },
+    {
+      "file": "screenshots/dark-max-boss-teams-desktop.webp",
+      "bytes": 56804,
+      "sha256": "c85eb273d081159fb60bbc7ebd15c639b4a2c0cf7be256fa9266ad7b19135660"
+    },
+    {
+      "file": "screenshots/dark-max-boss-teams-mobile.webp",
+      "bytes": 35314,
+      "sha256": "7c87dbe0105a72e1d6297ae6e30d5405e3e99e5a161677d1aa74fc1a73ce6716"
+    },
+    {
+      "file": "screenshots/dark-max-desktop.webp",
+      "bytes": 59000,
+      "sha256": "fa9a8d8ce134d58f3d1ac4ba8cf938f52a6a321418b7feb6518e1b7269a18730"
+    },
+    {
+      "file": "screenshots/dark-max-mobile.webp",
+      "bytes": 38406,
+      "sha256": "57660245be2d6ffe4975065e62d89bfb806e640e7ca85db8c29bae972e8668c1"
+    },
+    {
+      "file": "screenshots/dark-max-party-desktop.webp",
+      "bytes": 57302,
+      "sha256": "0dcc80ad24f704a20c850ac13fb1535e47e262ef4c2764c4cd4c926b1480349a"
+    },
+    {
+      "file": "screenshots/dark-max-party-mobile.webp",
+      "bytes": 35404,
+      "sha256": "351d15edc82f5db3b3cc3a4793772f1d40814e1491814778b82910536cc59765"
+    },
+    {
+      "file": "screenshots/dark-not-found-desktop.webp",
+      "bytes": 36222,
+      "sha256": "bd32988dcb81be42a9e59d9a435f648f6a7b9a71f78e153bb86d1da2bcce4094"
+    },
+    {
+      "file": "screenshots/dark-not-found-mobile.webp",
+      "bytes": 26912,
+      "sha256": "d0935ac7e93676052bac4f66817c3347663f5fbc0e60638abfa7228d3cb6432a"
+    },
+    {
+      "file": "screenshots/dark-pokedex-desktop.webp",
+      "bytes": 64588,
+      "sha256": "d5bae82fb638a4373f1eae37e527fd536abc80c1c22be0bf8d3155397e853f80"
+    },
+    {
+      "file": "screenshots/dark-pokedex-mobile.webp",
+      "bytes": 36480,
+      "sha256": "60861b7093f36256cb1dd4504cef503f5e425b55b5b16ea7a84f799a7eff79ee"
+    },
+    {
+      "file": "screenshots/dark-pokedex-region-desktop.webp",
+      "bytes": 75286,
+      "sha256": "a33591defe3e86c4e680949864fc8228ea4638e735e6f97ae19f236c5a70e8dc"
+    },
+    {
+      "file": "screenshots/dark-pokedex-region-mobile.webp",
+      "bytes": 34650,
+      "sha256": "75853ebce6372cda72c185e74d3c92edbfe2a506dd7f32c8565175333548b58f"
+    },
+    {
+      "file": "screenshots/dark-pokedex-search-desktop.webp",
+      "bytes": 34722,
+      "sha256": "b15014d00c04b909447080b4c46016fdb436fa564f3374e1c25160cc432a578a"
+    },
+    {
+      "file": "screenshots/dark-pokedex-search-mobile.webp",
+      "bytes": 22506,
+      "sha256": "1dc7987dc460730023a67e4c1cd80f293de91f451ccdbaff64a46198479248cf"
+    },
+    {
+      "file": "screenshots/dark-privacy-desktop.webp",
+      "bytes": 66120,
+      "sha256": "f9fe6fa90c881f8b4c29f786d2f147c24a25d4e1d9f8eb6c784af271d2167d6f"
+    },
+    {
+      "file": "screenshots/dark-privacy-mobile.webp",
+      "bytes": 55290,
+      "sha256": "099d74c861baecc319b8d6cfa7d0085f55a404b6906fe070caa0fc3af1853d7c"
+    },
+    {
+      "file": "screenshots/dark-public-collection-desktop.webp",
+      "bytes": 45580,
+      "sha256": "bb614d5342955ef47f2bd198ed0635856a2e54714d746ed00436076b7ef5d5e4"
+    },
+    {
+      "file": "screenshots/dark-public-collection-mobile.webp",
+      "bytes": 25064,
+      "sha256": "072449983eed5439f6ca80a57680999e425db1198ce798c5a1444f1c24055af3"
+    },
+    {
+      "file": "screenshots/dark-public-profile-desktop.webp",
+      "bytes": 43462,
+      "sha256": "a1d56104805ca108badde3f71b5ea85211addc86f4e679bb03a06224d5d6a9c0"
+    },
+    {
+      "file": "screenshots/dark-public-profile-mobile.webp",
+      "bytes": 34058,
+      "sha256": "207c5b32e5195e7955656f92653455a4ddc8d002f4cd2a4d8a0fcffbdc099d9d"
+    },
+    {
+      "file": "screenshots/dark-public-trade-board-desktop.webp",
+      "bytes": 48454,
+      "sha256": "7a17243089994c54041361d0ef770782253ce4636301dae14578c76e3d387a47"
+    },
+    {
+      "file": "screenshots/dark-public-trade-board-mobile.webp",
+      "bytes": 27728,
+      "sha256": "f4164ef2c302f40002f33062c8a6955fb2f7644934addbde806a90ad28830c6a"
+    },
+    {
+      "file": "screenshots/dark-pvp-desktop.webp",
+      "bytes": 54726,
+      "sha256": "0c6246f059512cdbe57371ff0b468acee20cc345b84dd14fb3c53f0dd67f95b4"
+    },
+    {
+      "file": "screenshots/dark-pvp-iv-rank-desktop.webp",
+      "bytes": 54184,
+      "sha256": "4716718314cc7395677a19c0d7fd482e490fc11445258d0f8fae51055d865df1"
+    },
+    {
+      "file": "screenshots/dark-pvp-iv-rank-mobile.webp",
+      "bytes": 36004,
+      "sha256": "51c0538457d38b1ef8a6429ea48990ea62777ca4418f8fa837ca982c38fee18c"
+    },
+    {
+      "file": "screenshots/dark-pvp-methodology-desktop.webp",
+      "bytes": 73894,
+      "sha256": "5b77d0af7bea1e6ae343949514016d7144f43fec38c9b31b8355d4193b26cf01"
+    },
+    {
+      "file": "screenshots/dark-pvp-methodology-mobile.webp",
+      "bytes": 49754,
+      "sha256": "d219b93b8abdf741455f4af01b4dc4232cc389d881f20d220ea5f452eb33fb31"
+    },
+    {
+      "file": "screenshots/dark-pvp-mobile.webp",
+      "bytes": 38140,
+      "sha256": "034e38a2396cf6ae1014ef9c32c4e137c34732bab495323441f944522f9a4ecd"
+    },
+    {
+      "file": "screenshots/dark-pvp-team-builder-desktop.webp",
+      "bytes": 55062,
+      "sha256": "1a897b80d88253da8870852798b2a55bb4ece839e0e3b54beebe24b4cefb122b"
+    },
+    {
+      "file": "screenshots/dark-pvp-team-builder-mobile.webp",
+      "bytes": 35684,
+      "sha256": "1d1f554caffef49aaab2e3f1e99d246eec546eaf57275153954984b84d6b5dc6"
+    },
+    {
+      "file": "screenshots/dark-quick-navigation-desktop.webp",
+      "bytes": 46982,
+      "sha256": "03be5f1101a3d81eedb2f6a92448e16347063865cd95b345e52f869dc1a2115a"
+    },
+    {
+      "file": "screenshots/dark-quick-navigation-mobile.webp",
+      "bytes": 27118,
+      "sha256": "696f8494c1281a8d195cad6c31c2c08fb7cc0bf81777d6ab0e0a6e74286e35b4"
+    },
+    {
+      "file": "screenshots/dark-raid-counter-results-desktop.webp",
+      "bytes": 73216,
+      "sha256": "0a6055c3df2fc25eb8cf6a03382f6bee90a551e7cd5e07aa3d7aa9e191099601"
+    },
+    {
+      "file": "screenshots/dark-raid-counter-results-mobile.webp",
+      "bytes": 53666,
+      "sha256": "bf02c1a19cb5c274cbf0cad3af2c5c9899a12f40a157437fad4bb466ac7a6ac7"
+    },
+    {
+      "file": "screenshots/dark-raid-counters-desktop.webp",
+      "bytes": 63058,
+      "sha256": "ebf5c2d292e9e8dba792c8572771dac0ce3b1b5adec0d0beed6d1a15673a79c1"
+    },
+    {
+      "file": "screenshots/dark-raid-counters-mobile.webp",
+      "bytes": 41018,
+      "sha256": "9d15995a30aa260516f63db22a942de463d2c65d238a68f0ed62f61bfcae5936"
+    },
+    {
+      "file": "screenshots/dark-raid-desktop.webp",
+      "bytes": 77300,
+      "sha256": "f826b9d4205eb1d1ea0746da4d1f79bdfae98e5b245d76ff4f1d51e867480729"
+    },
+    {
+      "file": "screenshots/dark-raid-methodology-desktop.webp",
+      "bytes": 77408,
+      "sha256": "630e2a73bcaeb3197e795642f94826c972201f8b9a5718633a91a20886e01d4a"
+    },
+    {
+      "file": "screenshots/dark-raid-methodology-mobile.webp",
+      "bytes": 45774,
+      "sha256": "73fa46c5acb881fea79f988c8209c4fc2b7186c5858896d991afd4b1a14c26ca"
+    },
+    {
+      "file": "screenshots/dark-raid-mobile.webp",
+      "bytes": 45060,
+      "sha256": "ec473ead2e83145d10b9a1a75db00a65bc7742da14a9c5bd4c81c5152be6e293"
+    },
+    {
+      "file": "screenshots/dark-rankings-desktop.webp",
+      "bytes": 39116,
+      "sha256": "92f7e351fff1fe111e000c19ba8d6c65ed7bf5ca2dfd40c9d0bdf64ff37415ef"
+    },
+    {
+      "file": "screenshots/dark-rankings-mobile.webp",
+      "bytes": 33414,
+      "sha256": "0814f8a9b246ade633b5eeff4ce57565b3bf76b72a6eb85d47706817b561e2bd"
+    },
+    {
+      "file": "screenshots/dark-rankings-rarest-desktop.webp",
+      "bytes": 40856,
+      "sha256": "d90d24dea54464af396adef5aecf9998b01f7b1f333eeb219a86f3782463686b"
+    },
+    {
+      "file": "screenshots/dark-rankings-rarest-mobile.webp",
+      "bytes": 35308,
+      "sha256": "6264c9897f611b8c1891311175273bc0c745d5ad44aa010bae44a76fde6249e8"
+    },
+    {
+      "file": "screenshots/dark-rankings-search-desktop.webp",
+      "bytes": 34456,
+      "sha256": "db607c80419786611e2708cedc946251078e7a83ccd5a995cd0ed1fb22010021"
+    },
+    {
+      "file": "screenshots/dark-rankings-search-mobile.webp",
+      "bytes": 29808,
+      "sha256": "60f1757c54e82cebf11cfdb31fb3146a89631f252ec4dc15e340067eab83dde1"
+    },
+    {
+      "file": "screenshots/dark-register-desktop.webp",
+      "bytes": 29598,
+      "sha256": "ce9569c9cab09cb3235e25146dc1b5f6e0eceac4eb13f2d40b753b55e9961a81"
+    },
+    {
+      "file": "screenshots/dark-register-mobile.webp",
+      "bytes": 19546,
+      "sha256": "91d54293c684d1c893a2b71087edb00a601a1d472abad9a8ad9527353c537066"
+    },
+    {
+      "file": "screenshots/dark-reset-password-desktop.webp",
+      "bytes": 24074,
+      "sha256": "f0bb9b2357fb170c42e30823922b20c418da97b1d227c8fcd970ed7e19f7007f"
+    },
+    {
+      "file": "screenshots/dark-reset-password-mobile.webp",
+      "bytes": 19188,
+      "sha256": "8f000e9d42469ba925ef24e6c94aedc3c345f88c7a91067f7067bc692b471818"
+    },
+    {
+      "file": "screenshots/dark-safety-desktop.webp",
+      "bytes": 81526,
+      "sha256": "dffcf4e6df531c4d67270f46c77b000f5a9dec0ecace8ac9df0f722c6dcc1b75"
+    },
+    {
+      "file": "screenshots/dark-safety-mobile.webp",
+      "bytes": 50330,
+      "sha256": "3b13ec351106d45156682d91d421ac0a58eab41b2f2e04b84cb853dac81d32b9"
+    },
+    {
+      "file": "screenshots/dark-search-desktop.webp",
+      "bytes": 21210,
+      "sha256": "f066e5cb8b3b3fddbf0670b54850d1deea374d4778cb9065109a43ef3e73c2e6"
+    },
+    {
+      "file": "screenshots/dark-search-filters-desktop.webp",
+      "bytes": 31754,
+      "sha256": "f0f59cf24974a703c579e3ada9a77a71a413fd8c85ca52ada2e35b966372072b"
+    },
+    {
+      "file": "screenshots/dark-search-filters-mobile.webp",
+      "bytes": 25952,
+      "sha256": "9efb83f92159bcf57a03e4a0eaac1cff6d59d8f1b639f344cbd1d366ac47ee0c"
+    },
+    {
+      "file": "screenshots/dark-search-mobile.webp",
+      "bytes": 19936,
+      "sha256": "dbed852220a2205060ca3ad0fac12328bbe763287a4df62fea4bc7d67f05fb99"
+    },
+    {
+      "file": "screenshots/dark-search-results-list-desktop.webp",
+      "bytes": 33774,
+      "sha256": "82743f815a5fbcba6bf04ee668e37eadb313c1cbbe3a6f52fbe919768fdec625"
+    },
+    {
+      "file": "screenshots/dark-search-results-list-mobile.webp",
+      "bytes": 28046,
+      "sha256": "acfd1f99da1f29eea1c7f5dcb27535b86375f0b35af79c6ee7d89533634eea99"
+    },
+    {
+      "file": "screenshots/dark-search-results-map-desktop.webp",
+      "bytes": 167290,
+      "sha256": "c8980f63c0320522bed51401f238fc27a739834b31cc2f7ae6affc1df9c409fe"
+    },
+    {
+      "file": "screenshots/dark-search-results-map-mobile.webp",
+      "bytes": 64488,
+      "sha256": "1052128d816401091da36938cde3c167275e85efa2b3534847d44779b0fff6dc"
+    },
+    {
+      "file": "screenshots/dark-settings-desktop.webp",
+      "bytes": 44026,
+      "sha256": "edb4b8ee2b0914f0087bdc3c3b56f4dddd947b936f39aef33f25186ce92d36a2"
+    },
+    {
+      "file": "screenshots/dark-settings-mobile.webp",
+      "bytes": 29704,
+      "sha256": "13f0714890ab8358e8bd9d6ddbc94551088e8d87e50fcd45c8f4b85ec0793e23"
+    },
+    {
+      "file": "screenshots/dark-settings-preferences-desktop.webp",
+      "bytes": 51512,
+      "sha256": "2ca96c42f7f47772968e9405d339dd0d929dbd1e418e3f84f27f6fad190f3d2d"
+    },
+    {
+      "file": "screenshots/dark-settings-preferences-mobile.webp",
+      "bytes": 41584,
+      "sha256": "63bf78b8e9f32a67084734c64068e47be493caa1586fdcb2e3e9107069f9f79b"
+    },
+    {
+      "file": "screenshots/dark-terms-desktop.webp",
+      "bytes": 60452,
+      "sha256": "aad28774932c11bd8f6452ea0745cb2a00a06581ab92e991073c250ad7fd1135"
+    },
+    {
+      "file": "screenshots/dark-terms-mobile.webp",
+      "bytes": 49878,
+      "sha256": "c34c349e791109a7e095f5edc6cf01a324bfdf64f8eeddf0c6bbe2679ab7c16f"
+    },
+    {
+      "file": "screenshots/dark-trade-activity-desktop.webp",
+      "bytes": 30258,
+      "sha256": "b29b9d3a905017362bb4aa8c9a769a59f79cb97f7a651c87acfe53ce9bc49777"
+    },
+    {
+      "file": "screenshots/dark-trade-activity-mobile.webp",
+      "bytes": 21418,
+      "sha256": "36d19330380d2707fdf64642f193e8948614f1fbed0f467800aeeefa8f9a853a"
+    },
+    {
+      "file": "screenshots/dark-trade-board-desktop.webp",
+      "bytes": 56564,
+      "sha256": "a3d923796dcaf0e8f79dca4337734cd4c8b667975d9aea99311f8481c49325ac"
+    },
+    {
+      "file": "screenshots/dark-trade-board-mobile.webp",
+      "bytes": 35358,
+      "sha256": "94f909e50bb588c69a4a42a8bf711f5f5a9ff5d42d008355d2679f1cdf3efce7"
+    },
+    {
+      "file": "screenshots/dark-trade-board-preview-desktop.webp",
+      "bytes": 42998,
+      "sha256": "51f59066d0b33a66b39e41cab11ac3d3e98c0e2d4ce0f69b67905c719027094f"
+    },
+    {
+      "file": "screenshots/dark-trade-board-preview-mobile.webp",
+      "bytes": 25886,
+      "sha256": "754bfe9abb4c5cf8d40734f54bc6083972f09a2cdaa86a9c46eea32f04dc2d5e"
+    },
+    {
+      "file": "screenshots/dark-trade-pending-desktop.webp",
+      "bytes": 45746,
+      "sha256": "f1cec9c198f2bfb46f4c478401fdbee7a75e98b602c06350a41ed55da96f8aeb"
+    },
+    {
+      "file": "screenshots/dark-trade-pending-mobile.webp",
+      "bytes": 34658,
+      "sha256": "6c246292971a1c8a915c8a5a0c3aeec037c8a8247d2533c0d6147104fa89237a"
+    },
+    {
+      "file": "screenshots/dark-trade-preferences-desktop.webp",
+      "bytes": 36398,
+      "sha256": "fee7a1cda4da5992b8f3930a0226e2d6c5ad4392a57b557e333f38ff8ff51f64"
+    },
+    {
+      "file": "screenshots/dark-trade-preferences-mobile.webp",
+      "bytes": 30854,
+      "sha256": "4e580c10ffbeb077ee250f0b04d20f717482a61890375c134ef9c699397d32bb"
+    },
+    {
+      "file": "screenshots/dark-trainer-profile-desktop.webp",
+      "bytes": 43456,
+      "sha256": "7c2e47187c8f5607a7b13aaa8d3025534012fb35b0a3000c74cbef6fa2acd23c"
+    },
+    {
+      "file": "screenshots/dark-trainer-profile-mobile.webp",
+      "bytes": 34058,
+      "sha256": "207c5b32e5195e7955656f92653455a4ddc8d002f4cd2a4d8a0fcffbdc099d9d"
+    },
+    {
+      "file": "screenshots/dark-trainer-search-results-desktop.webp",
+      "bytes": 31748,
+      "sha256": "e2d5404f782308ab871debd476c895c425205847cb54990eaf2d5376b6d36e98"
+    },
+    {
+      "file": "screenshots/dark-trainer-search-results-mobile.webp",
+      "bytes": 29660,
+      "sha256": "4e767623797069807163b43966a9e9647cfe46453986d57437f5aff27567b329"
+    },
+    {
+      "file": "screenshots/dark-verify-email-change-desktop.webp",
+      "bytes": 14462,
+      "sha256": "1b4c748efc86540135f886dcd24e3c3d89feea24b7ae49d66ae4cb402d4d87f2"
+    },
+    {
+      "file": "screenshots/dark-verify-email-change-mobile.webp",
+      "bytes": 9216,
+      "sha256": "4b730a900c35dc924cccbe8d4fbfd9dbe2d702b333266c62115c5abbbef9f3c2"
+    },
+    {
+      "file": "screenshots/light-about-desktop.webp",
+      "bytes": 82228,
+      "sha256": "67304e4276f4f6391357513ba07151c96ecbf785a8f90b85e2931c116d2f2fce"
+    },
+    {
+      "file": "screenshots/light-about-mobile.webp",
+      "bytes": 57454,
+      "sha256": "4d468290712ec28b55ffe5298e9a0f0c87afbe2aa428e565260639a04e1e4dd0"
+    },
+    {
+      "file": "screenshots/light-account-desktop.webp",
+      "bytes": 43082,
+      "sha256": "ff03b1e710dcb9601489f42574fbc23a9632553f8d3777d3e130d94b0d3deb2b"
+    },
+    {
+      "file": "screenshots/light-account-mobile.webp",
+      "bytes": 33566,
+      "sha256": "3da75d40c15e075aab274bb80e65ca766da5f4403daabc9fe4e007008de2d08a"
+    },
+    {
+      "file": "screenshots/light-account-security-desktop.webp",
+      "bytes": 35940,
+      "sha256": "20286ffd351139afb239c6cbadd98053c497ddaa87e86bce8cded69bceb73bb5"
+    },
+    {
+      "file": "screenshots/light-account-security-mobile.webp",
+      "bytes": 30614,
+      "sha256": "ac398dd8d20d5ea305474b8c4ab151a1f5e75f61f3d02993761e52f168932301"
+    },
+    {
+      "file": "screenshots/light-catalog-desktop.webp",
+      "bytes": 111356,
+      "sha256": "3d79604a9433731f6dc23836425555f3b906b030f47bb3d85caffc784e7b060b"
+    },
+    {
+      "file": "screenshots/light-catalog-mobile.webp",
+      "bytes": 27876,
+      "sha256": "31e93ab2ea940726b0b673448be550a086f918151c0eb1d6532da9a31575c93a"
+    },
+    {
+      "file": "screenshots/light-collection-desktop.webp",
+      "bytes": 36136,
+      "sha256": "acdece42780871ffbc44858ee5e0988b7aaead907ba9d66fe6a4181ce7257630"
+    },
+    {
+      "file": "screenshots/light-collection-mobile.webp",
+      "bytes": 21080,
+      "sha256": "ede03c4269063cd7d52195c711b400f47badae83c00dfe273c6bbba47bfbb309"
+    },
+    {
+      "file": "screenshots/light-data-deletion-desktop.webp",
+      "bytes": 65288,
+      "sha256": "b92599b7f0cc6b3115f68d166e579e6a4a2cbae85d5b56681b81aae4f037656c"
+    },
+    {
+      "file": "screenshots/light-data-deletion-mobile.webp",
+      "bytes": 51856,
+      "sha256": "826475eacc6d5759d5fc5c75eaf449b509c8d80244c17c2df17516e1d1da3ce8"
+    },
+    {
+      "file": "screenshots/light-faq-desktop.webp",
+      "bytes": 48186,
+      "sha256": "ad0dbb9b2e83e579e8db540cd3354180416efdda33e46770bd2926afaf04a279"
+    },
+    {
+      "file": "screenshots/light-faq-mobile.webp",
+      "bytes": 39118,
+      "sha256": "f530c3668ccb1ae5ac3d0f98efd8ca2f436a9dfec2476db0b01b5996ee861079"
+    },
+    {
+      "file": "screenshots/light-friends-desktop.webp",
+      "bytes": 18122,
+      "sha256": "647916d07496d5b210da935a64f153cbf5d43154b548747c4d4ccafe1e14561c"
+    },
+    {
+      "file": "screenshots/light-friends-mobile.webp",
+      "bytes": 13136,
+      "sha256": "ccac3adad8b3f61331c45fe9fdc5ad5856dba1da4983a9b2a361aee652e02856"
+    },
+    {
+      "file": "screenshots/light-getting-started-desktop.webp",
+      "bytes": 59992,
+      "sha256": "63e19abb0a97242b6498113c20e6b6c750c615194eceaf92f4149206b959a012"
+    },
+    {
+      "file": "screenshots/light-getting-started-mobile.webp",
+      "bytes": 35456,
+      "sha256": "150200f5a504074172d6996202bddf0a50ac05c9f50b219a51b1298557df0570"
+    },
+    {
+      "file": "screenshots/light-help-desktop.webp",
+      "bytes": 77698,
+      "sha256": "6883d82227af3363c9b699a1dd200539247c1aace563a24672d0fde9f3c44d3e"
+    },
+    {
+      "file": "screenshots/light-help-mobile.webp",
+      "bytes": 48068,
+      "sha256": "f4e66803adec876e4a826d472c19201fc7c3135a200acdff68fab444238ee6b0"
+    },
+    {
+      "file": "screenshots/light-home-dashboard-desktop.webp",
+      "bytes": 56080,
+      "sha256": "8659fdfca65862e704fb69373c3140a5ffdf367290c1cdf465943855b5823427"
+    },
+    {
+      "file": "screenshots/light-home-dashboard-mobile.webp",
+      "bytes": 33558,
+      "sha256": "c7b27b31fc0f381ed23b29615707f6bb806b231a8739fb3c9d0683d4aa2be387"
+    },
+    {
+      "file": "screenshots/light-home-desktop.webp",
+      "bytes": 61460,
+      "sha256": "86ccbceca3f260b369ec75ce98856d666312710bc3feb6596488196c85323488"
+    },
+    {
+      "file": "screenshots/light-home-guest-desktop.webp",
+      "bytes": 81794,
+      "sha256": "f9b2d8b1691bb7dcc7fc847a2d8ee8c427a850681c859468bc9b3639b8e2bf15"
+    },
+    {
+      "file": "screenshots/light-home-guest-mobile.webp",
+      "bytes": 52216,
+      "sha256": "fd2f718c90238e6af5b63eb41d67581da5c86a8a69c9a2447f4a4ca6bc80c92d"
+    },
+    {
+      "file": "screenshots/light-home-mobile.webp",
+      "bytes": 36812,
+      "sha256": "d9050ad12d9504bf0b9b6304fee378905d71d341bfa4b343e70f2293ed284f23"
+    },
+    {
+      "file": "screenshots/light-instance-edit-desktop.webp",
+      "bytes": 37218,
+      "sha256": "8b1876a25ebc14e44f1d5dddb68a213c8e883fba354532b651fb44424b2453ad"
+    },
+    {
+      "file": "screenshots/light-instance-edit-mobile.webp",
+      "bytes": 29094,
+      "sha256": "fb75178aeb99164a0107335f8bc5dc1aea109f742ee80ad6168bfbf779968d5b"
+    },
+    {
+      "file": "screenshots/light-instance-overlay-desktop.webp",
+      "bytes": 36178,
+      "sha256": "82b8a766d7666ef35c6d24070f7dfa6a701f34e93c9bf415d610a69dda0b51dc"
+    },
+    {
+      "file": "screenshots/light-instance-overlay-mobile.webp",
+      "bytes": 26790,
+      "sha256": "4b1319b3866c8504ce38fb77b3d865e45942c8bac8dcfaa16c9c4f62f2f00637"
+    },
+    {
+      "file": "screenshots/light-login-desktop.webp",
+      "bytes": 16342,
+      "sha256": "36c278f431cef8b774659addbc3dba620c8451c278dba6c47b6965f551d24747"
+    },
+    {
+      "file": "screenshots/light-login-mobile.webp",
+      "bytes": 13554,
+      "sha256": "901ce58841b16d4446e23852e1686a3a4d809c649f06dd9f1e9c172774dc4fc1"
+    },
+    {
+      "file": "screenshots/light-max-boss-teams-desktop.webp",
+      "bytes": 58590,
+      "sha256": "7c6c400bb18b46ffc6a7f71462961b9e08701e70b5dee796bd13283c7e1200f7"
+    },
+    {
+      "file": "screenshots/light-max-boss-teams-mobile.webp",
+      "bytes": 35138,
+      "sha256": "5f59409c377918aa63f3fd4f31279a25ff0a65eb04870a7288b07644a357dba5"
+    },
+    {
+      "file": "screenshots/light-max-desktop.webp",
+      "bytes": 58436,
+      "sha256": "30f096585815a25755f38496d5041294fa30a463b7b1c93529732fbd7e771c02"
+    },
+    {
+      "file": "screenshots/light-max-mobile.webp",
+      "bytes": 37240,
+      "sha256": "6f9cc5dede6ee1dadcd4958ff9fc2f85eff45b70ada7891baa290b0fb23c89b9"
+    },
+    {
+      "file": "screenshots/light-max-party-desktop.webp",
+      "bytes": 58750,
+      "sha256": "7226b62dc6195cad358dab95040f4bbce43998f1ab175d33a502bd0da56e3cc4"
+    },
+    {
+      "file": "screenshots/light-max-party-mobile.webp",
+      "bytes": 35220,
+      "sha256": "9ac2acedd75b51a50d23bf17203cf0104fdf9ecd3be2e8314860e49a352b5883"
+    },
+    {
+      "file": "screenshots/light-not-found-desktop.webp",
+      "bytes": 36564,
+      "sha256": "f2e7247842f723b3e6c791db6cf087c907d4b1708c9c51c8eabd4cb0be75f2fb"
+    },
+    {
+      "file": "screenshots/light-not-found-mobile.webp",
+      "bytes": 27402,
+      "sha256": "a15d1a54a7542edc49418b7a6ba12f3db844277ebe065066b19ffb884e87cff2"
+    },
+    {
+      "file": "screenshots/light-pokedex-desktop.webp",
+      "bytes": 62634,
+      "sha256": "2c19e0ab7a35cd71ef71c3a19946cbd9b93682b6579a00f84b343f3294503c11"
+    },
+    {
+      "file": "screenshots/light-pokedex-mobile.webp",
+      "bytes": 35784,
+      "sha256": "8875d282b463e9cc33109fe8c1d0cd5cfb48eea8a2f90458887b7c401cc877ac"
+    },
+    {
+      "file": "screenshots/light-pokedex-region-desktop.webp",
+      "bytes": 69080,
+      "sha256": "c459cf5cd4648a7025789f6bcca1ac7bd10e6d02db41e8397d3b4ea6c1849cf4"
+    },
+    {
+      "file": "screenshots/light-pokedex-region-mobile.webp",
+      "bytes": 31578,
+      "sha256": "d9fa070066f365e2246f5b71b30ef48298cd6577b9af52d94289a4eb14c5ebd3"
+    },
+    {
+      "file": "screenshots/light-pokedex-search-desktop.webp",
+      "bytes": 33592,
+      "sha256": "120faa0ec92478cdaefcf9e745d7b2b99a6aaf5d5b23a5fee031b26a1597290a"
+    },
+    {
+      "file": "screenshots/light-pokedex-search-mobile.webp",
+      "bytes": 21224,
+      "sha256": "d7a1098c1bf93fc10d43ef1fdf62d39ebbc8550817fe6c270e92261bcb649b2f"
+    },
+    {
+      "file": "screenshots/light-privacy-desktop.webp",
+      "bytes": 67040,
+      "sha256": "31184a365e0dde3e75c1bfb9076cdba2af01f3affe34f8f3e93c898bbe6f8eb0"
+    },
+    {
+      "file": "screenshots/light-privacy-mobile.webp",
+      "bytes": 55558,
+      "sha256": "61e29b0fd1a269966dfef5259316192bc794319a20670eff4f952e8a2f3e4a23"
+    },
+    {
+      "file": "screenshots/light-public-collection-desktop.webp",
+      "bytes": 42656,
+      "sha256": "5a5cc1da8212d7474db0e199b7feed4c266a9d2972ab89c8c6d5c16d6914d178"
+    },
+    {
+      "file": "screenshots/light-public-collection-mobile.webp",
+      "bytes": 23156,
+      "sha256": "7226996f96ce88b23fbc3765c465e7db36b1898bf2de3da3eae81ae80e7e319b"
+    },
+    {
+      "file": "screenshots/light-public-profile-desktop.webp",
+      "bytes": 41902,
+      "sha256": "5f24775aa7f937a0db74c18cfc736713b7c1e051a68b351b6263be04b817f4a5"
+    },
+    {
+      "file": "screenshots/light-public-profile-mobile.webp",
+      "bytes": 32544,
+      "sha256": "b53a95272c1c49dd34102158c92ba8a026455a864fd905fdd8f5fe806d211564"
+    },
+    {
+      "file": "screenshots/light-public-trade-board-desktop.webp",
+      "bytes": 47438,
+      "sha256": "502c732d20ae968ec7c53924cc250fea5af5a781a1da60687a425988db67c41b"
+    },
+    {
+      "file": "screenshots/light-public-trade-board-mobile.webp",
+      "bytes": 27238,
+      "sha256": "3d648bbd9deafd1c30ee3e7e33b81e4e9d6c7bdb58c845b9fb932fc6456d5dff"
+    },
+    {
+      "file": "screenshots/light-pvp-desktop.webp",
+      "bytes": 54448,
+      "sha256": "01e48a1c0f28b1a5c04818a944d65211a7358c2e7941f28438564c5b2aa59cdf"
+    },
+    {
+      "file": "screenshots/light-pvp-iv-rank-desktop.webp",
+      "bytes": 52266,
+      "sha256": "1d222bdb865f920d8b98a0701a815dbcc7621cf59e722d38cdf9e79975b0bb71"
+    },
+    {
+      "file": "screenshots/light-pvp-iv-rank-mobile.webp",
+      "bytes": 33636,
+      "sha256": "520d5a4422b158bfbb2af038fba7156fa5ecb47ae1d3f9b76a584da63140f869"
+    },
+    {
+      "file": "screenshots/light-pvp-methodology-desktop.webp",
+      "bytes": 72098,
+      "sha256": "069f34df9e72ab3cc1821a3e5d48af302b2464f323cc9acd82c7b75fef8bfda4"
+    },
+    {
+      "file": "screenshots/light-pvp-methodology-mobile.webp",
+      "bytes": 47970,
+      "sha256": "bd40ec1b6c8bc5f9285dd2ae1afc078eee84b9d491a9c7bc7a8a188b839dda22"
+    },
+    {
+      "file": "screenshots/light-pvp-mobile.webp",
+      "bytes": 38092,
+      "sha256": "dd4e9ba06b2b600644e6009a8deb15fdc4a3cda3ecfdf91aaaa3a947c310733f"
+    },
+    {
+      "file": "screenshots/light-pvp-team-builder-desktop.webp",
+      "bytes": 54484,
+      "sha256": "475b4004309c3872ccd1ba060f9f0f1153de949fb88692f5c2b9ab0407efd1b3"
+    },
+    {
+      "file": "screenshots/light-pvp-team-builder-mobile.webp",
+      "bytes": 35300,
+      "sha256": "3b39e591f44dbc0330b184603d78d68b04706e44cfa2820522d2b86b42a9fd14"
+    },
+    {
+      "file": "screenshots/light-quick-navigation-desktop.webp",
+      "bytes": 46746,
+      "sha256": "2b3cf4990b3c034e0d180117bde8ed30f28ef0633c03a6978480c6944da8e582"
+    },
+    {
+      "file": "screenshots/light-quick-navigation-mobile.webp",
+      "bytes": 26888,
+      "sha256": "eafd947e2bdb49ddbc88868b240e22320a0c9192eecc48e6ec8b55034bf29c8d"
+    },
+    {
+      "file": "screenshots/light-raid-counter-results-desktop.webp",
+      "bytes": 77146,
+      "sha256": "4da956cdc9f620fddec34ce9abd4efa89fdaeaf48ab568bf7f5d2c542d2bef34"
+    },
+    {
+      "file": "screenshots/light-raid-counter-results-mobile.webp",
+      "bytes": 55538,
+      "sha256": "924be0251f253f4100dd1f1afb490b6041fc5c987cf0d315b91827d4612bdea1"
+    },
+    {
+      "file": "screenshots/light-raid-counters-desktop.webp",
+      "bytes": 63718,
+      "sha256": "2b2d5f9ad065a43455a7f92760f13ba229f1b3c20085474031b014bc354f327b"
+    },
+    {
+      "file": "screenshots/light-raid-counters-mobile.webp",
+      "bytes": 39924,
+      "sha256": "7ccca8886b66356f890d5eec536d2452633d66d1c67c16a2e14fb3911888d4e6"
+    },
+    {
+      "file": "screenshots/light-raid-desktop.webp",
+      "bytes": 76588,
+      "sha256": "ca94890d671279430543004b2d853491d4ba76c942d9d56f43c98686bac48259"
+    },
+    {
+      "file": "screenshots/light-raid-methodology-desktop.webp",
+      "bytes": 75436,
+      "sha256": "4a9cd827ec69852ee4da6e89d0085c3f5c0de17a02daf9d8520fdd0f4bef673a"
+    },
+    {
+      "file": "screenshots/light-raid-methodology-mobile.webp",
+      "bytes": 46578,
+      "sha256": "7e268372e9fb155a85e94ca9c6c7d9dfc23b99b5b8bbeb61d25b567484a80a10"
+    },
+    {
+      "file": "screenshots/light-raid-mobile.webp",
+      "bytes": 44290,
+      "sha256": "9589036c6a3e44103095dd5a0ff97ee684dc771048ba8aa53b4935b2e74e9cbd"
+    },
+    {
+      "file": "screenshots/light-rankings-desktop.webp",
+      "bytes": 38292,
+      "sha256": "36e4f56633144ebcc98206bd03aa3c0bcbb651e3360e0cf6321b3c9ad53fc614"
+    },
+    {
+      "file": "screenshots/light-rankings-mobile.webp",
+      "bytes": 32812,
+      "sha256": "f467959c7d5c3485085bb9d59955598977473ddef1ccc5e28728791cf91bd415"
+    },
+    {
+      "file": "screenshots/light-rankings-rarest-desktop.webp",
+      "bytes": 40088,
+      "sha256": "a922ce69b082329c56323d64abc96c2da52a1c7ef28bdb87e6cd76ef8950d7a7"
+    },
+    {
+      "file": "screenshots/light-rankings-rarest-mobile.webp",
+      "bytes": 34954,
+      "sha256": "291df16686f7810b1762493566ea7278b598a224f206109bace9e1debfb41324"
+    },
+    {
+      "file": "screenshots/light-rankings-search-desktop.webp",
+      "bytes": 35306,
+      "sha256": "67f1bc7c8975cca06199261cbd9aed36a6c5225b744dd9d2e954d0c54d01386c"
+    },
+    {
+      "file": "screenshots/light-rankings-search-mobile.webp",
+      "bytes": 30222,
+      "sha256": "a2340babbbb5c89b26eacd8702d6e62b1ca17dcce06a4d2329072073c2dd395f"
+    },
+    {
+      "file": "screenshots/light-register-desktop.webp",
+      "bytes": 29406,
+      "sha256": "d9d656f0dc08a0aba85a73b5f3b3321b2479d7bf4b948ec37e5b78111e3cbf08"
+    },
+    {
+      "file": "screenshots/light-register-mobile.webp",
+      "bytes": 18898,
+      "sha256": "4085bdef0340d7eb7783ac61e0bf3d804d7036179f70307ec638b93faecc321c"
+    },
+    {
+      "file": "screenshots/light-reset-password-desktop.webp",
+      "bytes": 24400,
+      "sha256": "473f6ba4733291095b639eada4e25e23317479f9683e05e9d13dc50ec7dcc6f3"
+    },
+    {
+      "file": "screenshots/light-reset-password-mobile.webp",
+      "bytes": 19074,
+      "sha256": "9e9723a6e32012de26b07c6cc7f070762e86ced0dc19d2d4bb8fe1a03b653d0e"
+    },
+    {
+      "file": "screenshots/light-safety-desktop.webp",
+      "bytes": 80238,
+      "sha256": "e3ef7eb6a34b5e79ccc9b605acb32468ae15b935217bc2b23fc3de1fdab89f6d"
+    },
+    {
+      "file": "screenshots/light-safety-mobile.webp",
+      "bytes": 50454,
+      "sha256": "a3116eb0479d55caca1385d1a4ceee238ee7217d00d8bd790ba41298326841f4"
+    },
+    {
+      "file": "screenshots/light-search-desktop.webp",
+      "bytes": 21710,
+      "sha256": "f85e7e7d7f401eb1ab5d3804e367fe373aaf2ed060a961901f9c84b2572177cd"
+    },
+    {
+      "file": "screenshots/light-search-filters-desktop.webp",
+      "bytes": 33292,
+      "sha256": "680efc243a28947459200b789575c671353084edcee5c0b0a2fb24540aff8cf2"
+    },
+    {
+      "file": "screenshots/light-search-filters-mobile.webp",
+      "bytes": 26656,
+      "sha256": "4635d99aac4b1818a54d920365aef05e460e645a4df1d23a9499b66cb227a7f8"
+    },
+    {
+      "file": "screenshots/light-search-mobile.webp",
+      "bytes": 20348,
+      "sha256": "7780901c2622301dadf5187a7738271aa4aa329c52b3d38132147408580c029a"
+    },
+    {
+      "file": "screenshots/light-search-results-list-desktop.webp",
+      "bytes": 34346,
+      "sha256": "1f90fda5b31bb2cfd7ab398d44870a2967236d0640aada4a403f4ab2e2e854dd"
+    },
+    {
+      "file": "screenshots/light-search-results-list-mobile.webp",
+      "bytes": 28190,
+      "sha256": "7fb57d3f4b7b9b8ac7b22e2856376698a1a4873ba821d56901215d16ae61af9e"
+    },
+    {
+      "file": "screenshots/light-search-results-map-desktop.webp",
+      "bytes": 165738,
+      "sha256": "9353e9278af04791c0987f9999ca162e91a6774e0701af279bbc816eed936aae"
+    },
+    {
+      "file": "screenshots/light-search-results-map-mobile.webp",
+      "bytes": 64954,
+      "sha256": "ceef76255efb2d2bee7aa6c9436993ddc820087902b455a5884409f82f3d50dc"
+    },
+    {
+      "file": "screenshots/light-settings-desktop.webp",
+      "bytes": 45950,
+      "sha256": "a565483beaf38f4822434a73b047cfcd2e143e3614a2aa2f67954cf820a7ab3e"
+    },
+    {
+      "file": "screenshots/light-settings-mobile.webp",
+      "bytes": 30270,
+      "sha256": "eb9f8249fbb3116edfec99ae2a3488edf1bbaac2cb9733f4c171a1a72d4c7cd8"
+    },
+    {
+      "file": "screenshots/light-settings-preferences-desktop.webp",
+      "bytes": 54036,
+      "sha256": "1a9a97b6db8e9103e58294ee78ed2f350cd4eb1aa7c25ed0f43a5809c00cdb47"
+    },
+    {
+      "file": "screenshots/light-settings-preferences-mobile.webp",
+      "bytes": 44692,
+      "sha256": "25058567118ef99d3fc425a9dc7138fe0b04404096c2fccc82b44d79d3fff263"
+    },
+    {
+      "file": "screenshots/light-terms-desktop.webp",
+      "bytes": 61784,
+      "sha256": "6bbde33a313220f5b90458eef62870b90007edfc97892567a72c773fedaf8a9d"
+    },
+    {
+      "file": "screenshots/light-terms-mobile.webp",
+      "bytes": 49612,
+      "sha256": "849004f0f528d73163eac6f55084f4b60c265046234d603376a2a1eaf56f4095"
+    },
+    {
+      "file": "screenshots/light-trade-activity-desktop.webp",
+      "bytes": 29148,
+      "sha256": "ee64664871d3b693d43b3b8bd926816892babeb05ec9d30603c834e18c4a6424"
+    },
+    {
+      "file": "screenshots/light-trade-activity-mobile.webp",
+      "bytes": 21278,
+      "sha256": "8622dfec3447ffb9fc28ae6c4f5f3bda0ae3de550525f12071307074d5172441"
+    },
+    {
+      "file": "screenshots/light-trade-board-desktop.webp",
+      "bytes": 57136,
+      "sha256": "a99ce3117d505063c48a30b814f4ccb9ee09dc1f6b4d96a3e19ffd9dc8d7952f"
+    },
+    {
+      "file": "screenshots/light-trade-board-mobile.webp",
+      "bytes": 37006,
+      "sha256": "2f52611b0b07026834dcac1de7c0eda62b0ac302b65c7cb7489ab8a0a15b7e6c"
+    },
+    {
+      "file": "screenshots/light-trade-board-preview-desktop.webp",
+      "bytes": 43344,
+      "sha256": "fe0055b7c57f9ed86c275d31e646623cf12162d786c24110f1aaa37086e59f80"
+    },
+    {
+      "file": "screenshots/light-trade-board-preview-mobile.webp",
+      "bytes": 26438,
+      "sha256": "e37d7ab2cbec07b0480f45b1583350d859f7a31edd77a1642c7a2d5ed2e86eba"
+    },
+    {
+      "file": "screenshots/light-trade-pending-desktop.webp",
+      "bytes": 41716,
+      "sha256": "4f529c061c8e1fca85fc937a4ce903e583bd8c85610d728bd30dda73ce99c3df"
+    },
+    {
+      "file": "screenshots/light-trade-pending-mobile.webp",
+      "bytes": 32164,
+      "sha256": "237dead487c4acb434d6a47f8a608b1bf2032c3f9bd158db7888d80f8f4f0fc9"
+    },
+    {
+      "file": "screenshots/light-trade-preferences-desktop.webp",
+      "bytes": 35796,
+      "sha256": "0ed78be1af3decf9ab45a0c4278ff9683888cd29cb95bcba22c7fd664aee6d88"
+    },
+    {
+      "file": "screenshots/light-trade-preferences-mobile.webp",
+      "bytes": 30288,
+      "sha256": "5507882180ee1dc82be1e586761a6ee973e030b668a5e0a75e798e1e6a45963b"
+    },
+    {
+      "file": "screenshots/light-trainer-profile-desktop.webp",
+      "bytes": 41902,
+      "sha256": "5f24775aa7f937a0db74c18cfc736713b7c1e051a68b351b6263be04b817f4a5"
+    },
+    {
+      "file": "screenshots/light-trainer-profile-mobile.webp",
+      "bytes": 32640,
+      "sha256": "648692d32622ebd41566a9c39248ce44495392899d2257a34c5c777fcb1cbd67"
+    },
+    {
+      "file": "screenshots/light-trainer-search-results-desktop.webp",
+      "bytes": 31636,
+      "sha256": "2c6de10e2a7efeec5b805d6c2588f6004fa31ef2225e0e8739187015ea59f035"
+    },
+    {
+      "file": "screenshots/light-trainer-search-results-mobile.webp",
+      "bytes": 29590,
+      "sha256": "aec070bfcba86e1d8d9202183c0abd5b2cdbf9603f1bda8d0f780901d205aaff"
+    },
+    {
+      "file": "screenshots/light-verify-email-change-desktop.webp",
+      "bytes": 15218,
+      "sha256": "cc7a04f691abf1dc1cc50367dd7796206adc2495519a177c53f38c75f09fe92f"
+    },
+    {
+      "file": "screenshots/light-verify-email-change-mobile.webp",
+      "bytes": 9368,
+      "sha256": "c59ac45e7233a47b799a1589b19cb89ef0b5e8ef172812b6b2f382c72c3324f3"
+    },
+    {
+      "file": "posters/dark-account-desktop.webp",
+      "bytes": 44026,
+      "sha256": "edb4b8ee2b0914f0087bdc3c3b56f4dddd947b936f39aef33f25186ce92d36a2"
+    },
+    {
+      "file": "posters/dark-account-mobile.webp",
+      "bytes": 29704,
+      "sha256": "13f0714890ab8358e8bd9d6ddbc94551088e8d87e50fcd45c8f4b85ec0793e23"
+    },
+    {
+      "file": "posters/dark-collection-desktop.webp",
+      "bytes": 112082,
+      "sha256": "607d528a72d1b414f6e1b4067c9b5d36801d65460b651c3c0178ab07012733cc"
+    },
+    {
+      "file": "posters/dark-collection-mobile.webp",
+      "bytes": 28530,
+      "sha256": "2fca7a2b3bcc268503ec0463ee36823c6e0871e1a41973f6b9201adf5d19fb51"
+    },
+    {
+      "file": "posters/dark-guide-desktop.webp",
+      "bytes": 84746,
+      "sha256": "4f969b0b29aaee800443b99f465126b622575778bb9c2c6991dcc29dacd2572a"
+    },
+    {
+      "file": "posters/dark-guide-mobile.webp",
+      "bytes": 54990,
+      "sha256": "89de082c3bad578ef68669d714ed2d37ca60d80aa95fba4bde2cba8983dc370d"
+    },
+    {
+      "file": "posters/dark-home-desktop.webp",
+      "bytes": 63550,
+      "sha256": "a3ab2c6243a436da65941e92532317fabfe9e19b06f751005925aaa6fdeb731a"
+    },
+    {
+      "file": "posters/dark-home-mobile.webp",
+      "bytes": 38196,
+      "sha256": "55e2a04e828013061456d75753859fc7372e3aacc30fc5cf746cb7ed2b042378"
+    },
+    {
+      "file": "posters/dark-max-desktop.webp",
+      "bytes": 59000,
+      "sha256": "fa9a8d8ce134d58f3d1ac4ba8cf938f52a6a321418b7feb6518e1b7269a18730"
+    },
+    {
+      "file": "posters/dark-max-mobile.webp",
+      "bytes": 38406,
+      "sha256": "57660245be2d6ffe4975065e62d89bfb806e640e7ca85db8c29bae972e8668c1"
+    },
+    {
+      "file": "posters/dark-pokedex-desktop.webp",
+      "bytes": 64588,
+      "sha256": "d5bae82fb638a4373f1eae37e527fd536abc80c1c22be0bf8d3155397e853f80"
+    },
+    {
+      "file": "posters/dark-pokedex-mobile.webp",
+      "bytes": 36480,
+      "sha256": "60861b7093f36256cb1dd4504cef503f5e425b55b5b16ea7a84f799a7eff79ee"
+    },
+    {
+      "file": "posters/dark-pvp-desktop.webp",
+      "bytes": 54726,
+      "sha256": "0c6246f059512cdbe57371ff0b468acee20cc345b84dd14fb3c53f0dd67f95b4"
+    },
+    {
+      "file": "posters/dark-pvp-mobile.webp",
+      "bytes": 38140,
+      "sha256": "034e38a2396cf6ae1014ef9c32c4e137c34732bab495323441f944522f9a4ecd"
+    },
+    {
+      "file": "posters/dark-raid-desktop.webp",
+      "bytes": 77300,
+      "sha256": "f826b9d4205eb1d1ea0746da4d1f79bdfae98e5b245d76ff4f1d51e867480729"
+    },
+    {
+      "file": "posters/dark-raid-mobile.webp",
+      "bytes": 45060,
+      "sha256": "ec473ead2e83145d10b9a1a75db00a65bc7742da14a9c5bd4c81c5152be6e293"
+    },
+    {
+      "file": "posters/dark-rankings-desktop.webp",
+      "bytes": 39116,
+      "sha256": "92f7e351fff1fe111e000c19ba8d6c65ed7bf5ca2dfd40c9d0bdf64ff37415ef"
+    },
+    {
+      "file": "posters/dark-rankings-mobile.webp",
+      "bytes": 33414,
+      "sha256": "0814f8a9b246ade633b5eeff4ce57565b3bf76b72a6eb85d47706817b561e2bd"
+    },
+    {
+      "file": "posters/dark-search-desktop.webp",
+      "bytes": 21210,
+      "sha256": "f066e5cb8b3b3fddbf0670b54850d1deea374d4778cb9065109a43ef3e73c2e6"
+    },
+    {
+      "file": "posters/dark-search-mobile.webp",
+      "bytes": 19936,
+      "sha256": "dbed852220a2205060ca3ad0fac12328bbe763287a4df62fea4bc7d67f05fb99"
+    },
+    {
+      "file": "posters/dark-social-desktop.webp",
+      "bytes": 43456,
+      "sha256": "7c2e47187c8f5607a7b13aaa8d3025534012fb35b0a3000c74cbef6fa2acd23c"
+    },
+    {
+      "file": "posters/dark-social-mobile.webp",
+      "bytes": 34058,
+      "sha256": "207c5b32e5195e7955656f92653455a4ddc8d002f4cd2a4d8a0fcffbdc099d9d"
+    },
+    {
+      "file": "posters/dark-trade-board-desktop.webp",
+      "bytes": 56564,
+      "sha256": "a3d923796dcaf0e8f79dca4337734cd4c8b667975d9aea99311f8481c49325ac"
+    },
+    {
+      "file": "posters/dark-trade-board-mobile.webp",
+      "bytes": 35358,
+      "sha256": "94f909e50bb588c69a4a42a8bf711f5f5a9ff5d42d008355d2679f1cdf3efce7"
+    },
+    {
+      "file": "posters/dark-trades-desktop.webp",
+      "bytes": 36398,
+      "sha256": "fee7a1cda4da5992b8f3930a0226e2d6c5ad4392a57b557e333f38ff8ff51f64"
+    },
+    {
+      "file": "posters/dark-trades-mobile.webp",
+      "bytes": 30854,
+      "sha256": "4e580c10ffbeb077ee250f0b04d20f717482a61890375c134ef9c699397d32bb"
+    },
+    {
+      "file": "posters/light-account-desktop.webp",
+      "bytes": 45950,
+      "sha256": "a565483beaf38f4822434a73b047cfcd2e143e3614a2aa2f67954cf820a7ab3e"
+    },
+    {
+      "file": "posters/light-account-mobile.webp",
+      "bytes": 30270,
+      "sha256": "eb9f8249fbb3116edfec99ae2a3488edf1bbaac2cb9733f4c171a1a72d4c7cd8"
+    },
+    {
+      "file": "posters/light-collection-desktop.webp",
+      "bytes": 111356,
+      "sha256": "3d79604a9433731f6dc23836425555f3b906b030f47bb3d85caffc784e7b060b"
+    },
+    {
+      "file": "posters/light-collection-mobile.webp",
+      "bytes": 27876,
+      "sha256": "31e93ab2ea940726b0b673448be550a086f918151c0eb1d6532da9a31575c93a"
+    },
+    {
+      "file": "posters/light-guide-desktop.webp",
+      "bytes": 81794,
+      "sha256": "f9b2d8b1691bb7dcc7fc847a2d8ee8c427a850681c859468bc9b3639b8e2bf15"
+    },
+    {
+      "file": "posters/light-guide-mobile.webp",
+      "bytes": 52216,
+      "sha256": "fd2f718c90238e6af5b63eb41d67581da5c86a8a69c9a2447f4a4ca6bc80c92d"
+    },
+    {
+      "file": "posters/light-home-desktop.webp",
+      "bytes": 61460,
+      "sha256": "86ccbceca3f260b369ec75ce98856d666312710bc3feb6596488196c85323488"
+    },
+    {
+      "file": "posters/light-home-mobile.webp",
+      "bytes": 36812,
+      "sha256": "d9050ad12d9504bf0b9b6304fee378905d71d341bfa4b343e70f2293ed284f23"
+    },
+    {
+      "file": "posters/light-max-desktop.webp",
+      "bytes": 58436,
+      "sha256": "30f096585815a25755f38496d5041294fa30a463b7b1c93529732fbd7e771c02"
+    },
+    {
+      "file": "posters/light-max-mobile.webp",
+      "bytes": 37240,
+      "sha256": "6f9cc5dede6ee1dadcd4958ff9fc2f85eff45b70ada7891baa290b0fb23c89b9"
+    },
+    {
+      "file": "posters/light-pokedex-desktop.webp",
+      "bytes": 62634,
+      "sha256": "2c19e0ab7a35cd71ef71c3a19946cbd9b93682b6579a00f84b343f3294503c11"
+    },
+    {
+      "file": "posters/light-pokedex-mobile.webp",
+      "bytes": 35784,
+      "sha256": "8875d282b463e9cc33109fe8c1d0cd5cfb48eea8a2f90458887b7c401cc877ac"
+    },
+    {
+      "file": "posters/light-pvp-desktop.webp",
+      "bytes": 54448,
+      "sha256": "01e48a1c0f28b1a5c04818a944d65211a7358c2e7941f28438564c5b2aa59cdf"
+    },
+    {
+      "file": "posters/light-pvp-mobile.webp",
+      "bytes": 38092,
+      "sha256": "dd4e9ba06b2b600644e6009a8deb15fdc4a3cda3ecfdf91aaaa3a947c310733f"
+    },
+    {
+      "file": "posters/light-raid-desktop.webp",
+      "bytes": 76588,
+      "sha256": "ca94890d671279430543004b2d853491d4ba76c942d9d56f43c98686bac48259"
+    },
+    {
+      "file": "posters/light-raid-mobile.webp",
+      "bytes": 44290,
+      "sha256": "9589036c6a3e44103095dd5a0ff97ee684dc771048ba8aa53b4935b2e74e9cbd"
+    },
+    {
+      "file": "posters/light-rankings-desktop.webp",
+      "bytes": 38292,
+      "sha256": "36e4f56633144ebcc98206bd03aa3c0bcbb651e3360e0cf6321b3c9ad53fc614"
+    },
+    {
+      "file": "posters/light-rankings-mobile.webp",
+      "bytes": 32812,
+      "sha256": "f467959c7d5c3485085bb9d59955598977473ddef1ccc5e28728791cf91bd415"
+    },
+    {
+      "file": "posters/light-search-desktop.webp",
+      "bytes": 21710,
+      "sha256": "f85e7e7d7f401eb1ab5d3804e367fe373aaf2ed060a961901f9c84b2572177cd"
+    },
+    {
+      "file": "posters/light-search-mobile.webp",
+      "bytes": 20348,
+      "sha256": "7780901c2622301dadf5187a7738271aa4aa329c52b3d38132147408580c029a"
+    },
+    {
+      "file": "posters/light-social-desktop.webp",
+      "bytes": 41902,
+      "sha256": "5f24775aa7f937a0db74c18cfc736713b7c1e051a68b351b6263be04b817f4a5"
+    },
+    {
+      "file": "posters/light-social-mobile.webp",
+      "bytes": 32640,
+      "sha256": "648692d32622ebd41566a9c39248ce44495392899d2257a34c5c777fcb1cbd67"
+    },
+    {
+      "file": "posters/light-trade-board-desktop.webp",
+      "bytes": 57136,
+      "sha256": "a99ce3117d505063c48a30b814f4ccb9ee09dc1f6b4d96a3e19ffd9dc8d7952f"
+    },
+    {
+      "file": "posters/light-trade-board-mobile.webp",
+      "bytes": 37006,
+      "sha256": "2f52611b0b07026834dcac1de7c0eda62b0ac302b65c7cb7489ab8a0a15b7e6c"
+    },
+    {
+      "file": "posters/light-trades-desktop.webp",
+      "bytes": 35796,
+      "sha256": "0ed78be1af3decf9ab45a0c4278ff9683888cd29cb95bcba22c7fd664aee6d88"
+    },
+    {
+      "file": "posters/light-trades-mobile.webp",
+      "bytes": 30288,
+      "sha256": "5507882180ee1dc82be1e586761a6ee973e030b668a5e0a75e798e1e6a45963b"
+    },
+    {
+      "file": "videos/dark-account-desktop.webm",
+      "bytes": 241220,
+      "sha256": "9c0893adfb95a4456782085b3fcdaa249ca93e9b461293c5012b4e12e8709f01"
+    },
+    {
+      "file": "videos/dark-account-mobile.webm",
+      "bytes": 202223,
+      "sha256": "f8bb341e562369c3b1b20a6640a8fa5133d526dbc692fbf6732074f11dc89489"
+    },
+    {
+      "file": "videos/dark-collection-desktop.webm",
+      "bytes": 523251,
+      "sha256": "141083a03049d2603806b42ac79d3f15d9c729e77e9f6b75e27694e541e7ecf5"
+    },
+    {
+      "file": "videos/dark-collection-mobile.webm",
+      "bytes": 190896,
+      "sha256": "fcc0bc54dfa1cdf96391dd1582e4a92804657b0d5bac38b785f99a43ffe08236"
+    },
+    {
+      "file": "videos/dark-guide-desktop.webm",
+      "bytes": 175826,
+      "sha256": "91f16572f75037b07c8debd1b62c27ec00477fd0cc792beaaef19600087b2c62"
+    },
+    {
+      "file": "videos/dark-guide-mobile.webm",
+      "bytes": 123178,
+      "sha256": "c6c97c7bbd11ed376f2e21fbd8bd196709afd6fcb5eff8e1cbda4f9667e88fef"
+    },
+    {
+      "file": "videos/dark-home-desktop.webm",
+      "bytes": 321634,
+      "sha256": "c18b49f9c9e02edc1570b1bbdda95dbc9f7f7c1a26238052fa27f2fdb038ab65"
+    },
+    {
+      "file": "videos/dark-home-mobile.webm",
+      "bytes": 155755,
+      "sha256": "962101259199490e24daeed56db58dc0209113e69177523d059f5ee00a60c0a6"
+    },
+    {
+      "file": "videos/dark-max-desktop.webm",
+      "bytes": 231146,
+      "sha256": "0fcde281b9e8020c535d81f1691d4a134c09457ea0346a76d5c9df0c94aa54e5"
+    },
+    {
+      "file": "videos/dark-max-mobile.webm",
+      "bytes": 119660,
+      "sha256": "0604d8317ba220c9824861fcb664e6ff0c44b61e81c72a76bb0ac18a8045c5f7"
+    },
+    {
+      "file": "videos/dark-pokedex-desktop.webm",
+      "bytes": 312560,
+      "sha256": "be9cada234d12e04251be1829cf24fdc0bd93dcea800011a3a3243594c72aa46"
+    },
+    {
+      "file": "videos/dark-pokedex-mobile.webm",
+      "bytes": 149650,
+      "sha256": "d956d5704a578a602c1b18f3ef7e8827c7326cce362a88003ecd91fa88edfc80"
+    },
+    {
+      "file": "videos/dark-pvp-desktop.webm",
+      "bytes": 283934,
+      "sha256": "5ced35af0d24f0bf0388868c0e85e93df73478d597b260a46e44408018b4a923"
+    },
+    {
+      "file": "videos/dark-pvp-mobile.webm",
+      "bytes": 205360,
+      "sha256": "c0c1aafbb121bf98b9da3d548e1bf53eaa7f688f0ccc3358c21b9fb4e3364fd1"
+    },
+    {
+      "file": "videos/dark-raid-desktop.webm",
+      "bytes": 313607,
+      "sha256": "47a19f796d8d3563e240412486d0b3d1572069c10d834e01ebbab2f12ada0de3"
+    },
+    {
+      "file": "videos/dark-raid-mobile.webm",
+      "bytes": 187246,
+      "sha256": "5d838a12a673e22767e484b138d1947fecc253b6367e4b6316d7226b6b08aaa1"
+    },
+    {
+      "file": "videos/dark-rankings-desktop.webm",
+      "bytes": 135815,
+      "sha256": "8103db15d1af4454e1b68b0ea9b4b841c8804a7a3b0743fa72f3670c751a8156"
+    },
+    {
+      "file": "videos/dark-rankings-mobile.webm",
+      "bytes": 96548,
+      "sha256": "72d41d6ec251c4506524099b0b31bd47ff939e80645621d43751a0e644435b8f"
+    },
+    {
+      "file": "videos/dark-search-desktop.webm",
+      "bytes": 936689,
+      "sha256": "d6b6ab48bb94936fac4da0cea84709a4dd8e8ddc4a563019f060172b56ae4580"
+    },
+    {
+      "file": "videos/dark-search-mobile.webm",
+      "bytes": 470011,
+      "sha256": "4bdb80b2a23ece3fdc4040198e2049a7434ccf4f7d0184b3c58d6597b0bc39f5"
+    },
+    {
+      "file": "videos/dark-social-desktop.webm",
+      "bytes": 174536,
+      "sha256": "eaf6973dcc5297d8238923ec57a28964e7a59b703292a8aa69dc9066af71c082"
+    },
+    {
+      "file": "videos/dark-social-mobile.webm",
+      "bytes": 93208,
+      "sha256": "8dc7a822dbf2f175745e370f42fd66dbc352e04b7c0704fa25ba812fc1823b33"
+    },
+    {
+      "file": "videos/dark-trade-board-desktop.webm",
+      "bytes": 206308,
+      "sha256": "1dba67a0d9627bf0dbbca8ef10ca7f37a3395cac803e08cf8cb8ea2fff9fe916"
+    },
+    {
+      "file": "videos/dark-trade-board-mobile.webm",
+      "bytes": 113303,
+      "sha256": "3f8b1948fda8dc0c965ac70bfacd7c8d8fcd1cb7af11bdf7d41f2e54a85365d2"
+    },
+    {
+      "file": "videos/dark-trades-desktop.webm",
+      "bytes": 189048,
+      "sha256": "9d0fee608af1cb5c27f26e157fd04952982deaaf4c7fac7c81c1919ddfb12ac2"
+    },
+    {
+      "file": "videos/dark-trades-mobile.webm",
+      "bytes": 110068,
+      "sha256": "636a566c717bfc9f63f4d79e36239ea522684002b7f5c28d19ec2645ba9c5c0f"
+    },
+    {
+      "file": "videos/light-account-desktop.webm",
+      "bytes": 248165,
+      "sha256": "30a312a515b6f5e9df75431fc3e0889da8d58c1cfe5e689d49c06549fc6eb60b"
+    },
+    {
+      "file": "videos/light-account-mobile.webm",
+      "bytes": 190677,
+      "sha256": "7acb9fa06e168a7d999e74b0382362998d0852e120d16dadc4e0dcf0c3196f2e"
+    },
+    {
+      "file": "videos/light-collection-desktop.webm",
+      "bytes": 480361,
+      "sha256": "02feb9090daa71e9ef2d59ade26ecd0a24b34ef7a6a78165706d12a804264666"
+    },
+    {
+      "file": "videos/light-collection-mobile.webm",
+      "bytes": 163846,
+      "sha256": "bf6ce20669e50511e4ea21448ef129984e10c2556580d2f6b03745c2227d5e9c"
+    },
+    {
+      "file": "videos/light-guide-desktop.webm",
+      "bytes": 193689,
+      "sha256": "62f865b4044fd7bda309a3e8e9ca5aba05c73c38730a8be106b1f50e12452b6d"
+    },
+    {
+      "file": "videos/light-guide-mobile.webm",
+      "bytes": 116815,
+      "sha256": "75addeb106237da05ff162ade9d2ee9d745a0dc972e5f8e9e35e9631eef84ee5"
+    },
+    {
+      "file": "videos/light-home-desktop.webm",
+      "bytes": 359059,
+      "sha256": "cbd812f131b7b226919ad70e26352b0848ea5710a8f09c171de31f62b7a7772a"
+    },
+    {
+      "file": "videos/light-home-mobile.webm",
+      "bytes": 137540,
+      "sha256": "2a9cff533afc991d27e38e6951b461623d0829953b7419759b9b07a502717c9b"
+    },
+    {
+      "file": "videos/light-max-desktop.webm",
+      "bytes": 207532,
+      "sha256": "47b2237b0daaadb3c17b6f6489b84df62534fc278d0a34ba70e80c950d188d12"
+    },
+    {
+      "file": "videos/light-max-mobile.webm",
+      "bytes": 118177,
+      "sha256": "d9480ff4d0f07c5e5148946b59561f7876d15a311be077bfa054808afd8b9fcf"
+    },
+    {
+      "file": "videos/light-pokedex-desktop.webm",
+      "bytes": 405464,
+      "sha256": "0007feb63a41cbf6a14ea4ee677bc7e42ccab5cf6983a8be2625c37897f3843f"
+    },
+    {
+      "file": "videos/light-pokedex-mobile.webm",
+      "bytes": 132995,
+      "sha256": "f52cd2aa1eabdde86d504db1277f0a233e7624278cab7eeb3cfb23960d9813d5"
+    },
+    {
+      "file": "videos/light-pvp-desktop.webm",
+      "bytes": 259405,
+      "sha256": "8664861f8ec212cbb4ba09affe06c25cd6d6178773dd077b7cc43a1aee03f330"
+    },
+    {
+      "file": "videos/light-pvp-mobile.webm",
+      "bytes": 174474,
+      "sha256": "93dc4e7327fc571de2f9d80c361361d74066353410eed01733e75722fb30adf6"
+    },
+    {
+      "file": "videos/light-raid-desktop.webm",
+      "bytes": 298180,
+      "sha256": "cb6791c42328e6d1383d37199d71e88dfc341015bb79a701895ab430e1f1b900"
+    },
+    {
+      "file": "videos/light-raid-mobile.webm",
+      "bytes": 176507,
+      "sha256": "ee8e88ded4318a685e5e3155ee2273c949c22d3d87aa552d7560a3845adec667"
+    },
+    {
+      "file": "videos/light-rankings-desktop.webm",
+      "bytes": 131631,
+      "sha256": "4661548468181ae93d8140659a14717007406410ef242db0090eb4a9a4f5cb7a"
+    },
+    {
+      "file": "videos/light-rankings-mobile.webm",
+      "bytes": 93499,
+      "sha256": "927cf1880d112deea97547975722c9b5802d6ff433f885a9b9d58b1e82a992d0"
+    },
+    {
+      "file": "videos/light-search-desktop.webm",
+      "bytes": 943434,
+      "sha256": "f1c348abb127565b5a357a8ac240d7cf0a7b7e0aa97a5a439b5da8fdbd0a4a0d"
+    },
+    {
+      "file": "videos/light-search-mobile.webm",
+      "bytes": 467052,
+      "sha256": "e403ba69e347ff07769fa50e08987aefd634d611d120758e2fabb3cd2893914f"
+    },
+    {
+      "file": "videos/light-social-desktop.webm",
+      "bytes": 129423,
+      "sha256": "f3483e71151ea88176a503df1b97d116423b5d3466d99b568fcccd25ba0683c4"
+    },
+    {
+      "file": "videos/light-social-mobile.webm",
+      "bytes": 85438,
+      "sha256": "8849c9d8ab2e241ef6ae568d9faa801303d2da8b253117d158fae8ed77edfa28"
+    },
+    {
+      "file": "videos/light-trade-board-desktop.webm",
+      "bytes": 204766,
+      "sha256": "4d32d401ef2bb4adf74603ff470ba03a5a5d67cc5c4c8b5b97b1a70dea277b27"
+    },
+    {
+      "file": "videos/light-trade-board-mobile.webm",
+      "bytes": 111667,
+      "sha256": "59fe7e14beb87ef6133f127519030429f3cae170beaab109b80e2f2d4d91ceda"
+    },
+    {
+      "file": "videos/light-trades-desktop.webm",
+      "bytes": 143699,
+      "sha256": "c057de1287281435def818dbf818152075dbab940e61681abdcb167dc296b923"
+    },
+    {
+      "file": "videos/light-trades-mobile.webm",
+      "bytes": 104331,
+      "sha256": "f4a2fb02e77bcc306fdf8f8641ca75302653ad733c341af28836413382f7eb37"
+    }
+  ]
+}

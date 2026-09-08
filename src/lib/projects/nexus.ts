@@ -24,17 +24,17 @@ export const nexusProject: Project = {
   labRole: 'Full-stack product platform',
   labTrack: 'Collection + trade app',
   deliverySurface:
-    'React/Vite web app, Expo mobile path, auth, Pokemon API, users/search/events/location services, receiver/storage pipeline, and NGINX routing.',
+    'React/Vite web app, Expo React Native preview, shared product logic, and services for accounts, Pokemon data, discovery, trades, and live sync.',
   productConstraint:
     'Collection and trade software needs rich variant modeling, trusted account state, location-aware discovery, offline-friendly local storage, live sync, and deployment paths that can support hosted communities.',
   summary:
-    'An active full-stack Pokemon Go platform for managing collections, browsing variants, finding trainers, proposing trades, and syncing updates across web/mobile clients and backend services.',
+    'Manage a Pokemon Go collection, plan raid and Max Battle teams, compare PvP options, find nearby trainers, and organize trades in one connected workspace.',
   details:
-    'Nexus is built as a product system, not a single app screen: collection management, public trainer views, search/list/map discovery, trade lifecycle flows, cached Pokemon data, service-worker batching, offline cache hydration, Kafka-backed persistence, SSE updates, and production-oriented deployment work all sit in one monorepo.',
+    'The app connects variant and instance tracking with a regional Pokédex, raid counters, Max Battle planning, PvP rankings and team tools, community rankings, trainer profiles, friends, and shareable Trade Boards. Local persistence and queued sync support collection work between connections.',
   proof: [
     {
       label: 'Product surface',
-      text: 'The web app covers registration/login, account settings, collection browsing, Pokédex and owned-instance overlays, tag buckets, public trainer collections, search, map results, trade proposals, and trade status review.',
+      text: 'Collection tags and instance editing, a regional Pokédex, raid and Max Battle planners, PvP rankings and IV analysis, trainer search and maps, community rankings, trade preferences and activity, shareable boards, friends, and account security.',
     },
     {
       label: 'Sync model',
@@ -56,7 +56,7 @@ export const nexusProject: Project = {
     },
     {
       label: 'Mobile path',
-      text: 'The Expo React Native app consumes shared contracts and has shipped vertical slices for auth, trainer search, Pokemon catalog, collection editing, search, trades, account/register, and mutation sync.',
+      text: 'The native migration branch implements the main app routes with Expo React Native and shared product logic. Browser parity and workflow checks support the preview; physical-device, standalone-build, and iOS release checks remain open. The production mobile default remains the WebView shell.',
     },
     {
       label: 'Backend services',
@@ -65,25 +65,25 @@ export const nexusProject: Project = {
   ],
   nextSteps: [
     {
-      label: 'Next build',
-      text: 'The strongest next step is frontend product work: turning the existing service depth into a smoother collection, discovery, and trade-planning experience.',
+      label: 'Native validation',
+      text: 'Build the current native preview and complete physical-device route, navigation, performance, and trade workflow checks before changing the mobile release default.',
     },
     {
-      label: 'Expansion path',
-      text: 'The backend can keep growing through paired service and interface features, such as community matching, notifications, calculators, and ranking signals.',
+      label: 'Product refinement',
+      text: 'Refine collection, discovery, and trade workflows using the existing raid, Max Battle, PvP, and community tools as part of the complete trainer journey.',
     },
     {
-      label: 'Blocker',
-      text: 'The backend is close to production-ready; the harder remaining work is time and a UI/UX layer that makes the complex data and trade flows feel clear enough to trust.',
+      label: 'Evidence boundary',
+      text: 'The showcase uses the migration branch’s responsive web interface with demo accounts and fixture data. These recordings show product behavior without claiming a completed native release or live backend verification.',
     },
     {
       label: 'Release path',
-      text: 'If the product becomes production viable, the deployment target should move from local server hardware toward cloud hosting with the existing CI/deploy workflow shape.',
+      text: 'Keep web delivery and native rollout decisions tied to their own verified builds, with updated capture coverage and deployment checks before each release.',
     },
   ],
   tags: flattenTagGroups(nexusTagGroups),
   tagGroups: nexusTagGroups,
-  href: 'https://github.com/AdamWentworth/Go',
+  href: 'https://github.com/AdamWentworth/PokeGoNexus',
   icon: MapPinned,
   accent: 'nexus',
   brand: {
@@ -99,20 +99,20 @@ export const nexusProject: Project = {
     label: 'App walkthrough',
     metric: 'App demo',
     summary:
-      'A walkthrough surface for browsing a collection, searching Pokemon, inspecting map results, and reviewing account workflows.',
-    steps: ['Open collection', 'Search and map', 'Inspect workflows'],
+      'Explore collection, battle planning, discovery, trading, and account features in desktop and mobile web layouts. Recorded from the native migration branch with demo data; the native app remains in preview.',
+    steps: ['Collect and discover', 'Plan your battles', 'Connect and trade'],
     scenes: [
       {
         label: 'Collection workspace',
         text: 'Browse variants, owned instances, caught/trade/wanted states, and tag-driven views.',
       },
       {
-        label: 'Search and map',
-        text: 'Switch between trainer search, Pokemon filters, list results, and map-backed discovery.',
+        label: 'Battle tools',
+        text: 'Explore raid counters, Max Battle parties, PvP team building and IV rankings alongside your collection.',
       },
       {
-        label: 'Workflow depth',
-        text: 'Move through instance overlays, account lifecycle, edit surfaces, and trade-planning paths as the product grows.',
+        label: 'Trainer community',
+        text: 'Find trainers, compare community demand, review trade activity, share a Trade Board, and manage friends and account settings.',
       },
     ],
   },

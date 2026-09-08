@@ -1,4 +1,5 @@
 import { Moon, Sun, type LucideIcon } from 'lucide-react';
+import { nexusMediaRevision } from '../lib/nexusMediaRevision';
 
 export type DemoViewport = 'desktop' | 'mobile';
 export type DemoThemeId = 'dark' | 'light' | 'standard';
@@ -25,6 +26,7 @@ export type CapturedDemoTheme = {
 
 export type CapturedMediaConfig = {
   productName: string;
+  mediaSizes?: Record<DemoViewport, { width: number; height: number }>;
   visualClassName?: string;
   viewports?: DemoViewport[];
   themes: CapturedDemoTheme[];
@@ -41,64 +43,149 @@ const nexusDemoMoments: CapturedDemoMoment[] = [
   {
     id: 'collection',
     label: 'Collection',
-    description: 'Favorites-first collection browsing with owned-instance overlays and live Pokemon artwork.',
-    mediaKey: 'collection-overlay',
+    description: 'Browse the catalog, open caught instances, and inspect editable moves, IVs, and catch details.',
+    mediaKey: 'collection',
   },
   {
     id: 'search',
-    label: 'Search',
-    description: 'Pokemon filters, list results, location context, and the map-backed discovery surface.',
-    mediaKey: 'search-results',
+    label: 'Search & map',
+    description: 'Filter Pokemon listings by location, review matching trainers, and explore the map.',
+    mediaKey: 'search',
   },
   {
-    id: 'edit',
-    label: 'Edit Instance',
-    description: 'A caught instance edit flow with moves, IVs, location autocomplete, date, and ball metadata.',
-    mediaKey: 'workflow-instance-edit',
+    id: 'pokedex',
+    label: 'Pokédex',
+    description: 'Browse regional registration progress and find individual species within Kanto.',
+    mediaKey: 'pokedex',
+  },
+  {
+    id: 'raid',
+    label: 'Raid Planner',
+    description: 'Compare raid attackers and inspect modeled counters for a selected boss.',
+    mediaKey: 'raid',
+  },
+  {
+    id: 'max',
+    label: 'Max Battles',
+    description: 'Explore damage rankings, adjust the trainer count, and review a recommended three-Pokemon party.',
+    mediaKey: 'max',
+  },
+  {
+    id: 'pvp',
+    label: 'PvP tools',
+    description: 'Compare league rankings, choose team roles, and inspect IV rank results.',
+    mediaKey: 'pvp',
+  },
+  {
+    id: 'trades',
+    label: 'Trades',
+    description: 'Review trade preferences, open trade activity, and inspect a pending exchange.',
+    mediaKey: 'trades',
+  },
+  {
+    id: 'trade-board',
+    label: 'Trade Board',
+    description: 'Preview a shareable board and open its public trainer route.',
+    mediaKey: 'trade-board',
+  },
+  {
+    id: 'rankings',
+    label: 'Community',
+    description: 'Compare the most wanted and rarest owned Pokemon, then filter community rankings.',
+    mediaKey: 'rankings',
+  },
+  {
+    id: 'social',
+    label: 'Trainers & friends',
+    description: 'Explore trainer profiles, friends, and a public collection.',
+    mediaKey: 'social',
   },
   {
     id: 'account',
-    label: 'Account',
-    description: 'Registration, account details, profile edits, and cleanup in one end-to-end lifecycle.',
-    mediaKey: 'auth-lifecycle',
+    label: 'Settings & security',
+    description: 'Review trainer preferences, linked sign-in providers, and active account sessions.',
+    mediaKey: 'account',
+  },
+  {
+    id: 'home',
+    label: 'Dashboard',
+    description: 'Open the signed-in dashboard and navigate the main app features through the action menu.',
+    mediaKey: 'home',
+  },
+  {
+    id: 'guide',
+    label: 'Getting started',
+    description: 'Explore the welcome page, first-trade guide, and frequently asked questions.',
+    mediaKey: 'guide',
   },
 ];
 
 const nexusScreenshots: CapturedScreenshot[] = [
-  {
-    id: 'collection',
-    label: 'Collection',
-    imageKey: 'collection',
-  },
-  {
-    id: 'overlay',
-    label: 'Overlay',
-    imageKey: 'instance-overlay',
-  },
-  {
-    id: 'list',
-    label: 'List',
-    imageKey: 'search-results-list',
-  },
-  {
-    id: 'map',
-    label: 'Map',
-    imageKey: 'search-results-map',
-  },
+  { id: 'collection', label: 'Collection', imageKey: 'collection' },
+  { id: 'catalog', label: 'Pokemon catalog', imageKey: 'catalog' },
+  { id: 'instance-overlay', label: 'Owned instance', imageKey: 'instance-overlay' },
+  { id: 'instance-edit', label: 'Edit instance', imageKey: 'instance-edit' },
+  { id: 'search', label: 'Trainer search', imageKey: 'search' },
+  { id: 'trainer-search-results', label: 'Trainer results', imageKey: 'trainer-search-results' },
+  { id: 'search-filters', label: 'Search filters', imageKey: 'search-filters' },
+  { id: 'search-results-list', label: 'Search results', imageKey: 'search-results-list' },
+  { id: 'search-results-map', label: 'Map results', imageKey: 'search-results-map' },
+  { id: 'pokedex', label: 'Pokédex', imageKey: 'pokedex' },
+  { id: 'pokedex-region', label: 'Kanto registrations', imageKey: 'pokedex-region' },
+  { id: 'raid', label: 'Raid Planner', imageKey: 'raid' },
+  { id: 'raid-counters', label: 'Raid counters', imageKey: 'raid-counters' },
+  { id: 'max', label: 'Max Battles', imageKey: 'max' },
+  { id: 'max-boss-teams', label: 'Max boss teams', imageKey: 'max-boss-teams' },
+  { id: 'max-party', label: 'Max party', imageKey: 'max-party' },
+  { id: 'pvp', label: 'PvP rankings', imageKey: 'pvp' },
+  { id: 'pvp-team-builder', label: 'PvP team builder', imageKey: 'pvp-team-builder' },
+  { id: 'pvp-iv-rank', label: 'PvP IV rank', imageKey: 'pvp-iv-rank' },
+  { id: 'rankings', label: 'Community rankings', imageKey: 'rankings' },
+  { id: 'rankings-rarest', label: 'Rarest owned', imageKey: 'rankings-rarest' },
+  { id: 'trade-preferences', label: 'Trade preferences', imageKey: 'trade-preferences' },
+  { id: 'trade-activity', label: 'Trade activity', imageKey: 'trade-activity' },
+  { id: 'trade-pending', label: 'Pending trade', imageKey: 'trade-pending' },
+  { id: 'trade-board', label: 'Trade Board', imageKey: 'trade-board' },
+  { id: 'public-trade-board', label: 'Public Trade Board', imageKey: 'public-trade-board' },
+  { id: 'trainer-profile', label: 'Trainer profile', imageKey: 'trainer-profile' },
+  { id: 'friends', label: 'Friends', imageKey: 'friends' },
+  { id: 'public-profile', label: 'Public profile', imageKey: 'public-profile' },
+  { id: 'public-collection', label: 'Public collection', imageKey: 'public-collection' },
+  { id: 'settings', label: 'Settings', imageKey: 'settings' },
+  { id: 'account', label: 'Account details', imageKey: 'account' },
+  { id: 'account-security', label: 'Account security', imageKey: 'account-security' },
+  { id: 'home', label: 'Dashboard', imageKey: 'home' },
+  { id: 'quick-navigation', label: 'Quick navigation', imageKey: 'quick-navigation' },
+  { id: 'home-guest', label: 'Welcome', imageKey: 'home-guest' },
+  { id: 'getting-started', label: 'Getting started', imageKey: 'getting-started' },
+  { id: 'faq', label: 'FAQ', imageKey: 'faq' },
+  { id: 'help', label: 'Help', imageKey: 'help' },
+  { id: 'about', label: 'About', imageKey: 'about' },
+  { id: 'raid-methodology', label: 'Raid methodology', imageKey: 'raid-methodology' },
+  { id: 'pvp-methodology', label: 'PvP methodology', imageKey: 'pvp-methodology' },
+  { id: 'login', label: 'Login', imageKey: 'login' },
+  { id: 'register', label: 'Registration', imageKey: 'register' },
+  { id: 'reset-password', label: 'Password reset', imageKey: 'reset-password' },
+  { id: 'verify-email-change', label: 'Incomplete email link', imageKey: 'verify-email-change' },
+  { id: 'safety', label: 'Trade safety', imageKey: 'safety' },
+  { id: 'privacy', label: 'Privacy', imageKey: 'privacy' },
+  { id: 'terms', label: 'Terms', imageKey: 'terms' },
+  { id: 'data-deletion', label: 'Data deletion', imageKey: 'data-deletion' },
+  { id: 'not-found', label: 'Missing route', imageKey: 'not-found' },
 ];
 
-const nexusMediaBasePath = '/products/pokemon-go-nexus/demo';
+const nexusMediaBasePath = '/products/pokemon-go-nexus/demo/migration-preview';
 
 function nexusVideoPath(theme: DemoThemeId, mediaKey: string, viewport: DemoViewport) {
-  return `${nexusMediaBasePath}/videos/${theme}-${mediaKey}-${viewport}.webm`;
+  return `${nexusMediaBasePath}/videos/${theme}-${mediaKey}-${viewport}.webm?v=${nexusMediaRevision}`;
 }
 
 function nexusPosterPath(theme: DemoThemeId, moment: CapturedDemoMoment, viewport: DemoViewport) {
-  return `${nexusMediaBasePath}/posters/${theme}-${moment.mediaKey}-${viewport}.png`;
+  return `${nexusMediaBasePath}/posters/${theme}-${moment.mediaKey}-${viewport}.webp?v=${nexusMediaRevision}`;
 }
 
 function nexusScreenshotPath(theme: DemoThemeId, imageKey: string, viewport: DemoViewport) {
-  return `${nexusMediaBasePath}/screenshots/${theme}-${imageKey}-${viewport}.png`;
+  return `${nexusMediaBasePath}/screenshots/${theme}-${imageKey}-${viewport}.webp?v=${nexusMediaRevision}`;
 }
 
 const binderLedgerDemoMoments: CapturedDemoMoment[] = [
@@ -674,6 +761,8 @@ function cipherScreenshotPath(_theme: DemoThemeId, imageKey: string, viewport: D
 
 export const nexusMediaConfig: CapturedMediaConfig = {
   productName: 'PokeGo Nexus',
+  visualClassName: 'demo-visual-nexus-preview',
+  mediaSizes: { desktop: { width: 1440, height: 900 }, mobile: { width: 412, height: 915 } },
   themes: [
     { id: 'dark', label: 'Dark', Icon: Moon },
     { id: 'light', label: 'Light', Icon: Sun },

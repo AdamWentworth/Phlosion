@@ -463,6 +463,36 @@
   background: rgba(3, 9, 18, 0.54);
 }
 
+.nexus-screen-select {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  color: inherit;
+  font-size: 13px;
+}
+
+.nexus-screen-select select {
+  width: 100%;
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid rgba(244, 234, 209, 0.3);
+  border-radius: 8px;
+  background: #101d29;
+  color: #fff7e8;
+  font: inherit;
+}
+
+.nexus-media-theme-light .nexus-screen-select select {
+  border-color: rgba(20, 76, 78, 0.3);
+  background: #fff;
+  color: #123a3d;
+}
+
+.nexus-screen-select select:focus-visible {
+  outline: 2px solid #44b57b;
+  outline-offset: 3px;
+}
+
 .nexus-media-theme-light .nexus-moment-tabs {
   border-color: rgba(20, 76, 78, 0.14);
   background: rgba(255, 255, 255, 0.7);

@@ -197,6 +197,11 @@
     aspect-ratio: 390 / 844;
   }
 
+  .demo-visual-nexus-preview .nexus-media-frame,
+  .demo-visual-nexus-preview .nexus-image-frame {
+    aspect-ratio: 412 / 915;
+  }
+
   .nexus-demo-video-desktop {
     display: none;
   }

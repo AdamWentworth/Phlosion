@@ -22,8 +22,8 @@ import {
 import { getImageSize } from '@/lib/imageSizes';
 import { projects, type Project } from '@/lib/projects';
 
-const desktopMediaSize = { width: 1760, height: 1100 };
-const mobileMediaSize = { width: 390, height: 844 };
+const defaultDesktopMediaSize = { width: 1760, height: 1100 };
+const defaultMobileMediaSize = { width: 390, height: 844 };
 
 type CapturedVideoSnapshot = {
   key: string;
@@ -100,6 +100,8 @@ function supportsDemoViewport(config: CapturedMediaConfig, viewport: DemoViewpor
 }
 
 function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig; project: Project }) {
+  const desktopMediaSize = config.mediaSizes?.desktop ?? defaultDesktopMediaSize;
+  const mobileMediaSize = config.mediaSizes?.mobile ?? defaultMobileMediaSize;
   const defaultTheme = config.themes[0];
   const [theme, setTheme] = useState<DemoThemeId>(defaultTheme.id);
   const [activeMomentId, setActiveMomentId] = useState(config.moments[0].id);
@@ -485,18 +487,35 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
               })}
             </div>
           </div>
-          <div className="nexus-image-tabs" role="group" aria-label={`${config.productName} screenshot selector`}>
-            {config.screenshots.map((screenshot) => (
-              <button
-                key={screenshot.id}
-                type="button"
-                aria-pressed={activeScreenshot.id === screenshot.id}
-                onClick={() => selectScreenshot(screenshot.id)}
+          {config.screenshots.length > 12 ? (
+            <label className="nexus-screen-select">
+              Browse {config.screenshots.length} screens
+              <select
+                aria-label={`${config.productName} screenshot selector`}
+                value={activeScreenshot.id}
+                onChange={(event) => selectScreenshot(event.target.value)}
               >
-                {screenshot.label}
-              </button>
-            ))}
-          </div>
+                {config.screenshots.map((screenshot) => (
+                  <option key={screenshot.id} value={screenshot.id}>
+                    {screenshot.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ) : (
+            <div className="nexus-image-tabs" role="group" aria-label={`${config.productName} screenshot selector`}>
+              {config.screenshots.map((screenshot) => (
+                <button
+                  key={screenshot.id}
+                  type="button"
+                  aria-pressed={activeScreenshot.id === screenshot.id}
+                  onClick={() => selectScreenshot(screenshot.id)}
+                >
+                  {screenshot.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       {lightboxMedia && (
@@ -566,27 +585,47 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                 lightboxMedia.kind === 'video' ? 'video' : 'screenshot'
               } selector`}
             >
-              {lightboxMedia.kind === 'video'
-                ? config.moments.map((moment) => (
-                    <button
-                      key={moment.id}
-                      type="button"
-                      aria-pressed={lightboxMedia.moment.id === moment.id}
-                      onClick={() => showLightboxVideo(moment)}
-                    >
-                      {moment.label}
-                    </button>
-                  ))
-                : config.screenshots.map((screenshot) => (
-                    <button
-                      key={screenshot.id}
-                      type="button"
-                      aria-pressed={lightboxMedia.screenshot.id === screenshot.id}
-                      onClick={() => showLightboxScreenshot(screenshot)}
-                    >
-                      {screenshot.label}
-                    </button>
-                  ))}
+              {lightboxMedia.kind === 'video' ? (
+                config.moments.map((moment) => (
+                  <button
+                    key={moment.id}
+                    type="button"
+                    aria-pressed={lightboxMedia.moment.id === moment.id}
+                    onClick={() => showLightboxVideo(moment)}
+                  >
+                    {moment.label}
+                  </button>
+                ))
+              ) : config.screenshots.length > 12 ? (
+                <label className="nexus-screen-select">
+                  Browse screens
+                  <select
+                    aria-label={`${config.productName} enlarged screenshot selector`}
+                    value={lightboxMedia.screenshot.id}
+                    onChange={(event) => {
+                      const selected = config.screenshots.find((screenshot) => screenshot.id === event.target.value);
+                      if (selected) showLightboxScreenshot(selected);
+                    }}
+                  >
+                    {config.screenshots.map((screenshot) => (
+                      <option key={screenshot.id} value={screenshot.id}>
+                        {screenshot.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              ) : (
+                config.screenshots.map((screenshot) => (
+                  <button
+                    key={screenshot.id}
+                    type="button"
+                    aria-pressed={lightboxMedia.screenshot.id === screenshot.id}
+                    onClick={() => showLightboxScreenshot(screenshot)}
+                  >
+                    {screenshot.label}
+                  </button>
+                ))
+              )}
             </div>
             <div className="nexus-media-lightbox-frame">
               {lightboxMedia.kind === 'video' ? (

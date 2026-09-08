@@ -17,7 +17,8 @@
     "generate:social-card": "node scripts/generate-social-card.mjs",
     "optimize:media": "node scripts/optimize-media.mjs",
     "test:e2e": "playwright test",
-    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run build"
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run build",
+    "import:nexus:media": "node scripts/import-nexus-media.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.23.0",

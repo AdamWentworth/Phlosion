@@ -35,6 +35,7 @@ Phlosion/
 |   |-- sites/                 # Brand assets for linked web builds
 |   `-- tech/                  # Local technology logos used by badges
 |-- scripts/
+|   |-- capture-haven-media.mjs
 |   |-- generate-phlosion-lockups.mjs
 |   |-- generate-social-card.mjs
 |   `-- optimize-media.mjs
@@ -85,6 +86,7 @@ The repo keeps product data in TypeScript rather than a CMS so project copy, sta
 | Pokemon Go Nexus     | Collection and trade app       | React, TypeScript, Expo, Go, Kafka, MySQL, PostGIS      |
 | WinRift              | Game analytics app             | React, TypeScript, Vite, Go, ClickHouse, Riot API       |
 | Track Extract        | Audio separation desktop app   | React, TypeScript, Tauri, Rust, Python, Demucs, FFmpeg  |
+| HAVEN                | Home security observatory      | Go, SQLite, WebAuthn, React, Electron, Windows, Linux   |
 | Pokemon Autochess    | Game/runtime prototype         | C++20, CMake, SDL2, OpenGL, Direct3D 12, Lua            |
 | Jarvin               | Local AI assistant system      | Python, FastAPI, SQLite, llama.cpp, Ollama, Whisper ASR |
 | BinderLedger         | Collection and market app      | Expo, TypeScript, Go, PostgreSQL, OpenCV, Tesseract     |
@@ -122,14 +124,15 @@ npm run build
 
 ## 🧪 Local Checks
 
-| Command                | Purpose                                      |
-| ---------------------- | -------------------------------------------- |
-| `npm run format`       | Format the repo with Prettier                |
-| `npm run format:check` | Verify formatting without writing            |
-| `npm run lint`         | Run ESLint                                   |
-| `npm run typecheck`    | Run TypeScript without emit                  |
-| `npm run build`        | Compile the production Next.js app           |
-| `npm run verify`       | Run format check, lint, typecheck, and build |
+| Command                 | Purpose                                      |
+| ----------------------- | -------------------------------------------- |
+| `npm run format`        | Format the repo with Prettier                |
+| `npm run format:check`  | Verify formatting without writing            |
+| `npm run lint`          | Run ESLint                                   |
+| `npm run typecheck`     | Run TypeScript without emit                  |
+| `npm run build`         | Compile the production Next.js app           |
+| `npm run capture:haven` | Refresh HAVEN synthetic demo media           |
+| `npm run verify`        | Run format check, lint, typecheck, and build |
 
 The normal pre-commit confidence path is:
 
@@ -169,6 +172,18 @@ npm run capture:demo:media
 
 Review the generated `.artifacts/demo-media/binderledger/` package, then copy the selected manifest, screenshots, and videos into `public/products/binderledger/demo/`. The workflow reads catalog and market surfaces only; it does not mutate watchlists, collections, or scans.
 
+### Refresh HAVEN Demo Media
+
+Build HAVEN and start its hub from a freshly seeded state directory outside either repository with `HAVEN_DEMO_MODE=true`. Then, from Phlosion, point the capture workflow at that local synthetic-only origin:
+
+```powershell
+$env:HAVEN_CAPTURE_ORIGIN = "http://localhost:5081"
+npm run capture:haven
+Remove-Item Env:HAVEN_CAPTURE_ORIGIN
+```
+
+The script refreshes desktop and mobile screenshots plus WebM walkthroughs under `public/products/haven/demo/`. It refuses to capture until HAVEN visibly identifies itself as synthetic demo mode.
+
 ---
 
 ## 🔁 Data Flow
@@ -192,7 +207,7 @@ The site has no runtime database. The product catalog, technology icon mapping, 
 
 ## 🧠 Content Model
 
-`src/lib/projects.ts` defines the product catalog. Each project includes:
+`src/lib/projects.ts` orders the product catalog, with the individual project records under `src/lib/projects/`. Each project includes:
 
 - `status`, `track`, `audience`, `labRole`, and `labTrack`
 - delivery surface and product constraint copy
@@ -204,7 +219,7 @@ The site has no runtime database. The product catalog, technology icon mapping, 
 
 When adding a product, update:
 
-1. `src/lib/projects.ts`
+1. `src/lib/projects/<product>.ts` and the catalog in `src/lib/projects.ts`
 2. `public/products/<product>/`
 3. `src/lib/imageSizes.ts`
 4. Product-specific styles in `src/app/styles/products.css`, `sections.css`, `showcase.css`, and `responsive.css` when needed

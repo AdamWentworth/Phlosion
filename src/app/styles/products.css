@@ -58,6 +58,14 @@
   border-color: rgba(37, 134, 255, 0.26);
 }
 
+.product-line-haven {
+  background:
+    radial-gradient(circle at 16% 4%, rgba(4, 220, 139, 0.2), transparent 36%),
+    radial-gradient(circle at 88% 16%, rgba(5, 181, 220, 0.13), transparent 30%),
+    linear-gradient(135deg, rgba(3, 76, 76, 0.18), rgba(18, 20, 24, 0.96) 42%), rgba(18, 20, 24, 0.96);
+  border-color: rgba(4, 220, 139, 0.24);
+}
+
 .product-line-jarvin {
   background:
     radial-gradient(circle at 18% 4%, rgba(0, 214, 255, 0.18), transparent 34%),
@@ -306,6 +314,36 @@
   max-width: 134px;
   height: 30px;
   filter: drop-shadow(0 0 14px rgba(51, 156, 255, 0.2)) drop-shadow(0 8px 14px rgba(0, 15, 42, 0.24));
+}
+
+.product-brand-banner-haven {
+  gap: 8px;
+  border-color: rgba(4, 220, 139, 0.32);
+  background:
+    radial-gradient(circle at 24% 48%, rgba(4, 220, 139, 0.2), transparent 42%),
+    radial-gradient(circle at 82% 20%, rgba(5, 181, 220, 0.12), transparent 28%),
+    linear-gradient(135deg, #061719, #040d10 56%, #062127);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.045),
+    0 14px 26px rgba(0, 24, 27, 0.2);
+}
+
+.product-brand-banner-haven .product-brand-mark {
+  flex-basis: 66px;
+  width: 66px;
+  height: 66px;
+}
+
+.product-brand-banner-haven .product-brand-mark img {
+  width: 66px;
+  height: 66px;
+  filter: drop-shadow(0 0 17px rgba(4, 220, 139, 0.3)) drop-shadow(0 8px 14px rgba(0, 21, 25, 0.34));
+}
+
+.product-brand-banner-haven .product-brand-wordmark {
+  max-width: 124px;
+  height: 30px;
+  filter: drop-shadow(0 0 14px rgba(15, 207, 224, 0.16)) drop-shadow(0 8px 14px rgba(0, 21, 25, 0.24));
 }
 
 .product-brand-banner-cipher {

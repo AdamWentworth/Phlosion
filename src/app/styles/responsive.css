@@ -1,5 +1,17 @@
 /* Responsive and motion preference rules. */
 
+@media (min-width: 941px) {
+  .showcase-tab {
+    gap: 10px;
+    padding-inline: 10px;
+  }
+
+  .showcase-tab strong {
+    overflow-wrap: normal;
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 940px) {
   .site-header,
   .showcase-shell,

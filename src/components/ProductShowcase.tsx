@@ -55,6 +55,28 @@ const mediaConfigsByDemoKind = {
   cipher: cipherMediaConfig,
 } satisfies Record<Project['demo']['kind'], CapturedMediaConfig>;
 
+function ScreenshotOptions({ screenshots }: { screenshots: CapturedScreenshot[] }) {
+  const groups = new Map<string, CapturedScreenshot[]>();
+  for (const screenshot of screenshots) {
+    const group = screenshot.group ?? '';
+    groups.set(group, [...(groups.get(group) ?? []), screenshot]);
+  }
+  return [...groups].map(([group, shots]) => {
+    const options = shots.map((shot) => (
+      <option key={shot.id} value={shot.id}>
+        {shot.label}
+      </option>
+    ));
+    return group ? (
+      <optgroup key={group} label={group}>
+        {options}
+      </optgroup>
+    ) : (
+      options
+    );
+  });
+}
+
 function CapturedVideoPair({ config, video }: { config: CapturedMediaConfig; video: CapturedVideoSnapshot }) {
   const supportsDesktop = supportsDemoViewport(config, 'desktop');
   const supportsMobile = supportsDemoViewport(config, 'mobile');
@@ -474,7 +496,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                         width={mobileMediaSize.width}
                         height={mobileMediaSize.height}
                         loading={isActive ? 'eager' : 'lazy'}
-                        sizes="(max-width: 640px) 260px, 0px"
+                        sizes="(max-width: 640px) calc(100vw - 64px), 0px"
                       />
                     )}
                     {isActive && (
@@ -495,11 +517,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                 value={activeScreenshot.id}
                 onChange={(event) => selectScreenshot(event.target.value)}
               >
-                {config.screenshots.map((screenshot) => (
-                  <option key={screenshot.id} value={screenshot.id}>
-                    {screenshot.label}
-                  </option>
-                ))}
+                <ScreenshotOptions screenshots={config.screenshots} />
               </select>
             </label>
           ) : (
@@ -607,11 +625,7 @@ function CapturedMediaVisual({ config, project }: { config: CapturedMediaConfig;
                       if (selected) showLightboxScreenshot(selected);
                     }}
                   >
-                    {config.screenshots.map((screenshot) => (
-                      <option key={screenshot.id} value={screenshot.id}>
-                        {screenshot.label}
-                      </option>
-                    ))}
+                    <ScreenshotOptions screenshots={config.screenshots} />
                   </select>
                 </label>
               ) : (

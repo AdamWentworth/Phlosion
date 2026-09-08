@@ -74,7 +74,7 @@ export const nexusProject: Project = {
     },
     {
       label: 'Evidence boundary',
-      text: 'The showcase uses the migration branch’s responsive web interface with demo accounts and fixture data. These recordings show product behavior without claiming a completed native release or live backend verification.',
+      text: 'The showcase runs the migration branch’s responsive web interface against live services using a real trainer account. It pairs overall rankings with the trainer’s own Pokémon; private profile and account fields are hidden. Native release checks remain separate.',
     },
     {
       label: 'Release path',
@@ -99,7 +99,7 @@ export const nexusProject: Project = {
     label: 'App walkthrough',
     metric: 'App demo',
     summary:
-      'Explore collection, battle planning, discovery, trading, and account features in desktop and mobile web layouts. Recorded from the native migration branch with demo data; the native app remains in preview.',
+      'Explore a real trainer’s collection, trades, and community. Compare overall Raid, Max, and PvP results with My Pokémon in desktop and mobile web layouts; the native app remains in preview.',
     steps: ['Collect and discover', 'Plan your battles', 'Connect and trade'],
     scenes: [
       {
@@ -108,7 +108,7 @@ export const nexusProject: Project = {
       },
       {
         label: 'Battle tools',
-        text: 'Explore raid counters, Max Battle parties, PvP team building and IV rankings alongside your collection.',
+        text: 'Compare overall recommendations with your own raid attackers, Max Battle parties, complete PvP teams, and caught Pokémon IV ranks.',
       },
       {
         label: 'Trainer community',

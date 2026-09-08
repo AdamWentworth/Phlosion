@@ -9,6 +9,8 @@ const mediaRoot = '/products/pokemon-go-nexus/demo/migration-preview';
 test('Nexus media declarations match the verified capture package', async () => {
   const manifest = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'public', mediaRoot, 'manifest.json'), 'utf8'));
   expect(manifest.renderer).toBe('responsive-web');
+  expect(manifest.dataMode).toBe('live-account');
+  expect(manifest.fullCoverage).toBe(true);
   expect(manifest.flows).toHaveLength(56);
   const assets = new Map<string, { sha256: string }>(
     manifest.assets.map((asset: { file: string; sha256: string }) => [asset.file, asset]),
@@ -16,6 +18,23 @@ test('Nexus media declarations match the verified capture package', async () => 
   const referenced: string[] = [];
   for (const theme of config.themes)
     for (const viewport of ['desktop', 'mobile'] as const) {
+      const shots = manifest.flows
+        .filter((flow: { theme: string; viewport: string }) => flow.theme === theme.id && flow.viewport === viewport)
+        .flatMap((flow: { shots: { key: string; scope: string }[] }) => flow.shots);
+      for (const [key, scope] of Object.entries({
+        raid: 'catalog',
+        'raid-owned': 'owned',
+        max: 'catalog',
+        'max-owned': 'owned',
+        pvp: 'catalog',
+        'pvp-owned': 'owned',
+        'pvp-team-builder': 'catalog',
+        'pvp-owned-team-builder': 'owned',
+        'public-profile': 'public',
+      })) {
+        expect(shots, `${theme.id}/${viewport}: ${key}`).toContainEqual(expect.objectContaining({ key, scope }));
+        expect(config.screenshots.some((shot) => shot.id === key)).toBe(true);
+      }
       for (const moment of config.moments) {
         referenced.push(config.videoPath(theme.id, moment.mediaKey, viewport));
         referenced.push(config.posterPath!(theme.id, moment, viewport));

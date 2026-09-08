@@ -232,6 +232,39 @@
     width: 78%;
   }
 
+  .showcase-stage-nexus {
+    padding: 10px;
+  }
+
+  .showcase-stage-nexus .stage-copy {
+    gap: 12px;
+  }
+
+  .showcase-stage-nexus .demo-scene-list {
+    display: none;
+  }
+
+  .demo-visual-nexus-preview {
+    padding: 8px;
+  }
+
+  .demo-visual-nexus-preview .nexus-media-frame,
+  .demo-visual-nexus-preview .nexus-image-frame {
+    width: 100%;
+  }
+
+  .demo-visual-nexus-preview .nexus-image-peek-track {
+    inset: 0;
+  }
+
+  .demo-visual-nexus-preview .nexus-carousel-slide {
+    width: 100%;
+  }
+
+  .demo-visual-nexus-preview .nexus-carousel-slide-peek {
+    visibility: hidden;
+  }
+
   .nexus-carousel-image-desktop {
     display: none;
   }

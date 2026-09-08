@@ -1,6 +1,16 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import type { ReactNode } from 'react';
 import './globals.css';
+
+const themeInitScript = `
+  try {
+    const savedTheme = localStorage.getItem('phlosion-theme');
+    document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+  } catch {
+    document.documentElement.dataset.theme = 'dark';
+  }
+`;
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://phlosion.com'),
@@ -21,7 +31,7 @@ export const metadata: Metadata = {
     siteName: 'Phlosion',
     images: [
       {
-        url: '/social-card.png',
+        url: '/brand/phlosion-social-card.png',
         width: 1200,
         height: 630,
         alt: 'Phlosion software product lab',
@@ -34,11 +44,11 @@ export const metadata: Metadata = {
     title: 'Phlosion | Software Product Lab',
     description:
       'Software product lab work across full-stack services, local AI systems, desktop tools, web surfaces, and games.',
-    images: ['/social-card.png'],
+    images: ['/brand/phlosion-social-card.png'],
   },
   icons: {
-    icon: [{ url: '/phlosion-mark.png', type: 'image/png' }],
-    shortcut: '/phlosion-mark.png',
+    icon: [{ url: '/brand/phlosion-mark.png', type: 'image/png' }],
+    shortcut: '/brand/phlosion-mark.png',
   },
 };
 
@@ -48,8 +58,13 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <body>
+        {children}
+        <Script id="theme-init" strategy="beforeInteractive">
+          {themeInitScript}
+        </Script>
+      </body>
     </html>
   );
 }

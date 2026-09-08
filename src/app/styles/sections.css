@@ -105,6 +105,10 @@
   color: #0b7f8c;
 }
 
+.project-type-icon-binderledger {
+  color: #125fab;
+}
+
 .project-type-icon-trackextract {
   color: #0b7f8c;
 }
@@ -346,6 +350,18 @@
   height: 16px;
 }
 
+.tech-badge-icon .tech-icon-image-opencv {
+  width: 17px;
+  height: 16px;
+}
+
+.tech-badge-icon .tech-icon-image-tesseract {
+  width: 17px;
+  height: 17px;
+  filter: brightness(0) saturate(100%) invert(30%) sepia(93%) saturate(1452%) hue-rotate(184deg) brightness(91%)
+    contrast(93%);
+}
+
 .tech-badge-icon .tech-icon-image-vite {
   width: 17px;
   height: 17px;
@@ -370,6 +386,7 @@
 
 .product-line,
 .product-line-nexus,
+.product-line-binderledger,
 .product-line-winrift,
 .product-line-jarvin,
 .product-line-trackextract,
@@ -398,6 +415,15 @@
   background:
     radial-gradient(circle at 84% 0%, rgba(255, 90, 0, 0.18), transparent 31%),
     linear-gradient(225deg, rgba(255, 90, 0, 0.14), rgba(255, 249, 239, 0.9) 38%), var(--surface-raised);
+}
+
+.product-line-binderledger,
+.showcase-stage-binderledger {
+  border-color: rgba(22, 96, 175, 0.26);
+  background:
+    radial-gradient(circle at 84% 0%, rgba(38, 133, 255, 0.24), transparent 31%),
+    radial-gradient(circle at 18% 12%, rgba(255, 196, 46, 0.14), transparent 28%),
+    linear-gradient(225deg, rgba(19, 91, 171, 0.17), rgba(255, 249, 239, 0.9) 38%), var(--surface-raised);
 }
 
 .product-line-jarvin,

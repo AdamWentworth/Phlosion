@@ -180,6 +180,11 @@
     aspect-ratio: 390 / 844;
   }
 
+  .demo-visual-binderledger-media .nexus-media-frame,
+  .demo-visual-binderledger-media .nexus-image-frame {
+    aspect-ratio: 390 / 844;
+  }
+
   .nexus-demo-video-desktop {
     display: none;
   }

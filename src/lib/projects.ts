@@ -1,4 +1,5 @@
 import { autochessProject } from './projects/autochess';
+import { binderLedgerProject } from './projects/binderledger';
 import { cipherProject } from './projects/cipher';
 import { jarvinProject } from './projects/jarvin';
 import { nexusProject } from './projects/nexus';
@@ -14,7 +15,8 @@ const productOrder: Record<Project['demo']['kind'], number> = {
   trackextract: 2,
   autochess: 3,
   jarvin: 4,
-  cipher: 5,
+  binderledger: 5,
+  cipher: 6,
 };
 
 const productCatalog: Project[] = [
@@ -23,6 +25,7 @@ const productCatalog: Project[] = [
   trackExtractProject,
   autochessProject,
   jarvinProject,
+  binderLedgerProject,
   cipherProject,
 ];
 

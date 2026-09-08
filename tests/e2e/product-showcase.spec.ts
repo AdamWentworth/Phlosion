@@ -36,6 +36,11 @@ const demoFixtures: DemoFixture[] = [
     productName: 'Jarvin',
   },
   {
+    tabName: 'BinderLedger',
+    heading: 'Catalog + market walkthrough',
+    productName: 'BinderLedger',
+  },
+  {
     tabName: 'Cipher Snagem Editor',
     heading: 'Desktop editor workflow',
     productName: 'Cipher Snagem Editor',
@@ -43,6 +48,8 @@ const demoFixtures: DemoFixture[] = [
 ];
 
 test.describe('product showcase media', () => {
+  test.describe.configure({ timeout: 60_000 });
+
   test('cycles project demos, themes, carousel, and lightbox controls', async ({ page }) => {
     const pageErrors: string[] = [];
     const consoleErrors: string[] = [];

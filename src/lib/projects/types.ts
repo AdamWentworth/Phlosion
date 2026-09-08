@@ -27,7 +27,7 @@ export type Project = {
   tagGroups?: TechTagGroup[];
   href: string;
   icon: LucideIcon;
-  accent: 'nexus' | 'winrift' | 'jarvin' | 'cipher' | 'autochess' | 'trackextract';
+  accent: 'nexus' | 'binderledger' | 'winrift' | 'jarvin' | 'cipher' | 'autochess' | 'trackextract';
   brand?: {
     alt: string;
     icon: string;
@@ -39,7 +39,7 @@ export type Project = {
     darkLockup?: string;
   };
   demo: {
-    kind: 'nexus' | 'winrift' | 'jarvin' | 'cipher' | 'autochess' | 'trackextract';
+    kind: 'nexus' | 'binderledger' | 'winrift' | 'jarvin' | 'cipher' | 'autochess' | 'trackextract';
     label: string;
     metric: string;
     summary: string;

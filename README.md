@@ -4,15 +4,24 @@ Phlosion is a branded software product lab for Adam Wentworth's product-shaped s
 
 The site is a Next.js app that presents full-stack services, analytics systems, local AI work, desktop tools, web surfaces, and C++ game/runtime experiments through brand assets, product constraints, demo surfaces, repository evidence, and technical stack notes.
 
+<p align="center">
+  <a href="https://nextjs.org/"><img alt="Next.js 16" src="https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&amp;logoColor=white"></a>
+  <a href="https://react.dev/"><img alt="React 19" src="https://img.shields.io/badge/React-19-20232A?logo=react&amp;logoColor=61DAFB"></a>
+  <a href="https://www.typescriptlang.org/"><img alt="TypeScript 6" src="https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&amp;logoColor=white"></a>
+  <a href="https://tailwindcss.com/"><img alt="Tailwind CSS 4" src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&amp;logoColor=white"></a>
+  <a href="https://playwright.dev/"><img alt="Playwright 1.61" src="https://img.shields.io/badge/Playwright-1.61-2EAD33?logo=playwright&amp;logoColor=white"></a>
+  <a href="https://vercel.com/"><img alt="Vercel" src="https://img.shields.io/badge/Vercel-Deployment-000000?logo=vercel&amp;logoColor=white"></a>
+</p>
+
 ---
 
 ## 🖼️ Brand Surface
 
-| Social card                                     | Phlosion lockup                                                            |
-| ----------------------------------------------- | -------------------------------------------------------------------------- |
-| ![Phlosion social card](public/social-card.png) | ![Phlosion horizontal lockup](public/brand/phlosion-lockup-horizontal.png) |
+| Social card                                                    | Phlosion lockup                                                                 |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| ![Phlosion social card](public/brand/phlosion-social-card.png) | ![Phlosion horizontal lockup](public/brand/phlosion-lockup-horizontal-blue.png) |
 
-Product brand assets live in `public/products/`, site brand assets live in `public/brand/` and `public/sites/`, and generated/social media assets live in `public/social-card.png`.
+Product brand assets live in `public/products/`, Phlosion site-brand and social assets live in `public/brand/`, and linked-site assets live in `public/sites/`.
 
 ---
 
@@ -21,12 +30,12 @@ Product brand assets live in `public/products/`, site brand assets live in `publ
 ```plaintext
 Phlosion/
 |-- public/
-|   |-- brand/                 # Phlosion brand lockups and marks
+|   |-- brand/                 # Canonical Phlosion mark, wordmarks, lockups, and social card
 |   |-- products/              # Product-specific logos, wordmarks, screenshots
 |   |-- sites/                 # Brand assets for linked web builds
-|   |-- tech/                  # Local technology logos used by badges
-|   `-- social-card.png        # Open Graph / social preview card
+|   `-- tech/                  # Local technology logos used by badges
 |-- scripts/
+|   |-- generate-phlosion-lockups.mjs
 |   |-- generate-social-card.mjs
 |   `-- optimize-media.mjs
 |-- src/
@@ -78,6 +87,7 @@ The repo keeps product data in TypeScript rather than a CMS so project copy, sta
 | Track Extract        | Audio separation desktop app   | React, TypeScript, Tauri, Rust, Python, Demucs, FFmpeg  |
 | Pokemon Autochess    | Game/runtime prototype         | C++20, CMake, SDL2, OpenGL, Direct3D 12, Lua            |
 | Jarvin               | Local AI assistant system      | Python, FastAPI, SQLite, llama.cpp, Ollama, Whisper ASR |
+| BinderLedger         | Collection and market app      | Expo, TypeScript, Go, PostgreSQL, OpenCV, Tesseract     |
 | Cipher Snagem Editor | Cross-platform desktop tooling | .NET, AvaloniaUI, C#, Windows/Linux release packaging   |
 | AdamWentworth.ca     | Resume site build              | Astro, TypeScript, CSS, Vercel                          |
 | Phlosion.com         | Product-lab site               | Next.js, TypeScript, Tailwind CSS, Vercel               |
@@ -134,10 +144,11 @@ npm run verify
 ### Generate the Social Card
 
 ```bash
+npm run generate:brand-lockups
 npm run generate:social-card
 ```
 
-This writes `public/social-card.png` from the Phlosion brand assets.
+The lockup generator writes blue and cream horizontal variants from the canonical mark and wordmark geometry. The social-card generator then writes `public/brand/phlosion-social-card.png` from the current Phlosion brand assets.
 
 ### Optimize Media
 
@@ -146,6 +157,17 @@ npm run optimize:media
 ```
 
 Use this after adding or changing larger image assets. Product images should then be registered in `src/lib/imageSizes.ts` so Next Image can render them with stable dimensions.
+
+### Refresh BinderLedger Demo Media
+
+BinderLedger owns its read-only Playwright capture workflow in `apps/client`. It exports Phlosion-compatible desktop and mobile screenshots and WebM walkthroughs:
+
+```powershell
+Set-Location D:\Projects\Apps\BinderLedger\apps\client
+npm run capture:demo:media
+```
+
+Review the generated `.artifacts/demo-media/binderledger/` package, then copy the selected manifest, screenshots, and videos into `public/products/binderledger/demo/`. The workflow reads catalog and market surfaces only; it does not mutate watchlists, collections, or scans.
 
 ---
 
@@ -199,13 +221,13 @@ Typical deployment flow:
 1. Push to GitHub.
 2. Vercel builds with `npm run build`.
 3. The custom domain points to the Vercel project.
-4. Social preview metadata uses `public/social-card.png`.
+4. Social preview metadata uses `public/brand/phlosion-social-card.png`.
 
 ---
 
 ## 🔐 Rights And Affiliation Notes
 
-Pokemon- and League-related projects shown on Phlosion are portfolio, learning, analytics, and community-support work. They are not affiliated with, endorsed by, or sponsored by Nintendo, The Pokemon Company, Niantic, Riot Games, or related rights holders.
+Pokemon- and League-related projects shown on Phlosion are portfolio, learning, analytics, and community-support work. They are not affiliated with, endorsed by, or sponsored by Nintendo, Creatures, GAME FREAK, The Pokemon Company, Niantic, Riot Games, any data provider, or related rights holders.
 
 Product screenshots and brand images that originate from individual project repos are included here to present those projects inside the Phlosion portfolio surface.
 

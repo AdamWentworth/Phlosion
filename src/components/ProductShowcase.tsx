@@ -8,6 +8,7 @@ import {
   autochessMediaConfig,
   binderLedgerMediaConfig,
   cipherMediaConfig,
+  havenMediaConfig,
   jarvinMediaConfig,
   nexusMediaConfig,
   trackExtractMediaConfig,
@@ -46,6 +47,7 @@ type CapturedCarouselDirection = 'previous' | 'next';
 const mediaConfigsByDemoKind = {
   nexus: nexusMediaConfig,
   binderledger: binderLedgerMediaConfig,
+  haven: havenMediaConfig,
   winrift: winRiftMediaConfig,
   trackextract: trackExtractMediaConfig,
   autochess: autochessMediaConfig,

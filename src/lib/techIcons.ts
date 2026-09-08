@@ -9,6 +9,7 @@ import {
   siCss,
   siDocker,
   siDotnet,
+  siElectron,
   siExpress,
   siExpo,
   siFastapi,
@@ -36,6 +37,7 @@ import {
   siTailwindcss,
   siTypescript,
   siVercel,
+  siWebauthn,
 } from 'simple-icons';
 
 export type CustomTechIcon =
@@ -79,6 +81,7 @@ const simpleTechIcons: Record<string, SimpleIcon> = {
   ClickHouse: siClickhouse,
   CMake: siCmake,
   Docker: siDocker,
+  Electron: siElectron,
   CSS: siCss,
   '.NET 10': siDotnet,
   Expo: siExpo,
@@ -112,6 +115,7 @@ const simpleTechIcons: Record<string, SimpleIcon> = {
   'Tailwind CSS': siTailwindcss,
   TypeScript: siTypescript,
   Vercel: siVercel,
+  WebAuthn: siWebauthn,
 };
 
 const imageTechIcons: Record<string, Extract<TechIconDefinition, { kind: 'image' }>> = {

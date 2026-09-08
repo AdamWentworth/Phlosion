@@ -167,6 +167,67 @@ function binderLedgerScreenshotPath(_theme: DemoThemeId, imageKey: string, viewp
   return `${binderLedgerMediaBasePath}/screenshots/binderledger-${imageKey}-${viewport}.png`;
 }
 
+const havenDemoMoments: CapturedDemoMoment[] = [
+  {
+    id: 'posture',
+    label: 'Posture + Devices',
+    description:
+      'Move from the home-security overview into synthetic device posture and browser evidence with explicit observation boundaries.',
+    mediaKey: 'overview-and-devices',
+    posterKey: 'overview',
+  },
+  {
+    id: 'continuity',
+    label: 'Network + Recovery',
+    description:
+      'Follow service and appliance context through account readiness, security activity, runtime diagnostics, and recovery guidance.',
+    mediaKey: 'network-and-recovery',
+    posterKey: 'network',
+  },
+];
+
+const havenScreenshots: CapturedScreenshot[] = [
+  {
+    id: 'overview',
+    label: 'Overview',
+    imageKey: 'overview',
+  },
+  {
+    id: 'devices',
+    label: 'Devices',
+    imageKey: 'devices',
+  },
+  {
+    id: 'network',
+    label: 'Network',
+    imageKey: 'network',
+  },
+  {
+    id: 'accounts',
+    label: 'Accounts',
+    imageKey: 'accounts',
+  },
+  {
+    id: 'system',
+    label: 'System',
+    imageKey: 'system',
+  },
+];
+
+const havenMediaBasePath = '/products/haven/demo';
+
+function havenVideoPath(_theme: DemoThemeId, mediaKey: string, viewport: DemoViewport) {
+  return `${havenMediaBasePath}/videos/haven-${mediaKey}-${viewport}.webm`;
+}
+
+function havenPosterPath(_theme: DemoThemeId, moment: CapturedDemoMoment, viewport: DemoViewport) {
+  return `${havenMediaBasePath}/screenshots/haven-${moment.posterKey ?? moment.mediaKey}-${viewport}.png`;
+}
+
+function havenScreenshotPath(_theme: DemoThemeId, imageKey: string, viewport: DemoViewport) {
+  return `${havenMediaBasePath}/screenshots/haven-${imageKey}-${viewport}.png`;
+}
+
 const winRiftDemoMoments: CapturedDemoMoment[] = [
   {
     id: 'champion',
@@ -634,6 +695,17 @@ export const binderLedgerMediaConfig: CapturedMediaConfig = {
   videoPath: binderLedgerVideoPath,
   posterPath: binderLedgerPosterPath,
   screenshotPath: binderLedgerScreenshotPath,
+};
+
+export const havenMediaConfig: CapturedMediaConfig = {
+  productName: 'HAVEN',
+  visualClassName: 'demo-visual-haven-media',
+  themes: [{ id: 'standard', label: 'Default' }],
+  moments: havenDemoMoments,
+  screenshots: havenScreenshots,
+  videoPath: havenVideoPath,
+  posterPath: havenPosterPath,
+  screenshotPath: havenScreenshotPath,
 };
 
 export const winRiftMediaConfig: CapturedMediaConfig = {

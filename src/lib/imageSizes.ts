@@ -12,6 +12,8 @@ const imageSizes = {
   '/products/cipher-snagem-editor/cipher-snagem-lockup-transparent.png': { width: 1448, height: 660 },
   '/products/cipher-snagem-editor/cipher-snagem-mark-transparent.png': { width: 1024, height: 1024 },
   '/products/cipher-snagem-editor/cipher-snagem-wordmark-transparent.png': { width: 1212, height: 574 },
+  '/products/haven/haven-app-icon.svg': { width: 24, height: 24 },
+  '/products/haven/haven-wordmark.svg': { width: 300, height: 64 },
   '/products/jarvin/jarvin-icon-clean.png': { width: 760, height: 759 },
   '/products/jarvin/jarvin-lockup-dark.png': { width: 929, height: 908 },
   '/products/jarvin/jarvin-wordmark-white.png': { width: 1058, height: 166 },

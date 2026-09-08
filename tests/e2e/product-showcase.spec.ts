@@ -26,6 +26,11 @@ const demoFixtures: DemoFixture[] = [
     hasThemeToggle: true,
   },
   {
+    tabName: 'HAVEN',
+    heading: 'Security observatory walkthrough',
+    productName: 'HAVEN',
+  },
+  {
     tabName: 'Pokemon Autochess',
     heading: 'Runtime combat sandbox',
     productName: 'Pokemon Autochess',
@@ -46,6 +51,8 @@ const demoFixtures: DemoFixture[] = [
     productName: 'Cipher Snagem Editor',
   },
 ];
+
+const havenDemo = demoFixtures.find((demo) => demo.tabName === 'HAVEN');
 
 test.describe('product showcase media', () => {
   test.describe.configure({ timeout: 60_000 });
@@ -77,6 +84,7 @@ test.describe('product showcase media', () => {
     });
 
     await page.goto('/?demo=nexus');
+    await page.waitForLoadState('networkidle');
     await expect(page.getByRole('heading', { name: 'The products need to be seen in motion.' })).toBeVisible();
 
     for (const demo of demoFixtures) {
@@ -87,10 +95,35 @@ test.describe('product showcase media', () => {
     expect(consoleErrors, 'No browser console errors should occur while exercising showcase demos.').toEqual([]);
     expect(badLocalResponses, 'All local showcase media and app assets should resolve successfully.').toEqual([]);
   });
+
+  test('renders the HAVEN desktop and mobile capture surfaces', async ({ page }) => {
+    if (!havenDemo) {
+      throw new Error('HAVEN demo fixture is missing.');
+    }
+
+    await page.goto('/?demo=haven');
+    await page.waitForLoadState('networkidle');
+    await expect(page.getByRole('heading', { name: 'The products need to be seen in motion.' })).toBeVisible();
+    await exerciseDemo(page, havenDemo);
+
+    const visual = page.locator('.showcase-stage .demo-visual-haven-media');
+    await expect(visual).toBeVisible();
+    await expect(visual.locator('video:visible').first()).toHaveAttribute(
+      'poster',
+      /haven-overview-(desktop|mobile)\.png$/,
+    );
+    await expect(visual.locator('.nexus-carousel-slide-active img:visible').first()).toHaveAttribute(
+      'alt',
+      /Network HAVEN (desktop|mobile) screenshot/,
+    );
+  });
 });
 
 async function exerciseDemo(page: Page, demo: DemoFixture) {
-  await page.getByRole('button', { name: new RegExp(escapeRegExp(demo.tabName), 'i') }).click();
+  await page
+    .locator('.showcase-tabs')
+    .getByRole('button', { name: new RegExp(escapeRegExp(demo.tabName), 'i') })
+    .click();
 
   const stage = page.locator('.showcase-stage');
   const visual = stage.locator('.demo-visual');
